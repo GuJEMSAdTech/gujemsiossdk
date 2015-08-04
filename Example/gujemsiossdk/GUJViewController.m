@@ -26,12 +26,13 @@
     
     NSLog(@"%@", [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdUnitIdForAdspaceId:@"24757"]);
     NSLog(@"%@", [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdUnitIdForAdspaceId:@"24757"]);
-    
-    
-    
+
+
     GUJAdViewContext *context = [GUJAdViewContext instanceForAdspaceId:@"16144"];
     context.rootViewController = self;
-    
+
+    [context printDeviceInfo];
+
     [context adViewWithOrigin:CGPointMake(0.0f, 20.0f) completion:^BOOL(GUJAdView *_adView, NSError *_error) {
         if( !_error ) {
             
