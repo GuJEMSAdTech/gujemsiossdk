@@ -8,6 +8,9 @@
 
 @import UIKit;
 
-@interface GUJViewController : UIViewController
+#import <GoogleMobileAds.h>
+
+
+@interface GUJViewController : UIViewController <GADInterstitialDelegate>
 
 @end

@@ -11,10 +11,13 @@
 #import "GUJAdSpaceIdToAdUnitIdMapper.h"
 
 @interface GUJViewController ()
-
 @end
 
-@implementation GUJViewController
+@implementation GUJViewController {
+
+    DFPInterstitial *interstitial;
+
+}
 
 - (void)viewDidLoad
 {
@@ -45,12 +48,33 @@
     GUJAdView *adView = [context adViewWithOrigin:CGPointMake(0.0f, 100.0f)];
     [self.view addSubview:adView];
 
+
+
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    interstitial = [[DFPInterstitial alloc] initWithAdUnitID:@"/6032/sdktest"];
+    interstitial.delegate = self;
+    //[interstitial loadRequest:[DFPRequest request]];
+
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)interstitialDidReceiveAd:(GADInterstitial *)ad {
+  NSLog(@"interstitialDidReceiveAd");
+    if (ad.isReady && !ad.hasBeenUsed) {
+       [ad presentFromRootViewController:self];
+   }
+
+}
+
 
 @end
