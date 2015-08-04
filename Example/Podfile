@@ -1,6 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-
 target 'gujemsiossdk_Example', :exclusive => true do
   pod "gujemsiossdk", :path => "../"
 end

@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "gujemsiossdk"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "G+J EMS mobile iOS SDK"
   s.description      = <<-DESC
                        G+J EMS mobile iOS SDK
@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
     'gujemsiossdk' => ['Pod/Assets/*.xml']
   }
 
-  s.public_header_files = 'Pod/Classes/*.h'
+  s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'Google-Mobile-Ads-SDK', '~> 7.0'
 end
