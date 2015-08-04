@@ -12,10 +12,10 @@ Pod::Spec.new do |s|
   s.version          = "0.1.0"
   s.summary          = "G+J EMS mobile iOS SDK"
   s.description      = <<-DESC
-                       An optional longer description of gujemsiossdk
+                       G+J EMS mobile iOS SDK
 
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                       * Helps integrating G+J EMS Google Ads
+                       * Replaces G+J EMS SDK based on Amobee, while keeping the same interfaces
                        DESC
   s.homepage         = "https://github.com/GuJEMSAdTech/gujemsiossdk"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
