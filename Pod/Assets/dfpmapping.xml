@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<zonemapping>
+	<!--  For testing: -->
+	<zone name="empty" adunit="sdktest" position="1"/>
+    	
+    <!-- ListView: -->
+    <zone name="21772" adunit="sdktest" position="1"/>
+    <zone name="24757" adunit="sdktest" position="2"/>
+    
+    <!--  RelativeLayout: -->
+    <zone name="15312" adunit="sdktest/sdksub1" position="1"/>
+    
+    <!-- ORMMA Test: -->
+    <zone name="15308" adunit="sdktest/sdksub1" position="1"/>
+
+    <!--  Retina: -->
+    <zone name="15298" adunit="sdktest/sdksub1/sdksub11" position="1"/>
+    <zone name="15299" adunit="sdktest/sdksub1/sdksub11" position="2"/>
+    <zone name="15300" adunit="sdktest/sdksub1/sdksub11" position="3"/>
+    
+    <!-- TableLayout: -->
+    <zone name="15302" adunit="sdktest/sdksub1" position="1"/>
+    
+    <!--  Targeting: -->
+    <zone name="15304" adunit="sdktest/sdksub1" position="1"/>
+    
+	<!-- Unused: -->
+	<zone name="19725" adunit="sdktest/sdksub1" position="1"/>
+    <zone name="15306" adunit="sdktest/sdksub1" position="1"/>
+    <zone name="19727" adunit="sdktest/sdksub1" position="1"/>
+    
+</zonemapping>

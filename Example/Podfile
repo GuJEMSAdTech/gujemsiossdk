@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-use_frameworks!
+
 
 target 'gujemsiossdk_Example', :exclusive => true do
   pod "gujemsiossdk", :path => "../"
@@ -7,6 +7,5 @@ end
 
 target 'gujemsiossdk_Tests', :exclusive => true do
   pod "gujemsiossdk", :path => "../"
-
-  
 end
+

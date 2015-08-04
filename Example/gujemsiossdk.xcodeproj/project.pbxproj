@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		436E9A7CBA81303EF8B7AE06 /* Pods_gujemsiossdk_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E05C00F5B9BD9FDE63AF278 /* Pods_gujemsiossdk_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		522FA61C934F61AA7DC7EA74 /* Pods_gujemsiossdk_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADEBEF53B5FD62F9431A6322 /* Pods_gujemsiossdk_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		01FE1AFED28ED5A4D6A7CED7 /* libPods-gujemsiossdk_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E772E262441CDB58B69CE8B /* libPods-gujemsiossdk_Tests.a */; };
+		4E6852D8C132F8FBE05EA816 /* libPods-gujemsiossdk_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77987BFE86D39FFEE5DDD298 /* libPods-gujemsiossdk_Example.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -36,12 +36,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E772E262441CDB58B69CE8B /* libPods-gujemsiossdk_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gujemsiossdk_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		121A746B3E153018CB2A279D /* gujemsiossdk.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = gujemsiossdk.podspec; path = ../gujemsiossdk.podspec; sourceTree = "<group>"; };
-		1E05C00F5B9BD9FDE63AF278 /* Pods_gujemsiossdk_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gujemsiossdk_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3427CF1635D514830E8FBE55 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		3DCAADFAFFF9D9823AD60DAF /* Pods-gujemsiossdk_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gujemsiossdk_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5E9E232655B670DE66702471 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		6003F58A195388D20070C39A /* gujemsiossdk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = gujemsiossdk.app; path = gujemsiossdk_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F58A195388D20070C39A /* gujemsiossdk_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gujemsiossdk_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -54,15 +54,15 @@
 		6003F5A5195388D20070C39A /* GUJViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GUJViewController.h; sourceTree = "<group>"; };
 		6003F5A6195388D20070C39A /* GUJViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GUJViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6003F5AE195388D20070C39A /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Tests.xctest; path = gujemsiossdk_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F5AE195388D20070C39A /* gujemsiossdk_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gujemsiossdk_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		716941B37DE1EB2A37324512 /* Pods-gujemsiossdk_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gujemsiossdk_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		77987BFE86D39FFEE5DDD298 /* libPods-gujemsiossdk_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gujemsiossdk_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		ADEBEF53B5FD62F9431A6322 /* Pods_gujemsiossdk_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gujemsiossdk_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4FCCE10789AA48CE68474E /* Pods-gujemsiossdk_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gujemsiossdk_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example.release.xcconfig"; sourceTree = "<group>"; };
 		E096A6ED128039FB44FDCEC6 /* Pods-gujemsiossdk_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gujemsiossdk_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,7 +75,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				522FA61C934F61AA7DC7EA74 /* Pods_gujemsiossdk_Example.framework in Frameworks */,
+				4E6852D8C132F8FBE05EA816 /* libPods-gujemsiossdk_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +86,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				436E9A7CBA81303EF8B7AE06 /* Pods_gujemsiossdk_Tests.framework in Frameworks */,
+				01FE1AFED28ED5A4D6A7CED7 /* libPods-gujemsiossdk_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,8 +119,8 @@
 		6003F58B195388D20070C39A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6003F58A195388D20070C39A /* gujemsiossdk.app */,
-				6003F5AE195388D20070C39A /* Tests.xctest */,
+				6003F58A195388D20070C39A /* gujemsiossdk_Example.app */,
+				6003F5AE195388D20070C39A /* gujemsiossdk_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,8 +132,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				ADEBEF53B5FD62F9431A6322 /* Pods_gujemsiossdk_Example.framework */,
-				1E05C00F5B9BD9FDE63AF278 /* Pods_gujemsiossdk_Tests.framework */,
+				77987BFE86D39FFEE5DDD298 /* libPods-gujemsiossdk_Example.a */,
+				0E772E262441CDB58B69CE8B /* libPods-gujemsiossdk_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -204,7 +204,6 @@
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				BB34CAFD139EEA4CC9C1AD64 /* Embed Pods Frameworks */,
 				A2557A34FBC493451190D981 /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -213,7 +212,7 @@
 			);
 			name = gujemsiossdk_Example;
 			productName = gujemsiossdk;
-			productReference = 6003F58A195388D20070C39A /* gujemsiossdk.app */;
+			productReference = 6003F58A195388D20070C39A /* gujemsiossdk_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6003F5AD195388D20070C39A /* gujemsiossdk_Tests */ = {
@@ -224,7 +223,6 @@
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				FEBAC8308DA3905F27FB82B6 /* Embed Pods Frameworks */,
 				400BDF74B51BE73608D6C861 /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -234,7 +232,7 @@
 			);
 			name = gujemsiossdk_Tests;
 			productName = gujemsiossdkTests;
-			productReference = 6003F5AE195388D20070C39A /* Tests.xctest */;
+			productReference = 6003F5AE195388D20070C39A /* gujemsiossdk_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -338,21 +336,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BB34CAFD139EEA4CC9C1AD64 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C6D647D0D5CBEDD5EFDFCF57 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,21 +349,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		FEBAC8308DA3905F27FB82B6 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

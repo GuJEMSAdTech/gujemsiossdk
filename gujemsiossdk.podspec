@@ -22,17 +22,16 @@ Pod::Spec.new do |s|
   s.license          = 'MIT'
   s.author           = { "Michael Brügmann" => "mail@michael-bruegmann.de" }
   s.source           = { :git => "https://github.com/GuJEMSAdTech/gujemsiossdk.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
   s.resource_bundles = {
-    'gujemsiossdk' => ['Pod/Assets/*.png']
+    'gujemsiossdk' => ['Pod/Assets/*.xml']
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  s.public_header_files = 'Pod/Classes/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'Google-Mobile-Ads-SDK', '~> 7.0'
 end
