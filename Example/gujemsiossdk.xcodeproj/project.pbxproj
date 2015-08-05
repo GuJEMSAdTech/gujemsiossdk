@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		01FE1AFED28ED5A4D6A7CED7 /* libPods-gujemsiossdk_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E772E262441CDB58B69CE8B /* libPods-gujemsiossdk_Tests.a */; };
+		3ED7E25C3DBB04AA13330658 /* libAdapterFacebook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED7EE3E5511D4AD7DF5E296 /* libAdapterFacebook.a */; };
+		3ED7E4BD28C39143E7FDA2A2 /* libAdapterFacebook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED7EE3E5511D4AD7DF5E296 /* libAdapterFacebook.a */; };
 		4E6852D8C132F8FBE05EA816 /* libPods-gujemsiossdk_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77987BFE86D39FFEE5DDD298 /* libPods-gujemsiossdk_Example.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -40,6 +42,7 @@
 		121A746B3E153018CB2A279D /* gujemsiossdk.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = gujemsiossdk.podspec; path = ../gujemsiossdk.podspec; sourceTree = "<group>"; };
 		3427CF1635D514830E8FBE55 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		3DCAADFAFFF9D9823AD60DAF /* Pods-gujemsiossdk_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gujemsiossdk_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		3ED7EE3E5511D4AD7DF5E296 /* libAdapterFacebook.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdapterFacebook.a; sourceTree = "<group>"; };
 		5E9E232655B670DE66702471 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* gujemsiossdk_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gujemsiossdk_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -76,6 +79,7 @@
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
 				4E6852D8C132F8FBE05EA816 /* libPods-gujemsiossdk_Example.a in Frameworks */,
+				3ED7E4BD28C39143E7FDA2A2 /* libAdapterFacebook.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +91,7 @@
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
 				01FE1AFED28ED5A4D6A7CED7 /* libPods-gujemsiossdk_Tests.a in Frameworks */,
+				3ED7E25C3DBB04AA13330658 /* libAdapterFacebook.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +153,7 @@
 				6003F5A6195388D20070C39A /* GUJViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				3ED7EE3E5511D4AD7DF5E296 /* libAdapterFacebook.a */,
 			);
 			name = "Example for gujemsiossdk";
 			path = gujemsiossdk;
@@ -489,6 +495,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gujemsiossdk/gujemsiossdk-Prefix.pch";
 				INFOPLIST_FILE = "gujemsiossdk/gujemsiossdk-Info.plist";
+				LIBRARY_SEARCH_PATHS = "\"${PROJECT_DIR}/gujemsiossdk\"/**";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -509,6 +516,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gujemsiossdk/gujemsiossdk-Prefix.pch";
 				INFOPLIST_FILE = "gujemsiossdk/gujemsiossdk-Info.plist";
+				LIBRARY_SEARCH_PATHS = "\"${PROJECT_DIR}/gujemsiossdk\"/**";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

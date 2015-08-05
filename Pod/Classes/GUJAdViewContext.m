@@ -31,6 +31,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <ifaddrs.h>
 #import <arpa/inet.h>
+#import <FBAdSettings.h>
 
 @interface GUJAdView ()
 @end
@@ -118,6 +119,7 @@
 - (GUJAdView *)adViewWithOrigin:(CGPoint)origin {
 
     GUJAdView *bannerView = [[GUJAdView alloc] initWithFrame:CGRectMake(origin.x, origin.y, 320, 50)];
+    // [FBAdSettings addTestDevice:@"d837bf115f4f22197caa311baff3f8a6b8cc20a4"];
 
     bannerView.adUnitID = @"/6032/sdktest";
     bannerView.rootViewController = self.rootViewController;

@@ -31,11 +31,11 @@ Pod::Spec.new do |s|
   }
 
   s.public_header_files = 'Pod/Classes/*.h'
-  s.frameworks = 'UIKit', 'AVFoundation'
+  s.frameworks = 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion'
   s.dependency 'Google-Mobile-Ads-SDK', '~> 7.0'
   s.dependency 'FBSDKCoreKit', '~> 4.4.0'
   s.dependency 'FBSDKLoginKit', '~> 4.4.0'
   s.dependency 'FBSDKShareKit', '~> 4.4.0'
   s.dependency 'FBAudienceNetwork', '~> 4.1.0'
-  s.dependency 'GoogleAds-IMA-iOS-SDK', '~> 3.0.beta.14'
+  #s.dependency 'GoogleAds-IMA-iOS-SDK', '~> 3.0.beta.14'
 end
