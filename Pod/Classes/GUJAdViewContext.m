@@ -58,7 +58,7 @@
 
 @end
 
-@implementation GUJAdViewContext{
+@implementation GUJAdViewContext {
 }
 
 + (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId {
@@ -197,32 +197,32 @@
 }
 
 
--(void)printDeviceInfo {
+- (void)printDeviceInfo {
     NSLog(@"Google Mobile Ads SDK version: %@", [DFPRequest sdkVersion]);
 
     NSLog(@"isOtherAudioPlaying: %@", [self isOtherAudioPlaying] ? @"YES" : @"NO");
     NSLog(@"isHeadsetPluggedIn: %@", [self isHeadsetPluggedIn] ? @"YES" : @"NO");
-    NSLog(@"getBatteryLevel: %d", [self getBatteryLevel]);
+    NSLog(@"getBatteryLevel: %@", [self getBatteryLevel]);
     NSLog(@"getIPAddress: %@", [self getIPAddress]);
     NSLog(@"getAltitude: %f", [self getAltitude]);
 }
 
--(BOOL) isOtherAudioPlaying {
+- (BOOL)isOtherAudioPlaying {
     BOOL isOtherAudioPlaying = [[AVAudioSession sharedInstance] isOtherAudioPlaying];
 
     return isOtherAudioPlaying;
 }
 
 - (BOOL)isHeadsetPluggedIn {
-    AVAudioSessionRouteDescription* route = [[AVAudioSession sharedInstance] currentRoute];
-    for (AVAudioSessionPortDescription* desc in [route outputs]) {
+    AVAudioSessionRouteDescription *route = [[AVAudioSession sharedInstance] currentRoute];
+    for (AVAudioSessionPortDescription *desc in [route outputs]) {
         if ([[desc portType] isEqualToString:AVAudioSessionPortHeadphones])
             return YES;
     }
     return NO;
 }
 
--(NSInteger) getBatteryLevel {
+- (NSNumber *)getBatteryLevel {
     [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
 
     //This will give us the battery between 0.0 (empty) and 1.0 (100% charged)
@@ -231,7 +231,7 @@
     // convert to percent
     batteryLevel *= 100;
 
-    return (NSInteger) batteryLevel;
+    return @(batteryLevel);
 }
 
 
@@ -245,12 +245,12 @@
     if (success == 0) {
         // Loop through linked list of interfaces
         temp_addr = interfaces;
-        while(temp_addr != NULL) {
-            if(temp_addr->ifa_addr->sa_family == AF_INET) {
+        while (temp_addr != NULL) {
+            if (temp_addr->ifa_addr->sa_family == AF_INET) {
                 // Check if interface is en0 which is the wifi connection on the iPhone
-                if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
+                if ([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
                     // Get NSString from C String
-                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
+                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *) temp_addr->ifa_addr)->sin_addr)];
                 }
             }
             temp_addr = temp_addr->ifa_next;
@@ -262,8 +262,8 @@
 
 }
 
--(CLLocationDistance) getAltitude {
-    CLLocationManager * locationManager_ = [[CLLocationManager alloc] init];
+- (CLLocationDistance)getAltitude {
+    CLLocationManager *locationManager_ = [[CLLocationManager alloc] init];
     return locationManager_.location.altitude;
 }
 
