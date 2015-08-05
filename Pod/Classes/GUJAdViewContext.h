@@ -346,6 +346,8 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
 - (void)freeInstance;
 
 - (void)printDeviceInfo;
+
+
 @end
 
 

@@ -48,7 +48,7 @@
     
     GUJAdView *adView = [context adViewWithOrigin:CGPointMake(0.0f, 100.0f)];
     [self.view addSubview:adView];
-
+    [context setReloadInterval:10];
 
 
 }
