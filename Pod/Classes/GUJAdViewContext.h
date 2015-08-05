@@ -66,7 +66,7 @@
 
 @interface GUJAdViewContext : NSObject
 
-@property(nonatomic, strong) NSString *_adSpaceId;
+@property(nonatomic, strong) NSString *adUnitId;
 @property(nonatomic, strong) UIViewController *rootViewController;
 @property(nonatomic, weak) id <GUJAdViewControllerDelegate> delegate;
 

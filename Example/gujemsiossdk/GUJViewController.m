@@ -16,6 +16,8 @@
 @implementation GUJViewController {
 
     DFPInterstitial *interstitial;
+    GUJAdViewContext *context;
+
 
 }
 
@@ -24,11 +26,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    NSLog(@"%@", [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdUnitIdForAdspaceId:@"24757"]);
-    NSLog(@"%@", [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdUnitIdForAdspaceId:@"24757"]);
+    //NSLog(@"%@", [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdUnitIdForAdspaceId:@"24757"]);
+    //NSLog(@"%@", [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdUnitIdForAdspaceId:@"24757"]);
 
 
-    GUJAdViewContext *context = [GUJAdViewContext instanceForAdspaceId:@"16144"];
+    context = [GUJAdViewContext instanceForAdspaceId:@"21772"];
     context.rootViewController = self;
 
     [context printDeviceInfo];

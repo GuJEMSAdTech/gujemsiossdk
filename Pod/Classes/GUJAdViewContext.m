@@ -26,6 +26,7 @@
  */
 
 #import "GUJAdViewContext.h"
+#import "GUJAdSpaceIdToAdUnitIdMapper.h"
 #import <CoreLocation/CoreLocation.h>
 #import <AVFoundation/AVFoundation.h>
 #import <ifaddrs.h>
@@ -63,7 +64,7 @@
 
 + (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId {
     GUJAdViewContext *adViewContext = [[self alloc] init];
-    adViewContext._adSpaceId = adSpaceId;
+    adViewContext.adUnitId = [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdUnitIdForAdspaceId:adSpaceId];
     return adViewContext;
 }
 
