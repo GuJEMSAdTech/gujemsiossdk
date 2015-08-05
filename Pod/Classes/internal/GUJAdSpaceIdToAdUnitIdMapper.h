@@ -6,12 +6,14 @@
 #import <Foundation/Foundation.h>
 
 
+static NSString *const DFP_PUBLISHER_ID = @"6032";
+
 @interface GUJAdSpaceIdToAdUnitIdMapper : NSObject
 
 @property(nonatomic, strong) NSArray *mappingData;
 
 
-/**Id
+/**
 * Get a singleton instance of this GUJAdSpaceIdToAdUnitIdMapper class.
 */
 + (GUJAdSpaceIdToAdUnitIdMapper *)instance;

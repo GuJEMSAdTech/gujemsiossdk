@@ -36,7 +36,7 @@
 - (NSString *)getAdUnitIdForAdspaceId:(NSString *)adSpaceId {
     for (NSDictionary *dict in self.mappingData) {
         if ([dict[@"_name"] isEqual:adSpaceId]) {
-            return dict[@"_adunit"];
+            return [NSString stringWithFormat:@"/%@/%@", DFP_PUBLISHER_ID, dict[@"_adunit"]];
         }
     }
     return nil;
