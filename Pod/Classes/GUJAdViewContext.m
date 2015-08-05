@@ -60,6 +60,9 @@
 @end
 
 @implementation GUJAdViewContext {
+
+    GADAdLoader *adLoader;
+
 }
 
 + (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId {
@@ -195,6 +198,46 @@
 
 - (void)freeInstance {
 
+}
+
+- (void)loadNativeAd {
+    adLoader = [[GADAdLoader alloc]
+            initWithAdUnitID:self.adUnitId
+          rootViewController:self.rootViewController
+                     adTypes:@[kGADAdLoaderAdTypeNativeContent]
+                     options:@[]];
+    adLoader.delegate = self;
+
+    DFPRequest *request = [DFPRequest request];
+    //request.customTargeting = @{@"pos" : @1};
+
+    //request.testDevices = @[@"f39e5a715a4a7dd98ba62deba03fe925"];
+
+    [adLoader loadRequest:request];
+
+}
+
+
+- (void)adLoader:(GADAdLoader *)adLoader1 didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"error: %@", error);
+    NSLog(@"adLoader didFailToReceiveAdWithError");
+}
+
+- (void)adLoader:(GADAdLoader *)adLoader1 didReceiveNativeContentAd:(GADNativeContentAd *)nativeContentAd {
+    NSLog(@"adLoader didReceiveNativeContentAd");
+}
+
+- (NSArray *)nativeCustomTemplateIDsForAdLoader:(GADAdLoader *)adLoader1 {
+    NSLog(@"nativeCustomTemplateIDsForAdLoader");
+    return nil;
+}
+
+- (void)adLoader:(GADAdLoader *)adLoader1 didReceiveNativeCustomTemplateAd:(GADNativeCustomTemplateAd *)nativeCustomTemplateAd {
+    NSLog(@"adLoader didReceiveNativeCustomTemplateAd");
+}
+
+- (void)adLoader:(GADAdLoader *)adLoader1 didReceiveNativeAppInstallAd:(GADNativeAppInstallAd *)nativeAppInstallAd {
+    NSLog(@"adLoader nativeAppInstallAd");
 }
 
 

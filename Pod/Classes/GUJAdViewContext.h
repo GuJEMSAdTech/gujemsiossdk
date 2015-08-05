@@ -64,7 +64,7 @@
 
 @end
 
-@interface GUJAdViewContext : NSObject
+@interface GUJAdViewContext : NSObject <GADNativeCustomTemplateAdLoaderDelegate, GADNativeContentAdLoaderDelegate, GADNativeAppInstallAdLoaderDelegate>
 
 @property(nonatomic, strong) NSString *adUnitId;
 @property(nonatomic, strong) UIViewController *rootViewController;
@@ -347,6 +347,7 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
 
 - (void)printDeviceInfo;
 
+- (void)loadNativeAd;
 
 @end
 
