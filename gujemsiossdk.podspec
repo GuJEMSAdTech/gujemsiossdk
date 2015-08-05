@@ -18,7 +18,6 @@ Pod::Spec.new do |s|
                        * Replaces G+J EMS SDK based on Amobee, while keeping the same interfaces
                        DESC
   s.homepage         = "https://github.com/GuJEMSAdTech/gujemsiossdk"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Michael Brügmann" => "mail@michael-bruegmann.de" }
   s.source           = { :git => "https://github.com/GuJEMSAdTech/gujemsiossdk.git", :tag => s.version.to_s }
@@ -34,4 +33,9 @@ Pod::Spec.new do |s|
   s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit', 'AVFoundation'
   s.dependency 'Google-Mobile-Ads-SDK', '~> 7.0'
+  s.dependency 'FBSDKCoreKit', '~> 4.4.0'
+  s.dependency 'FBSDKLoginKit', '~> 4.4.0'
+  s.dependency 'FBSDKShareKit', '~> 4.4.0'
+  s.dependency 'FBAudienceNetwork', '~> 4.1.0'
+  s.dependency 'GoogleAds-IMA-iOS-SDK', '~> 3.0.beta.14'
 end
