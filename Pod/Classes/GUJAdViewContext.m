@@ -79,19 +79,30 @@
 }
 
 + (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId adUnit:(NSString *)adUnitId {
-    return nil;
+    // ignore adUnitId ... was ad exchange id of format "ca-app-pub-xxxxxxxxxxxxxxxx/nnnnnnnnnn"
+
+    GUJAdViewContext *adViewContext = [self instanceForAdspaceId:adSpaceId];
+    return adViewContext;
 }
 
 + (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId adUnit:(NSString *)adUnitId delegate:(id <GUJAdViewControllerDelegate>)delegate {
-    return nil;
+    // ignore adUnitId ... was ad exchange id of format "ca-app-pub-xxxxxxxxxxxxxxxx/nnnnnnnnnn"
+
+    GUJAdViewContext *adViewContext = [self instanceForAdspaceId:adSpaceId delegate:delegate];
+    return adViewContext;
 }
 
-+ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId site:(NSInteger)siteId zone:(NSInteger)zoneId {
-    return nil;
++ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId rootViewController:(UIViewController *)rootViewController {
+    GUJAdViewContext *adViewContext = [[self alloc] init];
+    adViewContext.adUnitId = adUnitId;
+    adViewContext.rootViewController = rootViewController;
+    return adViewContext;
 }
 
-+ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId adUnit:(NSString *)adUnitId site:(NSInteger)siteId zone:(NSInteger)zoneId delegate:(id <GUJAdViewControllerDelegate>)delegate {
-    return nil;
++ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId rootViewController:(UIViewController *)rootViewController delegate:(id <GUJAdViewControllerDelegate>)delegate {
+    GUJAdViewContext *adViewContext = [self instanceForAdUnitId:adUnitId rootViewController:rootViewController];
+    adViewContext.delegate = delegate;
+    return adViewContext;
 }
 
 - (void)setReloadInterval:(NSTimeInterval)reloadInterval {
@@ -108,7 +119,6 @@
 
 - (GUJAdView *)adView {
 
-
     return nil;
 }
 
@@ -118,25 +128,28 @@
 
 - (GUJAdView *)adViewWithOrigin:(CGPoint)origin {
 
-    GUJAdView *bannerView = [[GUJAdView alloc] initWithFrame:CGRectMake(origin.x, origin.y, 320, 50)];
+    NSAssert(self.rootViewController != nil, @"need to set the current rootViewCotnroller first");
+
     // [FBAdSettings addTestDevice:@"d837bf115f4f22197caa311baff3f8a6b8cc20a4"];
+
+    GUJAdView *bannerView = [[GUJAdView alloc] initWithFrame:CGRectMake(origin.x, origin.y, 300, 50)];
 
     bannerView.adUnitID = @"/6032/sdktest";
     bannerView.rootViewController = self.rootViewController;
     bannerView.backgroundColor = [UIColor yellowColor];
 
     DFPRequest *request = [DFPRequest request];
-    request.customTargeting = @{@"pos" : @1 };
+    request.customTargeting = @{@"pos" : @1};
 
+    /*
     if ([CLLocationManager locationServicesEnabled]) {
-
+    
         CLLocationManager * locationManager_ = [[CLLocationManager alloc] init];
         [request setLocationWithLatitude:locationManager_.location.coordinate.latitude
                                longitude:locationManager_.location.coordinate.longitude
                                 accuracy:locationManager_.location.horizontalAccuracy];
     }
-
-
+    */
 
     [bannerView loadRequest:request];
     return bannerView;

@@ -41,6 +41,7 @@
  */
 - (void)show;
 
+
 /*
  * shows the Interstitial Modal View if available.
  *
@@ -48,12 +49,14 @@
  */
 - (void)showInterstitialView;
 
+
 /*!
  * Hides the view without removing it.
  *
  @since 2.0.1
  */
 - (void)hide;
+
 
 /*!
  * Returns the AdSpaceId for this AdView
@@ -79,104 +82,82 @@
  */
 typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
 
-/*!
- * Enable / disable the mOcean BackFill.
- *
- * The mOcean back-fill will automatically deactivated if the mOcean zone and site-Id is missing.
- */
-@property (assign, nonatomic) BOOL mOceanBackFill;
 
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * Returns a GUJAdViewContext instance.
- * The instance has to be freed via freeInstance before creating a new.
  *
  @param Ad-Space-Id
  @result A newly create GUJAdViewContext instance
  */
-+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId;
++ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: method instead.");
+
 
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * Returns a GUJAdViewContext instance.
- * The instance has to be freed via freeInstance before creating a new.
  *
  @param Ad-Space-Id
  @param delegate A class that implements the GUJAdViewControllerDelegate Protocol
  @result A newly create GUJAdViewContext instance
  */
-+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId delegate:(id<GUJAdViewControllerDelegate>)delegate;
++ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId delegate:(id<GUJAdViewControllerDelegate>)delegate DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: delegate: method instead.");
 
 
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * Returns a GUJAdViewContext instance.
- * The instance has to be freed via freeInstance before creating a new.
  *
  @param Ad-Space-Id
  @param adUnitId - adExchange adUnitId
  @result A newly create GUJAdViewContext instance
  */
-+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId adUnit:(NSString*)adUnitId;
++ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId adUnit:(NSString*)adUnitId DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: method instead.");
+
 
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * Returns a GUJAdViewContext instance.
- * The instance has to be freed via freeInstance before creating a new.
  *
  @param Ad-Space-Id
  @param adUnitId - adExchange adUnitId
  @param delegate A class that implements the GUJAdViewControllerDelegate Protocol
  @result A newly create GUJAdViewContext instance
  */
-+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId adUnit:(NSString*)adUnitId delegate:(id<GUJAdViewControllerDelegate>)delegate;
++ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId adUnit:(NSString*)adUnitId delegate:(id<GUJAdViewControllerDelegate>)delegate DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: delegate: method instead.");
+
 
 /*!
- * Overrides the SDK-Chain down to the GUJmOceanViewController.
- *
  * Returns a GUJAdViewContext instance.
- * The instance has to be freed via freeInstance before creating a new.
  *
- @param Ad-Space-Id
- @param siteId - mOcean SiteId
- @param zoneId - mOcean zoneId
+ @param adUnitId The DFP adUnitId
+ @param rootViewController Required reference to the current root view controller.
  @result A newly create GUJAdViewContext instance
  */
-+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId site:(NSInteger)siteId zone:(NSInteger)zoneId;
++ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId rootViewController:(UIViewController *)rootViewController;
+
 
 /*!
- * Overrides the SDK-Chain down to the GUJmOceanViewController.
- *
  * Returns a GUJAdViewContext instance.
- * The instance has to be freed via freeInstance before creating a new.
  *
- @param Ad-Space-Id
- @param adUnitId - adExchange adUnitId
- @param siteId - mOcean SiteId
- @param zoneId - mOcean zoneId
+ @param adUnitId The DFP adUnitId
+ @param rootViewController Required reference to the current root view controller.
  @param delegate A class that implements the GUJAdViewControllerDelegate Protocol
  @result A newly create GUJAdViewContext instance
  */
-+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId adUnit:(NSString*)adUnitId site:(NSInteger)siteId zone:(NSInteger)zoneId delegate:(id<GUJAdViewControllerDelegate>)delegate;
++ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId rootViewController:(UIViewController *)rootViewController delegate:(id <GUJAdViewControllerDelegate>)delegate;
+
 
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * Set the global reload interval for this instance.
  *
  @param reloadInterval Reload interval as NSTimeInterval
  */
 - (void)setReloadInterval:(NSTimeInterval)reloadInterval;
 
+
 /*!
  * Disables the location service
  @result YES if the location service was disabled
  */
 - (BOOL)disableLocationService;
+
 
 /*!
  * If you do not wish to present the Interstital View directly (automaticly), set this value to NO.
@@ -186,14 +167,14 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
  */
 - (void)shouldAutoShowIntestitialView:(BOOL)show;
 
+
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * A static mobile banner view. Maybe animated.
  * No media and multimedia interactions are predefined.
  @result A newly create static GUJAdView instance
  */
 - (GUJAdView*)adView;
+
 
 /*!
  * The AdView is returned within the block.
@@ -203,14 +184,14 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
  */
 - (void)adView:(adViewCompletion)completion;
 
+
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * A static mobile banner view. Maybe animated. No media and multimedia interactions are predefined.
  @param origin The origin of this AdView. origin.x will be ignored.
  @result A newly create static GUJAdView instance
  */
 - (GUJAdView*)adViewWithOrigin:(CGPoint)origin;
+
 
 /*!
  * The AdView is returned within the block.
@@ -220,9 +201,8 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
  */
 - (void)adViewWithOrigin:(CGPoint)origin completion:(adViewCompletion)completion;
 
+
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * A static mobile banner view. Maybe animated. No media and multimedia interactions are predefined.
  * If no suitable Ad matchs the keyword(s) the instance stays inactive and no Ad will be shown.
  * The GUJAdView will stay allocated in any case until the instance is freed.
@@ -231,6 +211,7 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
  */
 - (GUJAdView*)adViewForKeywords:(NSArray*)keywords;
 
+
 /*!
  * The AdView is returned within the block.
  * See: adViewInitializationHandler
@@ -238,9 +219,9 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
  @since 2.0.1
  */
 - (void)adViewForKeywords:(NSArray*)keywords completion:(adViewCompletion)completion;
+
+
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * A static mobile banner view. Maybe animated. No media and multimedia interactions are predefined.
  * If no suitable Ad matchs the keyword(s) the instance stays inactive and no Ad will be shown.
  * The GUJAdView will stay allocated in any case until the instance is freed.
@@ -250,6 +231,7 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
  */
 - (GUJAdView*)adViewForKeywords:(NSArray*)keywords origin:(CGPoint)origin;
 
+
 /*!
  * The AdView is returned within the block.
  * See: adViewInitializationHandler
@@ -257,9 +239,9 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
  @since 2.0.1
  */
 - (void)adViewForKeywords:(NSArray*)keywords origin:(CGPoint)origin completion:(adViewCompletion)completion;
+
+
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * Interstitial banner view.
  *
  * The GUJAdViewControllerDelegate SHOULD be implemented in the caller class.
@@ -270,6 +252,7 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
  */
 - (void)interstitialAdView;
 
+
 /*!
  * The AdView for this interstital is returned within the block.
  * See: adViewInitializationHandler
@@ -278,9 +261,8 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
  */
 - (void)interstitialAdViewWithCompletionHandler:(adViewCompletion)completion;
 
+
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * Interstitial banner view.
  *
  * The GUJAdViewControllerDelegate SHOULD be implemented in the caller class.
@@ -292,6 +274,7 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
  */
 - (void)interstitialAdViewForKeywords:(NSArray*)keywords;
 
+
 /*!
  * The AdView for this interstital is returned within the block.
  * See: adViewInitializationHandler
@@ -300,35 +283,32 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
  */
 - (void)interstitialAdViewForKeywords:(NSArray*)keywords completion:(adViewCompletion)completion;
 
+
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * Add an custom header field to the HTTP-Header of the upcoming Ad-Server request.
  */
 - (void)addAdServerRequestHeaderField:(NSString*)name value:(NSString*)value;
 
+
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * Add all custom header field that defined in the headerFields dictionary
  * to the HTTP-Header of the upcoming Ad-Server request.
  */
 - (void)addAdServerRequestHeaderFields:(NSDictionary*)headerFields;
 
+
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * Add an custom request parameter to the HTTP-Header of the upcoming Ad-Server request.
  */
 - (void)addAdServerRequestParameter:(NSString*)name value:(NSString*)value;
 
+
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * Add all custom request parameters that are defined in the requestParameters dictionary
  * to the HTTP-Request of the upcoming Ad-Server request.
  */
 - (void)addAdServerRequestParameters:(NSDictionary*)requestParameters;
+
 
 /*!
  * set the maximum of initialization attempts.
@@ -338,16 +318,16 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
  */
 - (void)initalizationAttempts:(NSUInteger)attempts;
 
+
 /*!
- * Overrides the SDK-Chain down to the GUJAdViewController.
- *
  * Frees the current Instance.
  */
 - (void)freeInstance;
 
-- (void)printDeviceInfo;
 
 - (void)loadNativeAd;
+
+- (void)printDeviceInfo;
 
 @end
 
