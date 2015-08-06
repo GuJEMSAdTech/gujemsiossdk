@@ -29,6 +29,7 @@ Pod::Spec.new do |s|
   s.resource_bundles = {
     'gujemsiossdk' => ['Pod/Assets/*.xml']
   }
+  s.ios.vendored_library = 'Pod/Assets/libAdapterFacebook.a'
 
   s.public_header_files = 'Pod/Classes/*.h'
   s.frameworks = 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion'
@@ -38,4 +39,5 @@ Pod::Spec.new do |s|
   s.dependency 'FBSDKShareKit', '~> 4.4.0'
   s.dependency 'FBAudienceNetwork', '~> 4.1.0'
   s.dependency 'GoogleAds-IMA-iOS-SDK-For-AdMob', '3.0.beta.15'
+
 end
