@@ -26,12 +26,27 @@
  */
 
 #import <UIKit/UIKit.h>
-#import <GoogleMobileAds.h>
+#import <Google-Mobile-Ads-SDK/GoogleMobileAds/GADNativeCustomTemplateAd.h>
+#import <Google-Mobile-Ads-SDK/GoogleMobileAds/GADNativeContentAd.h>
+#import <Google-Mobile-Ads-SDK/GoogleMobileAds/GADNativeAppInstallAd.h>
+#import <Google-Mobile-Ads-SDK/GoogleMobileAds/GADBannerViewDelegate.h>
+#import <Google-Mobile-Ads-SDK/GoogleMobileAds/GADBannerView.h>
+#import <Google-Mobile-Ads-SDK/GoogleMobileAds/GADInterstitialDelegate.h>
 
 
-@protocol GUJAdViewControllerDelegate;
+@protocol GUJAdViewContextDelegate;
+@class DFPBannerView;
+@class DFPInterstitial;
+@class GUJAdViewContext;
 
-@interface GUJAdView : DFPBannerView
+static const int GUJ_AD_VIEW_POSITION_UNDEFINED = 0;
+static const int GUJ_AD_VIEW_POSITION_TOP = 1;
+static const int GUJ_AD_VIEW_POSITION_CENTER = 2;
+static const int GUJ_AD_VIEW_POSITION_BOTTOM = 3;
+
+
+__attribute__((deprecated("Dont' use methods returning GUJAdView anymore. Use their replacements instead.")))
+@interface GUJAdView : GADBannerView
 
 /*!
  * shows the view if hidden.
@@ -41,6 +56,7 @@
  */
 - (void)show;
 
+- (id)initWithContext:(GUJAdViewContext *)context;
 
 /*
  * shows the Interstitial Modal View if available.
@@ -49,14 +65,12 @@
  */
 - (void)showInterstitialView;
 
-
 /*!
  * Hides the view without removing it.
  *
  @since 2.0.1
  */
 - (void)hide;
-
 
 /*!
  * Returns the AdSpaceId for this AdView
@@ -67,12 +81,13 @@
 
 @end
 
-@interface GUJAdViewContext : NSObject <GADNativeCustomTemplateAdLoaderDelegate, GADNativeContentAdLoaderDelegate, GADNativeAppInstallAdLoaderDelegate>
+
+@interface GUJAdViewContext : NSObject <GADNativeCustomTemplateAdLoaderDelegate, GADNativeContentAdLoaderDelegate, GADNativeAppInstallAdLoaderDelegate, GADBannerViewDelegate, GADInterstitialDelegate>
 
 @property(nonatomic, strong) NSString *adUnitId;
+@property(nonatomic, assign) NSInteger position;
 @property(nonatomic, strong) UIViewController *rootViewController;
-@property(nonatomic, weak) id <GUJAdViewControllerDelegate> delegate;
-
+@property(nonatomic, weak) id <GUJAdViewContextDelegate> delegate;
 
 /*
  * Initialization Completion Handler.
@@ -80,36 +95,34 @@
  *
  @since 2.0.1
  */
-typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
+typedef BOOL (^adViewCompletion)(DFPBannerView *_adView, NSError *_error);
+
+/*
+ * Interstitial Initialization Completion Handler.
+ * This Handler is called when the ad creation process for an interstitial is completed.
+ *
+ @since 3.0.0
+ */
+typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSError *_error);
 
 
 /*!
  * Returns a GUJAdViewContext instance.
  *
  @param Ad-Space-Id
- @result A newly create GUJAdViewContext instance
+ @result A newly created GUJAdViewContext instance
  */
-+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: method instead.");
++ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: position: rootViewController: method instead.");
 
 
 /*!
  * Returns a GUJAdViewContext instance.
  *
  @param Ad-Space-Id
- @param delegate A class that implements the GUJAdViewControllerDelegate Protocol
- @result A newly create GUJAdViewContext instance
+ @param delegate A class that implements the GUJAdViewContextDelegate Protocol
+ @result A newly created GUJAdViewContext instance
  */
-+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId delegate:(id<GUJAdViewControllerDelegate>)delegate DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: delegate: method instead.");
-
-
-/*!
- * Returns a GUJAdViewContext instance.
- *
- @param Ad-Space-Id
- @param adUnitId - adExchange adUnitId
- @result A newly create GUJAdViewContext instance
- */
-+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId adUnit:(NSString*)adUnitId DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: method instead.");
++ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId delegate:(id <GUJAdViewContextDelegate>)delegate DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: position: rootViewController: delegate: method instead.");
 
 
 /*!
@@ -117,31 +130,43 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
  *
  @param Ad-Space-Id
  @param adUnitId - adExchange adUnitId
- @param delegate A class that implements the GUJAdViewControllerDelegate Protocol
- @result A newly create GUJAdViewContext instance
+ @result A newly created GUJAdViewContext instance
  */
-+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId adUnit:(NSString*)adUnitId delegate:(id<GUJAdViewControllerDelegate>)delegate DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: delegate: method instead.");
++ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId adUnit:(NSString *)adUnitId DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: position: rootViewController: method instead.");
+
+
+/*!
+ * Returns a GUJAdViewContext instance.
+ *
+ @param Ad-Space-Id
+ @param adUnitId - adExchange adUnitId
+ @param delegate A class that implements the GUJAdViewContextDelegate Protocol
+ @result A newly created GUJAdViewContext instance
+ */
++ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId adUnit:(NSString *)adUnitId delegate:(id <GUJAdViewContextDelegate>)delegate DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: position: rootViewController: delegate: method instead.");
 
 
 /*!
  * Returns a GUJAdViewContext instance.
  *
  @param adUnitId The DFP adUnitId
+ @param position The position (one of GUJ_AD_VIEW_POSITION_UNDEFINED, GUJ_AD_VIEW_POSITION_TOP, GUJ_AD_VIEW_POSITION_CENTER, GUJ_AD_VIEW_POSITION_BOTTOM)
  @param rootViewController Required reference to the current root view controller.
- @result A newly create GUJAdViewContext instance
+ @result A newly created GUJAdViewContext instance
  */
-+ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId rootViewController:(UIViewController *)rootViewController;
++ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId position:(NSInteger)position rootViewController:(UIViewController *)rootViewController;
 
 
 /*!
  * Returns a GUJAdViewContext instance.
  *
  @param adUnitId The DFP adUnitId
+ @param position The position (one of GUJ_AD_VIEW_POSITION_UNDEFINED, GUJ_AD_VIEW_POSITION_TOP, GUJ_AD_VIEW_POSITION_CENTER, GUJ_AD_VIEW_POSITION_BOTTOM)
  @param rootViewController Required reference to the current root view controller.
- @param delegate A class that implements the GUJAdViewControllerDelegate Protocol
- @result A newly create GUJAdViewContext instance
+ @param delegate A class that implements the GUJAdViewContextDelegate Protocol
+ @result A newly created GUJAdViewContext instance
  */
-+ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId rootViewController:(UIViewController *)rootViewController delegate:(id <GUJAdViewControllerDelegate>)delegate;
++ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId position:(NSInteger)position rootViewController:(UIViewController *)rootViewController delegate:(id <GUJAdViewContextDelegate>)delegate;
 
 
 /*!
@@ -165,20 +190,22 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
  *
  @since 2.0.1
  */
-- (void)shouldAutoShowIntestitialView:(BOOL)show;
+- (void)shouldAutoShowIntestitialView:(BOOL)show DEPRECATED_MSG_ATTRIBUTE("Use shouldAutoShowInterstitialView: method instead, we don't like typos in method names ;)");
+
+- (void)shouldAutoShowInterstitialView:(BOOL)show;
 
 
 /*!
- * A static mobile banner view. Maybe animated.
- * No media and multimedia interactions are predefined.
- @result A newly create static GUJAdView instance
+ * Creates a mobile banner view.
+ *
+ @result A newly created static DFPBannerView instance
  */
-- (GUJAdView*)adView;
+- (DFPBannerView *)adView;
 
 
 /*!
- * The AdView is returned within the block.
- * See: adViewInitializationHandler
+ * Creates a mobile banner view.
+ * The DFPBannerView is returned within the block.
  *
  @since 2.0.1
  */
@@ -186,137 +213,135 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
 
 
 /*!
- * A static mobile banner view. Maybe animated. No media and multimedia interactions are predefined.
- @param origin The origin of this AdView. origin.x will be ignored.
- @result A newly create static GUJAdView instance
+ * Creates a mobile banner view.
+ *
+ @param origin The origin of this ad view.
+ @result A newly created static DFPBannerView instance
  */
-- (GUJAdView*)adViewWithOrigin:(CGPoint)origin;
+- (DFPBannerView *)adViewWithOrigin:(CGPoint)origin;
 
 
 /*!
- * The AdView is returned within the block.
- * See: adViewInitializationHandler
+ * Creates a mobile banner view.
+ * The DFPBannerView is returned within the block.
  *
+ @param origin The origin of this ad view.
  @since 2.0.1
  */
 - (void)adViewWithOrigin:(CGPoint)origin completion:(adViewCompletion)completion;
 
 
 /*!
- * A static mobile banner view. Maybe animated. No media and multimedia interactions are predefined.
- * If no suitable Ad matchs the keyword(s) the instance stays inactive and no Ad will be shown.
- * The GUJAdView will stay allocated in any case until the instance is freed.
- @param keywords keywords that will be used for the ad-request
- @result A newly create static GUJAdView instance
+ * Creates a mobile banner view.
+ * If no suitable ad matches the keyword(s) the instance stays inactive and no ad will be shown.
+ *
+ @param keywords keywords that will be used for the ad request
+ @result A newly creates DFPBannerView instance
  */
-- (GUJAdView*)adViewForKeywords:(NSArray*)keywords;
+- (DFPBannerView *)adViewForKeywords:(NSArray *)keywords;
 
 
 /*!
- * The AdView is returned within the block.
- * See: adViewInitializationHandler
+ * Creates a mobile banner view.
+ * If no suitable ad matches the keyword(s) the instance stays inactive and no ad will be shown.
+ * The DFPBannerView is returned within the block.
+ *
+ @param keywords keywords that will be used for the ad request
+ @since 2.0.1
+ */
+- (void)adViewForKeywords:(NSArray *)keywords completion:(adViewCompletion)completion;
+
+
+/*!
+ * Creates a mobile banner view with the given origin.
+ * If no suitable ad matches the keyword(s) the instance stays inactive and no ad will be shown.
+ *
+ @param keywords keywords that will be used for the ad request
+ @param origin The origin of this AdView.
+ @result A newly created  GUJAdView instance
+ */
+- (DFPBannerView *)adViewForKeywords:(NSArray *)keywords origin:(CGPoint)origin;
+
+
+/*!
+ * Creates a mobile banner view with the given origin.
+ * If no suitable ad matches the keyword(s) the instance stays inactive and no ad will be shown.
+ * The DFPBannerView is returned within the block.
+ *
+ @param keywords keywords that will be used for the ad request
+ @param origin The origin of this AdView.
+ @since 2.0.1
+ */
+- (void)adViewForKeywords:(NSArray *)keywords origin:(CGPoint)origin completion:(adViewCompletion)completion;
+
+
+/*!
+ * Initializes an interstitial view.
+ * The GUJAdViewContextDelegate SHOULD be implemented in the caller class.
+ *
+ */
+- (DFPInterstitial *)interstitialAdView;
+
+
+/*!
+ * Initializes an interstitial view.
+ * The DFPInterstitial for this interstitial is returned within the block.
  *
  @since 2.0.1
  */
-- (void)adViewForKeywords:(NSArray*)keywords completion:(adViewCompletion)completion;
+- (void)interstitialAdViewWithCompletionHandler:(interstitialAdViewCompletion)completion;
 
 
 /*!
- * A static mobile banner view. Maybe animated. No media and multimedia interactions are predefined.
- * If no suitable Ad matchs the keyword(s) the instance stays inactive and no Ad will be shown.
- * The GUJAdView will stay allocated in any case until the instance is freed.
- @param keywords keywords that will be used for the ad-request
- @param origin The origin of this AdView. origin.x will be ignored.
- @result A newly create static GUJAdView instance
- */
-- (GUJAdView*)adViewForKeywords:(NSArray*)keywords origin:(CGPoint)origin;
-
-
-/*!
- * The AdView is returned within the block.
- * See: adViewInitializationHandler
+ * Initializes an interstitial view.
+ * The GUJAdViewContextDelegate SHOULD be implemented in the caller class.
+ * If no suitable ad matches the keyword(s) the instance stays inactive and no ad can be shown.
  *
+ @param keywords keywords that will be used for the ad request
+ */
+- (DFPInterstitial *)interstitialAdViewForKeywords:(NSArray *)keywords;
+
+
+/*!
+ * Initializes an interstitial view.
+ * The DFPInterstitial for this interstitial is returned within the block.
+ * If no suitable ad matches the keyword(s) the instance stays inactive and no ad can be shown.
+ *
+ @param keywords keywords that will be used for the ad request
  @since 2.0.1
  */
-- (void)adViewForKeywords:(NSArray*)keywords origin:(CGPoint)origin completion:(adViewCompletion)completion;
+- (void)interstitialAdViewForKeywords:(NSArray *)keywords completion:(interstitialAdViewCompletion)completion;
 
 
 /*!
- * Interstitial banner view.
- *
- * The GUJAdViewControllerDelegate SHOULD be implemented in the caller class.
- *
- * + Multimedia related.
- * + Fullscreen.
- * + Min. visibility time
+ * Immediately shows the previously initialized interstitial, in case it is ready to show.
  */
-- (void)interstitialAdView;
+- (void)showInterstitial;
 
 
 /*!
- * The AdView for this interstital is returned within the block.
- * See: adViewInitializationHandler
- *
- @since 2.0.1
+ * Set the maximum of initialization attempts.
+ * Has no functionality since 3.0.0
  */
-- (void)interstitialAdViewWithCompletionHandler:(adViewCompletion)completion;
+- (void)initalizationAttempts:(NSUInteger)attempts DEPRECATED_MSG_ATTRIBUTE("has no functionality.");
 
 
 /*!
- * Interstitial banner view.
- *
- * The GUJAdViewControllerDelegate SHOULD be implemented in the caller class.
- *
- * + like interstitialAdView:
- * + Adds Keywords
- * If no suitable Ad matchs the keyword(s) the instance stays inactive and noi nterstitial Ad will be shown.
- @param keywords
+ * Add a keyword that will be used for the ad request.
+ * Can be called multiple times to add multiple keywords.
+ * If no suitable ad of a following ad view or interstitial request matches the keyword(s)
+ * the instance will stay inactive and no ad can be shown.
  */
-- (void)interstitialAdViewForKeywords:(NSArray*)keywords;
+- (void)addCustomTargetingKeyword:(NSString *)keyword;
 
 
 /*!
- * The AdView for this interstital is returned within the block.
- * See: adViewInitializationHandler
- *
- @since 2.0.1
+ * Add a key value pair for custom targetting.
+ * Can be called multiple times to add values for multiple keys.
+ * If no suitable ad of a following ad view or interstitial request matches the key/ value combinations
+ * the instance will stay inactive and no ad can be shown.
  */
-- (void)interstitialAdViewForKeywords:(NSArray*)keywords completion:(adViewCompletion)completion;
-
-
-/*!
- * Add an custom header field to the HTTP-Header of the upcoming Ad-Server request.
- */
-- (void)addAdServerRequestHeaderField:(NSString*)name value:(NSString*)value;
-
-
-/*!
- * Add all custom header field that defined in the headerFields dictionary
- * to the HTTP-Header of the upcoming Ad-Server request.
- */
-- (void)addAdServerRequestHeaderFields:(NSDictionary*)headerFields;
-
-
-/*!
- * Add an custom request parameter to the HTTP-Header of the upcoming Ad-Server request.
- */
-- (void)addAdServerRequestParameter:(NSString*)name value:(NSString*)value;
-
-
-/*!
- * Add all custom request parameters that are defined in the requestParameters dictionary
- * to the HTTP-Request of the upcoming Ad-Server request.
- */
-- (void)addAdServerRequestParameters:(NSDictionary*)requestParameters;
-
-
-/*!
- * set the maximum of initialization attempts.
- * every attempt means a second of time.
- * 0 will deactivate auto initialization retries
- * default is 0
- */
-- (void)initalizationAttempts:(NSUInteger)attempts;
+- (void)addCustomTargetingKey:(NSString *)key Value:(NSString *)value;
 
 
 /*!
@@ -325,9 +350,9 @@ typedef BOOL (^adViewCompletion)(GUJAdView* _adView, NSError* _error);
 - (void)freeInstance;
 
 
+// todo: complete native ad support
 - (void)loadNativeAd;
 
-- (void)printDeviceInfo;
 
 @end
 

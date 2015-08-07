@@ -33,6 +33,8 @@ static NSString *const DFP_PUBLISHER_ID = @"6032";
 - (NSInteger)getPositionForAdspaceId:(NSString *)adSpaceId;
 
 
+- (NSString *)getAdspaceIdForAdUnitId:(NSString *)adUnitId position:(NSInteger)position;
+
 /**
 * Check if the given identifier string is an Amobee AdSpace ID (i.e. exists of digits only)
 * @return YES if identifier is an Amobee AdSpace ID, NO otherwise

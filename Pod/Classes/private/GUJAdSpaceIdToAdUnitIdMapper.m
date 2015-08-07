@@ -15,15 +15,15 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[self alloc] init];
-        
+
         NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle]
-                                                     pathForResource:@"gujemsiossdk"
-                                                     ofType:@"bundle"]];
-        
+                pathForResource:@"gujemsiossdk"
+                         ofType:@"bundle"]];
+
         NSString *filePath = [bundle pathForResource:@"dfpmapping" ofType:@"xml"];
         NSDictionary *xmlDictionary = [NSDictionary dictionaryWithXMLFile:filePath];
         instance.mappingData = xmlDictionary[@"zone"];
-        if (xmlDictionary != nil){
+        if (xmlDictionary != nil) {
             NSLog(@"successfully loaded dfpmapping.xml");
         } else {
             NSLog(@"ERROR loading dfpmapping.xml");
@@ -53,8 +53,18 @@
 }
 
 
--(BOOL)isAdSpaceId:(NSString *)identifier {
-    NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+- (NSString *)getAdspaceIdForAdUnitId:(NSString *)adUnitId position:(NSInteger)position {
+    for (NSDictionary *dict in self.mappingData) {
+        if ([dict[@"adunit"] isEqual:adUnitId] && [dict[@"position"] isEqual:@(position)]) {
+            return dict[@"_name"];
+        }
+    }
+    return nil;
+}
+
+
+- (BOOL)isAdSpaceId:(NSString *)identifier {
+    NSCharacterSet *notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
     return [identifier rangeOfCharacterFromSet:notDigits].location == NSNotFound;
 }
 

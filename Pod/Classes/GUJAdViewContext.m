@@ -27,56 +27,84 @@
 
 #import "GUJAdViewContext.h"
 #import "GUJAdSpaceIdToAdUnitIdMapper.h"
+#import "GUJAdViewContextDelegate.h"
 #import <CoreLocation/CoreLocation.h>
-#import <AVFoundation/AVFoundation.h>
-#import <ifaddrs.h>
-#import <arpa/inet.h>
-#import <FBAdSettings.h>
+#import <Google-Mobile-Ads-SDK/GoogleMobileAds/DFPBannerView.h>
+#import <Google-Mobile-Ads-SDK/GoogleMobileAds/DFPInterstitial.h>
+#import <Google-Mobile-Ads-SDK/GoogleMobileAds/DFPRequest.h>
+#import <Google-Mobile-Ads-SDK/GoogleMobileAds/GADAdLoader.h>
+#import <gujemsiossdk/GUJAdViewContext.h>
 
-@interface GUJAdView ()
-@end
 
-@implementation GUJAdView
+@implementation GUJAdView : GADBannerView {
+    GUJAdViewContext *context;
+}
+
 - (void)show {
+    super.hidden = NO;
+}
 
+- (id)initWithContext:(GUJAdViewContext *)context1 {
+    self = [super init];
+    context = context1;
+    return self;
 }
 
 - (void)showInterstitialView {
-
+    [context showInterstitial];
 }
 
 - (void)hide {
-
+    super.hidden = YES;
 }
 
 - (NSString *)adSpaceId {
-    return nil;
+    return [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdspaceIdForAdUnitId:context.adUnitId position:context.position];
 }
 
 @end
 
 
 @interface GUJAdViewContext ()
-
 @end
 
 @implementation GUJAdViewContext {
-
     GADAdLoader *adLoader;
+    NSMutableDictionary *customTargetingDict;
+    BOOL locationServiceDisabled;
+    BOOL autoShowInterstitialView;
+    NSTimeInterval reloadInterval;
 
+    DFPInterstitial *interstitial;
+    adViewCompletion adViewCompletionHandler;
+    interstitialAdViewCompletion interstitialAdViewCompletionHandler;
 }
+
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        customTargetingDict = [NSMutableDictionary new];
+        locationServiceDisabled = false;
+    }
+    return self;
+}
+
 
 + (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId {
     GUJAdViewContext *adViewContext = [[self alloc] init];
     adViewContext.adUnitId = [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdUnitIdForAdspaceId:adSpaceId];
+    adViewContext.position = [[GUJAdSpaceIdToAdUnitIdMapper instance] getPositionForAdspaceId:adSpaceId];
     return adViewContext;
 }
 
-+ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId delegate:(id <GUJAdViewControllerDelegate>)delegate {
+
++ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId delegate:(id <GUJAdViewContextDelegate>)delegate {
     GUJAdViewContext *adViewContext = [self instanceForAdspaceId:adSpaceId];
     adViewContext.delegate = delegate;
     return adViewContext;
 }
+
 
 + (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId adUnit:(NSString *)adUnitId {
     // ignore adUnitId ... was ad exchange id of format "ca-app-pub-xxxxxxxxxxxxxxxx/nnnnnnnnnn"
@@ -85,135 +113,195 @@
     return adViewContext;
 }
 
-+ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId adUnit:(NSString *)adUnitId delegate:(id <GUJAdViewControllerDelegate>)delegate {
-    // ignore adUnitId ... was ad exchange id of format "ca-app-pub-xxxxxxxxxxxxxxxx/nnnnnnnnnn"
+
++ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId adUnit:(NSString *)adUnitId delegate:(id <GUJAdViewContextDelegate>)delegate {
+    // ignore adUnitId ... was ad exchange id of format "ca-app-pub-xxxxxxxxxxxxxxxx/nnnnnnnnnn" in v2.1.1
 
     GUJAdViewContext *adViewContext = [self instanceForAdspaceId:adSpaceId delegate:delegate];
     return adViewContext;
 }
 
-+ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId rootViewController:(UIViewController *)rootViewController {
+
++ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId position:(NSInteger)position rootViewController:(UIViewController *)rootViewController {
     GUJAdViewContext *adViewContext = [[self alloc] init];
     adViewContext.adUnitId = adUnitId;
+    adViewContext.position = position;
     adViewContext.rootViewController = rootViewController;
     return adViewContext;
 }
 
-+ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId rootViewController:(UIViewController *)rootViewController delegate:(id <GUJAdViewControllerDelegate>)delegate {
-    GUJAdViewContext *adViewContext = [self instanceForAdUnitId:adUnitId rootViewController:rootViewController];
+
++ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId position:(NSInteger)position rootViewController:(UIViewController *)rootViewController delegate:(id <GUJAdViewContextDelegate>)delegate {
+    GUJAdViewContext *adViewContext = [self instanceForAdUnitId:adUnitId position:position rootViewController:rootViewController];
     adViewContext.delegate = delegate;
     return adViewContext;
 }
 
-- (void)setReloadInterval:(NSTimeInterval)reloadInterval {
 
+- (void)setPosition:(NSInteger)position {
+    _position = position;
+    if (position != GUJ_AD_VIEW_POSITION_UNDEFINED) {
+        customTargetingDict[@"pos"] = @(position);
+    } else {
+        [customTargetingDict removeObjectForKey:@"pos"];
+    }
 }
+
+
+- (void)setReloadInterval:(NSTimeInterval)_reloadInterval {
+    reloadInterval = _reloadInterval;
+    // todo: implement ad reload
+}
+
 
 - (BOOL)disableLocationService {
-    return NO;
+    locationServiceDisabled = YES;
+    return YES;
 }
+
 
 - (void)shouldAutoShowIntestitialView:(BOOL)show {
-
+    [self shouldAutoShowInterstitialView:show];
 }
 
-- (GUJAdView *)adView {
 
-    return nil;
+- (void)shouldAutoShowInterstitialView:(BOOL)show {
+    autoShowInterstitialView = show;
 }
+
+
+- (DFPBannerView *)adView {
+    return [self adViewWithOrigin:CGPointZero];
+}
+
 
 - (void)adView:(adViewCompletion)completion {
-
+    completion([self adView], nil);
 }
 
-- (GUJAdView *)adViewWithOrigin:(CGPoint)origin {
 
-    NSAssert(self.rootViewController != nil, @"need to set the current rootViewCotnroller first");
+- (DFPBannerView *)adViewWithOrigin:(CGPoint)origin {
 
-    // [FBAdSettings addTestDevice:@"d837bf115f4f22197caa311baff3f8a6b8cc20a4"];
-
-    GUJAdView *bannerView = [[GUJAdView alloc] initWithFrame:CGRectMake(origin.x, origin.y, 300, 50)];
-
-    bannerView.adUnitID = @"/6032/sdktest";
+    DFPBannerView *bannerView = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait origin:origin];
+    bannerView.adUnitID = self.adUnitId;
     bannerView.rootViewController = self.rootViewController;
-    bannerView.backgroundColor = [UIColor yellowColor];
+    bannerView.delegate = self;
 
     DFPRequest *request = [DFPRequest request];
-    request.customTargeting = @{@"pos" : @1};
+    request.customTargeting = customTargetingDict;
 
-    /*
-    if ([CLLocationManager locationServicesEnabled]) {
-    
-        CLLocationManager * locationManager_ = [[CLLocationManager alloc] init];
+    if ([CLLocationManager locationServicesEnabled] && !locationServiceDisabled) {
+        CLLocationManager *locationManager_ = [[CLLocationManager alloc] init];
         [request setLocationWithLatitude:locationManager_.location.coordinate.latitude
                                longitude:locationManager_.location.coordinate.longitude
                                 accuracy:locationManager_.location.horizontalAccuracy];
     }
-    */
+    if ([self.delegate respondsToSelector:@selector(bannerViewInitialized:)]) {
+        [self.delegate bannerViewInitialized:(id) bannerView];
+    }
 
+    if ([self.delegate respondsToSelector:@selector(bannerViewWillLoadAdData:)]) {
+        [self.delegate bannerViewWillLoadAdData:(id) bannerView];
+    }
     [bannerView loadRequest:request];
+
     return bannerView;
 }
 
+
 - (void)adViewWithOrigin:(CGPoint)origin completion:(adViewCompletion)completion {
+    adViewCompletionHandler = completion;
 
+    completion([self adViewWithOrigin:origin], nil);
 }
 
-- (GUJAdView *)adViewForKeywords:(NSArray *)keywords {
-    return nil;
+
+- (DFPBannerView *)adViewForKeywords:(NSArray *)keywords {
+    customTargetingDict[@"kw"] = keywords;
+    return [self adView];
 }
+
 
 - (void)adViewForKeywords:(NSArray *)keywords completion:(adViewCompletion)completion {
-
+    completion([self adViewForKeywords:keywords], nil);
 }
 
-- (GUJAdView *)adViewForKeywords:(NSArray *)keywords origin:(CGPoint)origin {
-    return nil;
+
+- (DFPBannerView *)adViewForKeywords:(NSArray *)keywords origin:(CGPoint)origin {
+    customTargetingDict[@"kw"] = keywords;
+    return [self adViewWithOrigin:origin];
 }
+
 
 - (void)adViewForKeywords:(NSArray *)keywords origin:(CGPoint)origin completion:(adViewCompletion)completion {
-
+    completion([self adViewForKeywords:keywords origin:origin], nil);
 }
 
-- (void)interstitialAdView {
 
+- (DFPInterstitial *)interstitialAdView {
+    //interstitial = [[DFPInterstitial alloc] initWithAdUnitID:@"/6499/example/interstitial"];
+    interstitial = [[DFPInterstitial alloc] initWithAdUnitID:self.adUnitId];
+    interstitial.delegate = self;
+    DFPRequest *request = [DFPRequest request];
+    request.customTargeting = customTargetingDict;
+
+
+    [self.delegate interstitialViewInitialized:nil];
+
+    [interstitial loadRequest:request];
+    return interstitial;
 }
 
-- (void)interstitialAdViewWithCompletionHandler:(adViewCompletion)completion {
 
+- (void)interstitialAdViewWithCompletionHandler:(interstitialAdViewCompletion)completion {
+    interstitialAdViewCompletionHandler = completion;
+    [self interstitialAdView];
 }
 
-- (void)interstitialAdViewForKeywords:(NSArray *)keywords {
 
+- (DFPInterstitial *)interstitialAdViewForKeywords:(NSArray *)keywords {
+    customTargetingDict[@"kw"] = keywords;
+    return [self interstitialAdView];
 }
 
-- (void)interstitialAdViewForKeywords:(NSArray *)keywords completion:(adViewCompletion)completion {
 
+- (void)interstitialAdViewForKeywords:(NSArray *)keywords completion:(interstitialAdViewCompletion)completion {
+    customTargetingDict[@"kw"] = keywords;
+    [self interstitialAdViewWithCompletionHandler:interstitialAdViewCompletionHandler];
 }
 
-- (void)addAdServerRequestHeaderField:(NSString *)name value:(NSString *)value {
 
+- (void)showInterstitial {
+    if (interstitial.isReady) {
+        [interstitial presentFromRootViewController:self.rootViewController];
+    }
 }
 
-- (void)addAdServerRequestHeaderFields:(NSDictionary *)headerFields {
-
-}
-
-- (void)addAdServerRequestParameter:(NSString *)name value:(NSString *)value {
-
-}
-
-- (void)addAdServerRequestParameters:(NSDictionary *)requestParameters {
-
-}
 
 - (void)initalizationAttempts:(NSUInteger)attempts {
 
 }
 
-- (void)freeInstance {
-
+- (void)addCustomTargetingKeyword:(NSString *)keyword {
+    if (customTargetingDict[@"kw"] != nil) {
+        customTargetingDict[@"kw"] = [NSMutableArray new];
+    }
+    NSMutableArray *keywordArray = customTargetingDict[@"kw"];
+    [keywordArray addObject:keyword];
 }
+
+
+- (void)addCustomTargetingKey:(NSString *)key Value:(NSString *)value {
+    NSAssert(![key isEqualToString:@"pos"], @"Set the position (pos) via position property.");
+    NSAssert(![key isEqualToString:@"kw"], @"Set single keyword via the addKeywordForCustomTargeting: method.");
+    customTargetingDict[key] = value;
+}
+
+
+- (void)freeInstance {
+    //todo: implement
+}
+
 
 - (void)loadNativeAd {
     adLoader = [[GADAdLoader alloc]
@@ -224,106 +312,132 @@
     adLoader.delegate = self;
 
     DFPRequest *request = [DFPRequest request];
-    //request.customTargeting = @{@"pos" : @1};
-
-    //request.testDevices = @[@"f39e5a715a4a7dd98ba62deba03fe925"];
+    request.customTargeting = customTargetingDict;
 
     [adLoader loadRequest:request];
 
 }
 
 
+# pragma mark - GADAdLoaderDelegate
+
 - (void)adLoader:(GADAdLoader *)adLoader1 didFailToReceiveAdWithError:(GADRequestError *)error {
     NSLog(@"error: %@", error);
     NSLog(@"adLoader didFailToReceiveAdWithError");
 }
 
+
+#pragma mark - GADNativeContentAdLoaderDelegate
+
 - (void)adLoader:(GADAdLoader *)adLoader1 didReceiveNativeContentAd:(GADNativeContentAd *)nativeContentAd {
     NSLog(@"adLoader didReceiveNativeContentAd");
 }
+
+
+# pragma mark - GADNativeCustomTemplateAdLoaderDelegate
 
 - (NSArray *)nativeCustomTemplateIDsForAdLoader:(GADAdLoader *)adLoader1 {
     NSLog(@"nativeCustomTemplateIDsForAdLoader");
     return nil;
 }
 
+
+# pragma mark - GADNativeCustomTemplateAdLoaderDelegate
+
 - (void)adLoader:(GADAdLoader *)adLoader1 didReceiveNativeCustomTemplateAd:(GADNativeCustomTemplateAd *)nativeCustomTemplateAd {
     NSLog(@"adLoader didReceiveNativeCustomTemplateAd");
 }
+
+
+# pragma mark - GADNativeAppInstallAdLoaderDelegate
 
 - (void)adLoader:(GADAdLoader *)adLoader1 didReceiveNativeAppInstallAd:(GADNativeAppInstallAd *)nativeAppInstallAd {
     NSLog(@"adLoader nativeAppInstallAd");
 }
 
 
-- (void)printDeviceInfo {
-    NSLog(@"Google Mobile Ads SDK version: %@", [DFPRequest sdkVersion]);
+#pragma mark - GADBannerViewDelegate
 
-    NSLog(@"isOtherAudioPlaying: %@", [self isOtherAudioPlaying] ? @"YES" : @"NO");
-    NSLog(@"isHeadsetPluggedIn: %@", [self isHeadsetPluggedIn] ? @"YES" : @"NO");
-    NSLog(@"getBatteryLevel: %@", [self getBatteryLevel]);
-    NSLog(@"getIPAddress: %@", [self getIPAddress]);
-    NSLog(@"getAltitude: %f", [self getAltitude]);
-}
-
-- (BOOL)isOtherAudioPlaying {
-    BOOL isOtherAudioPlaying = [[AVAudioSession sharedInstance] isOtherAudioPlaying];
-
-    return isOtherAudioPlaying;
-}
-
-- (BOOL)isHeadsetPluggedIn {
-    AVAudioSessionRouteDescription *route = [[AVAudioSession sharedInstance] currentRoute];
-    for (AVAudioSessionPortDescription *desc in [route outputs]) {
-        if ([[desc portType] isEqualToString:AVAudioSessionPortHeadphones])
-            return YES;
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    if ([self.delegate respondsToSelector:@selector(bannerViewDidLoadAdData:)]) {
+        [self.delegate bannerViewDidLoadAdData:(GUJAdView *) bannerView];
     }
-    return NO;
-}
-
-- (NSNumber *)getBatteryLevel {
-    [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
-
-    //This will give us the battery between 0.0 (empty) and 1.0 (100% charged)
-    float batteryLevel = [[UIDevice currentDevice] batteryLevel];
-
-    // convert to percent
-    batteryLevel *= 100;
-
-    return @(batteryLevel);
-}
-
-
-- (NSString *)getIPAddress {
-    NSString *address = @"error";
-    struct ifaddrs *interfaces = NULL;
-    struct ifaddrs *temp_addr = NULL;
-    int success = 0;
-    // retrieve the current interfaces - returns 0 on success
-    success = getifaddrs(&interfaces);
-    if (success == 0) {
-        // Loop through linked list of interfaces
-        temp_addr = interfaces;
-        while (temp_addr != NULL) {
-            if (temp_addr->ifa_addr->sa_family == AF_INET) {
-                // Check if interface is en0 which is the wifi connection on the iPhone
-                if ([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
-                    // Get NSString from C String
-                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *) temp_addr->ifa_addr)->sin_addr)];
-                }
-            }
-            temp_addr = temp_addr->ifa_next;
-        }
+    if ([self.delegate respondsToSelector:@selector(bannerViewWillLoadAdDataForContext:)]) {
+        [self.delegate bannerViewWillLoadAdDataForContext:self];
     }
-    // Free memory
-    freeifaddrs(interfaces);
-    return address;
-
 }
 
-- (CLLocationDistance)getAltitude {
-    CLLocationManager *locationManager_ = [[CLLocationManager alloc] init];
-    return locationManager_.location.altitude;
+- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
+    if ([self.delegate respondsToSelector:@selector(bannerView:didFailLoadingAdWithError:)]) {
+        [self.delegate bannerView:(GUJAdView *) bannerView didFailLoadingAdWithError:error];
+    }
+    if ([self.delegate respondsToSelector:@selector(bannerViewDidFailLoadingAdWithError:ForContext:)]) {
+        [self.delegate bannerViewDidFailLoadingAdWithError:error ForContext:self];
+    }
+}
+
+
+#pragma mark - GADInterstitialDelegate
+
+- (void)interstitialDidReceiveAd:(GADInterstitial *)ad {
+    interstitialAdViewCompletionHandler(ad, nil);
+    if (autoShowInterstitialView) {
+        [self showInterstitial];
+    }
+
+    if ([self.delegate respondsToSelector:@selector(interstitialViewInitialized:)]) {
+        [self.delegate interstitialViewInitialized:[[GUJAdView alloc] initWithContext:self]];
+    }
+    if ([self.delegate respondsToSelector:@selector(interstitialViewInitializedForContext:)]) {
+        [self.delegate interstitialViewInitializedForContext:self];
+    }
+    if ([self.delegate respondsToSelector:@selector(interstitialViewDidLoadAdData:)]) {
+        [self.delegate interstitialViewDidLoadAdData:[[GUJAdView alloc] initWithContext:self]];
+    }
+    if ([self.delegate respondsToSelector:@selector(interstitialViewDidLoadAdDataForContext:)]) {
+        [self.delegate interstitialViewDidLoadAdDataForContext:self];
+    }
+}
+
+
+- (void)interstitial:(GADInterstitial *)ad didFailToReceiveAdWithError:(GADRequestError *)error {
+    interstitialAdViewCompletionHandler(ad, error);
+    if ([self.delegate respondsToSelector:@selector(interstitialView:didFailLoadingAdWithError:)]) {
+        [self.delegate interstitialView:[[GUJAdView alloc] initWithContext:self] didFailLoadingAdWithError:error];
+    }
+    if ([self.delegate respondsToSelector:@selector(interstitialViewDidFailLoadingAdWithError:ForContext:)]) {
+        [self.delegate interstitialViewDidFailLoadingAdWithError:error ForContext:self];
+    }
+}
+
+
+- (void)interstitialWillPresentScreen:(GADInterstitial *)ad {
+    if ([self.delegate respondsToSelector:@selector(interstitialViewWillAppear)]) {
+        [self.delegate interstitialViewWillAppear];
+    }
+    if ([self.delegate respondsToSelector:@selector(interstitialViewWillAppearForContext:)]) {
+        [self.delegate interstitialViewWillAppearForContext:self];
+    }
+}
+
+
+- (void)interstitialWillDismissScreen:(GADInterstitial *)ad {
+    if ([self.delegate respondsToSelector:@selector(interstitialViewWillDisappear)]) {
+        [self.delegate interstitialViewWillDisappear];
+    }
+    if ([self.delegate respondsToSelector:@selector(interstitialViewWillDisappearForContext:)]) {
+        [self.delegate interstitialViewWillDisappearForContext:self];
+    }
+}
+
+
+- (void)interstitialDidDismissScreen:(GADInterstitial *)ad {
+    if ([self.delegate respondsToSelector:@selector(interstitialViewDidDisappear)]) {
+        [self.delegate interstitialViewDidDisappear];
+    }
+    if ([self.delegate respondsToSelector:@selector(interstitialViewDidDisappearForContext:)]) {
+        [self.delegate interstitialViewDidDisappearForContext:self];
+    }
 }
 
 @end
