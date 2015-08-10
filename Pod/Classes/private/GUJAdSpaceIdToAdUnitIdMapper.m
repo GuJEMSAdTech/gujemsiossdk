@@ -5,6 +5,7 @@
 
 #import "GUJAdSpaceIdToAdUnitIdMapper.h"
 #import "XMLDictionary.h"
+#import "GUJAdViewContext.h"
 
 
 @implementation GUJAdSpaceIdToAdUnitIdMapper {
@@ -49,7 +50,7 @@
             return [dict[@"_position"] intValue];
         }
     }
-    return NSNotFound;
+    return GUJ_AD_VIEW_POSITION_UNDEFINED;
 }
 
 

@@ -138,9 +138,19 @@
 }
 
 
++ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId rootViewController:(UIViewController *)rootViewController {
+    return [self instanceForAdUnitId:adUnitId position:GUJ_AD_VIEW_POSITION_UNDEFINED rootViewController:rootViewController];
+}
+
+
++ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId rootViewController:(UIViewController *)rootViewController delegate:(id <GUJAdViewContextDelegate>)delegate {
+    return [self instanceForAdUnitId:adUnitId position:GUJ_AD_VIEW_POSITION_UNDEFINED rootViewController:rootViewController delegate:delegate];
+}
+
+
 - (void)setPosition:(NSInteger)position {
     _position = position;
-    if (position != GUJ_AD_VIEW_POSITION_UNDEFINED) {
+    if (position != 0) {
         customTargetingDict[@"pos"] = @(position);
     } else {
         [customTargetingDict removeObjectForKey:@"pos"];
@@ -239,14 +249,14 @@
 
 
 - (DFPInterstitial *)interstitialAdView {
-    //interstitial = [[DFPInterstitial alloc] initWithAdUnitID:@"/6499/example/interstitial"];
     interstitial = [[DFPInterstitial alloc] initWithAdUnitID:self.adUnitId];
     interstitial.delegate = self;
     DFPRequest *request = [DFPRequest request];
     request.customTargeting = customTargetingDict;
 
-
-    [self.delegate interstitialViewInitialized:nil];
+    if ([self.delegate respondsToSelector:@selector(interstitialViewInitialized:)]) {
+        [self.delegate interstitialViewInitialized:nil];
+    }
 
     [interstitial loadRequest:request];
     return interstitial;
@@ -380,8 +390,12 @@
 #pragma mark - GADInterstitialDelegate
 
 - (void)interstitialDidReceiveAd:(GADInterstitial *)ad {
-    interstitialAdViewCompletionHandler(ad, nil);
-    if (autoShowInterstitialView) {
+    BOOL completionHandlerAllowsToShowInterstitial = NO;
+    if (interstitialAdViewCompletionHandler != nil) {
+        completionHandlerAllowsToShowInterstitial = interstitialAdViewCompletionHandler(ad, nil);
+    }
+    
+    if (autoShowInterstitialView || completionHandlerAllowsToShowInterstitial) {
         [self showInterstitial];
     }
 
@@ -401,7 +415,9 @@
 
 
 - (void)interstitial:(GADInterstitial *)ad didFailToReceiveAdWithError:(GADRequestError *)error {
-    interstitialAdViewCompletionHandler(ad, error);
+    if (interstitialAdViewCompletionHandler != nil) {
+        interstitialAdViewCompletionHandler(ad, error);
+    }
     if ([self.delegate respondsToSelector:@selector(interstitialView:didFailLoadingAdWithError:)]) {
         [self.delegate interstitialView:[[GUJAdView alloc] initWithContext:self] didFailLoadingAdWithError:error];
     }

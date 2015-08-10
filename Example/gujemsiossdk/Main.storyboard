@@ -8,7 +8,7 @@
         <!--Einstellungen-->
         <scene sceneID="hgb-kj-aWz">
             <objects>
-                <viewController id="zTn-jk-v75" userLabel="Einstellungen" sceneMemberID="viewController">
+                <viewController id="zTn-jk-v75" userLabel="Einstellungen" customClass="GUJSettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pft-HK-qW8"/>
                         <viewControllerLayoutGuide type="bottom" id="bha-1b-TbQ"/>
@@ -16,9 +16,68 @@
                     <view key="view" contentMode="scaleToFill" id="J8b-ac-RqE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ad Unit ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pl-mh-gR5">
+                                <rect key="frame" x="16" y="57" width="280" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hko-vQ-ugx">
+                                <rect key="frame" x="16" y="86" width="290" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Einstellungen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0K-Yf-3da">
+                                <rect key="frame" x="16" y="28" width="280" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Icons made by Plainicon from www.flaticon.com are licensed under CC BY 3.0" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRZ-hM-Aaa">
+                                <rect key="frame" x="16" y="366" width="300" height="57"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <color key="textColor" red="0.50430082070707072" green="0.50430082070707072" blue="0.50430082070707072" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fHb-aP-vfn">
+                                <rect key="frame" x="16" y="141" width="290" height="148"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tpq-ry-3fP">
+                                        <rect key="frame" x="8" y="80" width="270" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GI8-HF-mL6">
+                                        <rect key="frame" x="8" y="118" width="79" height="30"/>
+                                        <state key="normal" title="umwandeln">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="mapAdspaceIdToAdUnitId:" destination="zTn-jk-v75" eventType="touchUpInside" id="PPV-rb-S9k"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcg-Qo-5cT">
+                                        <rect key="frame" x="8" y="8" width="281" height="64"/>
+                                        <string key="text">Ad Unit ID aus
+Amobee Ad Space ID
+ermitteln:</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.80648279671717171" green="0.80648279671717171" blue="0.80648279671717171" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Einstellungen" image="gear83" id="RKz-Pz-75j"/>
+                    <connections>
+                        <outlet property="adSpaceIdTextField" destination="tpq-ry-3fP" id="WM6-2T-kjs"/>
+                        <outlet property="adUnitIdTextField" destination="Hko-vQ-ugx" id="LxB-sW-Tm1"/>
+                        <outlet property="convertButton" destination="GI8-HF-mL6" id="eI7-v1-tfi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfQ-Sv-Bp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -27,7 +86,7 @@
         <!--Video Player-->
         <scene sceneID="yjA-La-fFw">
             <objects>
-                <viewController id="5MH-OV-P4b" userLabel="Video Player" sceneMemberID="viewController">
+                <viewController id="5MH-OV-P4b" userLabel="Video Player" customClass="GUJVideoAdViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bEU-Bv-AOl"/>
                         <viewControllerLayoutGuide type="bottom" id="cIk-nb-edS"/>
@@ -46,7 +105,7 @@
         <!--Native Ad-->
         <scene sceneID="AhF-zG-lDo">
             <objects>
-                <viewController id="gAR-pU-yFM" userLabel="Native Ad" sceneMemberID="viewController">
+                <viewController id="gAR-pU-yFM" userLabel="Native Ad" customClass="GUJNativeAdViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wKo-Fz-Lwx"/>
                         <viewControllerLayoutGuide type="bottom" id="K4P-Vo-CyN"/>
@@ -65,7 +124,7 @@
         <!--Interstitial-->
         <scene sceneID="V6a-zu-1aY">
             <objects>
-                <viewController id="Nrt-No-U23" sceneMemberID="viewController">
+                <viewController id="Nrt-No-U23" customClass="GUJInterstitialViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GHN-8f-pZl"/>
                         <viewControllerLayoutGuide type="bottom" id="A5h-RX-hmS"/>
@@ -73,9 +132,45 @@
                     <view key="view" contentMode="scaleToFill" id="LFA-no-7q8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Qby-FC-JI4">
+                                <rect key="frame" x="290" y="245" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCb-6S-11z">
+                                <rect key="frame" x="245" y="285" width="110" height="30"/>
+                                <state key="normal" title="Show Interstitial">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showInterstitial:" destination="Nrt-No-U23" eventType="touchUpInside" id="Z7j-R8-wyC"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrf-YQ-bJa">
+                                <rect key="frame" x="150" y="355" width="300" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="AeT-YG-mZL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <color key="textColor" red="1" green="0.18067175760000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jrf-YQ-bJa" firstAttribute="top" secondItem="FCb-6S-11z" secondAttribute="bottom" constant="40" id="Ruo-np-KvS"/>
+                            <constraint firstAttribute="centerX" secondItem="FCb-6S-11z" secondAttribute="centerX" id="hXd-e7-VHh"/>
+                            <constraint firstAttribute="centerX" secondItem="jrf-YQ-bJa" secondAttribute="centerX" id="juN-nK-7vv"/>
+                            <constraint firstItem="Qby-FC-JI4" firstAttribute="bottom" secondItem="FCb-6S-11z" secondAttribute="top" constant="-20" id="nGD-u7-f4v"/>
+                            <constraint firstAttribute="centerY" secondItem="FCb-6S-11z" secondAttribute="centerY" id="rLk-0y-ejw"/>
+                            <constraint firstAttribute="centerX" secondItem="Qby-FC-JI4" secondAttribute="centerX" id="z78-ja-60w"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Interstitial" image="squares95" id="Ki0-9w-CY2"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="Qby-FC-JI4" id="msL-dC-6ff"/>
+                        <outlet property="errorLabel" destination="jrf-YQ-bJa" id="b0Y-9U-ZDs"/>
+                        <outlet property="showInterstitialButton" destination="FCb-6S-11z" id="tQS-08-rI0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40H-Fg-dQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -84,7 +179,7 @@
         <!--Banner-->
         <scene sceneID="xeO-dt-r2S">
             <objects>
-                <viewController id="hoO-Um-DFC" userLabel="Banner" customClass="GUJViewController" sceneMemberID="viewController">
+                <viewController id="hoO-Um-DFC" userLabel="Banner" customClass="GUJBannerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S2h-Ck-8Dd"/>
                         <viewControllerLayoutGuide type="bottom" id="3SZ-XB-xPx"/>
@@ -92,9 +187,61 @@
                     <view key="view" contentMode="scaleToFill" id="B0f-4K-7bv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TOP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xf9-6B-ZWw">
+                                <rect key="frame" x="16" y="20" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wOd-hV-IoC">
+                                <rect key="frame" x="0.0" y="49" width="320" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.99697542938024686" blue="0.0046585471480502516" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b8t-Bc-MkC">
+                                <rect key="frame" x="0.0" y="136" width="320" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.99697542939999995" blue="0.0046585471480000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dXa-Uz-QXX">
+                                <rect key="frame" x="0.0" y="223" width="320" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.99697542939999995" blue="0.0046585471480000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MID1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGc-zh-hzL">
+                                <rect key="frame" x="16" y="107" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MID2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWs-X5-Gj1">
+                                <rect key="frame" x="13" y="194" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BOTTOM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhS-QR-Lvy">
+                                <rect key="frame" x="16" y="281" width="73" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PRG-vP-4pc">
+                                <rect key="frame" x="0.0" y="310" width="320" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.99697542939999995" blue="0.0046585471480000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wOd-hV-IoC" firstAttribute="leading" secondItem="B0f-4K-7bv" secondAttribute="leading" id="0rd-ce-jlw"/>
+                            <constraint firstAttribute="trailing" secondItem="wOd-hV-IoC" secondAttribute="trailing" id="AwU-E1-1CI"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Banner" image="photography44" id="zzr-sJ-DrE"/>
+                    <connections>
+                        <outlet property="bottomPlaceholderView" destination="PRG-vP-4pc" id="HDb-jl-TT5"/>
+                        <outlet property="mid1PlaceholderView" destination="b8t-Bc-MkC" id="dJl-6F-r6q"/>
+                        <outlet property="mid2PlaceholderView" destination="dXa-Uz-QXX" id="3C4-K9-JBk"/>
+                        <outlet property="topPlaceholderView" destination="wOd-hV-IoC" id="oi4-u2-sYf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s6z-89-P87" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

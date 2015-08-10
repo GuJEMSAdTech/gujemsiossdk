@@ -26,12 +26,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import <Google-Mobile-Ads-SDK/GoogleMobileAds/GADNativeCustomTemplateAd.h>
-#import <Google-Mobile-Ads-SDK/GoogleMobileAds/GADNativeContentAd.h>
-#import <Google-Mobile-Ads-SDK/GoogleMobileAds/GADNativeAppInstallAd.h>
-#import <Google-Mobile-Ads-SDK/GoogleMobileAds/GADBannerViewDelegate.h>
-#import <Google-Mobile-Ads-SDK/GoogleMobileAds/GADBannerView.h>
-#import <Google-Mobile-Ads-SDK/GoogleMobileAds/GADInterstitialDelegate.h>
+#import <GoogleMobileAds.h>
 
 
 @protocol GUJAdViewContextDelegate;
@@ -41,8 +36,9 @@
 
 static const int GUJ_AD_VIEW_POSITION_UNDEFINED = 0;
 static const int GUJ_AD_VIEW_POSITION_TOP = 1;
-static const int GUJ_AD_VIEW_POSITION_CENTER = 2;
-static const int GUJ_AD_VIEW_POSITION_BOTTOM = 3;
+static const int GUJ_AD_VIEW_POSITION_MID_1 = 2;
+static const int GUJ_AD_VIEW_POSITION_MID_2 = 3;
+static const int GUJ_AD_VIEW_POSITION_BOTTOM = 10;
 
 
 __attribute__((deprecated("Dont' use methods returning GUJAdView anymore. Use their replacements instead.")))
@@ -167,6 +163,27 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
  @result A newly created GUJAdViewContext instance
  */
 + (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId position:(NSInteger)position rootViewController:(UIViewController *)rootViewController delegate:(id <GUJAdViewContextDelegate>)delegate;
+
+
+/*!
+ * Returns a GUJAdViewContext instance.
+ *
+ @param adUnitId The DFP adUnitId
+ @param rootViewController Required reference to the current root view controller.
+ @result A newly created GUJAdViewContext instance
+ */
++ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId rootViewController:(UIViewController *)rootViewController;
+
+
+/*!
+ * Returns a GUJAdViewContext instance.
+ *
+ @param adUnitId The DFP adUnitId
+ @param rootViewController Required reference to the current root view controller.
+ @param delegate A class that implements the GUJAdViewContextDelegate Protocol
+ @result A newly created GUJAdViewContext instance
+ */
++ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId rootViewController:(UIViewController *)rootViewController delegate:(id <GUJAdViewContextDelegate>)delegate;
 
 
 /*!

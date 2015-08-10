@@ -38,6 +38,9 @@
 
 @protocol GUJAdViewContextDelegate <NSObject>
 
+@optional
+
+#pragma mark - Banner Views
 
 /*!
  * Tells the delegate that an ad request failed. The failure is normally due to network
@@ -51,24 +54,6 @@
  */
 - (void)bannerViewDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context;
 
-
-/*!
- * Called when an interstitial ad request completed without an interstitial to
- * show. This is common since interstitials are shown sparingly to users.
- */
-- (void)interstitialView:(GUJAdView *)interstitialView didFailLoadingAdWithError:(NSError *)error DEPRECATED_MSG_ATTRIBUTE("Use interstitialViewDidFailLoadingAdWithError: ForContext: method instead.");
-
-/*!
- * Called when an interstitial ad request completed without an interstitial to
- * show. This is common since interstitials are shown sparingly to users.
- */
-- (void)interstitialViewDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context;
-
-
-@optional
-
-
-#pragma mark - Banner Views
 
 /*!
  * Will be called if the current instance has allocated and created the AdView.
@@ -134,6 +119,19 @@
 
 
 #pragma mark - Interstitial Views
+
+/*!
+ * Called when an interstitial ad request completed without an interstitial to
+ * show. This is common since interstitials are shown sparingly to users.
+ */
+- (void)interstitialView:(GUJAdView *)interstitialView didFailLoadingAdWithError:(NSError *)error DEPRECATED_MSG_ATTRIBUTE("Use interstitialViewDidFailLoadingAdWithError: ForContext: method instead.");
+
+/*!
+ * Called when an interstitial ad request completed without an interstitial to
+ * show. This is common since interstitials are shown sparingly to users.
+ */
+- (void)interstitialViewDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context;
+
 
 /*!
  * Will be called if the current instance has allocated and created the interstitial AdView.
