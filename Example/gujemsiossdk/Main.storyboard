@@ -33,8 +33,8 @@
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GI8-HF-mL6">
-                                        <rect key="frame" x="8" y="118" width="79" height="30"/>
-                                        <state key="normal" title="umwandeln">
+                                        <rect key="frame" x="8" y="118" width="52" height="30"/>
+                                        <state key="normal" title="convert">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -43,9 +43,8 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcg-Qo-5cT">
                                         <rect key="frame" x="8" y="8" width="281" height="64"/>
-                                        <string key="text">Ad Unit ID aus
-Amobee Ad Space ID
-ermitteln:</string>
+                                        <string key="text">Get DFP Ad Unit ID from
+Amobee Ad Space ID:</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
