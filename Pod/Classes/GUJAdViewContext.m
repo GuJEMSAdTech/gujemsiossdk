@@ -27,10 +27,6 @@
 #import "GUJAdSpaceIdToAdUnitIdMapper.h"
 #import "GUJAdViewContextDelegate.h"
 #import <CoreLocation/CoreLocation.h>
-#import <Google-Mobile-Ads-SDK/GoogleMobileAds/DFPBannerView.h>
-#import <Google-Mobile-Ads-SDK/GoogleMobileAds/DFPInterstitial.h>
-#import <Google-Mobile-Ads-SDK/GoogleMobileAds/DFPRequest.h>
-#import <Google-Mobile-Ads-SDK/GoogleMobileAds/GADAdLoader.h>
 #import <gujemsiossdk/GUJAdViewContext.h>
 
 
@@ -73,7 +69,6 @@
     BOOL autoShowInterstitialView;
     NSTimeInterval reloadInterval;
 
-    DFPInterstitial *interstitial;
     adViewCompletion adViewCompletionHandler;
     interstitialAdViewCompletion interstitialAdViewCompletionHandler;
 }
@@ -190,10 +185,10 @@
 
 - (DFPBannerView *)adViewWithOrigin:(CGPoint)origin {
 
-    DFPBannerView *bannerView = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait origin:origin];
-    bannerView.adUnitID = self.adUnitId;
-    bannerView.rootViewController = self.rootViewController;
-    bannerView.delegate = self;
+    self.bannerView = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeLargeBanner origin:origin];
+    self.bannerView.adUnitID = self.adUnitId;
+    self.bannerView.rootViewController = self.rootViewController;
+    self.bannerView.delegate = self;
 
     DFPRequest *request = [DFPRequest request];
     request.customTargeting = customTargetingDict;
@@ -205,15 +200,15 @@
                                 accuracy:locationManager_.location.horizontalAccuracy];
     }
     if ([self.delegate respondsToSelector:@selector(bannerViewInitialized:)]) {
-        [self.delegate bannerViewInitialized:(id) bannerView];
+        [self.delegate bannerViewInitialized:(id) self.bannerView];
     }
 
     if ([self.delegate respondsToSelector:@selector(bannerViewWillLoadAdData:)]) {
-        [self.delegate bannerViewWillLoadAdData:(id) bannerView];
+        [self.delegate bannerViewWillLoadAdData:(id) self.bannerView];
     }
-    [bannerView loadRequest:request];
+    [self.bannerView loadRequest:request];
 
-    return bannerView;
+    return self.bannerView;
 }
 
 
@@ -247,8 +242,8 @@
 
 
 - (DFPInterstitial *)interstitialAdView {
-    interstitial = [[DFPInterstitial alloc] initWithAdUnitID:self.adUnitId];
-    interstitial.delegate = self;
+    self.interstitial = [[DFPInterstitial alloc] initWithAdUnitID:self.adUnitId];
+    self.interstitial.delegate = self;
     DFPRequest *request = [DFPRequest request];
     request.customTargeting = customTargetingDict;
 
@@ -256,8 +251,8 @@
         [self.delegate interstitialViewInitialized:nil];
     }
 
-    [interstitial loadRequest:request];
-    return interstitial;
+    [self.interstitial loadRequest:request];
+    return self.interstitial;
 }
 
 
@@ -280,8 +275,8 @@
 
 
 - (void)showInterstitial {
-    if (interstitial.isReady) {
-        [interstitial presentFromRootViewController:self.rootViewController];
+    if (self.interstitial.isReady) {
+        [self.interstitial presentFromRootViewController:self.rootViewController];
     }
 }
 
@@ -372,6 +367,12 @@
     }
     if ([self.delegate respondsToSelector:@selector(bannerViewWillLoadAdDataForContext:)]) {
         [self.delegate bannerViewWillLoadAdDataForContext:self];
+    }
+    if ([self.delegate respondsToSelector:@selector(bannerViewDidShow:)]) {
+        [self.delegate bannerViewDidShow:(GUJAdView *) bannerView];
+    }
+    if ([self.delegate respondsToSelector:@selector(bannerViewDidShowForContext:)]) {
+        [self.delegate bannerViewDidShowForContext:self];
     }
 }
 

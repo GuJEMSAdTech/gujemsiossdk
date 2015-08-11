@@ -71,7 +71,7 @@ __attribute__((deprecated("Dont' use methods returning GUJAdView anymore. Use th
  *
  @since 2.0.1
  */
-- (NSString*)adSpaceId;
+- (NSString *)adSpaceId;
 
 @end
 
@@ -82,6 +82,8 @@ __attribute__((deprecated("Dont' use methods returning GUJAdView anymore. Use th
 @property(nonatomic, assign) NSInteger position;
 @property(nonatomic, strong) UIViewController *rootViewController;
 @property(nonatomic, weak) id <GUJAdViewContextDelegate> delegate;
+@property(nonatomic, strong) DFPBannerView *bannerView;
+@property(nonatomic, strong) DFPInterstitial *interstitial;;
 
 /*
  * Initialization Completion Handler.
