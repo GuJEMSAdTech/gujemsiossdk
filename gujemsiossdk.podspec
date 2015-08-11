@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
                        * Replaces G+J EMS SDK based on Amobee, while keeping the same interfaces
                        DESC
   s.homepage         = "https://github.com/GuJEMSAdTech/gujemsiossdk"
-  s.license          = 'MIT'
+  s.license          = 'BSD'
   s.author           = { "Michael Brügmann" => "mail@michael-bruegmann.de" }
   s.source           = { :git => "https://github.com/GuJEMSAdTech/gujemsiossdk.git", :tag => s.version.to_s }
 
