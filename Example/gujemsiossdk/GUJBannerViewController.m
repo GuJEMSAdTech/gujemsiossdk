@@ -56,7 +56,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib.
 }
 
 
@@ -94,6 +94,12 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+
+    topAdViewContext.delegate = nil;
+    mid1AdViewContext.delegate = nil;
+    mid2AdViewContext.delegate = nil;
+    bottomAdViewContext.delegate = nil;
+
     [self removeAllSubviewsFromView:topPlaceholderView];
     [self removeAllSubviewsFromView:mid1PlaceholderView];
     [self removeAllSubviewsFromView:mid2PlaceholderView];
@@ -106,7 +112,7 @@
 }
 
 
--(void)removeAllSubviewsFromView:(UIView*) view {
+- (void)removeAllSubviewsFromView:(UIView *)view {
     for (UIView *subview in view.subviews) {
         [subview removeFromSuperview];
     }
@@ -116,11 +122,11 @@
 - (void)bannerViewDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context {
     if (context == topAdViewContext) {
         topErrorLabel.text = error.localizedDescription;
-    } else  if (context == mid1AdViewContext) {
+    } else if (context == mid1AdViewContext) {
         mid1ErrorLabel.text = error.localizedDescription;
-    } else  if (context == mid2AdViewContext) {
+    } else if (context == mid2AdViewContext) {
         mid2ErrorLabel.text = error.localizedDescription;
-    } else  if (context == bottomAdViewContext) {
+    } else if (context == bottomAdViewContext) {
         bottomErrorLabel.text = error.localizedDescription;
     }
 }
@@ -129,16 +135,16 @@
 - (void)bannerViewDidShowForContext:(GUJAdViewContext *)context {
 
     if (context == topAdViewContext) {
-        topPlaceholderHeightConstraint.constant = context.bannerView.adSize.size.height;
+        topPlaceholderHeightConstraint.constant = context.bannerView.frame.size.height;
 
-    } else  if (context == mid1AdViewContext) {
-        mid1PlaceholderHeightConstraint.constant = context.bannerView.adSize.size.height;
+    } else if (context == mid1AdViewContext) {
+        mid1PlaceholderHeightConstraint.constant = context.bannerView.frame.size.height;
 
-    } else  if (context == mid2AdViewContext) {
-        mid2PlaceholderHeightConstraint.constant = context.bannerView.adSize.size.height;
+    } else if (context == mid2AdViewContext) {
+        mid2PlaceholderHeightConstraint.constant = context.bannerView.frame.size.height;
 
-    } else  if (context == bottomAdViewContext) {
-        bottomPlaceholderHeightConstraint.constant = context.bannerView.adSize.size.height;
+    } else if (context == bottomAdViewContext) {
+        bottomPlaceholderHeightConstraint.constant = context.bannerView.frame.size.height;
 
     }
 }

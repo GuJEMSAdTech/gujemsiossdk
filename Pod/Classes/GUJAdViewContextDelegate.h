@@ -30,6 +30,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import <GoogleMobileAds.h>
 
 @class GUJAdView;
 @class GUJAdViewContext;
@@ -87,14 +88,14 @@
 
 
 /*!
- * Will be called if the current AdView will perform the ad-server request.
+ * Will be called if the current AdView will perform the ad server request.
  *
  @param bannerView The adView object
  */
 - (void)bannerViewWillLoadAdData:(GUJAdView *)bannerView DEPRECATED_MSG_ATTRIBUTE("Use bannerViewWillLoadAdDataForContext: method instead.");
 
 /*!
- * Will be called if the current AdView will perform the ad-server request.
+ * Will be called if the current AdView will perform the ad server request.
  *
  @param bannerView The adView object
  */
@@ -102,14 +103,14 @@
 
 
 /*!
- * Will be called if the current AdView did successfully performed the ad-server request
+ * Will be called if the current AdView did successfully perform the ad server request
  *
  @param bannerView The adView object
  */
 - (void)bannerViewDidLoadAdData:(GUJAdView *)bannerView DEPRECATED_MSG_ATTRIBUTE("Use bannerViewDidLoadAdDataForContext: method instead.");
 
 /*!
- * Will be called if the current AdView did successfully performed the ad-server request
+ * Will be called if the current AdView did successfully perform the ad server request
  *
  @param bannerView The adView object
  */
@@ -143,14 +144,14 @@
 
 
 /*!
- * Will be called if the current AdView is an interstitial and will perform the ad-server request.
+ * Will be called if the current AdView is an interstitial and will perform the ad server request.
  *
  @param bannerView The adView object
  */
 - (void)interstitialViewWillLoadAdData:(GUJAdView *)interstitialView DEPRECATED_MSG_ATTRIBUTE("Use interstitialViewWillLoadAdDataForContext: method instead.");
 
 /*!
- * Will be called if the current AdView is an interstitial and will perform the ad-server request.
+ * Will be called if the current AdView is an interstitial and will perform the ad server request.
  *
  @param bannerView The adView object
  */
@@ -158,14 +159,14 @@
 
 
 /*!
- * Will be called if the current AdView is an interstitial and did successfully performed the ad-server request
+ * Will be called if the current AdView is an interstitial and did successfully perform the ad server request
  *
  @param bannerView The adView object
  */
 - (void)interstitialViewDidLoadAdData:(GUJAdView *)interstitialView DEPRECATED_MSG_ATTRIBUTE("Use interstitialViewDidLoadAdDataForContext: method instead.");
 
 /*!
- * Will be called if the current AdView is an interstitial and did successfully performed the ad-server request
+ * Will be called if the current AdView is an interstitial and did successfully perform the ad server request
  *
  @param bannerView The adView object
  */
@@ -218,5 +219,21 @@
  *  As usual, the modal view is hidden.
  */
 - (void)interstitialViewDidDisappearForContext:(GUJAdViewContext *)context;
+
+
+/*!
+ * Tells the delegate that an ad request failed. The failure is normally due to network
+ * connectivity or ad availablility (i.e., no fill).
+ */
+-(void)nativeAdLoaderDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context;
+
+
+/*!
+ * Will be called if an native ad load was trigggered and did successfully perform the ad server request
+ *
+ @param bannerView The adView object
+ */
+-(void)nativeAdLoaderDidLoadData:(GADNativeContentAd *)nativeContentAd ForContext:(GUJAdViewContext *)context;
+
 
 @end

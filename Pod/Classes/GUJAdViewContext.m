@@ -30,6 +30,8 @@
 #import <gujemsiossdk/GUJAdViewContext.h>
 
 
+static NSString *const KEYWORDS_DICT_KEY = @"kw";
+
 @implementation GUJAdView : GADBannerView {
     GUJAdViewContext *context;
 }
@@ -38,19 +40,23 @@
     super.hidden = NO;
 }
 
+
 - (id)initWithContext:(GUJAdViewContext *)context1 {
     self = [super init];
     context = context1;
     return self;
 }
 
+
 - (void)showInterstitialView {
     [context showInterstitial];
 }
 
+
 - (void)hide {
     super.hidden = YES;
 }
+
 
 - (NSString *)adSpaceId {
     return [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdspaceIdForAdUnitId:context.adUnitId position:context.position];
@@ -185,7 +191,14 @@
 
 - (DFPBannerView *)adViewWithOrigin:(CGPoint)origin {
 
-    self.bannerView = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeLargeBanner origin:origin];
+    self.bannerView = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait origin:origin];
+    /*self.bannerView.validAdSizes = @[
+            NSValueFromGADAdSize(kGADAdSizeBanner),
+            NSValueFromGADAdSize(kGADAdSizeMediumRectangle),
+            NSValueFromGADAdSize(kGADAdSizeLargeBanner),
+            NSValueFromGADAdSize(kGADAdSizeSmartBannerPortrait)
+    ];/*/
+
     self.bannerView.adUnitID = self.adUnitId;
     self.bannerView.rootViewController = self.rootViewController;
     self.bannerView.delegate = self;
@@ -220,7 +233,7 @@
 
 
 - (DFPBannerView *)adViewForKeywords:(NSArray *)keywords {
-    customTargetingDict[@"kw"] = keywords;
+    customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
     return [self adView];
 }
 
@@ -231,7 +244,7 @@
 
 
 - (DFPBannerView *)adViewForKeywords:(NSArray *)keywords origin:(CGPoint)origin {
-    customTargetingDict[@"kw"] = keywords;
+    customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
     return [self adViewWithOrigin:origin];
 }
 
@@ -263,13 +276,13 @@
 
 
 - (DFPInterstitial *)interstitialAdViewForKeywords:(NSArray *)keywords {
-    customTargetingDict[@"kw"] = keywords;
+    customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
     return [self interstitialAdView];
 }
 
 
 - (void)interstitialAdViewForKeywords:(NSArray *)keywords completion:(interstitialAdViewCompletion)completion {
-    customTargetingDict[@"kw"] = keywords;
+    customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
     [self interstitialAdViewWithCompletionHandler:interstitialAdViewCompletionHandler];
 }
 
@@ -282,21 +295,22 @@
 
 
 - (void)initalizationAttempts:(NSUInteger)attempts {
-
+    //todo: implement
 }
 
+
 - (void)addCustomTargetingKeyword:(NSString *)keyword {
-    if (customTargetingDict[@"kw"] != nil) {
-        customTargetingDict[@"kw"] = [NSMutableArray new];
+    if (customTargetingDict[KEYWORDS_DICT_KEY] != nil) {
+        customTargetingDict[KEYWORDS_DICT_KEY] = [NSMutableArray new];
     }
-    NSMutableArray *keywordArray = customTargetingDict[@"kw"];
+    NSMutableArray *keywordArray = customTargetingDict[KEYWORDS_DICT_KEY];
     [keywordArray addObject:keyword];
 }
 
 
 - (void)addCustomTargetingKey:(NSString *)key Value:(NSString *)value {
     NSAssert(![key isEqualToString:@"pos"], @"Set the position (pos) via position property.");
-    NSAssert(![key isEqualToString:@"kw"], @"Set single keyword via the addKeywordForCustomTargeting: method.");
+    NSAssert(![key isEqualToString:KEYWORDS_DICT_KEY], @"Set single keyword via the addKeywordForCustomTargeting: method.");
     customTargetingDict[key] = value;
 }
 
@@ -322,40 +336,27 @@
 }
 
 
+- (void)loadNativeAdForKeywords:(NSArray *)keywords {
+    customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
+    [self loadNativeAd];
+}
+
+
 # pragma mark - GADAdLoaderDelegate
 
 - (void)adLoader:(GADAdLoader *)adLoader1 didFailToReceiveAdWithError:(GADRequestError *)error {
-    NSLog(@"error: %@", error);
-    NSLog(@"adLoader didFailToReceiveAdWithError");
+    if ([self.delegate respondsToSelector:@selector(nativeAdLoaderDidFailLoadingAdWithError:ForContext:)]) {
+        [self.delegate nativeAdLoaderDidFailLoadingAdWithError:error ForContext:self];
+    }
 }
 
 
 #pragma mark - GADNativeContentAdLoaderDelegate
 
 - (void)adLoader:(GADAdLoader *)adLoader1 didReceiveNativeContentAd:(GADNativeContentAd *)nativeContentAd {
-    NSLog(@"adLoader didReceiveNativeContentAd");
-}
-
-
-# pragma mark - GADNativeCustomTemplateAdLoaderDelegate
-
-- (NSArray *)nativeCustomTemplateIDsForAdLoader:(GADAdLoader *)adLoader1 {
-    NSLog(@"nativeCustomTemplateIDsForAdLoader");
-    return nil;
-}
-
-
-# pragma mark - GADNativeCustomTemplateAdLoaderDelegate
-
-- (void)adLoader:(GADAdLoader *)adLoader1 didReceiveNativeCustomTemplateAd:(GADNativeCustomTemplateAd *)nativeCustomTemplateAd {
-    NSLog(@"adLoader didReceiveNativeCustomTemplateAd");
-}
-
-
-# pragma mark - GADNativeAppInstallAdLoaderDelegate
-
-- (void)adLoader:(GADAdLoader *)adLoader1 didReceiveNativeAppInstallAd:(GADNativeAppInstallAd *)nativeAppInstallAd {
-    NSLog(@"adLoader nativeAppInstallAd");
+    if ([self.delegate respondsToSelector:@selector(nativeAdLoaderDidLoadData:ForContext:)]) {
+        [self.delegate nativeAdLoaderDidLoadData:nativeContentAd ForContext:self];
+    }
 }
 
 
@@ -375,6 +376,7 @@
         [self.delegate bannerViewDidShowForContext:self];
     }
 }
+
 
 - (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
     if ([self.delegate respondsToSelector:@selector(bannerView:didFailLoadingAdWithError:)]) {

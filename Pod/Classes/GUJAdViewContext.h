@@ -76,7 +76,7 @@ __attribute__((deprecated("Dont' use methods returning GUJAdView anymore. Use th
 @end
 
 
-@interface GUJAdViewContext : NSObject <GADNativeCustomTemplateAdLoaderDelegate, GADNativeContentAdLoaderDelegate, GADNativeAppInstallAdLoaderDelegate, GADBannerViewDelegate, GADInterstitialDelegate>
+@interface GUJAdViewContext : NSObject <GADNativeContentAdLoaderDelegate, GADBannerViewDelegate, GADInterstitialDelegate>
 
 @property(nonatomic, strong) NSString *adUnitId;
 @property(nonatomic, assign) NSInteger position;
@@ -367,10 +367,21 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
 - (void)freeInstance;
 
 
-// todo: complete native ad support
+/*!
+ * Loads a native ad
+ * The GUJAdViewContextDelegate needs be implemented in the caller class to receive
+ * the native ad content or loading error.
+ */
 - (void)loadNativeAd;
 
 
+/*!
+ * Loads a native ad
+ * The GUJAdViewContextDelegate needs be implemented in the caller class to receive
+ * the native ad content or loading error.
+ @param keywords keywords that will be used for the ad request
+ */
+- (void)loadNativeAdForKeywords:(NSArray *)keywords;
 @end
 
 

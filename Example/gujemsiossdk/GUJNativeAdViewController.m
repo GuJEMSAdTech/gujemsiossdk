@@ -23,10 +23,82 @@
  *
  */
 
+#import <gujemsiossdk/GUJAdViewContext.h>
 #import "GUJNativeAdViewController.h"
+#import "GUJSettingsViewController.h"
 
 
 @implementation GUJNativeAdViewController {
+    GUJAdViewContext *adViewContext;
+   
+    __weak IBOutlet UILabel *errorLabel;
+    
+    __weak IBOutlet UILabel *headlineLabel;
+    __weak IBOutlet UIImageView *imageView;
+    __weak IBOutlet UILabel *bodyLabel;
+    __weak IBOutlet UIImageView *secondaryImageView;
+
+    __weak IBOutlet UILabel *calltoactionLabel;
+    __weak IBOutlet UILabel *advertiserLabel;
 
 }
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self clearView];
+}
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *adUnitId = [userDefaults objectForKey:AD_UNIT_USER_DEFAULTS_KEY];
+
+    adViewContext = [GUJAdViewContext instanceForAdUnitId:adUnitId rootViewController:self];
+    adViewContext.delegate = self;
+
+    [adViewContext loadNativeAd];
+
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self clearView];
+}
+
+
+- (void)nativeAdLoaderDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context {
+    errorLabel.text = error.localizedDescription;
+}
+
+
+- (void)nativeAdLoaderDidLoadData:(GADNativeContentAd *)nativeContentAd ForContext:(GUJAdViewContext *)context {
+    headlineLabel.text = nativeContentAd.headline;
+    bodyLabel.text = nativeContentAd.body;
+    if ([nativeContentAd.images count] >= 1) {
+        imageView.image = ((GADNativeAdImage*) nativeContentAd.images[0]).image;
+    }
+    if ([nativeContentAd.images count] >= 2) {
+        secondaryImageView.image = ((GADNativeAdImage*) nativeContentAd.images[1]).image;
+    }
+    calltoactionLabel.text = nativeContentAd.callToAction;
+    advertiserLabel.text = nativeContentAd.advertiser;
+
+}
+
+
+-(void)clearView {
+    errorLabel.text = @"";
+    headlineLabel.text = @"";
+    imageView.image = nil;
+    bodyLabel.text = @"";
+    secondaryImageView.image = nil;
+    calltoactionLabel.text = @"";
+    advertiserLabel.text = @"";
+}
+
+
 @end

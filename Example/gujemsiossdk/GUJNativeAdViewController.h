@@ -24,7 +24,8 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <gujemsiossdk/GUJAdViewContextDelegate.h>
 
 
-@interface GUJNativeAdViewController : UIViewController
+@interface GUJNativeAdViewController : UIViewController <GUJAdViewContextDelegate>
 @end
