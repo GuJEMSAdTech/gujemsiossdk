@@ -67,25 +67,29 @@
     NSString *adUnitId = [userDefaults objectForKey:AD_UNIT_USER_DEFAULTS_KEY];
 
     // TOP
-    topAdViewContext = [GUJAdViewContext instanceForAdUnitId:adUnitId position:GUJ_AD_VIEW_POSITION_TOP rootViewController:self];
+    topAdViewContext = [GUJAdViewContext instanceForAdUnitId:adUnitId rootViewController:self];
+    topAdViewContext.position = GUJ_AD_VIEW_POSITION_TOP;
     topAdViewContext.delegate = self;
     [topPlaceholderView addSubview:[topAdViewContext adView]];
 
 
     // MID 1
-    mid1AdViewContext = [GUJAdViewContext instanceForAdUnitId:adUnitId position:GUJ_AD_VIEW_POSITION_MID_1 rootViewController:self];
+    mid1AdViewContext = [GUJAdViewContext instanceForAdUnitId:adUnitId rootViewController:self];
+    mid1AdViewContext.position = GUJ_AD_VIEW_POSITION_MID_1;
     mid1AdViewContext.delegate = self;
     [mid1PlaceholderView addSubview:[mid1AdViewContext adView]];
 
 
     // MID 2
-    mid2AdViewContext = [GUJAdViewContext instanceForAdUnitId:adUnitId position:GUJ_AD_VIEW_POSITION_MID_2 rootViewController:self];
+    mid2AdViewContext = [GUJAdViewContext instanceForAdUnitId:adUnitId rootViewController:self];
+    mid2AdViewContext.position = GUJ_AD_VIEW_POSITION_MID_2;
     mid2AdViewContext.delegate = self;
     [mid2PlaceholderView addSubview:[mid2AdViewContext adView]];
 
 
     // BOTTOM
-    bottomAdViewContext = [GUJAdViewContext instanceForAdUnitId:adUnitId position:GUJ_AD_VIEW_POSITION_BOTTOM rootViewController:self];
+    bottomAdViewContext = [GUJAdViewContext instanceForAdUnitId:adUnitId rootViewController:self];
+    bottomAdViewContext.position = GUJ_AD_VIEW_POSITION_BOTTOM;
     bottomAdViewContext.delegate = self;
     [bottomPlaceholderView addSubview:[bottomAdViewContext adView]];
 

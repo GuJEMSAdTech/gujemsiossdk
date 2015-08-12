@@ -66,8 +66,8 @@
 - (IBAction)mapAdspaceIdToAdUnitId:(id)sender {
 
     NSString *adSpaceId = adSpaceIdTextField.text;
-    NSString *adUnitId = [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdUnitIdForAdspaceId:adSpaceId];
-    NSInteger position = [[GUJAdSpaceIdToAdUnitIdMapper instance] getPositionForAdspaceId:adSpaceId];
+    NSString *adUnitId = [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdUnitIdForAdSpaceId:adSpaceId];
+    NSInteger position = [[GUJAdSpaceIdToAdUnitIdMapper instance] getPositionForAdSpaceId:adSpaceId];
 
     if (adUnitId == nil) {
         [[[UIAlertView alloc] initWithTitle:@"" message:@"Ad Space ID not found in mapping file." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];

@@ -1,11 +1,10 @@
 # gujemsiossdk
 
-[![CI Status](http://img.shields.io/travis/Michael Brügmann/gujemsiossdk.svg?style=flat)](https://travis-ci.org/Michael Brügmann/gujemsiossdk)
 [![Version](https://img.shields.io/cocoapods/v/gujemsiossdk.svg?style=flat)](http://cocoapods.org/pods/gujemsiossdk)
 [![License](https://img.shields.io/cocoapods/l/gujemsiossdk.svg?style=flat)](http://cocoapods.org/pods/gujemsiossdk)
 [![Platform](https://img.shields.io/cocoapods/p/gujemsiossdk.svg?style=flat)](http://cocoapods.org/pods/gujemsiossdk)
 
-## Usage
+## Example Project
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
@@ -14,138 +13,288 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Installation
 
 gujemsiossdk is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+it, simply add the following line to your Podfile and run `pod install` from the command line.
 
 ```ruby
 pod "gujemsiossdk"
 ```
 
-## Upgrading from v2.1.1 to 3.0.0
+If you don't have CocoaPods installed so far, check the [Cocoa Pods documentation](https://guides.cocoapods.org/using/using-cocoapods.html).  
+If you don't want to use CocoaPods you should be able to copy the classes from this workspace and manually add 
+the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recommend to do the installation without CocoaPods.
 
-If you previously used version 2.1.1 of this SDK there are several important changes you need to pay attention to.
+
+## Upgrading from v2.1.x to v3.0.0
+
+If you are not upgrading, [just skip this chapter](#usage).
+
+If you previously used version 2.1.x of this SDK there are several important changes you need to pay attention to.
 
 Under the hood we exchanged the Amobee Ad Server with Googles DoubleClick for Publishers (DFP).
 
+Also we did some cleanup to make the SDK better understandable.
 
-We performed some clean up, to make the SDK better understandable.
+
+#### GUJAdViewControllerDelegate renamed to GUJAdViewContextDelegate
 
 First we renamed `GUJAdViewControllerDelegate` to `GUJAdViewContextDelegate`, because it is the delegate of the `GUJAdViewContext`
  and has noting to do with a `GUJAdViewController`.
 `GUJAdViewControllerDelegate` can still be used, but is deprecated. Simply change `GUJAdViewControllerDelegate` to `GUJAdViewContextDelegate` via search and replace in your project.
 
 
-Loading adds with the `GUJAdViewContext` requires a reference to the current root viewController now.
+#### Reference to rootViewController
+
+Loading ads with the `GUJAdViewContext` requires a reference to the current root viewController now.
 This can be added either by using the new initialization methods (below) or simply by setting it via `adViewContext.rootViewController = <YOUR_ROOT_VIEW_CONTROLLER>;`
 
-All methods that returned an `GUJAdView` in former versions now return a `DFPBannerView` from the Google SDK directly.
-As `GUJAdView` did `DFPBannerView` also extends `UIView`.
-The methods `show:` and `hide:` of `GUJAdView` are obsolete as you can do this by calling `setHidden = YES|NO` on `UIView` classes directly
-Instead of `showInterstitialView:` on `GUJAdView` you can now call `showInterstitial:` on the corresponding `GUJAdViewContext`
+
+#### Deprecated GUJAdView Object 
+
+All banner initialization methods that returned a `GUJAdView` in former versions 
+now return a `DFPBannerView` from the Google SDK directly.
+Like `GUJAdView` `DFPBannerView` also extends `UIView`.
+
+The old delegate callbacks in the `GUJAdViewContextDelegate` protocol still return a `GUJAdView` for compatibility reasons.
+It is actually only a dummy object extending UIView now. It is deprecated. You should use the new delegate methods
+returning a reference to the actual `GUJAdViewContext`. The `GUJAdViewContext` then has references 
+to the `bannerView`, `interstitial` or `nativeContentAd` created by it.
 
 
-We removed support for the mOceon backfill service.
-That is why we skipped the following properies and methods of the GUJAdViewContext:
+#### Ad Unit IDs replacing Ad Space IDs
 
-```
-@property (assign, nonatomic) BOOL mOceanBackFill;
-```
+Previously used Ad Space IDs (e.g. "12345") were replaced by Ad Unit IDs (e.g. "/stern/sport/").
+For now you can continue to use the Ad Space IDs as we integrated a mapping file with does some magic for all 
+previously existing Ad Space IDs.
+Anyway you might want to completely switch to the new Ad Unit IDs by time.
 
-```
-+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId site:(NSInteger)siteId zone:(NSInteger)zoneId;
-```
+Following methods were used to configure Google Ad Exchange backfill. The second parameter was also called Ad Unit ID,
+but was an ID of format "ca-app-pub-xxxxxxxxxxxxxxxx/nnnnnnnnnn". It is ignored now, because Google 
+Ad Exchange backfill is configured on server side from now on. The methods also were deprecated and should not be used anymore.
 
-```
-+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId adUnit:(NSString*)adUnitId site:(NSInteger)siteId zone:(NSInteger)zoneId delegate:(id<GUJAdViewControllerDelegate>)delegate;
-```
-
-Previously used adSpaceIds (e.g. "12345") were replaced by adUnitIds (e.g. "/stern/sport/"). For now you can continue to use the adSpaceIds as we integrated a mapping file with does some magic.
-Anyway we recommend to switch to the new adUnitIds by time.
-The following methods have been deprecated for this reason:
-
-```
-+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId;
-```
-
-```
-+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId delegate:(id<GUJAdViewControllerDelegate>)delegate;
-```
-
-```
+```objective-c
 + (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId adUnit:(NSString*)adUnitId;
-```
 
-```
 + (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId adUnit:(NSString*)adUnitId delegate:(id<GUJAdViewControllerDelegate>)delegate;
 ```
 
-
 We recommend to use the new initialization methods:
 
-```
+```objective-c
 + (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId rootViewController:(UIViewController *)rootViewController;
-```
 
-```
 + (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId rootViewController:(UIViewController *)rootViewController delegate:(id <GUJAdViewControllerDelegate>)delegate;
 ```
 
+... if you also want to set the custom criteria position (pos) and index (idx):
+
+```objective-c
+adViewContext.position = <POSITION>;
+adViewContext.index = <YES|NO>;
+```
 
 
-The following methods have been removed, as it is not possible to add HTTP request parameters or headers to an request to the Google Doubleclick DFP server.
+#### No setting of HTTP request parameters or headers
 
-```
-- (void)addAdServerRequestHeaderField:(NSString *)name value:(NSString *)value;
-```
+It is not possible to add HTTP request parameters or headers to an ad request
+to the Google Doubleclick DFP server. That is why we removed the methods 
+~~- (void)addAdServerRequestHeaderField:(NSString *)name value:(NSString *)value;~~,
+~~- (void)addAdServerRequestHeaderFields:(NSDictionary *)headerFields;~~,
+~~- (void)addAdServerRequestParameter:(NSString *)name value:(NSString *)value;~~ and 
+~~- (void)addAdServerRequestParameters:(NSDictionary *)requestParameters;~~
 
-```
-- (void)addAdServerRequestHeaderFields:(NSDictionary *)headerFields;
-```
 
-```
-- (void)addAdServerRequestParameter:(NSString *)name value:(NSString *)value;
-```
+Instead you can add keywords or key/ value pairs for custom targeting via the following new methods:
 
-```
-- (void)addAdServerRequestParameters:(NSDictionary *)requestParameters;
-```
-
-Instead you can add parameters for custom targeting via the following new methods:
-
-```
+```objective-c
 - (void)addCustomTargetingKeyword:(NSString *)keyword;
-```
 
-```
 - (void)addCustomTargetingKey:(NSString *)key Value:(NSString *)value;
 ```
 
 
-There is no such thing as a GUJAdViewController in the SDK anymore. You simply use you custom UIViewControllers.
-That's why we removed methods returning GUJAdViewController:
+#### No more mOceon backfill
 
-```
-- (void)adViewController:(GUJAdViewController*)adViewController didConfigurationFailure:(NSError*)error;
-```
-
-```
-- (BOOL)adViewController:(GUJAdViewController*)adViewController canDisplayAdView:(GUJAdView*)adView;
-```
+We removed support for the mOceon backfill service.
+That is why we skipped the property ~~@property (assign, nonatomic) BOOL mOceanBackFill;~~ and the methods
+ ~~+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId site:(NSInteger)siteId zone:(NSInteger)zoneId;~~ and 
+ ~~+ (GUJAdViewContext*)instanceForAdspaceId:(NSString*)adSpaceId adUnit:(NSString*)adUnitId site:(NSInteger)siteId zone:(NSInteger)zoneId delegate:(id<GUJAdViewControllerDelegate>)delegate;~~ 
+ of the GUJAdViewContext.
 
 
-Also we removed methods returning references to GUJAdEvent. Something that was removed in former versions already.
+#### Removed references to GUJAdViewController
 
-```
-- (void)bannerView:(GUJAdView*)bannerView receivedEvent:(GUJAdViewEvent*)event;
+There is no such thing as a `GUJAdViewController` in the SDK. You simply use your own UIViewControllers.
+That's why we removed methods from the `GUJAdViewContextDelegate` protocol which returned a `GUJAdViewController`, which were 
+~~- (void)adViewController:(GUJAdViewController*)adViewController didConfigurationFailure:(NSError*)error;~~
+and
+~~- (BOOL)adViewController:(GUJAdViewController*)adViewController canDisplayAdView:(GUJAdView*)adView;~~.
+
+
+#### Removed references to GUJAdEvent
+
+Also we removed methods returning references to `GUJAdEvent`, something that was removed in former versions already.
+The methods ~~- (void)bannerView:(GUJAdView*)bannerView receivedEvent:(GUJAdViewEvent*)event;~~ and 
+~~- (void)interstitialViewReceivedEvent:(GUJAdViewEvent*)event;~~ were removed from the `GUJAdViewContextDelegate` protocol. 
+
+
+<a name="usage"></a>
+## Usage 
+
+If you are not migration from a 2.1.x version this is your starting point!
+
+Loading and displaying Banner Ads, Interstitial Ads or Native Ads is straight forward. :)
+
+You always start by creating a `GUJAdViewContext`. Define a class variable to keep the reference.  
+Then set the delegate and specify the position and whether it is an ad on an index page (vs. article).  
+Create multiple `GUJAdViewContext` instances for every ad you want to show.
+
+You receive your Ad Unit ID from the [G+J EMS Team](#contact), an example could be "/6032/sdktest"
+
+
+```objective-c
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+  
+    adViewContext = [GUJAdViewContext instanceForAdUnitId:<YOUR ADUNIT ID> rootViewController:self];
+    
+    // set the delegate
+    adViewContext.delegate = self;
+    
+    // set the position (not needed for interstitials)
+    adViewContext.position = GUJ_AD_VIEW_POSITION_TOP;
+    
+    // set if we use the context for an index page (defaults to NO)
+    adViewContext.isIndex = YES;
+    ...
+}
 ```
 
-```
-- (void)interstitialViewReceivedEvent:(GUJAdViewEvent*)event;
+#### load a banner view
+
+Load a banner view to a given origin:
+
+```objective-c
+- (void)viewDidAppear:(BOOL)animated {
+    
+    ...
+    [adViewContext adViewWithOrigin:CGPointMake(0, 20)];
+
+}
 ```
 
-## Author
+Alternatively you can simply call the `- (DFPBannerView *)adView;` method and position the returned view via
+autolayout constraints or your preferred view layout.
 
-Michael Brügmann, mail@michael-bruegmann.de
+The returned ad view object is of type `DFPBannerView` known from the Google SDK for DFP Users on iOS.
+
+There are some other Ad View initialization methods that allow you to add keywords or a completion handler.
+The completion handler will return immediately.
+
+A couple of additional delegate callbacks can be implemented to interact with the banner view while loading/ showing/ hiding:
+
+```objective-c
+- (void)bannerViewDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context;
+- (void)bannerViewInitializedForContext:(GUJAdViewContext *)context;
+- (void)bannerViewDidShowForContext:(GUJAdViewContext *)context;
+- (void)bannerViewDidHideForContext:(GUJAdViewContext *)context;
+- (void)bannerViewWillLoadAdDataForContext:(GUJAdViewContext *)context;
+- (void)bannerViewDidLoadAdDataForContext:(GUJAdViewContext *)context;
+```
+
+See the documentation in the header file for further information.
+
+
+#### load an interstitial
+
+Load an interstitial view with completion handler:
+
+```objective-c
+- (void)viewDidAppear:(BOOL)animated {
+    
+    ...
+    [adViewContext interstitialAdViewWithCompletionHandler:^BOOL(GADInterstitial *_interstitial, NSError *_error) {
+            
+            if (_error == nil) {
+                // interstitial ready, show it when needed
+            } else {
+                // handle the error
+            }
+            
+            return NO; // whether or not the interstitial should show automatically
+        }];
+
+}
+```
+
+The returned interstitial view object is of type `GADInterstitial` known from the Google SDK for DFP Users on iOS.
+
+A couple of additional delegate callbacks can be implemented to interact with the interstitial view while loading/ showing/ hiding:
+
+```objective-c
+- (void)interstitialViewDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context;
+- (void)interstitialViewInitializedForContext:(GUJAdViewContext *)context;
+- (void)interstitialViewWillLoadAdDataForContext:(GUJAdViewContext *)context;
+- (void)interstitialViewDidLoadAdDataForContext:(GUJAdViewContext *)context;
+- (void)interstitialViewWillAppearForContext:(GUJAdViewContext *)context;
+- (void)interstitialViewDidAppearForContext:(GUJAdViewContext *)context;
+- (void)interstitialViewWillDisappearForContext:(GUJAdViewContext *)context;
+- (void)interstitialViewDidDisappearForContext:(GUJAdViewContext *)context;
+```
+
+See the documentation in the header file for further information.
+
+
+#### load a native ad
+
+Load a native add and handle the result via delegate callbacks:
+
+```objective-c
+- (void)viewDidAppear:(BOOL)animated {
+
+    ...
+    [adViewContext loadNativeAd];
+
+}
+
+
+- (void)nativeAdLoaderDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context {
+    // handle the error
+}
+
+
+- (void)nativeAdLoaderDidLoadData:(GADNativeContentAd *)nativeContentAd ForContext:(GUJAdViewContext *)context {
+    headlineLabel.text = nativeContentAd.headline;
+    bodyLabel.text = nativeContentAd.body;
+    
+    ...
+
+}
+```
+
+The returned native ad object is of type `GADNativeContentAd` known from the Google SDK for DFP Users on iOS.
+
+<a name="contact"></a>
+## Contact
+
+In case of any questions send us an email or give us a call!
+
+
+**Jens Jensen**  
+Product Manager Mobile  
+\+ 49 (0) 40 / 3703 7475  
+jensen.jens@ems.guj.de
+
+**Daniel Gerold**  
+Head of Technical Projects  
+\+ 49 (0) 40 / 3703 7415  
+gerold.daniel@ems.guj.de
+
+**Arne Steinmetz**  
+Director Digital Ad Technology  
+\+ 49 (0) 40 / 3703 7384  
+steinmetz.arne@ems.guj.de
+
 
 ## License
 
-gujemsiossdk is available under the MIT license. See the LICENSE file for more info.
+gujemsiossdk is available under the BSD license. See the LICENSE file for more info.

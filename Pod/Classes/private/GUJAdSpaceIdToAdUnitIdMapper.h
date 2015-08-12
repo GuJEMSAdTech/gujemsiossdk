@@ -43,17 +43,28 @@ static NSString *const DFP_PUBLISHER_ID = @"6032";
 * Get a Google AdUnit ID for the given Amobee AdSpace ID.
 * @return a Google AdUnit ID or nil if no mapping found
 */
-- (NSString *)getAdUnitIdForAdspaceId:(NSString *)adSpaceId;
+- (NSString *)getAdUnitIdForAdSpaceId:(NSString *)adSpaceId;
 
 
 /**
 * Get a Google Ad custom criteria position (pos) for the given Amobee AdSpace ID.
 * @return a position or NSNotFound if no mapping found
 */
-- (NSInteger)getPositionForAdspaceId:(NSString *)adSpaceId;
+- (NSInteger)getPositionForAdSpaceId:(NSString *)adSpaceId;
 
 
-- (NSString *)getAdspaceIdForAdUnitId:(NSString *)adUnitId position:(NSInteger)position;
+/**
+* Get a Google Ad custom criteria index page (idx) for the given Amobee AdSpace ID.
+* @return YES if the AdSpace ID is used for an index, NO otherwise
+*/
+- (BOOL)getIsIndexForAdSpaceId:(NSString *)adSpaceId;
+
+
+/**
+* Reverse map an Ad Unit ID and its pos/ idx attribute to an AdSpace ID.
+*/
+- (NSString *)getAdSpaceIdForAdUnitId:(NSString *)adUnitId position:(NSInteger)position index:(BOOL)isIndex;
+
 
 /**
 * Check if the given identifier string is an Amobee AdSpace ID (i.e. exists of digits only)

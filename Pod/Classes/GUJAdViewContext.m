@@ -32,7 +32,7 @@
 
 static NSString *const KEYWORDS_DICT_KEY = @"kw";
 
-@implementation GUJAdView : GADBannerView {
+@implementation GUJAdView : DFPBannerView {
     GUJAdViewContext *context;
 }
 
@@ -59,7 +59,7 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
 
 
 - (NSString *)adSpaceId {
-    return [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdspaceIdForAdUnitId:context.adUnitId position:context.position];
+    return [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdSpaceIdForAdUnitId:context.adUnitId position:context.position index:context.isIndex];
 }
 
 @end
@@ -92,8 +92,8 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
 
 + (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId {
     GUJAdViewContext *adViewContext = [[self alloc] init];
-    adViewContext.adUnitId = [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdUnitIdForAdspaceId:adSpaceId];
-    adViewContext.position = [[GUJAdSpaceIdToAdUnitIdMapper instance] getPositionForAdspaceId:adSpaceId];
+    adViewContext.adUnitId = [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdUnitIdForAdSpaceId:adSpaceId];
+    adViewContext.position = [[GUJAdSpaceIdToAdUnitIdMapper instance] getPositionForAdSpaceId:adSpaceId];
     return adViewContext;
 }
 
@@ -153,6 +153,16 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
         customTargetingDict[@"pos"] = @(position);
     } else {
         [customTargetingDict removeObjectForKey:@"pos"];
+    }
+}
+
+
+- (void)setIsIndex:(BOOL)isIndex {
+    _isIndex = isIndex;
+    if (isIndex) {
+        customTargetingDict[@"idx"] = @(YES);
+    } else {
+        [customTargetingDict removeObjectForKey:@"idx"];
     }
 }
 
@@ -310,6 +320,7 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
 
 - (void)addCustomTargetingKey:(NSString *)key Value:(NSString *)value {
     NSAssert(![key isEqualToString:@"pos"], @"Set the position (pos) via position property.");
+    NSAssert(![key isEqualToString:@"idx"], @"Set the isIndex (idx) via isIndex property.");
     NSAssert(![key isEqualToString:KEYWORDS_DICT_KEY], @"Set single keyword via the addKeywordForCustomTargeting: method.");
     customTargetingDict[key] = value;
 }
@@ -330,7 +341,6 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
 
     DFPRequest *request = [DFPRequest request];
     request.customTargeting = customTargetingDict;
-
     [adLoader loadRequest:request];
 
 }
@@ -354,6 +364,7 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
 #pragma mark - GADNativeContentAdLoaderDelegate
 
 - (void)adLoader:(GADAdLoader *)adLoader1 didReceiveNativeContentAd:(GADNativeContentAd *)nativeContentAd {
+    self.nativeContentAd = nativeContentAd;
     if ([self.delegate respondsToSelector:@selector(nativeAdLoaderDidLoadData:ForContext:)]) {
         [self.delegate nativeAdLoaderDidLoadData:nativeContentAd ForContext:self];
     }

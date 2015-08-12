@@ -4,8 +4,8 @@
 	<zone name="empty" adunit="sdktest" position="1"/>
     	
     <!-- ListView: -->
-    <zone name="21772" adunit="sdktest" position="1"/>
-    <zone name="24757" adunit="sdktest" position="2"/>
+    <zone name="21772" adunit="sdktest" position="1" index="true"/>
+    <zone name="24757" adunit="sdktest" position="2" index="true"/>
     
     <!--  RelativeLayout: -->
     <zone name="15312" adunit="sdktest/sdksub1" position="1"/>

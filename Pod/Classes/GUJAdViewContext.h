@@ -40,7 +40,9 @@ static const int GUJ_AD_VIEW_POSITION_BOTTOM = 10;
 
 
 __attribute__((deprecated("Dont' use methods returning GUJAdView anymore. Use their replacements instead.")))
-@interface GUJAdView : GADBannerView
+@interface GUJAdView : DFPBannerView
+
+- (id)initWithContext:(GUJAdViewContext *)context;
 
 /*!
  * shows the view if hidden.
@@ -49,8 +51,6 @@ __attribute__((deprecated("Dont' use methods returning GUJAdView anymore. Use th
  @since 2.0.1
  */
 - (void)show;
-
-- (id)initWithContext:(GUJAdViewContext *)context;
 
 /*
  * shows the Interstitial Modal View if available.
@@ -80,10 +80,12 @@ __attribute__((deprecated("Dont' use methods returning GUJAdView anymore. Use th
 
 @property(nonatomic, strong) NSString *adUnitId;
 @property(nonatomic, assign) NSInteger position;
+@property(nonatomic, assign) BOOL isIndex;
 @property(nonatomic, strong) UIViewController *rootViewController;
 @property(nonatomic, weak) id <GUJAdViewContextDelegate> delegate;
 @property(nonatomic, strong) DFPBannerView *bannerView;
-@property(nonatomic, strong) DFPInterstitial *interstitial;;
+@property(nonatomic, strong) DFPInterstitial *interstitial;
+@property(nonatomic, strong) GADNativeContentAd *nativeContentAd;
 
 /*
  * Initialization Completion Handler.
@@ -105,20 +107,20 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
 /*!
  * Returns a GUJAdViewContext instance.
  *
- @param Ad-Space-Id
+ @param AdSpace ID - automatically mapped to an AdUnit ID and custom criteria pos/ idx
  @result A newly created GUJAdViewContext instance
  */
-+ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: position: rootViewController: method instead.");
++ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId;
 
 
 /*!
  * Returns a GUJAdViewContext instance.
  *
- @param Ad-Space-Id
+ @param AdSpace ID - automatically mapped to an AdUnit ID and custom criteria pos/ idx
  @param delegate A class that implements the GUJAdViewContextDelegate Protocol
  @result A newly created GUJAdViewContext instance
  */
-+ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId delegate:(id <GUJAdViewContextDelegate>)delegate DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: position: rootViewController: delegate: method instead.");
++ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId delegate:(id <GUJAdViewContextDelegate>)delegate;
 
 
 /*!
@@ -140,29 +142,6 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
  @result A newly created GUJAdViewContext instance
  */
 + (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId adUnit:(NSString *)adUnitId delegate:(id <GUJAdViewContextDelegate>)delegate DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: position: rootViewController: delegate: method instead.");
-
-
-/*!
- * Returns a GUJAdViewContext instance.
- *
- @param adUnitId The DFP adUnitId
- @param position The position (one of GUJ_AD_VIEW_POSITION_UNDEFINED, GUJ_AD_VIEW_POSITION_TOP, GUJ_AD_VIEW_POSITION_CENTER, GUJ_AD_VIEW_POSITION_BOTTOM)
- @param rootViewController Required reference to the current root view controller.
- @result A newly created GUJAdViewContext instance
- */
-+ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId position:(NSInteger)position rootViewController:(UIViewController *)rootViewController;
-
-
-/*!
- * Returns a GUJAdViewContext instance.
- *
- @param adUnitId The DFP adUnitId
- @param position The position (one of GUJ_AD_VIEW_POSITION_UNDEFINED, GUJ_AD_VIEW_POSITION_TOP, GUJ_AD_VIEW_POSITION_CENTER, GUJ_AD_VIEW_POSITION_BOTTOM)
- @param rootViewController Required reference to the current root view controller.
- @param delegate A class that implements the GUJAdViewContextDelegate Protocol
- @result A newly created GUJAdViewContext instance
- */
-+ (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId position:(NSInteger)position rootViewController:(UIViewController *)rootViewController delegate:(id <GUJAdViewContextDelegate>)delegate;
 
 
 /*!
@@ -202,7 +181,7 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
 
 
 /*!
- * If you do not wish to present the Interstital View directly (automaticly), set this value to NO.
+ * If you do not wish to present the interstital view directly (automatically), set this value to NO.
  * If AutoShow is disabled, you have to present the interstitial AdView manually.
  *
  @since 2.0.1
@@ -382,6 +361,7 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
  @param keywords keywords that will be used for the ad request
  */
 - (void)loadNativeAdForKeywords:(NSArray *)keywords;
+
 @end
 
 
