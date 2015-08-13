@@ -1,32 +1,2195 @@
 <?xml version="1.0" encoding="utf-8"?>
 <zonemapping>
-	<!--  For testing: -->
-	<zone name="empty" adunit="sdktest" position="1"/>
-    	
-    <!-- ListView: -->
-    <zone name="21772" adunit="sdktest" position="1" index="true"/>
-    <zone name="24757" adunit="sdktest" position="2" index="true"/>
-    
-    <!--  RelativeLayout: -->
-    <zone name="15312" adunit="sdktest/sdksub1" position="1"/>
-    
-    <!-- ORMMA Test: -->
-    <zone name="15308" adunit="sdktest/sdksub1" position="1"/>
-
-    <!--  Retina: -->
-    <zone name="15298" adunit="sdktest/sdksub1/sdksub11" position="1"/>
-    <zone name="15299" adunit="sdktest/sdksub1/sdksub11" position="2"/>
-    <zone name="15300" adunit="sdktest/sdksub1/sdksub11" position="3"/>
-    
-    <!-- TableLayout: -->
-    <zone name="15302" adunit="sdktest/sdksub1" position="1"/>
-    
-    <!--  Targeting: -->
-    <zone name="15304" adunit="sdktest/sdksub1" position="1"/>
-    
-	<!-- Unused: -->
-	<zone name="19725" adunit="sdktest/sdksub1" position="1"/>
-    <zone name="15306" adunit="sdktest/sdksub1" position="1"/>
-    <zone name="19727" adunit="sdktest/sdksub1" position="1"/>
-    
+    <zone name="16704" adunit="11freunde_and_ergebnisse" position="10"/>
+    <zone name="16702" adunit="11freunde_and_ergebnisse" position="1"/>
+    <zone name="16706" adunit="11freunde_and_ergebnisse" position="0"/>
+    <zone name="14788" adunit="11freunde_and_home" position="10"/>
+    <zone name="14786" adunit="11freunde_and_home" position="1"/>
+    <zone name="14790" adunit="11freunde_and_home" position="0"/>
+    <zone name="16664" adunit="11freunde_and_liveticker" position="10"/>
+    <zone name="16662" adunit="11freunde_and_liveticker" position="1"/>
+    <zone name="16668" adunit="11freunde_and_liveticker" position="0"/>
+    <zone name="16700" adunit="11freunde_and_news" position="10"/>
+    <zone name="16698" adunit="11freunde_and_news" position="1"/>
+    <zone name="16666" adunit="11freunde_and_news" position="0"/>
+    <zone name="16691" adunit="11freunde_ip_ergebnisse" position="10"/>
+    <zone name="16693" adunit="11freunde_ip_ergebnisse" position="0"/>
+    <zone name="16689" adunit="11freunde_ip_ergebnisse" position="1"/>
+    <zone name="16676" adunit="11freunde_ip_liveticker" position="10"/>
+    <zone name="16672" adunit="11freunde_ip_liveticker" position="0"/>
+    <zone name="16674" adunit="11freunde_ip_liveticker" position="1"/>
+    <zone name="12297" adunit="11freunde_ip_news" position="10"/>
+    <zone name="16670" adunit="11freunde_ip_news" position="0"/>
+    <zone name="12295" adunit="11freunde_ip_news" position="1"/>
+    <zone name="22718" adunit="11freunde_ip_start" position="10"/>
+    <zone name="12357" adunit="11freunde_ip_start" position="0"/>
+    <zone name="22720" adunit="11freunde_ip_start" position="1"/>
+    <zone name="16714" adunit="11freunde_ipad_ergebnisse" position="10"/>
+    <zone name="16718" adunit="11freunde_ipad_ergebnisse" position="0"/>
+    <zone name="16716" adunit="11freunde_ipad_ergebnisse" position="0"/>
+    <zone name="16712" adunit="11freunde_ipad_ergebnisse" position="1"/>
+    <zone name="16515" adunit="11freunde_ipad_home" position="10"/>
+    <zone name="16513" adunit="11freunde_ipad_home" position="1"/>
+    <zone name="16658" adunit="11freunde_ipad_liveticker" position="10"/>
+    <zone name="16654" adunit="11freunde_ipad_liveticker" position="0"/>
+    <zone name="16656" adunit="11freunde_ipad_liveticker" position="0"/>
+    <zone name="16660" adunit="11freunde_ipad_liveticker" position="1"/>
+    <zone name="16710" adunit="11freunde_ipad_news" position="10"/>
+    <zone name="16652" adunit="11freunde_ipad_news" position="0"/>
+    <zone name="16650" adunit="11freunde_ipad_news" position="0"/>
+    <zone name="16708" adunit="11freunde_ipad_news" position="1"/>
+    <zone name="16519" adunit="11freunde_ipad_start" position="0"/>
+    <zone name="16517" adunit="11freunde_ipad_start" position="0"/>
+    <zone name="15056" adunit="appygamer_and_article" position="1"/>
+    <zone name="15054" adunit="appygamer_and_generic" position="1" index="true"/>
+    <zone name="15058" adunit="appygamer_and_start" position="0"/>
+    <zone name="16375" adunit="appygamer_and_ros" position="0"/>
+    <zone name="15050" adunit="appygamer_tab_article" position="1"/>
+    <zone name="15052" adunit="appygamer_tab_generic" position="1" index="true"/>
+    <zone name="15048" adunit="appygamer_tab_start" position="0"/>
+    <zone name="16039" adunit="appygamer_tab_ros" position="1" index="true"/>
+    <zone name="16377" adunit="appygamer_tab_ros" position="0"/>
+    <zone name="15062" adunit="appygamer_ipad_article" position="1"/>
+    <zone name="15064" adunit="appygamer_ipad_generic" position="1" index="true"/>
+    <zone name="15060" adunit="appygamer_ipad_start" position="0"/>
+    <zone name="16041" adunit="appygamer_ipad_ros" position="1" index="true"/>
+    <zone name="16401" adunit="appygamer_ipad_ros" position="0"/>
+    <zone name="15068" adunit="appygamer_ip_article" position="1"/>
+    <zone name="15066" adunit="appygamer_ip_generic" position="1" index="true"/>
+    <zone name="15070" adunit="appygamer_ip_start" position="0"/>
+    <zone name="16415" adunit="appygamer_ip_ros" position="0"/>
+    <zone name="15024" adunit="appygeek_and_article" position="1"/>
+    <zone name="15040" adunit="appygeek_and_generic" position="1" index="true"/>
+    <zone name="15038" adunit="appygeek_and_start" position="0"/>
+    <zone name="16373" adunit="appygeek_and_ros" position="0"/>
+    <zone name="15044" adunit="appygeek_tab_article" position="1"/>
+    <zone name="15042" adunit="appygeek_tab_generic" position="1" index="true"/>
+    <zone name="15046" adunit="appygeek_tab_start" position="0"/>
+    <zone name="16043" adunit="appygeek_tab_ros" position="1" index="true"/>
+    <zone name="16371" adunit="appygeek_tab_ros" position="0"/>
+    <zone name="15034" adunit="appygeek_ipad_article" position="1"/>
+    <zone name="15032" adunit="appygeek_ipad_generic" position="1" index="true"/>
+    <zone name="15036" adunit="appygeek_ipad_start" position="0"/>
+    <zone name="16045" adunit="appygeek_ipad_ros" position="1" index="true"/>
+    <zone name="16403" adunit="appygeek_ipad_ros" position="0"/>
+    <zone name="15028" adunit="appygeek_ip_article" position="1"/>
+    <zone name="15030" adunit="appygeek_ip_generic" position="1" index="true"/>
+    <zone name="15026" adunit="appygeek_ip_start" position="0"/>
+    <zone name="16405" adunit="appygeek_ip_ros" position="0"/>
+    <zone name="23504" adunit="btn_and_home" position="10"/>
+    <zone name="15453" adunit="btn_and_home" position="0"/>
+    <zone name="23502" adunit="btn_and_home" position="2"/>
+    <zone name="15445" adunit="btn_and_home" position="1"/>
+    <zone name="23508" adunit="btn_and_ros" position="10"/>
+    <zone name="21800" adunit="btn_and_ros" position="0"/>
+    <zone name="23506" adunit="btn_and_ros" position="2"/>
+    <zone name="23500" adunit="btn_and_ros" position="1"/>
+    <zone name="23574" adunit="btn_ipad_home" position="10"/>
+    <zone name="23576" adunit="btn_ipad_home" position="0"/>
+    <zone name="23921" adunit="btn_ipad_home" position="0"/>
+    <zone name="23572" adunit="btn_ipad_home" position="1"/>
+    <zone name="23580" adunit="btn_ipad_ros" position="10"/>
+    <zone name="23582" adunit="btn_ipad_ros" position="0"/>
+    <zone name="23923" adunit="btn_ipad_ros" position="0"/>
+    <zone name="23578" adunit="btn_ipad_ros" position="1"/>
+    <zone name="15463" adunit="btn_ip_home" position="1"/>
+    <zone name="23492" adunit="btn_ip_home" position="10"/>
+    <zone name="15455" adunit="btn_ip_home" position="0"/>
+    <zone name="23490" adunit="btn_ip_home" position="2"/>
+    <zone name="23496" adunit="btn_ip_ros" position="10"/>
+    <zone name="21802" adunit="btn_ip_ros" position="0"/>
+    <zone name="23494" adunit="btn_ip_ros" position="2"/>
+    <zone name="23498" adunit="btn_ip_ros" position="1"/>
+    <zone name="23585" adunit="btn_tab_home" position="10"/>
+    <zone name="23589" adunit="btn_tab_home" position="0"/>
+    <zone name="23925" adunit="btn_tab_home" position="0"/>
+    <zone name="23587" adunit="btn_tab_home" position="1"/>
+    <zone name="23593" adunit="btn_tab_ros" position="10"/>
+    <zone name="23595" adunit="btn_tab_ros" position="0"/>
+    <zone name="23927" adunit="btn_tab_ros" position="0"/>
+    <zone name="23591" adunit="btn_tab_ros" position="1"/>
+    <zone name="23424" adunit="brigitte_and_beauty" position="0"/>
+    <zone name="23426" adunit="brigitte_and_beauty" position="0"/>
+    <zone name="13028" adunit="brigitte_and_beauty" position="0"/>
+    <zone name="15645" adunit="brigitte_and_beauty" position="2"/>
+    <zone name="13015" adunit="brigitte_and_beauty" position="1"/>
+    <zone name="23432" adunit="brigitte_and_figur" position="0"/>
+    <zone name="23434" adunit="brigitte_and_figur" position="0"/>
+    <zone name="13032" adunit="brigitte_and_figur" position="0"/>
+    <zone name="15663" adunit="brigitte_and_figur" position="2"/>
+    <zone name="13003" adunit="brigitte_and_figur" position="1"/>
+    <zone name="23468" adunit="brigitte_and_foren" position="0"/>
+    <zone name="23470" adunit="brigitte_and_foren" position="0"/>
+    <zone name="23414" adunit="brigitte_and_foren" position="0"/>
+    <zone name="23482" adunit="brigitte_and_foren" position="2"/>
+    <zone name="23480" adunit="brigitte_and_foren" position="1"/>
+    <zone name="23444" adunit="brigitte_and_frauen" position="0"/>
+    <zone name="23446" adunit="brigitte_and_frauen" position="0"/>
+    <zone name="16278" adunit="brigitte_and_frauen" position="0"/>
+    <zone name="16286" adunit="brigitte_and_frauen" position="2"/>
+    <zone name="16282" adunit="brigitte_and_frauen" position="1"/>
+    <zone name="23436" adunit="brigitte_and_gesundheit" position="0"/>
+    <zone name="23438" adunit="brigitte_and_gesundheit" position="0"/>
+    <zone name="15352" adunit="brigitte_and_gesundheit" position="0"/>
+    <zone name="15636" adunit="brigitte_and_gesundheit" position="2"/>
+    <zone name="14478" adunit="brigitte_and_gesundheit" position="1"/>
+    <zone name="23416" adunit="brigitte_and_home" position="0"/>
+    <zone name="23418" adunit="brigitte_and_home" position="0"/>
+    <zone name="16280" adunit="brigitte_and_home" position="0"/>
+    <zone name="15641" adunit="brigitte_and_home" position="2"/>
+    <zone name="13010" adunit="brigitte_and_home" position="1"/>
+    <zone name="23460" adunit="brigitte_and_ros" position="0"/>
+    <zone name="23462" adunit="brigitte_and_ros" position="0"/>
+    <zone name="15362" adunit="brigitte_and_ros" position="0"/>
+    <zone name="15661" adunit="brigitte_and_ros" position="2"/>
+    <zone name="14472" adunit="brigitte_and_ros" position="1"/>
+    <zone name="23448" adunit="brigitte_and_kultur" position="0"/>
+    <zone name="23450" adunit="brigitte_and_kultur" position="0"/>
+    <zone name="15354" adunit="brigitte_and_kultur" position="0"/>
+    <zone name="15651" adunit="brigitte_and_kultur" position="2"/>
+    <zone name="14466" adunit="brigitte_and_kultur" position="1"/>
+    <zone name="23440" adunit="brigitte_and_liebe" position="0"/>
+    <zone name="23442" adunit="brigitte_and_liebe" position="0"/>
+    <zone name="13022" adunit="brigitte_and_liebe" position="0"/>
+    <zone name="15639" adunit="brigitte_and_liebe" position="2"/>
+    <zone name="13001" adunit="brigitte_and_liebe" position="1"/>
+    <zone name="23420" adunit="brigitte_and_mode" position="0"/>
+    <zone name="23422" adunit="brigitte_and_mode" position="0"/>
+    <zone name="15350" adunit="brigitte_and_mode" position="0"/>
+    <zone name="15647" adunit="brigitte_and_mode" position="2"/>
+    <zone name="14464" adunit="brigitte_and_mode" position="1"/>
+    <zone name="23452" adunit="brigitte_and_reise" position="0"/>
+    <zone name="23454" adunit="brigitte_and_reise" position="0"/>
+    <zone name="15356" adunit="brigitte_and_reise" position="0"/>
+    <zone name="15653" adunit="brigitte_and_reise" position="2"/>
+    <zone name="14468" adunit="brigitte_and_reise" position="1"/>
+    <zone name="23428" adunit="brigitte_and_rezepte" position="0"/>
+    <zone name="23430" adunit="brigitte_and_rezepte" position="0"/>
+    <zone name="23410" adunit="brigitte_and_rezepte" position="0"/>
+    <zone name="15643" adunit="brigitte_and_rezepte" position="2"/>
+    <zone name="13074" adunit="brigitte_and_rezepte" position="1"/>
+    <zone name="12997" adunit="brigitte_and_ros" position="10"/>
+    <zone name="23472" adunit="brigitte_and_ros" position="0"/>
+    <zone name="23474" adunit="brigitte_and_ros" position="0"/>
+    <zone name="15365" adunit="brigitte_and_ros" position="0"/>
+    <zone name="13308" adunit="brigitte_and_ros" position="1"/>
+    <zone name="23464" adunit="brigitte_and_video" position="0"/>
+    <zone name="23466" adunit="brigitte_and_video" position="0"/>
+    <zone name="23412" adunit="brigitte_and_video" position="0"/>
+    <zone name="23478" adunit="brigitte_and_video" position="2"/>
+    <zone name="23476" adunit="brigitte_and_video" position="1"/>
+    <zone name="23456" adunit="brigitte_and_wohnen" position="0"/>
+    <zone name="23458" adunit="brigitte_and_wohnen" position="0"/>
+    <zone name="15358" adunit="brigitte_and_wohnen" position="0"/>
+    <zone name="15655" adunit="brigitte_and_wohnen" position="2"/>
+    <zone name="14470" adunit="brigitte_and_wohnen" position="1"/>
+    <zone name="21327" adunit="brigitte_horoskop_ip_ros" position="10"/>
+    <zone name="21325" adunit="brigitte_horoskop_ip_ros" position="2"/>
+    <zone name="21323" adunit="brigitte_horoskop_ip_ros" position="1"/>
+    <zone name="21329" adunit="brigitte_horoskop_ip_ros" position="0"/>
+    <zone name="23349" adunit="brigitte_ip_beauty" position="0"/>
+    <zone name="23351" adunit="brigitte_ip_beauty" position="0"/>
+    <zone name="575" adunit="brigitte_ip_beauty" position="0"/>
+    <zone name="15673" adunit="brigitte_ip_beauty" position="2"/>
+    <zone name="561" adunit="brigitte_ip_beauty" position="1"/>
+    <zone name="23357" adunit="brigitte_ip_figur" position="0"/>
+    <zone name="23359" adunit="brigitte_ip_figur" position="0"/>
+    <zone name="23337" adunit="brigitte_ip_figur" position="0"/>
+    <zone name="15669" adunit="brigitte_ip_figur" position="2"/>
+    <zone name="562" adunit="brigitte_ip_figur" position="1"/>
+    <zone name="23394" adunit="brigitte_ip_foren" position="0"/>
+    <zone name="23396" adunit="brigitte_ip_foren" position="0"/>
+    <zone name="23408" adunit="brigitte_ip_foren" position="0"/>
+    <zone name="23406" adunit="brigitte_ip_foren" position="2"/>
+    <zone name="23402" adunit="brigitte_ip_foren" position="1"/>
+    <zone name="23370" adunit="brigitte_ip_frauen" position="0"/>
+    <zone name="23372" adunit="brigitte_ip_frauen" position="0"/>
+    <zone name="16294" adunit="brigitte_ip_frauen" position="0"/>
+    <zone name="16262" adunit="brigitte_ip_frauen" position="2"/>
+    <zone name="16296" adunit="brigitte_ip_frauen" position="1"/>
+    <zone name="23362" adunit="brigitte_ip_gesundheit" position="0"/>
+    <zone name="23364" adunit="brigitte_ip_gesundheit" position="0"/>
+    <zone name="15324" adunit="brigitte_ip_gesundheit" position="0"/>
+    <zone name="15681" adunit="brigitte_ip_gesundheit" position="2"/>
+    <zone name="565" adunit="brigitte_ip_gesundheit" position="1"/>
+    <zone name="23341" adunit="brigitte_ip_home" position="0"/>
+    <zone name="23343" adunit="brigitte_ip_home" position="0"/>
+    <zone name="16260" adunit="brigitte_ip_home" position="0"/>
+    <zone name="15671" adunit="brigitte_ip_home" position="2"/>
+    <zone name="559" adunit="brigitte_ip_home" position="1"/>
+    <zone name="23386" adunit="brigitte_ip_ros" position="0"/>
+    <zone name="23388" adunit="brigitte_ip_ros" position="0"/>
+    <zone name="15326" adunit="brigitte_ip_ros" position="0"/>
+    <zone name="15677" adunit="brigitte_ip_ros" position="2"/>
+    <zone name="566" adunit="brigitte_ip_ros" position="1"/>
+    <zone name="23374" adunit="brigitte_ip_kultur" position="0"/>
+    <zone name="23376" adunit="brigitte_ip_kultur" position="0"/>
+    <zone name="15314" adunit="brigitte_ip_kultur" position="0"/>
+    <zone name="15683" adunit="brigitte_ip_kultur" position="2"/>
+    <zone name="570" adunit="brigitte_ip_kultur" position="1"/>
+    <zone name="23366" adunit="brigitte_ip_liebe" position="0"/>
+    <zone name="23368" adunit="brigitte_ip_liebe" position="0"/>
+    <zone name="578" adunit="brigitte_ip_liebe" position="0"/>
+    <zone name="15667" adunit="brigitte_ip_liebe" position="2"/>
+    <zone name="564" adunit="brigitte_ip_liebe" position="1"/>
+    <zone name="23345" adunit="brigitte_ip_mode" position="0"/>
+    <zone name="23347" adunit="brigitte_ip_mode" position="0"/>
+    <zone name="15322" adunit="brigitte_ip_mode" position="0"/>
+    <zone name="15679" adunit="brigitte_ip_mode" position="2"/>
+    <zone name="573" adunit="brigitte_ip_mode" position="1"/>
+    <zone name="23378" adunit="brigitte_ip_reise" position="0"/>
+    <zone name="23380" adunit="brigitte_ip_reise" position="0"/>
+    <zone name="15316" adunit="brigitte_ip_reise" position="0"/>
+    <zone name="15685" adunit="brigitte_ip_reise" position="2"/>
+    <zone name="568" adunit="brigitte_ip_reise" position="1"/>
+    <zone name="23353" adunit="brigitte_ip_rezepte" position="0"/>
+    <zone name="23355" adunit="brigitte_ip_rezepte" position="0"/>
+    <zone name="15367" adunit="brigitte_ip_rezepte" position="0"/>
+    <zone name="15665" adunit="brigitte_ip_rezepte" position="2"/>
+    <zone name="13076" adunit="brigitte_ip_rezepte" position="1"/>
+    <zone name="560" adunit="brigitte_ip_ros" position="10"/>
+    <zone name="23398" adunit="brigitte_ip_ros" position="0"/>
+    <zone name="23400" adunit="brigitte_ip_ros" position="0"/>
+    <zone name="15371" adunit="brigitte_ip_ros" position="0"/>
+    <zone name="13310" adunit="brigitte_ip_ros" position="1"/>
+    <zone name="23390" adunit="brigitte_ip_video" position="0"/>
+    <zone name="23392" adunit="brigitte_ip_video" position="0"/>
+    <zone name="23339" adunit="brigitte_ip_video" position="0"/>
+    <zone name="23404" adunit="brigitte_ip_video" position="1"/>
+    <zone name="23382" adunit="brigitte_ip_wohnen" position="0"/>
+    <zone name="23384" adunit="brigitte_ip_wohnen" position="0"/>
+    <zone name="15318" adunit="brigitte_ip_wohnen" position="0"/>
+    <zone name="15687" adunit="brigitte_ip_wohnen" position="2"/>
+    <zone name="571" adunit="brigitte_ip_wohnen" position="1"/>
+    <zone name="14780" adunit="brigitte_trend_and_home" position="0"/>
+    <zone name="14782" adunit="brigitte_trend_and_ros" position="10"/>
+    <zone name="14784" adunit="brigitte_trend_and_ros" position="1"/>
+    <zone name="12828" adunit="brigitte_trend_ip_home" position="0"/>
+    <zone name="12826" adunit="brigitte_trend_ip_ros" position="10"/>
+    <zone name="12824" adunit="brigitte_trend_ip_ros" position="1"/>
+    <zone name="17856" adunit="brigitte_and_gruen" position="0"/>
+    <zone name="17854" adunit="brigitte_and_gruen" position="2"/>
+    <zone name="17852" adunit="brigitte_and_gruen" position="1"/>
+    <zone name="13030" adunit="brigitte_and_gruen" position="0"/>
+    <zone name="15649" adunit="brigitte_and_leben_gesellschaft" position="2"/>
+    <zone name="13017" adunit="brigitte_and_leben_gesellschaft" position="1"/>
+    <zone name="15385" adunit="brigitte_and_leben_job" position="0"/>
+    <zone name="15657" adunit="brigitte_and_leben_job" position="2"/>
+    <zone name="14474" adunit="brigitte_and_leben_job" position="1"/>
+    <zone name="15659" adunit="brigitte_and_leben_job" position="2"/>
+    <zone name="14476" adunit="brigitte_and_leben_job" position="1"/>
+    <zone name="16288" adunit="brigitte_and_portrait" position="2"/>
+    <zone name="16284" adunit="brigitte_and_portrait" position="1"/>
+    <zone name="15360" adunit="brigitte_and_leben_quiz" position="0"/>
+    <zone name="13034" adunit="brigitte_and_mbooklet" position="0"/>
+    <zone name="13038" adunit="brigitte_and_mbooklet" position="0"/>
+    <zone name="13040" adunit="brigitte_and_mbooklet" position="0"/>
+    <zone name="13036" adunit="brigitte_and_mbooklet" position="0"/>
+    <zone name="15689" adunit="brigitte_ip_leben_job" position="2"/>
+    <zone name="572" adunit="brigitte_ip_leben_job" position="1"/>
+    <zone name="15692" adunit="brigitte_ip_leben_quiz" position="2"/>
+    <zone name="569" adunit="brigitte_ip_leben_quiz" position="1"/>
+    <zone name="14506" adunit="brigitte_ipad_ros" position="0"/>
+    <zone name="16300" adunit="brigitte_ipad_ros" position="0"/>
+    <zone name="14489" adunit="brigitte_ipad_start" position="0"/>
+    <zone name="16290" adunit="brigitte_ipad_start" position="0"/>
+    <zone name="576" adunit="brigitte_ip_balance" position="0"/>
+    <zone name="17863" adunit="brigitte_ip_gruen" position="2"/>
+    <zone name="17860" adunit="brigitte_ip_gruen" position="1"/>
+    <zone name="577" adunit="brigitte_ip_leben_gesellschaft" position="0"/>
+    <zone name="15675" adunit="brigitte_ip_leben_gesellschaft" position="2"/>
+    <zone name="563" adunit="brigitte_ip_leben_gesellschaft" position="1"/>
+    <zone name="15369" adunit="brigitte_ip_leben_job" position="0"/>
+    <zone name="15320" adunit="brigitte_ip_leben_job" position="0"/>
+    <zone name="17858" adunit="brigitte_ip_gruen" position="0"/>
+    <zone name="11836" adunit="brigitte_ip_mbooklet" position="0"/>
+    <zone name="11832" adunit="brigitte_ip_mbooklet" position="0"/>
+    <zone name="11820" adunit="brigitte_ip_mbooklet" position="0"/>
+    <zone name="11834" adunit="brigitte_ip_mbooklet" position="0"/>
+    <zone name="14756" adunit="brigitte_ipad_ros" position="0"/>
+    <zone name="22655" adunit="buddyquiz_and_film_musik" position="10"/>
+    <zone name="22657" adunit="buddyquiz_and_film_musik" position="0"/>
+    <zone name="22653" adunit="buddyquiz_and_film_musik" position="2"/>
+    <zone name="22651" adunit="buddyquiz_and_film_musik" position="1"/>
+    <zone name="22647" adunit="buddyquiz_and_ros" position="10"/>
+    <zone name="22649" adunit="buddyquiz_and_ros" position="0"/>
+    <zone name="22645" adunit="buddyquiz_and_ros" position="2"/>
+    <zone name="22642" adunit="buddyquiz_and_ros" position="1"/>
+    <zone name="22663" adunit="buddyquiz_and_spiel_spaﬂ" position="10"/>
+    <zone name="22665" adunit="buddyquiz_and_spiel_spaﬂ" position="0"/>
+    <zone name="22661" adunit="buddyquiz_and_spiel_spaﬂ" position="2"/>
+    <zone name="22659" adunit="buddyquiz_and_spiel_spaﬂ" position="1"/>
+    <zone name="22672" adunit="buddyquiz_and_sport" position="10"/>
+    <zone name="22674" adunit="buddyquiz_and_sport" position="0"/>
+    <zone name="22669" adunit="buddyquiz_and_sport" position="2"/>
+    <zone name="22667" adunit="buddyquiz_and_sport" position="1"/>
+    <zone name="16843" adunit="ck_and_einkaufsliste" position="10" index="true"/>
+    <zone name="16859" adunit="ck_and_einkaufsliste" position="1" index="true"/>
+    <zone name="15720" adunit="ck_and_home" position="10" index="true"/>
+    <zone name="15712" adunit="ck_and_home" position="1" index="true"/>
+    <zone name="16857" adunit="ck_and_home" position="1" index="true"/>
+    <zone name="16845" adunit="ck_and_magazin" position="10" index="true"/>
+    <zone name="15714" adunit="ck_and_magazin" position="1" index="true"/>
+    <zone name="16855" adunit="ck_and_magazin" position="1" index="true"/>
+    <zone name="15710" adunit="ck_and_merkzettel" position="1" index="true"/>
+    <zone name="16849" adunit="ck_and_rezeptdetail" position="2"/>
+    <zone name="15718" adunit="ck_and_rezeptdetail" position="1"/>
+    <zone name="16851" adunit="ck_and_rezepte" position="1" index="true"/>
+    <zone name="16847" adunit="ck_and_suche" position="10" index="true"/>
+    <zone name="15716" adunit="ck_and_suche" position="1" index="true"/>
+    <zone name="16853" adunit="ck_and_suche" position="1" index="true"/>
+    <zone name="16824" adunit="ck_ip_einkaufsliste" position="10" index="true"/>
+    <zone name="16838" adunit="ck_ip_einkaufsliste" position="1" index="true"/>
+    <zone name="1483" adunit="ck_ip_home" position="1" index="true"/>
+    <zone name="1489" adunit="ck_ip_merkzettel" position="1" index="true"/>
+    <zone name="15702" adunit="ck_ip_home" position="10" index="true"/>
+    <zone name="16840" adunit="ck_ip_home" position="1" index="true"/>
+    <zone name="16830" adunit="ck_ip_magazin" position="10" index="true"/>
+    <zone name="15704" adunit="ck_ip_magazin" position="1" index="true"/>
+    <zone name="16832" adunit="ck_ip_magazin" position="1" index="true"/>
+    <zone name="16826" adunit="ck_ip_rezeptdetail" position="2"/>
+    <zone name="15708" adunit="ck_ip_rezeptdetail" position="1"/>
+    <zone name="16836" adunit="ck_ip_rezepte" position="1" index="true"/>
+    <zone name="16828" adunit="ck_ip_suche" position="10" index="true"/>
+    <zone name="15706" adunit="ck_ip_suche" position="1" index="true"/>
+    <zone name="16834" adunit="ck_ip_suche" position="1" index="true"/>
+    <zone name="21691" adunit="ck_ipad_rezeptbewertung" position="1" index="true"/>
+    <zone name="21689" adunit="ck_ipad_rezeptdetail" position="1"/>
+    <zone name="21687" adunit="ck_ipad_ros" position="10" index="true"/>
+    <zone name="1482" adunit="ck_ip_ros" position="1" index="true"/>
+    <zone name="22301" adunit="ck_tab_rezeptbewertung" position="1" index="true"/>
+    <zone name="22303" adunit="ck_tab_rezeptdetail" position="1"/>
+    <zone name="22305" adunit="ck_tab_suche" position="10" index="true"/>
+    <zone name="22814" adunit="comunio_and_spielfeld" position="0"/>
+    <zone name="23054" adunit="comunio_and_spielfeld_ul" position="0"/>
+    <zone name="23052" adunit="comunio_and_spielfeld_ur" position="0"/>
+    <zone name="17828" adunit="comunio_and_ros" position="1"/>
+    <zone name="17834" adunit="comunio_and_ros" position="0"/>
+    <zone name="17830" adunit="comunio_and_start" position="1"/>
+    <zone name="17832" adunit="comunio_and_start" position="0"/>
+    <zone name="22806" adunit="comunio_ip_spielfeld_ip4" position="0"/>
+    <zone name="22808" adunit="comunio_ip_spielfeld_ip5" position="0"/>
+    <zone name="22810" adunit="comunio_ip_spielfeld_ip6" position="0"/>
+    <zone name="23046" adunit="comunio_ip_spielfeld_ul" position="0"/>
+    <zone name="23044" adunit="comunio_ip_spielfeld_ur" position="0"/>
+    <zone name="13085" adunit="comunio_ip_ros" position="1"/>
+    <zone name="13083" adunit="comunio_ip_start" position="1"/>
+    <zone name="22148" adunit="couch_ipad_flowad" position="0"/>
+    <zone name="21787" adunit="couch_ipad_start" position="0"/>
+    <zone name="21790" adunit="couch_ipad_start" position="0"/>
+    <zone name="21890" adunit="couch_ipad_start" position="0"/>
+    <zone name="21794" adunit="couch_ipad_ros" position="1"/>
+    <zone name="21796" adunit="couch_ipad_ros" position="0"/>
+    <zone name="21798" adunit="couch_ipad_ros" position="0"/>
+    <zone name="21792" adunit="couch_ipad_ros" position="1"/>
+    <zone name="21922" adunit="couch_ip_flowad" position="0"/>
+    <zone name="21781" adunit="couch_ip_start" position="0"/>
+    <zone name="21784" adunit="couch_ip_ros" position="1"/>
+    <zone name="14275" adunit="eltern_and_ros" position="0"/>
+    <zone name="14277" adunit="eltern_ip_ros" position="0"/>
+    <zone name="18072" adunit="eltern_and_adventskalender" position="1"/>
+    <zone name="13200" adunit="eltern_and_ros" position="10"/>
+    <zone name="13207" adunit="eltern_and_ros" position="2"/>
+    <zone name="13198" adunit="eltern_and_ros" position="1"/>
+    <zone name="22536" adunit="eltern_and_baby" position="10"/>
+    <zone name="22516" adunit="eltern_and_baby" position="2"/>
+    <zone name="22772" adunit="eltern_and_baby" position="3"/>
+    <zone name="22488" adunit="eltern_and_baby" position="1"/>
+    <zone name="22524" adunit="eltern_and_ernaehrung" position="10"/>
+    <zone name="22504" adunit="eltern_and_ernaehrung" position="2"/>
+    <zone name="22476" adunit="eltern_and_ernaehrung" position="1"/>
+    <zone name="22532" adunit="eltern_and_familie_urlaub" position="10"/>
+    <zone name="22512" adunit="eltern_and_familie_urlaub" position="2"/>
+    <zone name="22776" adunit="eltern_and_familie_urlaub" position="3"/>
+    <zone name="22484" adunit="eltern_and_familie_urlaub" position="1"/>
+    <zone name="22544" adunit="eltern_and_baby" position="10"/>
+    <zone name="22496" adunit="eltern_and_baby" position="1"/>
+    <zone name="22542" adunit="eltern_and_kinderwunsch" position="10"/>
+    <zone name="22494" adunit="eltern_and_kinderwunsch" position="1"/>
+    <zone name="22540" adunit="eltern_and_leben_mit_kind" position="10"/>
+    <zone name="22492" adunit="eltern_and_leben_mit_kind" position="1"/>
+    <zone name="22546" adunit="eltern_and_schwangerschaft" position="10"/>
+    <zone name="22498" adunit="eltern_and_schwangerschaft" position="1"/>
+    <zone name="22526" adunit="eltern_and_gesundheit" position="10"/>
+    <zone name="22506" adunit="eltern_and_gesundheit" position="2"/>
+    <zone name="22478" adunit="eltern_and_gesundheit" position="1"/>
+    <zone name="22782" adunit="eltern_and_gesundheit" position="3"/>
+    <zone name="22520" adunit="eltern_and_home" position="10"/>
+    <zone name="22628" adunit="eltern_and_home" position="0"/>
+    <zone name="22500" adunit="eltern_and_home" position="2"/>
+    <zone name="22786" adunit="eltern_and_home" position="3"/>
+    <zone name="22472" adunit="eltern_and_home" position="1"/>
+    <zone name="22522" adunit="eltern_and_kauflust" position="10"/>
+    <zone name="22502" adunit="eltern_and_kauflust" position="2"/>
+    <zone name="22784" adunit="eltern_and_kauflust" position="3"/>
+    <zone name="22474" adunit="eltern_and_kauflust" position="1"/>
+    <zone name="22530" adunit="eltern_and_kinderwunsch" position="10"/>
+    <zone name="22510" adunit="eltern_and_kinderwunsch" position="2"/>
+    <zone name="22778" adunit="eltern_and_kinderwunsch" position="3"/>
+    <zone name="22482" adunit="eltern_and_kinderwunsch" position="1"/>
+    <zone name="22534" adunit="eltern_and_kleinkind" position="10"/>
+    <zone name="22514" adunit="eltern_and_kleinkind" position="2"/>
+    <zone name="22486" adunit="eltern_and_kleinkind" position="1"/>
+    <zone name="22774" adunit="eltern_and_kleinkind" position="3"/>
+    <zone name="22528" adunit="eltern_and_schulkind" position="10"/>
+    <zone name="22508" adunit="eltern_and_schulkind" position="2"/>
+    <zone name="22780" adunit="eltern_and_schulkind" position="3"/>
+    <zone name="22480" adunit="eltern_and_schulkind" position="1"/>
+    <zone name="22538" adunit="eltern_and_schwangerschaft" position="10"/>
+    <zone name="22518" adunit="eltern_and_schwangerschaft" position="2"/>
+    <zone name="22770" adunit="eltern_and_schwangerschaft" position="3"/>
+    <zone name="22490" adunit="eltern_and_schwangerschaft" position="1"/>
+    <zone name="22614" adunit="eltern_ip_baby" position="10"/>
+    <zone name="22593" adunit="eltern_ip_baby" position="2"/>
+    <zone name="22754" adunit="eltern_ip_baby" position="3"/>
+    <zone name="22565" adunit="eltern_ip_baby" position="1"/>
+    <zone name="22602" adunit="eltern_ip_ernaehrung" position="10"/>
+    <zone name="22581" adunit="eltern_ip_ernaehrung" position="2"/>
+    <zone name="22553" adunit="eltern_ip_ernaehrung" position="1"/>
+    <zone name="22610" adunit="eltern_ip_familie_urlaub" position="10"/>
+    <zone name="22589" adunit="eltern_ip_familie_urlaub" position="2"/>
+    <zone name="22758" adunit="eltern_ip_familie_urlaub" position="3"/>
+    <zone name="22561" adunit="eltern_ip_familie_urlaub" position="1"/>
+    <zone name="22622" adunit="eltern_ip_baby" position="10"/>
+    <zone name="22573" adunit="eltern_ip_baby" position="1"/>
+    <zone name="22620" adunit="eltern_ip_kinderwunsch" position="10"/>
+    <zone name="22571" adunit="eltern_ip_kinderwunsch" position="1"/>
+    <zone name="22618" adunit="eltern_ip_leben_mit_kind" position="10"/>
+    <zone name="22569" adunit="eltern_ip_leben_mit_kind" position="1"/>
+    <zone name="22624" adunit="eltern_ip_schwangerschaft" position="10"/>
+    <zone name="22575" adunit="eltern_ip_schwangerschaft" position="1"/>
+    <zone name="22604" adunit="eltern_ip_gesundheit" position="10"/>
+    <zone name="22583" adunit="eltern_ip_gesundheit" position="2"/>
+    <zone name="22555" adunit="eltern_ip_gesundheit" position="1"/>
+    <zone name="22764" adunit="eltern_ip_gesundheit" position="3"/>
+    <zone name="22597" adunit="eltern_ip_home" position="10"/>
+    <zone name="22626" adunit="eltern_ip_home" position="0"/>
+    <zone name="22577" adunit="eltern_ip_home" position="2"/>
+    <zone name="22768" adunit="eltern_ip_home" position="3"/>
+    <zone name="22548" adunit="eltern_ip_home" position="1"/>
+    <zone name="22600" adunit="eltern_ip_kauflust" position="10"/>
+    <zone name="22579" adunit="eltern_ip_kauflust" position="2"/>
+    <zone name="22766" adunit="eltern_ip_kauflust" position="3"/>
+    <zone name="22551" adunit="eltern_ip_kauflust" position="1"/>
+    <zone name="22608" adunit="eltern_ip_kinderwunsch" position="10"/>
+    <zone name="22587" adunit="eltern_ip_kinderwunsch" position="2"/>
+    <zone name="22760" adunit="eltern_ip_kinderwunsch" position="3"/>
+    <zone name="22559" adunit="eltern_ip_kinderwunsch" position="1"/>
+    <zone name="22612" adunit="eltern_ip_kleinkind" position="10"/>
+    <zone name="22591" adunit="eltern_ip_kleinkind" position="2"/>
+    <zone name="22563" adunit="eltern_ip_kleinkind" position="1"/>
+    <zone name="22756" adunit="eltern_ip_kleinkind" position="3"/>
+    <zone name="22606" adunit="eltern_ip_schulkind" position="10"/>
+    <zone name="22585" adunit="eltern_ip_schulkind" position="2"/>
+    <zone name="22762" adunit="eltern_ip_schulkind" position="3"/>
+    <zone name="22557" adunit="eltern_ip_schulkind" position="1"/>
+    <zone name="22616" adunit="eltern_ip_schwangerschaft" position="10"/>
+    <zone name="22595" adunit="eltern_ip_schwangerschaft" position="2"/>
+    <zone name="22752" adunit="eltern_ip_schwangerschaft" position="3"/>
+    <zone name="22567" adunit="eltern_ip_schwangerschaft" position="1"/>
+    <zone name="18074" adunit="eltern_ip_adventskalender" position="1"/>
+    <zone name="13203" adunit="eltern_ip_ros" position="10"/>
+    <zone name="13205" adunit="eltern_ip_ros" position="2"/>
+    <zone name="13196" adunit="eltern_ip_ros" position="1"/>
+    <zone name="13056" adunit="eltern_kinderwunsch_ip_ros" position="10"/>
+    <zone name="13054" adunit="eltern_kinderwunsch_ip_ros" position="1"/>
+    <zone name="17979" adunit="fussballeuropa_and_ros" position="10"/>
+    <zone name="17985" adunit="fussballeuropa_and_ros" position="0"/>
+    <zone name="17977" adunit="fussballeuropa_and_ros" position="1"/>
+    <zone name="17987" adunit="fussballeuropa_and_start" position="0"/>
+    <zone name="17975" adunit="fussballeuropa_and_start" position="10"/>
+    <zone name="17973" adunit="fussballeuropa_and_start" position="1"/>
+    <zone name="17983" adunit="fussballeuropa_and_wm" position="10"/>
+    <zone name="17981" adunit="fussballeuropa_and_wm" position="1"/>
+    <zone name="17995" adunit="fussballeuropa_ip_ros" position="10"/>
+    <zone name="18001" adunit="fussballeuropa_ip_ros" position="0"/>
+    <zone name="17993" adunit="fussballeuropa_ip_ros" position="1"/>
+    <zone name="18003" adunit="fussballeuropa_ip_start" position="0"/>
+    <zone name="17991" adunit="fussballeuropa_ip_start" position="10"/>
+    <zone name="17989" adunit="fussballeuropa_ip_start" position="1"/>
+    <zone name="17999" adunit="fussballeuropa_ip_wm" position="10"/>
+    <zone name="17997" adunit="fussballeuropa_ip_wm" position="1"/>
+    <zone name="11423" adunit="gala_and_Bilder" position="0"/>
+    <zone name="12636" adunit="gala_and_beauty_fashion_bilder" position="0"/>
+    <zone name="12634" adunit="gala_and_news_bilder" position="0"/>
+    <zone name="12638" adunit="gala_and_royals_bilder" position="0"/>
+    <zone name="16314" adunit="gala_and_start" position="0"/>
+    <zone name="15086" adunit="glamlife_and_article" position="1"/>
+    <zone name="15088" adunit="glamlife_and_generic" position="1" index="true"/>
+    <zone name="15084" adunit="glamlife_and_start" position="0"/>
+    <zone name="16379" adunit="glamlife_and_ros" position="0"/>
+    <zone name="15902" adunit="glamlife_tab_article" position="1"/>
+    <zone name="15090" adunit="glamlife_tab_generic" position="1" index="true"/>
+    <zone name="15094" adunit="glamlife_tab_start" position="0"/>
+    <zone name="16049" adunit="glamlife_tab_ros" position="1" index="true"/>
+    <zone name="16381" adunit="glamlife_tab_ros" position="0"/>
+    <zone name="15080" adunit="glamlife_ipad_article" position="1"/>
+    <zone name="15078" adunit="glamlife_ipad_generic" position="1" index="true"/>
+    <zone name="15802" adunit="glamlife_ipad_start" position="0"/>
+    <zone name="16047" adunit="glamlife_ipad_ros" position="1" index="true"/>
+    <zone name="16397" adunit="glamlife_ipad_ros" position="0"/>
+    <zone name="15074" adunit="glamlife_ip_article" position="1"/>
+    <zone name="15076" adunit="glamlife_ip_generic" position="1" index="true"/>
+    <zone name="15072" adunit="glamlife_ip_start" position="0"/>
+    <zone name="16399" adunit="glamlife_ip_ros" position="0"/>
+    <zone name="17767" adunit="goalgames_and_ros" position="1"/>
+    <zone name="17773" adunit="goalgames_and_ros" position="0"/>
+    <zone name="17784" adunit="goalgames_and_start" position="0"/>
+    <zone name="17769" adunit="goalgames_tab_ros" position="1"/>
+    <zone name="17771" adunit="goalgames_tab_ros" position="0"/>
+    <zone name="17786" adunit="goalgames_tab_start" position="0"/>
+    <zone name="17765" adunit="goalgames_ipad_ros" position="1"/>
+    <zone name="17775" adunit="goalgames_ipad_ros" position="0"/>
+    <zone name="17782" adunit="goalgames_ipad_start" position="0"/>
+    <zone name="17763" adunit="goalgames__ros" position="1"/>
+    <zone name="17777" adunit="goalgames_ip_ros" position="0"/>
+    <zone name="17779" adunit="goalgames_ip_start" position="0"/>
+    <zone name="16752" adunit="grazia_and_home" position="10"/>
+    <zone name="16750" adunit="grazia_and_home" position="1"/>
+    <zone name="16756" adunit="grazia_and_ros" position="10"/>
+    <zone name="12347" adunit="grazia_and_ros" position="0"/>
+    <zone name="16754" adunit="grazia_and_ros" position="1"/>
+    <zone name="12351" adunit="grazia_and_start" position="0"/>
+    <zone name="12345" adunit="grazia_ip_home" position="1"/>
+    <zone name="12355" adunit="grazia_ip_ros" position="0"/>
+    <zone name="12349" adunit="grazia_ip_ros" position="1"/>
+    <zone name="12353" adunit="grazia_ip_start" position="0"/>
+    <zone name="16758" adunit="grazia_ipad_home" position="1"/>
+    <zone name="16768" adunit="grazia_ipad_ros" position="0"/>
+    <zone name="16766" adunit="grazia_ipad_ros" position="0"/>
+    <zone name="16760" adunit="grazia_ipad_ros" position="1"/>
+    <zone name="16764" adunit="grazia_ipad_start" position="0"/>
+    <zone name="16762" adunit="grazia_ipad_start" position="0"/>
+    <zone name="23530" adunit="k50667_and_home" position="10"/>
+    <zone name="15815" adunit="k50667_and_home" position="0"/>
+    <zone name="23528" adunit="k50667_and_home" position="2"/>
+    <zone name="15823" adunit="k50667_tab_home" position="1"/>
+    <zone name="23534" adunit="k50667_and_ros" position="10"/>
+    <zone name="21806" adunit="k50667_and_ros" position="0"/>
+    <zone name="23532" adunit="k50667_and_ros" position="2"/>
+    <zone name="23536" adunit="k50667_and_ros" position="1"/>
+    <zone name="23544" adunit="k50667_ipad_home" position="10"/>
+    <zone name="23546" adunit="k50667_ipad_home" position="0"/>
+    <zone name="23929" adunit="k50667_ipad_home" position="0"/>
+    <zone name="23540" adunit="k50667_ipad_home" position="1"/>
+    <zone name="23552" adunit="k50667_ipad_ros" position="10"/>
+    <zone name="23554" adunit="k50667_ipad_ros" position="0"/>
+    <zone name="23931" adunit="k50667_ipad_ros" position="0"/>
+    <zone name="23548" adunit="k50667_ipad_ros" position="1"/>
+    <zone name="23522" adunit="k50667_ip_home" position="10"/>
+    <zone name="15813" adunit="k50667_ip_home" position="0"/>
+    <zone name="23520" adunit="k50667_ip_home" position="2"/>
+    <zone name="15805" adunit="k50667_ip_home" position="1"/>
+    <zone name="23526" adunit="k50667_ip_ros" position="10"/>
+    <zone name="21804" adunit="k50667_ip_ros" position="0"/>
+    <zone name="23524" adunit="k50667_ip_ros" position="2"/>
+    <zone name="23518" adunit="k50667_ip_ros" position="1"/>
+    <zone name="23560" adunit="k50667_tab_home" position="10"/>
+    <zone name="23562" adunit="k50667_tab_home" position="0"/>
+    <zone name="23933" adunit="k50667_tab_home" position="0"/>
+    <zone name="23556" adunit="k50667_tab_home" position="1"/>
+    <zone name="23568" adunit="k50667_tab_ros" position="10"/>
+    <zone name="23570" adunit="k50667_tab_ros" position="0"/>
+    <zone name="23935" adunit="k50667_tab_ros" position="0"/>
+    <zone name="23564" adunit="k50667_tab_ros" position="1"/>
+    <zone name="22294" adunit="brigitte_and_native" position="0"/>
+    <zone name="22292" adunit="brigitte_ip_native" position="0"/>
+    <zone name="21884" adunit="brigitte_and_start" position="0"/>
+    <zone name="21888" adunit="brigitte_ipad_start" position="0"/>
+    <zone name="21886" adunit="brigitte_ipad_start" position="0"/>
+    <zone name="21882" adunit="brigitte_ip_start" position="0"/>
+    <zone name="24311" adunit="gala_and_beauty_fashion" position="10"/>
+    <zone name="24309" adunit="gala_and_beauty_fashion" position="10" index="true"/>
+    <zone name="24335" adunit="gala_and_beauty_fashion_bilder" position="10"/>
+    <zone name="18545" adunit="gala_and_beauty_fashion_bilder" position="1"/>
+    <zone name="24337" adunit="gala_and_beauty_fashion_bilder" position="10"/>
+    <zone name="18547" adunit="gala_and_beauty_fashion_bilder" position="1"/>
+    <zone name="24333" adunit="gala_and_beauty_fashion_bilder" position="10"/>
+    <zone name="18543" adunit="gala_and_beauty_fashion_bilder" position="1"/>
+    <zone name="24331" adunit="gala_and_news_bilder" position="10"/>
+    <zone name="18541" adunit="gala_and_news_bilder" position="1"/>
+    <zone name="24329" adunit="gala_and_bilder" position="10" index="true"/>
+    <zone name="21565" adunit="gala_and_bilder" position="2" index="true"/>
+    <zone name="17706" adunit="gala_and_bilder" position="1" index="true"/>
+    <zone name="17742" adunit="gala_and_bilder" position="0"/>
+    <zone name="18537" adunit="gala_and_beauty_fashion_bilder" position="0"/>
+    <zone name="18539" adunit="gala_and_lifestyle_bilder" position="0"/>
+    <zone name="24327" adunit="gala_and_ros_bilder" position="0"/>
+    <zone name="18535" adunit="gala_and_royals_bilder" position="0"/>
+    <zone name="17740" adunit="gala_and_news_bilder" position="0"/>
+    <zone name="18793" adunit="gala_and_ros" position="10" index="true"/>
+    <zone name="22676" adunit="gala_and_branding" position="1"/>
+    <zone name="17719" adunit="gala_and_beauty_fashion" position="1"/>
+    <zone name="17721" adunit="gala_and_beauty_fashion" position="1" index="true"/>
+    <zone name="21556" adunit="gala_and_beauty_fashion" position="2" index="true"/>
+    <zone name="17750" adunit="gala_and_beauty_fashion" position="0"/>
+    <zone name="21551" adunit="gala_and_home" position="10" index="true"/>
+    <zone name="24339" adunit="gala_and_home" position="0"/>
+    <zone name="21549" adunit="gala_and_home" position="2" index="true"/>
+    <zone name="21547" adunit="gala_and_home" position="1" index="true"/>
+    <zone name="24319" adunit="gala_and_lifestyle" position="10"/>
+    <zone name="17708" adunit="gala_and_lifestyle" position="1"/>
+    <zone name="24317" adunit="gala_and_lifestyle" position="10" index="true"/>
+    <zone name="21563" adunit="gala_and_lifestyle" position="2" index="true"/>
+    <zone name="17710" adunit="gala_and_lifestyle" position="1" index="true"/>
+    <zone name="17744" adunit="gala_and_lifestyle" position="0"/>
+    <zone name="17704" adunit="gala_and_partnerintegration_1" position="0"/>
+    <zone name="17702" adunit="gala_and_partnerintegration_2" position="0"/>
+    <zone name="17700" adunit="gala_and_partnerintegration_3" position="0"/>
+    <zone name="24325" adunit="gala_and_ros" position="2" index="true"/>
+    <zone name="24323" adunit="gala_and_ros" position="1" index="true"/>
+    <zone name="24315" adunit="gala_and_royals" position="10"/>
+    <zone name="17714" adunit="gala_and_royals" position="1"/>
+    <zone name="24313" adunit="gala_and_royals" position="10" index="true"/>
+    <zone name="21559" adunit="gala_and_royals" position="2" index="true"/>
+    <zone name="17717" adunit="gala_and_royals" position="1" index="true"/>
+    <zone name="17748" adunit="gala_and_royals" position="0"/>
+    <zone name="24307" adunit="gala_and_news" position="10"/>
+    <zone name="17723" adunit="gala_and_news" position="1"/>
+    <zone name="24305" adunit="gala_and_news" position="10" index="true"/>
+    <zone name="21554" adunit="gala_and_news" position="2" index="true"/>
+    <zone name="17725" adunit="gala_and_news" position="1" index="true"/>
+    <zone name="17738" adunit="gala_and_news" position="0"/>
+    <zone name="17752" adunit="gala_and_start" position="0"/>
+    <zone name="24321" adunit="gala_and_video" position="10" index="true"/>
+    <zone name="21561" adunit="gala_and_video" position="2" index="true"/>
+    <zone name="17712" adunit="gala_and_video" position="1" index="true"/>
+    <zone name="17746" adunit="gala_and_video" position="0"/>
+    <zone name="24296" adunit="gala_ip_beauty_fashion_bilder" position="10"/>
+    <zone name="18560" adunit="gala_ip_beauty_fashion_bilder" position="1"/>
+    <zone name="24299" adunit="gala_ip_lifestyle_bilder" position="10"/>
+    <zone name="18562" adunit="gala_ip_lifestyle_bilder" position="1"/>
+    <zone name="24294" adunit="gala_ip_royals_bilder" position="10"/>
+    <zone name="18558" adunit="gala_ip_royals_bilder" position="1"/>
+    <zone name="24292" adunit="gala_ip_news_bilder" position="10"/>
+    <zone name="18556" adunit="gala_ip_news_bilder" position="1"/>
+    <zone name="18077" adunit="gala_ip_bilder" position="1"/>
+    <zone name="24290" adunit="gala_ip_bilder" position="10" index="true"/>
+    <zone name="21527" adunit="gala_ip_bilder" position="2" index="true"/>
+    <zone name="17565" adunit="gala_ip_bilder" position="1" index="true"/>
+    <zone name="17529" adunit="gala_ip_" position="0"/>
+    <zone name="18552" adunit="gala__ip_beauty_fashion_bilder" position="0"/>
+    <zone name="18554" adunit="gala__ip_beauty_fashion_bilder" position="0"/>
+    <zone name="24288" adunit="gala__ip_ros_bilder" position="0"/>
+    <zone name="18550" adunit="gala__ip_royals_bilder" position="0"/>
+    <zone name="17531" adunit="gala__ip_news_bilder" position="0"/>
+    <zone name="20252" adunit="gala__ip_ros_bilder" position="10" index="true"/>
+    <zone name="20615" adunit="gala_ip_branding" position="1" index="true"/>
+    <zone name="24271" adunit="gala_ip_beauty_fashion" position="10"/>
+    <zone name="17553" adunit="gala_ip_beauty_fashion" position="1"/>
+    <zone name="17551" adunit="gala_ip_beauty_fashion" position="1" index="true"/>
+    <zone name="24269" adunit="gala_ip_beauty_fashion" position="10" index="true"/>
+    <zone name="21519" adunit="gala_ip_beauty_fashion" position="2" index="true"/>
+    <zone name="17521" adunit="gala_ip_beauty_fashion" position="0"/>
+    <zone name="24263" adunit="gala_ip_home" position="10" index="true"/>
+    <zone name="24301" adunit="gala_ip_home" position="0"/>
+    <zone name="21515" adunit="gala_ip_home" position="2" index="true"/>
+    <zone name="21513" adunit="gala_ip_home" position="1" index="true"/>
+    <zone name="24279" adunit="gala_ip_lifestyle" position="10"/>
+    <zone name="17563" adunit="gala_ip_lifestyle" position="1"/>
+    <zone name="24277" adunit="gala_ip_lifestyle" position="10" index="true"/>
+    <zone name="21525" adunit="gala_ip_lifestyle" position="2" index="true"/>
+    <zone name="17561" adunit="gala_ip_lifestyle" position="1" index="true"/>
+    <zone name="17527" adunit="gala_ip_lifestyle" position="0"/>
+    <zone name="17567" adunit="gala_ip_partnerintegration_1" position="1" index="true"/>
+    <zone name="17569" adunit="gala_ip_partnerintegration_2" position="2" index="true"/>
+    <zone name="17571" adunit="gala_ip_partnerintegration_3" position="10" index="true"/>
+    <zone name="24286" adunit="gala_ip_ros" position="2" index="true"/>
+    <zone name="24284" adunit="gala_ip_ros" position="1" index="true"/>
+    <zone name="24275" adunit="gala_ip_royals" position="10"/>
+    <zone name="17557" adunit="gala_ip_royals" position="1"/>
+    <zone name="24273" adunit="gala_ip_royals" position="10" index="true"/>
+    <zone name="21521" adunit="gala_ip_royals" position="2" index="true"/>
+    <zone name="17555" adunit="gala_ip_royals" position="1" index="true"/>
+    <zone name="17523" adunit="gala_ip_royals" position="0"/>
+    <zone name="24267" adunit="gala_ip_news" position="10"/>
+    <zone name="17549" adunit="gala_ip_news" position="1"/>
+    <zone name="24265" adunit="gala_ip_news" position="10" index="true"/>
+    <zone name="21517" adunit="gala_ip_news" position="2" index="true"/>
+    <zone name="17547" adunit="gala_ip_news" position="1" index="true"/>
+    <zone name="17533" adunit="gala_ip_news" position="0"/>
+    <zone name="17519" adunit="gala_ip_start" position="0"/>
+    <zone name="24480" adunit="gala_ip_video" position="10"/>
+    <zone name="24482" adunit="gala_ip_video" position="1"/>
+    <zone name="24281" adunit="gala_ip_video" position="10" index="true"/>
+    <zone name="21523" adunit="gala_ip_video" position="2" index="true"/>
+    <zone name="17559" adunit="gala_ip_video" position="1" index="true"/>
+    <zone name="17525" adunit="gala_ip_video" position="0"/>
+    <zone name="19923" adunit="stern_and_auto" position="0"/>
+    <zone name="23841" adunit="stern_and_auto" position="10"/>
+    <zone name="23878" adunit="stern_and_auto" position="2"/>
+    <zone name="19927" adunit="stern_and_auto" position="1"/>
+    <zone name="19921" adunit="stern_and_bilder" position="0"/>
+    <zone name="19929" adunit="stern_and_bilder" position="1"/>
+    <zone name="19938" adunit="stern_and_bilder" position="1"/>
+    <zone name="19919" adunit="stern_and_digital" position="0"/>
+    <zone name="23821" adunit="stern_and_digital" position="10"/>
+    <zone name="23858" adunit="stern_and_digital" position="2"/>
+    <zone name="19940" adunit="stern_and_digital" position="1"/>
+    <zone name="20424" adunit="stern_and_familie" position="0"/>
+    <zone name="23829" adunit="stern_and_familie" position="10"/>
+    <zone name="23866" adunit="stern_and_familie" position="2"/>
+    <zone name="20419" adunit="stern_and_familie" position="1"/>
+    <zone name="23809" adunit="stern_and_fotografie" position="0"/>
+    <zone name="23845" adunit="stern_and_fotografie" position="10"/>
+    <zone name="23882" adunit="stern_and_fotografie" position="2"/>
+    <zone name="23799" adunit="stern_and_fotografie" position="1"/>
+    <zone name="20422" adunit="stern_and_genuss" position="0"/>
+    <zone name="20417" adunit="stern_and_genuss" position="1"/>
+    <zone name="19898" adunit="stern_and_gesundheit" position="0"/>
+    <zone name="23833" adunit="stern_and_gesundheit" position="10"/>
+    <zone name="23870" adunit="stern_and_gesundheit" position="2"/>
+    <zone name="19942" adunit="stern_and_gesundheit" position="1"/>
+    <zone name="23815" adunit="stern_and_home" position="10"/>
+    <zone name="23852" adunit="stern_and_home" position="2"/>
+    <zone name="19958" adunit="stern_and_home" position="1"/>
+    <zone name="19917" adunit="stern_and_kultur" position="0"/>
+    <zone name="23823" adunit="stern_and_kultur" position="10"/>
+    <zone name="23860" adunit="stern_and_kultur" position="2"/>
+    <zone name="19944" adunit="stern_and_kultur" position="1"/>
+    <zone name="19914" adunit="stern_and_lifestyle" position="0"/>
+    <zone name="23825" adunit="stern_and_lifestyle" position="10"/>
+    <zone name="23862" adunit="stern_and_lifestyle" position="2"/>
+    <zone name="19946" adunit="stern_and_lifestyle" position="1"/>
+    <zone name="21822" adunit="stern_and_start" position="0"/>
+    <zone name="19960" adunit="stern_and_news" position="1"/>
+    <zone name="19912" adunit="stern_and_panorama" position="0"/>
+    <zone name="23819" adunit="stern_and_panorama" position="10"/>
+    <zone name="23856" adunit="stern_and_panorama" position="2"/>
+    <zone name="19948" adunit="stern_and_panorama" position="1"/>
+    <zone name="19910" adunit="stern_and_politik" position="0"/>
+    <zone name="23817" adunit="stern_and_politik" position="10"/>
+    <zone name="23854" adunit="stern_and_politik" position="2"/>
+    <zone name="19950" adunit="stern_and_politik" position="1"/>
+    <zone name="19908" adunit="stern_and_reise" position="0"/>
+    <zone name="23839" adunit="stern_and_reise" position="10"/>
+    <zone name="23876" adunit="stern_and_reise" position="2"/>
+    <zone name="19952" adunit="stern_and_reise" position="1"/>
+    <zone name="19989" adunit="stern_and_ros" position="10"/>
+    <zone name="19991" adunit="stern_and_ros" position="2"/>
+    <zone name="23795" adunit="stern_and_ros" position="1"/>
+    <zone name="23811" adunit="stern_and_spezial" position="0"/>
+    <zone name="23847" adunit="stern_and_spezial" position="10"/>
+    <zone name="23884" adunit="stern_and_spezial" position="2"/>
+    <zone name="23801" adunit="stern_and_spezial" position="1"/>
+    <zone name="23813" adunit="stern_and_spezial" position="0"/>
+    <zone name="23849" adunit="stern_and_spezial" position="10"/>
+    <zone name="23886" adunit="stern_and_spezial" position="2"/>
+    <zone name="23803" adunit="stern_and_spezial" position="1"/>
+    <zone name="19906" adunit="stern_and_sport" position="0"/>
+    <zone name="23827" adunit="stern_and_sport" position="10"/>
+    <zone name="23864" adunit="stern_and_sport" position="2"/>
+    <zone name="19954" adunit="stern_and_sport" position="1"/>
+    <zone name="19925" adunit="stern_and_start" position="0"/>
+    <zone name="23807" adunit="stern_and_tv" position="0"/>
+    <zone name="23843" adunit="stern_and_tv" position="10"/>
+    <zone name="23880" adunit="stern_and_tv" position="2"/>
+    <zone name="23797" adunit="stern_and_tv" position="1"/>
+    <zone name="19931" adunit="stern_and_video" position="1"/>
+    <zone name="19904" adunit="stern_and_video" position="0"/>
+    <zone name="19902" adunit="stern_and_wirtschaft" position="0"/>
+    <zone name="23831" adunit="stern_and_wirtschaft" position="10"/>
+    <zone name="23868" adunit="stern_and_wirtschaft" position="2"/>
+    <zone name="19936" adunit="stern_and_wirtschaft" position="1"/>
+    <zone name="19900" adunit="stern_and_wissen" position="0"/>
+    <zone name="23835" adunit="stern_and_wissen" position="10"/>
+    <zone name="23872" adunit="stern_and_wissen" position="2"/>
+    <zone name="19956" adunit="stern_and_wissen" position="1"/>
+    <zone name="23805" adunit="stern_and_wissenstest" position="0"/>
+    <zone name="23837" adunit="stern_and_wissenstest" position="10"/>
+    <zone name="23874" adunit="stern_and_wissenstest" position="2"/>
+    <zone name="19934" adunit="stern_and_wissenstest" position="1"/>
+    <zone name="19712" adunit="stern_ip_auto" position="0"/>
+    <zone name="23785" adunit="stern_ip_auto" position="10"/>
+    <zone name="23746" adunit="stern_ip_auto" position="2"/>
+    <zone name="19645" adunit="stern_ip_auto" position="1"/>
+    <zone name="19702" adunit="stern_ip_" position="0"/>
+    <zone name="19706" adunit="stern_ip_" position="0"/>
+    <zone name="19650" adunit="stern_ip_" position="1"/>
+    <zone name="19704" adunit="stern_ip_digital" position="0"/>
+    <zone name="23765" adunit="stern_ip_digital" position="10"/>
+    <zone name="23726" adunit="stern_ip_digital" position="2"/>
+    <zone name="19652" adunit="stern_ip_digital" position="1"/>
+    <zone name="20415" adunit="stern_ip_familie" position="0"/>
+    <zone name="23773" adunit="stern_ip_familie" position="10"/>
+    <zone name="23734" adunit="stern_ip_familie" position="2"/>
+    <zone name="20409" adunit="stern_ip_familie" position="1"/>
+    <zone name="19708" adunit="stern_ip_fotografie" position="0"/>
+    <zone name="23789" adunit="stern_ip_fotografie" position="10"/>
+    <zone name="23750" adunit="stern_ip_fotografie" position="2"/>
+    <zone name="19648" adunit="stern_ip_fotografie" position="1"/>
+    <zone name="24490" adunit="stern_ip_genuss" position="10"/>
+    <zone name="20413" adunit="stern_ip_genuss" position="0"/>
+    <zone name="24484" adunit="stern_ip_genuss" position="2"/>
+    <zone name="20407" adunit="stern_ip_genuss" position="1"/>
+    <zone name="19710" adunit="stern_ip_gesundheit" position="0"/>
+    <zone name="23777" adunit="stern_ip_gesundheit" position="10"/>
+    <zone name="23738" adunit="stern_ip_gesundheit" position="2"/>
+    <zone name="19654" adunit="stern_ip_gesundheit" position="1"/>
+    <zone name="23759" adunit="stern_ip_home" position="10"/>
+    <zone name="23720" adunit="stern_ip_home" position="2"/>
+    <zone name="19685" adunit="stern_ip_kultur" position="0"/>
+    <zone name="23767" adunit="stern_ip_kultur" position="10"/>
+    <zone name="23728" adunit="stern_ip_kultur" position="2"/>
+    <zone name="19656" adunit="stern_ip_kultur" position="1"/>
+    <zone name="19716" adunit="stern_ip_start" position="0"/>
+    <zone name="19683" adunit="stern_ip_lifestyle" position="0"/>
+    <zone name="23769" adunit="stern_ip_lifestyle" position="10"/>
+    <zone name="23730" adunit="stern_ip_lifestyle" position="2"/>
+    <zone name="19658" adunit="stern_ip_lifestyle" position="1"/>
+    <zone name="21704" adunit="stern_ip_start" position="0"/>
+    <zone name="19676" adunit="stern_ip_news" position="1"/>
+    <zone name="19714" adunit="stern_ip_news" position="0"/>
+    <zone name="19680" adunit="stern_ip_panorama" position="0"/>
+    <zone name="23763" adunit="stern_ip_panorama" position="10"/>
+    <zone name="23724" adunit="stern_ip_panorama" position="2"/>
+    <zone name="19660" adunit="stern_ip_panorama" position="1"/>
+    <zone name="19687" adunit="stern_ip_politik" position="0"/>
+    <zone name="23761" adunit="stern_ip_politik" position="10"/>
+    <zone name="23722" adunit="stern_ip_politik" position="2"/>
+    <zone name="19662" adunit="stern_ip_politik" position="1"/>
+    <zone name="21331" adunit="stern_ip_mbooklet" position="1"/>
+    <zone name="19689" adunit="stern_ip_reise" position="0"/>
+    <zone name="23783" adunit="stern_ip_reise" position="10"/>
+    <zone name="23744" adunit="stern_ip_reise" position="2"/>
+    <zone name="19664" adunit="stern_ip_reise" position="1"/>
+    <zone name="19993" adunit="stern_ip_ros" position="10"/>
+    <zone name="20411" adunit="stern_ip_ros" position="2"/>
+    <zone name="23708" adunit="stern_ip_ros" position="1"/>
+    <zone name="23714" adunit="stern_ip_spezial_1" position="0"/>
+    <zone name="23791" adunit="stern_ip_spezial_1" position="10"/>
+    <zone name="23752" adunit="stern_ip_spezial_1" position="2"/>
+    <zone name="23710" adunit="stern_ip_spezial_1" position="1"/>
+    <zone name="23716" adunit="stern_ip_spezial_2" position="0"/>
+    <zone name="23793" adunit="stern_ip_spezial_2" position="10"/>
+    <zone name="23754" adunit="stern_ip_spezial_2" position="2"/>
+    <zone name="23712" adunit="stern_ip_spezial_2" position="1"/>
+    <zone name="19691" adunit="stern_ip_sport" position="0"/>
+    <zone name="23771" adunit="stern_ip_sport" position="10"/>
+    <zone name="23732" adunit="stern_ip_sport" position="2"/>
+    <zone name="19666" adunit="stern_ip_sport" position="1"/>
+    <zone name="19678" adunit="stern_ip_start" position="1"/>
+    <zone name="23083" adunit="stern_ip_tv" position="0"/>
+    <zone name="23787" adunit="stern_ip_tv" position="10"/>
+    <zone name="23756" adunit="stern_ip_tv" position="2"/>
+    <zone name="23085" adunit="stern_ip_tv" position="1"/>
+    <zone name="24488" adunit="stern_ip_video" position="10"/>
+    <zone name="19694" adunit="stern_ip_video" position="0"/>
+    <zone name="24486" adunit="stern_ip_video" position="2"/>
+    <zone name="19668" adunit="stern_ip_video" position="1"/>
+    <zone name="19696" adunit="stern_ip_wirtschaft" position="0"/>
+    <zone name="23775" adunit="stern_ip_wirtschaft" position="10"/>
+    <zone name="23736" adunit="stern_ip_wirtschaft" position="2"/>
+    <zone name="19670" adunit="stern_ip_wirtschaft" position="1"/>
+    <zone name="19698" adunit="stern_ip_wissen" position="0"/>
+    <zone name="23779" adunit="stern_ip_wissen" position="10"/>
+    <zone name="23740" adunit="stern_ip_wissen" position="2"/>
+    <zone name="19672" adunit="stern_ip_wissen" position="1"/>
+    <zone name="23781" adunit="stern_ip_wissenstest" position="10"/>
+    <zone name="23742" adunit="stern_ip_wissenstest" position="2"/>
+    <zone name="19674" adunit="stern_ip_wissenstest" position="1"/>
+    <zone name="19700" adunit="stern_ip_wissenstest" position="0"/>
+    <zone name="14990" adunit="newsrepublic_and_article" position="1"/>
+    <zone name="14992" adunit="newsrepublic_and_generic" position="1" index="true"/>
+    <zone name="14988" adunit="newsrepublic_and_start" position="0"/>
+    <zone name="19981" adunit="newsrepublic_and_preroll" position="" index="true"/>
+    <zone name="16369" adunit="newsrepublic_and_ros" position="0"/>
+    <zone name="14996" adunit="newsrepublic_tab_article" position="1"/>
+    <zone name="14994" adunit="newsrepublic_tab_generic" position="1" index="true"/>
+    <zone name="14998" adunit="newsrepublic_tab_start" position="0"/>
+    <zone name="16051" adunit="newsrepublic_tab_ros" position="1" index="true"/>
+    <zone name="16367" adunit="newsrepublic_tab_ros" position="0"/>
+    <zone name="14984" adunit="newsrepublic_ipad_article" position="1"/>
+    <zone name="14982" adunit="newsrepublic_ipad_generic" position="1" index="true"/>
+    <zone name="14986" adunit="newsrepublic_ipad_news" position="0"/>
+    <zone name="16053" adunit="newsrepublic_ipad_news" position="1" index="true"/>
+    <zone name="16411" adunit="newsrepublic_ipad_ros" position="0"/>
+    <zone name="14978" adunit="newsrepublic_ip_article" position="1"/>
+    <zone name="14980" adunit="newsrepublic_ip_generic" position="1" index="true"/>
+    <zone name="14976" adunit="newsrepublic_ip_news" position="0"/>
+    <zone name="16413" adunit="newsrepublic_ip_ros" position="0"/>
+    <zone name="22848" adunit="n-tv_and_auto" position="10"/>
+    <zone name="13703" adunit="n-tv_and_auto" position="1"/>
+    <zone name="13701" adunit="n-tv_and_auto" position="10" index="true"/>
+    <zone name="16029" adunit="n-tv_and_auto" position="0"/>
+    <zone name="13699" adunit="n-tv_and_auto" position="2" index="true"/>
+    <zone name="13697" adunit="n-tv_and_auto" position="1" index="true"/>
+    <zone name="22844" adunit="n-tv_and_bilderserien" position="10"/>
+    <zone name="13711" adunit="n-tv_and_bilderserien" position="1"/>
+    <zone name="13707" adunit="n-tv_and_bilderserien" position="10" index="true"/>
+    <zone name="22119" adunit="n-tv_and_bilderserien" position="0"/>
+    <zone name="13705" adunit="n-tv_and_bilderserien" position="2" index="true"/>
+    <zone name="13709" adunit="n-tv_and_bilderserien" position="1" index="true"/>
+    <zone name="22820" adunit="n-tv_and_boersenticker" position="10"/>
+    <zone name="13695" adunit="n-tv_and_boersenticker" position="1"/>
+    <zone name="13641" adunit="n-tv_and_boersenticker" position="10" index="true"/>
+    <zone name="13667" adunit="n-tv_and_boersenticker" position="0"/>
+    <zone name="13639" adunit="n-tv_and_boersenticker" position="2" index="true"/>
+    <zone name="13637" adunit="n-tv_and_boersenticker" position="1" index="true"/>
+    <zone name="22846" adunit="n-tv_and_f1" position="10"/>
+    <zone name="14121" adunit="n-tv_and_f1" position="1"/>
+    <zone name="14123" adunit="n-tv_and_f1" position="10" index="true"/>
+    <zone name="14129" adunit="n-tv_and_f1" position="0"/>
+    <zone name="14125" adunit="n-tv_and_f1" position="2" index="true"/>
+    <zone name="14127" adunit="n-tv_and_f1" position="1" index="true"/>
+    <zone name="22822" adunit="n-tv_and_fussballticker" position="10"/>
+    <zone name="13689" adunit="n-tv_and_fussballticker" position="1"/>
+    <zone name="13587" adunit="n-tv_and_fussballticker" position="10" index="true"/>
+    <zone name="13651" adunit="n-tv_and_fussballticker" position="0"/>
+    <zone name="13585" adunit="n-tv_and_fussballticker" position="2" index="true"/>
+    <zone name="13583" adunit="n-tv_and_fussballticker" position="1" index="true"/>
+    <zone name="13723" adunit="n-tv_and_home" position="1" index="true"/>
+    <zone name="13561" adunit="n-tv_and_home" position="10" index="true"/>
+    <zone name="13559" adunit="n-tv_and_home" position="2" index="true"/>
+    <zone name="13715" adunit="n-tv_and_home" position="1" index="true"/>
+    <zone name="21999" adunit="n-tv_and_meistgelesen" position="10" index="true"/>
+    <zone name="22003" adunit="n-tv_and_meistgelesen" position="0"/>
+    <zone name="21994" adunit="n-tv_and_meistgelesen" position="2" index="true"/>
+    <zone name="21990" adunit="n-tv_and_meistgelesen" position="1" index="true"/>
+    <zone name="22001" adunit="n-tv_and_das_neueste" position="10" index="true"/>
+    <zone name="22005" adunit="n-tv_and_das_neueste" position="0"/>
+    <zone name="21996" adunit="n-tv_and_das_neueste" position="2" index="true"/>
+    <zone name="21992" adunit="n-tv_and_das_neueste" position="1" index="true"/>
+    <zone name="22828" adunit="n-tv_and_panorama" position="10"/>
+    <zone name="13679" adunit="n-tv_and_panorama" position="1"/>
+    <zone name="13605" adunit="n-tv_and_panorama" position="10" index="true"/>
+    <zone name="13655" adunit="n-tv_and_panorama" position="0"/>
+    <zone name="13603" adunit="n-tv_and_panorama" position="2" index="true"/>
+    <zone name="13601" adunit="n-tv_and_panorama" position="1" index="true"/>
+    <zone name="22818" adunit="n-tv_and_politik" position="10"/>
+    <zone name="13675" adunit="n-tv_and_politik" position="1"/>
+    <zone name="13593" adunit="n-tv_and_politik" position="10" index="true"/>
+    <zone name="13729" adunit="n-tv_and_politik" position="0"/>
+    <zone name="13727" adunit="n-tv_and_politik" position="2" index="true"/>
+    <zone name="13589" adunit="n-tv_and_politik" position="1" index="true"/>
+    <zone name="16129" adunit="n-tv_and_pollenwetter" position="10" index="true"/>
+    <zone name="16131" adunit="n-tv_and_pollenwetter" position="2" index="true"/>
+    <zone name="16133" adunit="n-tv_and_pollenwetter" position="1" index="true"/>
+    <zone name="22830" adunit="n-tv_and_ratgeber" position="10"/>
+    <zone name="13681" adunit="n-tv_and_ratgeber" position="1"/>
+    <zone name="13611" adunit="n-tv_and_ratgeber" position="10" index="true"/>
+    <zone name="13657" adunit="n-tv_and_ratgeber" position="0"/>
+    <zone name="13609" adunit="n-tv_and_ratgeber" position="2" index="true"/>
+    <zone name="13607" adunit="n-tv_and_ratgeber" position="1" index="true"/>
+    <zone name="13617" adunit="n-tv_and_reise" position="10"/>
+    <zone name="13683" adunit="n-tv_and_reise" position="1"/>
+    <zone name="13659" adunit="n-tv_and_reise" position="0"/>
+    <zone name="13615" adunit="n-tv_and_reise" position="2" index="true"/>
+    <zone name="13613" adunit="n-tv_and_reise" position="1" index="true"/>
+    <zone name="13581" adunit="n-tv_and_ros" position="10" index="true"/>
+    <zone name="24425" adunit="n-tv_and_ros" position="0"/>
+    <zone name="13579" adunit="n-tv_and_ros" position="2" index="true"/>
+    <zone name="13713" adunit="n-tv_and_ros" position="1" index="true"/>
+    <zone name="22832" adunit="n-tv_and_sport" position="10"/>
+    <zone name="13669" adunit="n-tv_and_sport" position="1"/>
+    <zone name="13569" adunit="n-tv_and_sport" position="10" index="true"/>
+    <zone name="13645" adunit="n-tv_and_sport" position="0"/>
+    <zone name="13567" adunit="n-tv_and_sport" position="2" index="true"/>
+    <zone name="13719" adunit="n-tv_and_sport" position="1" index="true"/>
+    <zone name="13557" adunit="n-tv_and_start" position="0"/>
+    <zone name="22834" adunit="n-tv_and_technik" position="10"/>
+    <zone name="13671" adunit="n-tv_and_technik" position="1"/>
+    <zone name="13573" adunit="n-tv_and_technik" position="10" index="true"/>
+    <zone name="13647" adunit="n-tv_and_technik" position="0"/>
+    <zone name="13571" adunit="n-tv_and_technik" position="2" index="true"/>
+    <zone name="13721" adunit="n-tv_and_technik" position="1" index="true"/>
+    <zone name="22836" adunit="n-tv_and_" position="10"/>
+    <zone name="13677" adunit="n-tv_and_" position="1"/>
+    <zone name="13599" adunit="n-tv_and_" position="10" index="true"/>
+    <zone name="13653" adunit="n-tv_and_" position="0"/>
+    <zone name="13597" adunit="n-tv_and_" position="2" index="true"/>
+    <zone name="13595" adunit="n-tv_and_" position="1" index="true"/>
+    <zone name="22838" adunit="n-tv_and_video" position="10"/>
+    <zone name="13691" adunit="n-tv_and_video" position="1"/>
+    <zone name="13565" adunit="n-tv_and_video" position="10" index="true"/>
+    <zone name="13643" adunit="n-tv_and_video" position="0"/>
+    <zone name="13563" adunit="n-tv_and_video" position="2" index="true"/>
+    <zone name="13725" adunit="n-tv_and_video" position="1" index="true"/>
+    <zone name="14828" adunit="n-tv_and_" position="10" index="true"/>
+    <zone name="22117" adunit="n-tv_and_" position="0"/>
+    <zone name="14824" adunit="n-tv_and_" position="2" index="true"/>
+    <zone name="14822" adunit="n-tv_and_" position="1" index="true"/>
+    <zone name="22840" adunit="n-tv_and_wirtschaft" position="10"/>
+    <zone name="13673" adunit="n-tv_and_wirtschaft" position="1"/>
+    <zone name="13577" adunit="n-tv_and_wirtschaft" position="10" index="true"/>
+    <zone name="13649" adunit="n-tv_and_wirtschaft" position="0"/>
+    <zone name="13575" adunit="n-tv_and_wirtschaft" position="2" index="true"/>
+    <zone name="13717" adunit="n-tv_and_wirtschaft" position="1" index="true"/>
+    <zone name="22842" adunit="n-tv_and_wissen" position="10"/>
+    <zone name="13685" adunit="n-tv_and_wissen" position="1"/>
+    <zone name="13623" adunit="n-tv_and_wissen" position="10" index="true"/>
+    <zone name="13661" adunit="n-tv_and_wissen" position="0"/>
+    <zone name="13621" adunit="n-tv_and_wissen" position="2" index="true"/>
+    <zone name="13619" adunit="n-tv_and_wissen" position="1" index="true"/>
+    <zone name="20401" adunit="n-tv_tab_" position="1" index="true"/>
+    <zone name="20319" adunit="n-tv_tab_auto" position="0"/>
+    <zone name="20317" adunit="n-tv_tab_auto" position="0"/>
+    <zone name="20313" adunit="n-tv_tab_auto" position="1" index="true"/>
+    <zone name="20353" adunit="n-tv_tab_auto" position="10"/>
+    <zone name="20315" adunit="n-tv_tab_auto" position="1" index="true"/>
+    <zone name="22028" adunit="n-tv_tab_" position="0"/>
+    <zone name="22019" adunit="n-tv_tab_" position="0"/>
+    <zone name="22045" adunit="n-tv_tab_" position="10"/>
+    <zone name="22011" adunit="n-tv_tab_" position="1" index="true"/>
+    <zone name="22037" adunit="n-tv_tab_" position="1" index="true"/>
+    <zone name="20287" adunit="n-tv_tab_" position="0"/>
+    <zone name="20285" adunit="n-tv_tab_" position="0"/>
+    <zone name="20281" adunit="n-tv_tab_" position="1" index="true"/>
+    <zone name="20379" adunit="n-tv_tab_" position="10"/>
+    <zone name="20283" adunit="n-tv_tab_" position="1" index="true"/>
+    <zone name="20390" adunit="n-tv_tab_" position="0"/>
+    <zone name="20388" adunit="n-tv_tab_" position="0"/>
+    <zone name="20367" adunit="n-tv_tab_" position="10"/>
+    <zone name="20369" adunit="n-tv_tab_" position="1" index="true"/>
+    <zone name="20396" adunit="n-tv_tab_" position="0"/>
+    <zone name="20398" adunit="n-tv_tab_" position="0"/>
+    <zone name="20363" adunit="n-tv_tab_" position="10"/>
+    <zone name="20365" adunit="n-tv_tab_" position="1" index="true"/>
+    <zone name="20351" adunit="n-tv_tab_" position="0"/>
+    <zone name="20349" adunit="n-tv_tab_" position="0"/>
+    <zone name="20345" adunit="n-tv_tab_" position="1" index="true"/>
+    <zone name="20361" adunit="n-tv_tab_" position="10"/>
+    <zone name="20347" adunit="n-tv_tab_" position="1" index="true"/>
+    <zone name="20264" adunit="n-tv_tab_home" position="1" index="true"/>
+    <zone name="20262" adunit="n-tv_tab_home" position="1" index="true"/>
+    <zone name="20256" adunit="n-tv_tab_" position="1" index="true"/>
+    <zone name="20258" adunit="n-tv_tab_" position="1" index="true"/>
+    <zone name="20260" adunit="n-tv_tab_" position="1" index="true"/>
+    <zone name="22024" adunit="n-tv_tab_meistgelesen" position="0"/>
+    <zone name="22015" adunit="n-tv_tab_meistgelesen" position="0"/>
+    <zone name="22041" adunit="n-tv_tab_meistgelesen" position="10"/>
+    <zone name="22007" adunit="n-tv_tab_meistgelesen" position="1" index="true"/>
+    <zone name="22033" adunit="n-tv_tab_meistgelesen" position="1" index="true"/>
+    <zone name="22026" adunit="n-tv_tab_" position="0"/>
+    <zone name="22017" adunit="n-tv_tab_" position="0"/>
+    <zone name="22043" adunit="n-tv_tab_" position="10"/>
+    <zone name="22009" adunit="n-tv_tab_" position="1" index="true"/>
+    <zone name="22035" adunit="n-tv_tab_" position="1" index="true"/>
+    <zone name="20311" adunit="n-tv_tab_panorama" position="0"/>
+    <zone name="20309" adunit="n-tv_tab_panorama" position="0"/>
+    <zone name="20305" adunit="n-tv_tab_panorama" position="1" index="true"/>
+    <zone name="20385" adunit="n-tv_tab_panorama" position="10"/>
+    <zone name="20307" adunit="n-tv_tab_panorama" position="1" index="true"/>
+    <zone name="20272" adunit="n-tv_tab_politik" position="0"/>
+    <zone name="20270" adunit="n-tv_tab_politik" position="0"/>
+    <zone name="20266" adunit="n-tv_tab_politik" position="1" index="true"/>
+    <zone name="20375" adunit="n-tv_tab_politik" position="10"/>
+    <zone name="20268" adunit="n-tv_tab_politik" position="1" index="true"/>
+    <zone name="20343" adunit="n-tv_tab_ratgeber" position="0"/>
+    <zone name="20341" adunit="n-tv_tab_ratgeber" position="0"/>
+    <zone name="20337" adunit="n-tv_tab_ratgeber" position="1" index="true"/>
+    <zone name="20359" adunit="n-tv_tab_ratgeber" position="10"/>
+    <zone name="20339" adunit="n-tv_tab_ratgeber" position="1" index="true"/>
+    <zone name="24403" adunit="n-tv_tab_ros" position="0"/>
+    <zone name="24406" adunit="n-tv_tab_ros" position="0"/>
+    <zone name="24408" adunit="n-tv_tab_ros" position="1" index="true"/>
+    <zone name="20303" adunit="n-tv_tab_sport" position="0"/>
+    <zone name="20301" adunit="n-tv_tab_sport" position="0"/>
+    <zone name="20297" adunit="n-tv_tab_sport" position="1" index="true"/>
+    <zone name="20383" adunit="n-tv_tab_sport" position="10"/>
+    <zone name="20299" adunit="n-tv_tab_sport" position="1" index="true"/>
+    <zone name="20494" adunit="n-tv_tab_start" position="0"/>
+    <zone name="20403" adunit="n-tv_tab_start" position="0"/>
+    <zone name="20327" adunit="n-tv_tab_technik" position="0"/>
+    <zone name="20325" adunit="n-tv_tab_technik" position="0"/>
+    <zone name="20321" adunit="n-tv_tab_technik" position="1" index="true"/>
+    <zone name="20355" adunit="n-tv_tab_technik" position="10"/>
+    <zone name="20323" adunit="n-tv_tab_technik" position="1" index="true"/>
+    <zone name="20295" adunit="n-tv_tab_unterhaltung" position="0"/>
+    <zone name="20293" adunit="n-tv_tab_unterhaltung" position="0"/>
+    <zone name="20289" adunit="n-tv_tab_unterhaltung" position="1" index="true"/>
+    <zone name="20381" adunit="n-tv_tab_unterhaltung" position="10"/>
+    <zone name="20291" adunit="n-tv_tab_unterhaltung" position="1" index="true"/>
+    <zone name="22030" adunit="n-tv_tab_video" position="0"/>
+    <zone name="22021" adunit="n-tv_tab_video" position="0"/>
+    <zone name="22047" adunit="n-tv_tab_video" position="10"/>
+    <zone name="22013" adunit="n-tv_tab_video" position="1" index="true"/>
+    <zone name="22039" adunit="n-tv_tab_video" position="1" index="true"/>
+    <zone name="20394" adunit="n-tv_tab_wetter" position="0"/>
+    <zone name="20392" adunit="n-tv_tab_wetter" position="0"/>
+    <zone name="20371" adunit="n-tv_tab_wetter" position="10"/>
+    <zone name="20373" adunit="n-tv_tab_wetter" position="1" index="true"/>
+    <zone name="21832" adunit="n-tv_tab_wirtschaft" position="1" index="true"/>
+    <zone name="21830" adunit="n-tv_tab_wirtschaft" position="1" index="true"/>
+    <zone name="20279" adunit="n-tv_tab_wirtschaft" position="0"/>
+    <zone name="20274" adunit="n-tv_tab_wirtschaft" position="1" index="true"/>
+    <zone name="20377" adunit="n-tv_tab_wirtschaft" position="10"/>
+    <zone name="20277" adunit="n-tv_tab_wirtschaft" position="1" index="true"/>
+    <zone name="20335" adunit="n-tv_tab_wissen" position="0"/>
+    <zone name="20333" adunit="n-tv_tab_wissen" position="0"/>
+    <zone name="20329" adunit="n-tv_tab_wissen" position="1" index="true"/>
+    <zone name="20357" adunit="n-tv_tab_wissen" position="10"/>
+    <zone name="20331" adunit="n-tv_tab_wissen" position="1" index="true"/>
+    <zone name="18737" adunit="n-tv_ipad_auto" position="10" index="true"/>
+    <zone name="14699" adunit="n-tv_ipad_auto" position="0"/>
+    <zone name="14697" adunit="n-tv_ipad_auto" position="0"/>
+    <zone name="14663" adunit="n-tv_ipad_auto" position="1" index="true"/>
+    <zone name="14741" adunit="n-tv_ipad_auto" position="1" index="true"/>
+    <zone name="21960" adunit="n-tv_ipad_bilderserien" position="10"/>
+    <zone name="21986" adunit="n-tv_ipad_" position="0"/>
+    <zone name="21977" adunit="n-tv_ipad_" position="0"/>
+    <zone name="21952" adunit="n-tv_ipad_bilderserien" position="1" index="true"/>
+    <zone name="21969" adunit="n-tv_ipad_bilderserien" position="1" index="true"/>
+    <zone name="18745" adunit="n-tv_ipad_boerse" position="10"/>
+    <zone name="14683" adunit="n-tv_ipad_" position="0"/>
+    <zone name="14681" adunit="n-tv_ipad_" position="0"/>
+    <zone name="14655" adunit="n-tv_ipad_boerse" position="1" index="true"/>
+    <zone name="14725" adunit="n-tv_ipad_boerse" position="1" index="true"/>
+    <zone name="18757" adunit="n-tv_ipad_boersenticker" position="10"/>
+    <zone name="18763" adunit="n-tv_ipad_" position="0"/>
+    <zone name="18765" adunit="n-tv_ipad_" position="0"/>
+    <zone name="18755" adunit="n-tv_ipad_boersenticker" position="1" index="true"/>
+    <zone name="22123" adunit="n-tv_ipad_boersenticker" position="1" index="true"/>
+    <zone name="22125" adunit="n-tv_ipad_f1" position="1" index="true"/>
+    <zone name="18761" adunit="n-tv_ipad_f1" position="10" index="true"/>
+    <zone name="18771" adunit="n-tv_ipad_" position="0"/>
+    <zone name="18773" adunit="n-tv_ipad_" position="0"/>
+    <zone name="18759" adunit="n-tv_ipad_f1" position="1" index="true"/>
+    <zone name="18729" adunit="n-tv_ipad_fussballticker" position="10" index="true"/>
+    <zone name="14715" adunit="n-tv_ipad_" position="0"/>
+    <zone name="14713" adunit="n-tv_ipad_" position="0"/>
+    <zone name="14671" adunit="n-tv_ipad_fussballticker" position="1" index="true"/>
+    <zone name="14737" adunit="n-tv_ipad_fussballticker" position="1" index="true"/>
+    <zone name="14647" adunit="n-tv_ipad_home" position="" index="true"/>
+    <zone name="14719" adunit="n-tv_ipad_home" position="1" index="true"/>
+    <zone name="14649" adunit="n-tv_ipad_home" position="1" index="true"/>
+    <zone name="14717" adunit="n-tv_ipad_home" position="1" index="true"/>
+    <zone name="14645" adunit="n-tv_ipad_home" position="1" index="true"/>
+    <zone name="21956" adunit="n-tv_ipad_meistgelesen" position="10"/>
+    <zone name="21982" adunit="n-tv_ipad_meistgelesen" position="0"/>
+    <zone name="21973" adunit="n-tv_ipad_meistgelesen" position="0"/>
+    <zone name="21948" adunit="n-tv_ipad_meistgelesen" position="1" index="true"/>
+    <zone name="21964" adunit="n-tv_ipad_meistgelesen" position="1" index="true"/>
+    <zone name="21958" adunit="n-tv_ipad_das_neueste" position="10"/>
+    <zone name="21984" adunit="n-tv_ipad_" position="0"/>
+    <zone name="21975" adunit="n-tv_ipad_" position="0"/>
+    <zone name="21950" adunit="n-tv_ipad_das_neueste" position="1" index="true"/>
+    <zone name="21967" adunit="n-tv_ipad_das_neueste" position="1" index="true"/>
+    <zone name="18739" adunit="n-tv_ipad_panorama" position="10"/>
+    <zone name="14695" adunit="n-tv_ipad_panorama" position="0"/>
+    <zone name="14693" adunit="n-tv_ipad_panorama" position="0"/>
+    <zone name="14661" adunit="n-tv_ipad_panorama" position="1" index="true"/>
+    <zone name="14729" adunit="n-tv_ipad_panorama" position="1" index="true"/>
+    <zone name="18749" adunit="n-tv_ipad_politik" position="10"/>
+    <zone name="14675" adunit="n-tv_ipad_politik" position="0"/>
+    <zone name="14673" adunit="n-tv_ipad_politik" position="0"/>
+    <zone name="14651" adunit="n-tv_ipad_politik" position="1" index="true"/>
+    <zone name="14721" adunit="n-tv_ipad_politik" position="1" index="true"/>
+    <zone name="18731" adunit="n-tv_ipad_ratgeber" position="10"/>
+    <zone name="14711" adunit="n-tv_ipad_ratgeber" position="0"/>
+    <zone name="14709" adunit="n-tv_ipad_ratgeber" position="0"/>
+    <zone name="14669" adunit="n-tv_ipad_ratgeber" position="1" index="true"/>
+    <zone name="14735" adunit="n-tv_ipad_ratgeber" position="1" index="true"/>
+    <zone name="24410" adunit="n-tv_ipad_ros" position="0"/>
+    <zone name="24412" adunit="n-tv_ipad_ros" position="0"/>
+    <zone name="24415" adunit="n-tv_ipad_ros" position="1" index="true"/>
+    <zone name="20233" adunit="n-tv_ipad_special" position="1" index="true"/>
+    <zone name="18741" adunit="n-tv_ipad_sport" position="10"/>
+    <zone name="14691" adunit="n-tv_ipad_sport" position="0"/>
+    <zone name="14689" adunit="n-tv_ipad_sport" position="0"/>
+    <zone name="14659" adunit="n-tv_ipad_sport" position="1" index="true"/>
+    <zone name="14739" adunit="n-tv_ipad_sport" position="1" index="true"/>
+    <zone name="20492" adunit="n-tv_ipad_start" position="0"/>
+    <zone name="14971" adunit="n-tv_ipad_start" position="0"/>
+    <zone name="18735" adunit="n-tv_ipad_technik" position="10"/>
+    <zone name="14703" adunit="n-tv_ipad_technik" position="0"/>
+    <zone name="14701" adunit="n-tv_ipad_technik" position="0"/>
+    <zone name="14665" adunit="n-tv_ipad_technik" position="1" index="true"/>
+    <zone name="14731" adunit="n-tv_ipad_technik" position="1" index="true"/>
+    <zone name="21902" adunit="n-tv_ipad_start" position="0"/>
+    <zone name="21904" adunit="n-tv_ipad_start" position="0"/>
+    <zone name="18743" adunit="n-tv_ipad_unterhaltung" position="10"/>
+    <zone name="14687" adunit="n-tv_ipad_unterhaltung" position="0"/>
+    <zone name="14685" adunit="n-tv_ipad_unterhaltung" position="0"/>
+    <zone name="14657" adunit="n-tv_ipad_unterhaltung" position="1" index="true"/>
+    <zone name="14727" adunit="n-tv_ipad_unterhaltung" position="1" index="true"/>
+    <zone name="21962" adunit="n-tv_ipad_video" position="10"/>
+    <zone name="21988" adunit="n-tv_ipad_video" position="0"/>
+    <zone name="21979" adunit="n-tv_ipad_video" position="0"/>
+    <zone name="21954" adunit="n-tv_ipad_video" position="1" index="true"/>
+    <zone name="21971" adunit="n-tv_ipad_video" position="1" index="true"/>
+    <zone name="18753" adunit="n-tv_ipad_wetter" position="10"/>
+    <zone name="18767" adunit="n-tv_ipad_wetter" position="0"/>
+    <zone name="18769" adunit="n-tv_ipad_wetter" position="0"/>
+    <zone name="18751" adunit="n-tv_ipad_wetter" position="1" index="true"/>
+    <zone name="22121" adunit="n-tv_ipad_wetter" position="1" index="true"/>
+    <zone name="18747" adunit="n-tv_ipad_wirtschaft" position="10"/>
+    <zone name="14679" adunit="n-tv_ipad_wirtschaft" position="0"/>
+    <zone name="14677" adunit="n-tv_ipad_wirtschaft" position="0"/>
+    <zone name="14653" adunit="n-tv_ipad_wirtschaft" position="1" index="true"/>
+    <zone name="14723" adunit="n-tv_ipad_wirtschaft" position="1" index="true"/>
+    <zone name="18733" adunit="n-tv_ipad_wissen" position="10"/>
+    <zone name="14707" adunit="n-tv_ipad_wissen" position="0"/>
+    <zone name="14705" adunit="n-tv_ipad_wissen" position="0"/>
+    <zone name="14667" adunit="n-tv_ipad_wissen" position="1" index="true"/>
+    <zone name="14733" adunit="n-tv_ipad_wissen" position="1" index="true"/>
+    <zone name="22850" adunit="n-tv_ip_auto" position="10"/>
+    <zone name="13243" adunit="n-tv_ip_auto" position="1"/>
+    <zone name="13241" adunit="n-tv_ip_auto" position="10" index="true"/>
+    <zone name="16025" adunit="n-tv_ip_auto" position="0"/>
+    <zone name="13239" adunit="n-tv_ip_auto" position="2" index="true"/>
+    <zone name="13237" adunit="n-tv_ip_auto" position="1" index="true"/>
+    <zone name="22852" adunit="n-tv_ip_bilderserien" position="10"/>
+    <zone name="13247" adunit="n-tv_ip_bilderserien" position="10" index="true"/>
+    <zone name="22113" adunit="n-tv_ip_bilderserien" position="0"/>
+    <zone name="13245" adunit="n-tv_ip_bilderserien" position="2" index="true"/>
+    <zone name="13249" adunit="n-tv_ip_bilderserien" position="1" index="true"/>
+    <zone name="22860" adunit="n-tv_ip_boersenticker" position="10"/>
+    <zone name="12723" adunit="n-tv_ip_boersenticker" position="10" index="true"/>
+    <zone name="12749" adunit="n-tv_ip_boersenticker" position="0"/>
+    <zone name="12721" adunit="n-tv_ip_boersenticker" position="2" index="true"/>
+    <zone name="12719" adunit="n-tv_ip_boersenticker" position="1" index="true"/>
+    <zone name="22854" adunit="n-tv_ip_f1" position="10"/>
+    <zone name="14131" adunit="n-tv_ip_f1" position="1"/>
+    <zone name="14133" adunit="n-tv_ip_f1" position="10" index="true"/>
+    <zone name="14139" adunit="n-tv_ip_f1" position="0"/>
+    <zone name="14135" adunit="n-tv_ip_f1" position="2" index="true"/>
+    <zone name="14137" adunit="n-tv_ip_f1" position="1" index="true"/>
+    <zone name="22858" adunit="n-tv_ip_fussballticker" position="10"/>
+    <zone name="13229" adunit="n-tv_ip_fussballticker" position="1"/>
+    <zone name="12668" adunit="n-tv_ip_fussballticker" position="10" index="true"/>
+    <zone name="12733" adunit="n-tv_ip_fussballticker" position="0"/>
+    <zone name="12666" adunit="n-tv_ip_fussballticker" position="2" index="true"/>
+    <zone name="12664" adunit="n-tv_ip_fussballticker" position="1" index="true"/>
+    <zone name="546" adunit="n-tv_ip_home" position="" index="true"/>
+    <zone name="12640" adunit="n-tv_ip_home" position="1" index="true"/>
+    <zone name="12642" adunit="n-tv_ip_home" position="10" index="true"/>
+    <zone name="542" adunit="n-tv_ip_home" position="1" index="true"/>
+    <zone name="21936" adunit="n-tv_ip_meistgelesen" position="10" index="true"/>
+    <zone name="21938" adunit="n-tv_ip_meistgelesen" position="0"/>
+    <zone name="21934" adunit="n-tv_ip_meistgelesen" position="2" index="true"/>
+    <zone name="21932" adunit="n-tv_ip_meistgelesen" position="1" index="true"/>
+    <zone name="21942" adunit="n-tv_ip_das_neueste" position="10" index="true"/>
+    <zone name="21940" adunit="n-tv_ip_das_neueste" position="0"/>
+    <zone name="21944" adunit="n-tv_ip_das_neueste" position="2" index="true"/>
+    <zone name="21946" adunit="n-tv_ip_das_neueste" position="1" index="true"/>
+    <zone name="22870" adunit="n-tv_ip_panorama" position="10"/>
+    <zone name="12686" adunit="n-tv_ip_panorama" position="10" index="true"/>
+    <zone name="12737" adunit="n-tv_ip_panorama" position="0"/>
+    <zone name="12684" adunit="n-tv_ip_panorama" position="2" index="true"/>
+    <zone name="12682" adunit="n-tv_ip_panorama" position="1" index="true"/>
+    <zone name="22874" adunit="n-tv_ip_politik" position="10"/>
+    <zone name="13215" adunit="n-tv_ip_politik" position="1"/>
+    <zone name="12674" adunit="n-tv_ip_politik" position="10" index="true"/>
+    <zone name="16027" adunit="n-tv_ip_politik" position="0"/>
+    <zone name="12672" adunit="n-tv_ip_politik" position="2" index="true"/>
+    <zone name="12670" adunit="n-tv_ip_politik" position="1" index="true"/>
+    <zone name="16139" adunit="n-tv_ip_pollenwetter" position="10" index="true"/>
+    <zone name="16137" adunit="n-tv_ip_pollenwetter" position="2" index="true"/>
+    <zone name="16135" adunit="n-tv_ip_pollenwetter" position="1" index="true"/>
+    <zone name="22856" adunit="n-tv_ip_ratgeber" position="10"/>
+    <zone name="13221" adunit="n-tv_ip_ratgeber" position="1"/>
+    <zone name="12692" adunit="n-tv_ip_ratgeber" position="10" index="true"/>
+    <zone name="12739" adunit="n-tv_ip_ratgeber" position="0"/>
+    <zone name="12690" adunit="n-tv_ip_ratgeber" position="2" index="true"/>
+    <zone name="12688" adunit="n-tv_ip_ratgeber" position="1" index="true"/>
+    <zone name="22868" adunit="n-tv_ip_reise" position="10"/>
+    <zone name="13223" adunit="n-tv_ip_reise" position="1"/>
+    <zone name="12699" adunit="n-tv_ip_reise" position="10" index="true"/>
+    <zone name="12741" adunit="n-tv_ip_reise" position="0"/>
+    <zone name="12697" adunit="n-tv_ip_reise" position="2" index="true"/>
+    <zone name="12695" adunit="n-tv_ip_reise" position="1" index="true"/>
+    <zone name="12662" adunit="n-tv_ip_ros" position="10" index="true"/>
+    <zone name="24427" adunit="n-tv_ip_ros" position="0"/>
+    <zone name="12660" adunit="n-tv_ip_ros" position="2" index="true"/>
+    <zone name="24417" adunit="n-tv_ip_ros" position="1" index="true"/>
+    <zone name="541" adunit="n-tv_ip_sonstige" position="1" index="true"/>
+    <zone name="22880" adunit="n-tv_ip_sport" position="10"/>
+    <zone name="13209" adunit="n-tv_ip_sport" position="1"/>
+    <zone name="12650" adunit="n-tv_ip_sport" position="10" index="true"/>
+    <zone name="12727" adunit="n-tv_ip_sport" position="0"/>
+    <zone name="12648" adunit="n-tv_ip_sport" position="2" index="true"/>
+    <zone name="544" adunit="n-tv_ip_sport" position="1" index="true"/>
+    <zone name="12044" adunit="n-tv_ip_start" position="0"/>
+    <zone name="22878" adunit="n-tv_ip_technik" position="10"/>
+    <zone name="13211" adunit="n-tv_ip_technik" position="1"/>
+    <zone name="12654" adunit="n-tv_ip_technik" position="10" index="true"/>
+    <zone name="12729" adunit="n-tv_ip_technik" position="0"/>
+    <zone name="12652" adunit="n-tv_ip_technik" position="2" index="true"/>
+    <zone name="545" adunit="n-tv_ip_technik" position="1" index="true"/>
+    <zone name="21906" adunit="n-tv_ip_start" position="0"/>
+    <zone name="22872" adunit="n-tv_ip_unterhaltung" position="10"/>
+    <zone name="13217" adunit="n-tv_ip_unterhaltung" position="1"/>
+    <zone name="12680" adunit="n-tv_ip_unterhaltung" position="10" index="true"/>
+    <zone name="12735" adunit="n-tv_ip_unterhaltung" position="0"/>
+    <zone name="12678" adunit="n-tv_ip_unterhaltung" position="2" index="true"/>
+    <zone name="12676" adunit="n-tv_ip_unterhaltung" position="1" index="true"/>
+    <zone name="22882" adunit="n-tv_ip_video" position="10"/>
+    <zone name="12646" adunit="n-tv_ip_video" position="10" index="true"/>
+    <zone name="12725" adunit="n-tv_ip_video" position="0"/>
+    <zone name="12644" adunit="n-tv_ip_video" position="2" index="true"/>
+    <zone name="582" adunit="n-tv_ip_video" position="1" index="true"/>
+    <zone name="14020" adunit="n-tv_ip_wetter" position="10" index="true"/>
+    <zone name="22115" adunit="n-tv_ip_wetter" position="0"/>
+    <zone name="14022" adunit="n-tv_ip_wetter" position="2" index="true"/>
+    <zone name="14024" adunit="n-tv_ip_wetter" position="1" index="true"/>
+    <zone name="22876" adunit="n-tv_ip_wirtschaft" position="10"/>
+    <zone name="13213" adunit="n-tv_ip_wirtschaft" position="1"/>
+    <zone name="12658" adunit="n-tv_ip_wirtschaft" position="10" index="true"/>
+    <zone name="12731" adunit="n-tv_ip_wirtschaft" position="0"/>
+    <zone name="12656" adunit="n-tv_ip_wirtschaft" position="2" index="true"/>
+    <zone name="22866" adunit="n-tv_ip_wissen" position="10"/>
+    <zone name="13225" adunit="n-tv_ip_wissen" position="1"/>
+    <zone name="12705" adunit="n-tv_ip_wissen" position="10" index="true"/>
+    <zone name="12743" adunit="n-tv_ip_wissen" position="0"/>
+    <zone name="12703" adunit="n-tv_ip_wissen" position="2" index="true"/>
+    <zone name="12701" adunit="n-tv_ip_wissen" position="1" index="true"/>
+    <zone name="13219" adunit="n-tv_ip_panorama" position="1"/>
+    <zone name="543" adunit="n-tv_ip_wirtschaft" position="1" index="true"/>
+    <zone name="15977" adunit="n-tv_tab_ros" position="1"/>
+    <zone name="18533" adunit="n-tv_tab_ros" position="10"/>
+    <zone name="18531" adunit="n-tv_tab_ros" position="1"/>
+    <zone name="15991" adunit="n-tv_tab_ros" position="0"/>
+    <zone name="15995" adunit="n-tv_tab_ros" position="0"/>
+    <zone name="15993" adunit="n-tv_tab_ros" position="0"/>
+    <zone name="15979" adunit="n-tv_tab_ros" position="1" index="true"/>
+    <zone name="15981" adunit="n-tv_tab_ros" position="1" index="true"/>
+    <zone name="15985" adunit="n-tv_tab_start" position="1" index="true"/>
+    <zone name="15987" adunit="n-tv_tab_start" position="0"/>
+    <zone name="15989" adunit="n-tv_tab_start" position="0"/>
+    <zone name="15983" adunit="n-tv_tab_start" position="1" index="true"/>
+    <zone name="24471" adunit="n-tv_teleboerse_and_ros" position="10"/>
+    <zone name="24469" adunit="n-tv_teleboerse_and_ros" position="0"/>
+    <zone name="24473" adunit="n-tv_teleboerse_and_ros" position="2"/>
+    <zone name="24475" adunit="n-tv_teleboerse_and_ros" position="1"/>
+    <zone name="24465" adunit="n-tv_teleboerse_and_ros" position="10" index="true"/>
+    <zone name="24467" adunit="n-tv_teleboerse_and_ros" position="0"/>
+    <zone name="24463" adunit="n-tv_teleboerse_and_ros" position="2" index="true"/>
+    <zone name="24461" adunit="n-tv_teleboerse_and_ros" position="1" index="true"/>
+    <zone name="24459" adunit="n-tv_teleboerse_and_start" position="10" index="true"/>
+    <zone name="24477" adunit="n-tv_teleboerse_and_start" position="0"/>
+    <zone name="24457" adunit="n-tv_teleboerse_and_start" position="2" index="true"/>
+    <zone name="24455" adunit="n-tv_teleboerse_and_start" position="1" index="true"/>
+    <zone name="24447" adunit="n-tv_teleboerse_ip_ros" position="10"/>
+    <zone name="24445" adunit="n-tv_teleboerse_ip_ros" position="0"/>
+    <zone name="24449" adunit="n-tv_teleboerse_ip_ros" position="2"/>
+    <zone name="24451" adunit="n-tv_teleboerse_ip_ros" position="1"/>
+    <zone name="24441" adunit="n-tv_teleboerse_ip_ros" position="10" index="true"/>
+    <zone name="24443" adunit="n-tv_teleboerse_ip_ros" position="0"/>
+    <zone name="24439" adunit="n-tv_teleboerse_ip_ros" position="2" index="true"/>
+    <zone name="24437" adunit="n-tv_teleboerse_ip_ros" position="1" index="true"/>
+    <zone name="24435" adunit="n-tv_teleboerse_ip_start" position="10" index="true"/>
+    <zone name="24453" adunit="n-tv_teleboerse_ip_start" position="0"/>
+    <zone name="24433" adunit="n-tv_teleboerse_ip_start" position="2" index="true"/>
+    <zone name="24431" adunit="n-tv_teleboerse_ip_start" position="1" index="true"/>
+    <zone name="24400" adunit="pons_and_ergebnisse" position="2"/>
+    <zone name="24387" adunit="pons_and_home" position="0"/>
+    <zone name="24391" adunit="pons_and_ros" position="0"/>
+    <zone name="24389" adunit="pons_and_ros" position="1"/>
+    <zone name="24502" adunit="pons_tab_ergebnisse" position="1"/>
+    <zone name="24492" adunit="pons_tab_home" position="0"/>
+    <zone name="24494" adunit="pons_tab_home" position="0"/>
+    <zone name="24498" adunit="pons_tab_ros" position="0"/>
+    <zone name="24496" adunit="pons_tab_ros" position="0"/>
+    <zone name="24500" adunit="pons_tab_ros" position="1"/>
+    <zone name="24504" adunit="pons_ipad_ergebnisse" position="1"/>
+    <zone name="24510" adunit="pons_ipad_home" position="0"/>
+    <zone name="24512" adunit="pons_ipad_home" position="0"/>
+    <zone name="24508" adunit="pons_ipad_ros" position="0"/>
+    <zone name="24514" adunit="pons_ipad_ros" position="0"/>
+    <zone name="24506" adunit="pons_ipad_ros" position="1"/>
+    <zone name="24398" adunit="pons_ip_ergebnisse" position="2"/>
+    <zone name="24381" adunit="pons_ip_home" position="0"/>
+    <zone name="24385" adunit="pons_ip_ros" position="0"/>
+    <zone name="24383" adunit="pons_ip_ros" position="1"/>
+    <zone name="20210" adunit="roomido_tab_ros" position="0"/>
+    <zone name="20208" adunit="roomido_tab_start" position="0"/>
+    <zone name="20214" adunit="roomido_ipad_ros" position="0"/>
+    <zone name="20212" adunit="roomido_ipad_start" position="0"/>
+    <zone name="19859" adunit="rtl_and_bachelor" position="1"/>
+    <zone name="19853" adunit="rtl_and_bachelor" position="10" index="true"/>
+    <zone name="19851" adunit="rtl_and_bachelor" position="0"/>
+    <zone name="19865" adunit="rtl_and_bachelor" position="1" index="true"/>
+    <zone name="12946" adunit="rtl_and_bauer_sucht_frau" position="10" index="true"/>
+    <zone name="12944" adunit="rtl_and_bauer_sucht_frau" position="0"/>
+    <zone name="12948" adunit="rtl_and_bauer_sucht_frau" position="1" index="true"/>
+    <zone name="17249" adunit="rtl_and_boxen" position="1"/>
+    <zone name="16591" adunit="rtl_and_boxen" position="10" index="true"/>
+    <zone name="16593" adunit="rtl_and_boxen" position="0"/>
+    <zone name="16587" adunit="rtl_and_boxen" position="1" index="true"/>
+    <zone name="12940" adunit="rtl_and_cobra11" position="10" index="true"/>
+    <zone name="12938" adunit="rtl_and_cobra11" position="0"/>
+    <zone name="12942" adunit="rtl_and_cobra11" position="1" index="true"/>
+    <zone name="12952" adunit="rtl_and_dschungelcamp" position="10" index="true"/>
+    <zone name="12950" adunit="rtl_and_dschungelcamp" position="0"/>
+    <zone name="12954" adunit="rtl_and_dschungelcamp" position="1" index="true"/>
+    <zone name="12958" adunit="rtl_and_dsds" position="10" index="true"/>
+    <zone name="12956" adunit="rtl_and_dsds" position="0"/>
+    <zone name="12960" adunit="rtl_and_dsds" position="1" index="true"/>
+    <zone name="22903" adunit="rtl_and_european_qualifiers" position="1"/>
+    <zone name="22900" adunit="rtl_and_european_qualifiers" position="10" index="true"/>
+    <zone name="22898" adunit="rtl_and_european_qualifiers" position="0"/>
+    <zone name="22905" adunit="rtl_and_european_qualifiers" position="1" index="true"/>
+    <zone name="17253" adunit="rtl_and_gzsz" position="1"/>
+    <zone name="12989" adunit="rtl_and_gzsz" position="10" index="true"/>
+    <zone name="12985" adunit="rtl_and_gzsz" position="0"/>
+    <zone name="12897" adunit="rtl_and_gzsz" position="1" index="true"/>
+    <zone name="12993" adunit="rtl_and_start" position="0"/>
+    <zone name="21281" adunit="rtl_and_lets_dance" position="1"/>
+    <zone name="12932" adunit="rtl_and_lets_dance" position="0"/>
+    <zone name="12936" adunit="rtl_and_lets_dance" position="1" index="true"/>
+    <zone name="12934" adunit="rtl_and_lets_dance" position="10" index="true"/>
+    <zone name="12980" adunit="rtl_and_news" position="10" index="true"/>
+    <zone name="12978" adunit="rtl_and_news" position="0"/>
+    <zone name="12974" adunit="rtl_and_ros" position="10" index="true"/>
+    <zone name="22170" adunit="rtl_and_ros" position="0"/>
+    <zone name="12976" adunit="rtl_and_ros" position="1" index="true"/>
+    <zone name="12970" adunit="rtl_and_sport" position="10" index="true"/>
+    <zone name="12968" adunit="rtl_and_sport" position="0"/>
+    <zone name="12972" adunit="rtl_and_sport" position="1" index="true"/>
+    <zone name="12964" adunit="rtl_and_news" position="10" index="true"/>
+    <zone name="12962" adunit="rtl_and_news" position="0"/>
+    <zone name="12966" adunit="rtl_and_news" position="1" index="true"/>
+    <zone name="12991" adunit="rtl_and_start" position="1" index="true"/>
+    <zone name="22172" adunit="rtl_and_start" position="0"/>
+    <zone name="17247" adunit="rtl_and_supertalent" position="1"/>
+    <zone name="12928" adunit="rtl_and_supertalent" position="10" index="true"/>
+    <zone name="12926" adunit="rtl_and_supertalent" position="0"/>
+    <zone name="12930" adunit="rtl_and_supertalent" position="1" index="true"/>
+    <zone name="17251" adunit="rtl_and_wwm" position="1"/>
+    <zone name="15559" adunit="rtl_and_wwm" position="10" index="true"/>
+    <zone name="15557" adunit="rtl_and_wwm" position="0"/>
+    <zone name="15555" adunit="rtl_and_wwm" position="1" index="true"/>
+    <zone name="12048" adunit="rtl__start" position="0"/>
+    <zone name="19867" adunit="rtl_ipad_bachelor" position="0"/>
+    <zone name="15180" adunit="rtl_ipad_bauer_sucht_frau" position="0"/>
+    <zone name="22174" adunit="rtl_ipad_boxen" position="0"/>
+    <zone name="15182" adunit="rtl_ipad_cobra11" position="0"/>
+    <zone name="15178" adunit="rtl_ipad_dschungelcamp" position="0"/>
+    <zone name="15176" adunit="rtl_ipad_dsds" position="0"/>
+    <zone name="22894" adunit="rtl_ipad_european_qualifiers" position="0"/>
+    <zone name="15186" adunit="rtl_ipad_f1" position="0"/>
+    <zone name="15170" adunit="rtl_ipad_gzsz" position="0"/>
+    <zone name="15188" adunit="rtl_ipad_lets_dance" position="0"/>
+    <zone name="15172" adunit="rtl_ipad_news" position="0"/>
+    <zone name="22176" adunit="rtl_ipad_ros" position="0"/>
+    <zone name="15174" adunit="rtl_ipad_sport" position="0"/>
+    <zone name="15190" adunit="rtl_ipad_supertalent" position="0"/>
+    <zone name="15184" adunit="rtl_ipad_wwm" position="0"/>
+    <zone name="15205" adunit="rtl_ipad_start" position="0"/>
+    <zone name="19869" adunit="rtl_ipad_bachelor" position="1"/>
+    <zone name="15134" adunit="rtl_ipad_bauer_sucht_frau" position="1"/>
+    <zone name="16595" adunit="rtl_ipad_boxen" position="1"/>
+    <zone name="15140" adunit="rtl_ipad_cobra11" position="1"/>
+    <zone name="15128" adunit="rtl_ipad_dschungelcamp" position="1"/>
+    <zone name="15122" adunit="rtl_ipad_dsds" position="1"/>
+    <zone name="22896" adunit="rtl_ipad_european_qualifiers" position="1"/>
+    <zone name="15152" adunit="rtl_ipad_f1" position="1"/>
+    <zone name="15104" adunit="rtl_ipad_gzsz" position="1"/>
+    <zone name="15102" adunit="rtl_ipad_home" position="1"/>
+    <zone name="15158" adunit="rtl_ipad_lets_dance" position="1"/>
+    <zone name="15114" adunit="rtl_ipad_news" position="1"/>
+    <zone name="14934" adunit="rtl_ipad_ros" position="1"/>
+    <zone name="15116" adunit="rtl_ipad_sport" position="1"/>
+    <zone name="15164" adunit="rtl_ipad_supertalent" position="1"/>
+    <zone name="15146" adunit="rtl_ipad_wwm" position="1"/>
+    <zone name="19873" adunit="rtl_ip_bachelor" position="1"/>
+    <zone name="19877" adunit="rtl_ip_bachelor" position="10" index="true"/>
+    <zone name="19875" adunit="rtl_ip_bachelor" position="0"/>
+    <zone name="19863" adunit="rtl_ip_bachelor" position="1" index="true"/>
+    <zone name="12904" adunit="rtl_ip_bauer_sucht_frau" position="10" index="true"/>
+    <zone name="12906" adunit="rtl_ip_bauer_sucht_frau" position="0"/>
+    <zone name="12902" adunit="rtl_ip_bauer_sucht_frau" position="1" index="true"/>
+    <zone name="17241" adunit="rtl_ip_boxen" position="1"/>
+    <zone name="16583" adunit="rtl_ip_boxen" position="10" index="true"/>
+    <zone name="16585" adunit="rtl_ip_boxen" position="0"/>
+    <zone name="16579" adunit="rtl_ip_boxen" position="1" index="true"/>
+    <zone name="12910" adunit="rtl_ip_cobra11" position="10" index="true"/>
+    <zone name="12912" adunit="rtl_ip_cobra11" position="0"/>
+    <zone name="12908" adunit="rtl_ip_cobra11" position="1" index="true"/>
+    <zone name="12898" adunit="rtl_ip_dschungelcamp" position="10" index="true"/>
+    <zone name="12900" adunit="rtl_ip_dschungelcamp" position="0"/>
+    <zone name="12896" adunit="rtl_ip_dschungelcamp" position="1" index="true"/>
+    <zone name="12892" adunit="rtl_ip_dsds" position="10" index="true"/>
+    <zone name="12894" adunit="rtl_ip_dsds" position="0"/>
+    <zone name="12890" adunit="rtl_ip_dsds" position="1" index="true"/>
+    <zone name="22888" adunit="rtl_ip_european_qualifiers" position="1"/>
+    <zone name="22892" adunit="rtl_ip_european_qualifiers" position="10" index="true"/>
+    <zone name="22890" adunit="rtl_ip_european_qualifiers" position="0"/>
+    <zone name="22886" adunit="rtl_ip_european_qualifiers" position="1" index="true"/>
+    <zone name="17245" adunit="rtl_ip_gzsz" position="1"/>
+    <zone name="12864" adunit="rtl_ip_gzsz" position="10" index="true"/>
+    <zone name="12866" adunit="rtl_ip_gzsz" position="0"/>
+    <zone name="12862" adunit="rtl_ip_gzsz" position="1" index="true"/>
+    <zone name="12857" adunit="rtl_ip_start" position="0"/>
+    <zone name="21279" adunit="rtl_ip_lets_dance" position="1"/>
+    <zone name="12918" adunit="rtl_ip_lets_dance" position="0"/>
+    <zone name="12914" adunit="rtl_ip_lets_dance" position="1" index="true"/>
+    <zone name="12916" adunit="rtl_ip_lets_dance" position="10" index="true"/>
+    <zone name="12870" adunit="rtl_ip_news" position="10" index="true"/>
+    <zone name="12872" adunit="rtl_ip_news" position="0"/>
+    <zone name="12868" adunit="rtl_ip_news" position="1" index="true"/>
+    <zone name="12876" adunit="rtl_ip_ros" position="10" index="true"/>
+    <zone name="22168" adunit="rtl_ip_ros" position="0"/>
+    <zone name="12874" adunit="rtl_ip_ros" position="1" index="true"/>
+    <zone name="12880" adunit="rtl_ip_sport" position="10" index="true"/>
+    <zone name="12882" adunit="rtl_ip_sport" position="0"/>
+    <zone name="12878" adunit="rtl_ip_sport" position="1" index="true"/>
+    <zone name="12886" adunit="rtl_ip_news" position="10" index="true"/>
+    <zone name="12888" adunit="rtl_ip_news" position="0"/>
+    <zone name="12884" adunit="rtl_ip_news" position="1" index="true"/>
+    <zone name="12860" adunit="rtl_ip_start" position="1" index="true"/>
+    <zone name="17239" adunit="rtl_ip_supertalent" position="1"/>
+    <zone name="12922" adunit="rtl_ip_supertalent" position="10" index="true"/>
+    <zone name="12924" adunit="rtl_ip_supertalent" position="0"/>
+    <zone name="12920" adunit="rtl_ip_supertalent" position="1" index="true"/>
+    <zone name="17243" adunit="rtl_ip_wwm" position="1"/>
+    <zone name="15561" adunit="rtl_ip_wwm" position="10" index="true"/>
+    <zone name="15551" adunit="rtl_ip_wwm" position="0"/>
+    <zone name="15553" adunit="rtl_ip_wwm" position="1" index="true"/>
+    <zone name="19861" adunit="rtl_tab_bachelor" position="0"/>
+    <zone name="19538" adunit="rtl_tab_bauer_sucht_frau" position="0"/>
+    <zone name="19583" adunit="rtl_tab_cobra11" position="0"/>
+    <zone name="19571" adunit="rtl_tab_dschungelcamp" position="0"/>
+    <zone name="19585" adunit="rtl_tab_dsds" position="0"/>
+    <zone name="22909" adunit="rtl_tab_european_qualifiers" position="0"/>
+    <zone name="19581" adunit="rtl_tab_f1" position="0"/>
+    <zone name="19591" adunit="rtl_tab_gzsz" position="0"/>
+    <zone name="19579" adunit="rtl_tab_lets_dance" position="0"/>
+    <zone name="19589" adunit="rtl_tab_news" position="0"/>
+    <zone name="22178" adunit="rtl_tab_ros" position="0"/>
+    <zone name="19587" adunit="rtl_tab_sport" position="0"/>
+    <zone name="19577" adunit="rtl_tab_supertalent" position="0"/>
+    <zone name="19573" adunit="rtl_tab_wwm" position="0"/>
+    <zone name="19575" adunit="rtl_tab_start" position="0"/>
+    <zone name="19857" adunit="rtl_tab_bachelor" position="1" index="true"/>
+    <zone name="19540" adunit="rtl_tab_bauer_sucht_frau" position="1" index="true"/>
+    <zone name="19611" adunit="rtl_tab_cobra11" position="1" index="true"/>
+    <zone name="19617" adunit="rtl_tab_dschungelcamp" position="1" index="true"/>
+    <zone name="19621" adunit="rtl_tab_dsds" position="1" index="true"/>
+    <zone name="22907" adunit="rtl_tab_european_qualifiers" position="1" index="true"/>
+    <zone name="19603" adunit="rtl_tab_f1" position="1" index="true"/>
+    <zone name="19633" adunit="rtl_tab_gzsz" position="1" index="true"/>
+    <zone name="19635" adunit="rtl_tab_home" position="1" index="true"/>
+    <zone name="19599" adunit="rtl_tab_lets_dance" position="1" index="true"/>
+    <zone name="19627" adunit="rtl_tab_news" position="1" index="true"/>
+    <zone name="19639" adunit="rtl_tab_ros" position="1" index="true"/>
+    <zone name="19625" adunit="rtl_tab_sport" position="1" index="true"/>
+    <zone name="19595" adunit="rtl_tab_supertalent" position="1" index="true"/>
+    <zone name="19607" adunit="rtl_tab_wwm" position="1" index="true"/>
+    <zone name="13300" adunit="rtv_and_ros" position="10" index="true"/>
+    <zone name="13296" adunit="rtv_and_ros" position="0"/>
+    <zone name="23176" adunit="rtv_and_ros" position="2" index="true"/>
+    <zone name="13298" adunit="rtv_and_ros" position="1" index="true"/>
+    <zone name="14570" adunit="rtv_tab_ros" position="10" index="true"/>
+    <zone name="14568" adunit="rtv_tab_ros" position="1" index="true"/>
+    <zone name="14522" adunit="rtv_ipad_genre" position="1" index="true"/>
+    <zone name="14520" adunit="rtv_ipad_start" position="1" index="true"/>
+    <zone name="14536" adunit="rtv_ipad_program_item" position="1" index="true"/>
+    <zone name="14524" adunit="rtv_ipad_programm" position="1" index="true"/>
+    <zone name="14528" adunit="rtv_ipad_ros" position="0"/>
+    <zone name="14532" adunit="rtv_ipad_sender" position="1" index="true"/>
+    <zone name="14526" adunit="rtv_ipad_start" position="0"/>
+    <zone name="14530" adunit="rtv_ipad_tipps" position="1" index="true"/>
+    <zone name="13290" adunit="rtv_ip_ros" position="10" index="true"/>
+    <zone name="13294" adunit="rtv_ip_ros" position="0"/>
+    <zone name="23174" adunit="rtv_ip_ros" position="2" index="true"/>
+    <zone name="13292" adunit="rtv_ip_ros" position="1" index="true"/>
+    <zone name="15008" adunit="sportsrepublic_and_article" position="1"/>
+    <zone name="15006" adunit="sportsrepublic_and_generic" position="1" index="true"/>
+    <zone name="15010" adunit="sportsrepublic_and_start" position="0"/>
+    <zone name="16383" adunit="sportsrepublic_and_ros" position="0"/>
+    <zone name="15002" adunit="sportsrepublic_tab_article" position="1"/>
+    <zone name="15004" adunit="sportsrepublic_tab_generic" position="1" index="true"/>
+    <zone name="15000" adunit="sportsrepublic_tab_start" position="0"/>
+    <zone name="16055" adunit="sportsrepublic_tab_ros" position="1" index="true"/>
+    <zone name="16385" adunit="sportsrepublic_tab_ros" position="0"/>
+    <zone name="15014" adunit="sportsrepublic_ipad_article" position="1"/>
+    <zone name="15016" adunit="sportsrepublic_ipad_generic" position="1" index="true"/>
+    <zone name="15012" adunit="sportsrepublic_ipad_start" position="0"/>
+    <zone name="16057" adunit="sportsrepublic_ipad_ros" position="1" index="true"/>
+    <zone name="16407" adunit="sportsrepublic_ipad_ros" position="0"/>
+    <zone name="15020" adunit="sportsrepublic_ip_article" position="1"/>
+    <zone name="15018" adunit="sportsrepublic_ip_generic" position="1" index="true"/>
+    <zone name="15022" adunit="sportsrepublic_ip_start" position="0"/>
+    <zone name="16409" adunit="sportsrepublic_ip_ros" position="0"/>
+    <zone name="24660" adunit="stern_tab_auto" position="10"/>
+    <zone name="24724" adunit="stern_tab_auto" position="0"/>
+    <zone name="24662" adunit="stern_tab_auto" position="0"/>
+    <zone name="24658" adunit="stern_tab_auto" position="2"/>
+    <zone name="24656" adunit="stern_tab_auto" position="1"/>
+    <zone name="24580" adunit="stern_tab_digital" position="10"/>
+    <zone name="24726" adunit="stern_tab_digital" position="0"/>
+    <zone name="24582" adunit="stern_tab_digital" position="0"/>
+    <zone name="24578" adunit="stern_tab_digital" position="2"/>
+    <zone name="24576" adunit="stern_tab_digital" position="1"/>
+    <zone name="24612" adunit="stern_tab_familie" position="10"/>
+    <zone name="24728" adunit="stern_tab_familie" position="0"/>
+    <zone name="24614" adunit="stern_tab_familie" position="0"/>
+    <zone name="24610" adunit="stern_tab_familie" position="2"/>
+    <zone name="24608" adunit="stern_tab_familie" position="1"/>
+    <zone name="24676" adunit="stern_tab_fotografie" position="10"/>
+    <zone name="24720" adunit="stern_tab_fotografie" position="0"/>
+    <zone name="24678" adunit="stern_tab_fotografie" position="0"/>
+    <zone name="24674" adunit="stern_tab_fotografie" position="2"/>
+    <zone name="24672" adunit="stern_tab_fotografie" position="1"/>
+    <zone name="24708" adunit="stern_tab_genuss" position="10"/>
+    <zone name="24712" adunit="stern_tab_genuss" position="0"/>
+    <zone name="24710" adunit="stern_tab_genuss" position="0"/>
+    <zone name="24706" adunit="stern_tab_genuss" position="2"/>
+    <zone name="24704" adunit="stern_tab_genuss" position="1"/>
+    <zone name="24628" adunit="stern_tab_gesundheit" position="10"/>
+    <zone name="24730" adunit="stern_tab_gesundheit" position="0"/>
+    <zone name="24630" adunit="stern_tab_gesundheit" position="0"/>
+    <zone name="24626" adunit="stern_tab_gesundheit" position="2"/>
+    <zone name="24624" adunit="stern_tab_gesundheit" position="1"/>
+    <zone name="24546" adunit="stern_tab_home" position="1"/>
+    <zone name="24544" adunit="stern_tab_home" position="10"/>
+    <zone name="24732" adunit="stern_tab_home" position="0"/>
+    <zone name="24548" adunit="stern_tab_home" position="0"/>
+    <zone name="24542" adunit="stern_tab_home" position="2"/>
+    <zone name="24540" adunit="stern_tab_home" position="1"/>
+    <zone name="24588" adunit="stern_tab_kultur" position="10"/>
+    <zone name="24734" adunit="stern_tab_kultur" position="0"/>
+    <zone name="24590" adunit="stern_tab_kultur" position="0"/>
+    <zone name="24586" adunit="stern_tab_kultur" position="2"/>
+    <zone name="24584" adunit="stern_tab_kultur" position="1"/>
+    <zone name="24596" adunit="stern_tab_lifestyle" position="10"/>
+    <zone name="24736" adunit="stern_tab_lifestyle" position="0"/>
+    <zone name="24598" adunit="stern_tab_lifestyle" position="0"/>
+    <zone name="24594" adunit="stern_tab_lifestyle" position="2"/>
+    <zone name="24592" adunit="stern_tab_lifestyle" position="1"/>
+    <zone name="24572" adunit="stern_tab_panorama" position="10"/>
+    <zone name="24738" adunit="stern_tab_panorama" position="0"/>
+    <zone name="24574" adunit="stern_tab_panorama" position="0"/>
+    <zone name="24570" adunit="stern_tab_panorama" position="2"/>
+    <zone name="24568" adunit="stern_tab_panorama" position="1"/>
+    <zone name="24564" adunit="stern_tab_politik" position="10"/>
+    <zone name="24740" adunit="stern_tab_politik" position="0"/>
+    <zone name="24566" adunit="stern_tab_politik" position="0"/>
+    <zone name="24562" adunit="stern_tab_politik" position="2"/>
+    <zone name="24560" adunit="stern_tab_politik" position="1"/>
+    <zone name="24652" adunit="stern_tab_reise" position="10"/>
+    <zone name="24743" adunit="stern_tab_reise" position="0"/>
+    <zone name="24654" adunit="stern_tab_reise" position="0"/>
+    <zone name="24650" adunit="stern_tab_reise" position="2"/>
+    <zone name="24648" adunit="stern_tab_reise" position="1"/>
+    <zone name="24556" adunit="stern_tab_ros" position="1"/>
+    <zone name="24554" adunit="stern_tab_ros" position="10"/>
+    <zone name="24745" adunit="stern_tab_ros" position="0"/>
+    <zone name="24558" adunit="stern_tab_ros" position="0"/>
+    <zone name="24552" adunit="stern_tab_ros" position="2"/>
+    <zone name="24550" adunit="stern_tab_ros" position="1"/>
+    <zone name="24684" adunit="stern_tab_spezial_1" position="10"/>
+    <zone name="24718" adunit="stern_tab_spezial_1" position="0"/>
+    <zone name="24686" adunit="stern_tab_spezial_1" position="0"/>
+    <zone name="24682" adunit="stern_tab_spezial_1" position="2"/>
+    <zone name="24680" adunit="stern_tab_spezial_1" position="1"/>
+    <zone name="24692" adunit="stern_tab_spezial_2" position="10"/>
+    <zone name="24716" adunit="stern_tab_spezial_2" position="0"/>
+    <zone name="24694" adunit="stern_tab_spezial_2" position="0"/>
+    <zone name="24690" adunit="stern_tab_spezial_2" position="2"/>
+    <zone name="24688" adunit="stern_tab_spezial_2" position="1"/>
+    <zone name="24604" adunit="stern_tab_sport" position="10"/>
+    <zone name="24747" adunit="stern_tab_sport" position="0"/>
+    <zone name="24606" adunit="stern_tab_sport" position="0"/>
+    <zone name="24602" adunit="stern_tab_sport" position="2"/>
+    <zone name="24600" adunit="stern_tab_sport" position="1"/>
+    <zone name="24668" adunit="stern_tab_tv" position="10"/>
+    <zone name="24722" adunit="stern_tab_tv" position="0"/>
+    <zone name="24670" adunit="stern_tab_tv" position="0"/>
+    <zone name="24666" adunit="stern_tab_tv" position="2"/>
+    <zone name="24664" adunit="stern_tab_tv" position="1"/>
+    <zone name="24700" adunit="stern_tab_video" position="10"/>
+    <zone name="24714" adunit="stern_tab_video" position="0"/>
+    <zone name="24702" adunit="stern_tab_video" position="0"/>
+    <zone name="24698" adunit="stern_tab_video" position="2"/>
+    <zone name="24696" adunit="stern_tab_video" position="1"/>
+    <zone name="24620" adunit="stern_tab_wirtschaft" position="10"/>
+    <zone name="24749" adunit="stern_tab_wirtschaft" position="0"/>
+    <zone name="24622" adunit="stern_tab_wirtschaft" position="0"/>
+    <zone name="24618" adunit="stern_tab_wirtschaft" position="2"/>
+    <zone name="24616" adunit="stern_tab_wirtschaft" position="1"/>
+    <zone name="24636" adunit="stern_tab_wissen" position="10"/>
+    <zone name="24751" adunit="stern_tab_wissen" position="0"/>
+    <zone name="24638" adunit="stern_tab_wissen" position="0"/>
+    <zone name="24634" adunit="stern_tab_wissen" position="2"/>
+    <zone name="24632" adunit="stern_tab_wissen" position="1"/>
+    <zone name="24644" adunit="stern_tab_wissenstest" position="10"/>
+    <zone name="24753" adunit="stern_tab_wissenstest" position="0"/>
+    <zone name="24646" adunit="stern_tab_wissenstest" position="0"/>
+    <zone name="24642" adunit="stern_tab_wissenstest" position="2"/>
+    <zone name="24640" adunit="stern_tab_wissenstest" position="1"/>
+    <zone name="309" adunit="stern_and_auto" position="0"/>
+    <zone name="303" adunit="stern_and_bilder" position="0"/>
+    <zone name="307" adunit="stern_and_digital" position="0"/>
+    <zone name="16544" adunit="stern_and_gesundheit" position="0"/>
+    <zone name="310" adunit="stern_and_kultur" position="0"/>
+    <zone name="311" adunit="stern_and_lifestyle" position="0"/>
+    <zone name="306" adunit="stern_and_panorama" position="0"/>
+    <zone name="305" adunit="stern_and_politik" position="0"/>
+    <zone name="314" adunit="stern_and_reise" position="0"/>
+    <zone name="313" adunit="stern_and_sport" position="0"/>
+    <zone name="16445" adunit="stern_and_start" position="0"/>
+    <zone name="304" adunit="stern_and_video" position="0"/>
+    <zone name="308" adunit="stern_and_wirtschaft" position="0"/>
+    <zone name="312" adunit="stern_and_wissen" position="0"/>
+    <zone name="16062" adunit="stern_ipad_ros" position="1"/>
+    <zone name="17120" adunit="stern_ipad_auto" position="0"/>
+    <zone name="16899" adunit="stern_ipad_auto" position="0"/>
+    <zone name="16895" adunit="stern_ipad_auto" position="1"/>
+    <zone name="16897" adunit="stern_ipad_auto" position="1"/>
+    <zone name="17132" adunit="stern_ipad_bilder" position="0"/>
+    <zone name="16089" adunit="stern_ipad_bilder" position="0"/>
+    <zone name="16064" adunit="stern_ipad_bilder" position="1"/>
+    <zone name="17114" adunit="stern_ipad_digital" position="0"/>
+    <zone name="16917" adunit="stern_ipad_digital" position="0"/>
+    <zone name="16913" adunit="stern_ipad_digital" position="1"/>
+    <zone name="16915" adunit="stern_ipad_digital" position="1"/>
+    <zone name="17110" adunit="stern_ipad_fotografie" position="0"/>
+    <zone name="16937" adunit="stern_ipad_fotografie" position="0"/>
+    <zone name="16933" adunit="stern_ipad_fotografie" position="1"/>
+    <zone name="16935" adunit="stern_ipad_fotografie" position="1"/>
+    <zone name="17118" adunit="stern_ipad_gesundheit" position="0"/>
+    <zone name="16905" adunit="stern_ipad_gesundheit" position="0"/>
+    <zone name="16901" adunit="stern_ipad_gesundheit" position="1"/>
+    <zone name="16903" adunit="stern_ipad_gesundheit" position="1"/>
+    <zone name="17124" adunit="stern_ipad_kultur" position="0"/>
+    <zone name="16887" adunit="stern_ipad_kultur" position="0"/>
+    <zone name="16883" adunit="stern_ipad_kultur" position="1"/>
+    <zone name="16885" adunit="stern_ipad_kultur" position="1"/>
+    <zone name="17116" adunit="stern_ipad_lifestyle" position="0"/>
+    <zone name="16911" adunit="stern_ipad_lifestyle" position="0"/>
+    <zone name="16907" adunit="stern_ipad_lifestyle" position="1"/>
+    <zone name="16909" adunit="stern_ipad_lifestyle" position="1"/>
+    <zone name="16124" adunit="stern_ipad_news" position="1"/>
+    <zone name="17128" adunit="stern_ipad_panorama" position="0"/>
+    <zone name="16875" adunit="stern_ipad_panorama" position="0"/>
+    <zone name="16871" adunit="stern_ipad_panorama" position="1"/>
+    <zone name="16873" adunit="stern_ipad_panorama" position="1"/>
+    <zone name="17130" adunit="stern_ipad_politik" position="0"/>
+    <zone name="16869" adunit="stern_ipad_politik" position="0"/>
+    <zone name="16865" adunit="stern_ipad_politik" position="1"/>
+    <zone name="16867" adunit="stern_ipad_politik" position="1"/>
+    <zone name="16068" adunit="stern_ipad_ratgeber" position="1"/>
+    <zone name="17108" adunit="stern_ipad_reise" position="0"/>
+    <zone name="16929" adunit="stern_ipad_reise" position="0"/>
+    <zone name="16925" adunit="stern_ipad_reise" position="1"/>
+    <zone name="16927" adunit="stern_ipad_reise" position="1"/>
+    <zone name="17126" adunit="stern_ipad_sport" position="0"/>
+    <zone name="16881" adunit="stern_ipad_sport" position="0"/>
+    <zone name="16877" adunit="stern_ipad_sport" position="1"/>
+    <zone name="16879" adunit="stern_ipad_sport" position="1"/>
+    <zone name="17893" adunit="stern_ipad_start" position="1"/>
+    <zone name="17136" adunit="stern_ipad_start" position="0"/>
+    <zone name="16072" adunit="stern_ipad_start" position="0"/>
+    <zone name="17928" adunit="stern_ipad_start" position="1"/>
+    <zone name="16060" adunit="stern_ipad_start" position="1"/>
+    <zone name="17134" adunit="stern_ipad_video" position="0"/>
+    <zone name="16070" adunit="stern_ipad_video" position="0"/>
+    <zone name="16066" adunit="stern_ipad_video" position="1"/>
+    <zone name="16074" adunit="stern_ipad_video" position="0"/>
+    <zone name="21333" adunit="stern_ipad_video" position="0"/>
+    <zone name="17122" adunit="stern_ipad_wirtschaft" position="0"/>
+    <zone name="16893" adunit="stern_ipad_wirtschaft" position="0"/>
+    <zone name="16889" adunit="stern_ipad_wirtschaft" position="1"/>
+    <zone name="16891" adunit="stern_ipad_wirtschaft" position="1"/>
+    <zone name="17112" adunit="stern_ipad_wissen" position="0"/>
+    <zone name="16923" adunit="stern_ipad_wissen" position="0"/>
+    <zone name="16919" adunit="stern_ipad_wissen" position="1"/>
+    <zone name="16921" adunit="stern_ipad_wissen" position="1"/>
+    <zone name="416" adunit="stern_ip_auto" position="0"/>
+    <zone name="417" adunit="stern_ip_bilder" position="0"/>
+    <zone name="431" adunit="stern_ip_bildergalerien" position="0"/>
+    <zone name="418" adunit="stern_ip_fussballticker" position="0"/>
+    <zone name="419" adunit="stern_ip_digital" position="0"/>
+    <zone name="415" adunit="stern_ip_gesundheit" position="0"/>
+    <zone name="420" adunit="stern_ip_kultur" position="0"/>
+    <zone name="610" adunit="stern_ip_start" position="0"/>
+    <zone name="421" adunit="stern_ip_lifestyle" position="0"/>
+    <zone name="12340" adunit="stern_ip_news" position="0"/>
+    <zone name="422" adunit="stern_ip_panorama" position="0"/>
+    <zone name="423" adunit="stern_ip_politik" position="0"/>
+    <zone name="424" adunit="stern_ip_reise" position="0"/>
+    <zone name="425" adunit="stern_ip_sport" position="0"/>
+    <zone name="426" adunit="stern_ip_start" position="0"/>
+    <zone name="427" adunit="stern_ip_video" position="0"/>
+    <zone name="428" adunit="stern_ip_wirtschaft" position="0"/>
+    <zone name="429" adunit="stern_ip_wissen" position="0"/>
+    <zone name="430" adunit="stern_ip_wissenstest" position="0"/>
+    <zone name="21871" adunit="stern_quiz_battle_and_game_board" position="0"/>
+    <zone name="21778" adunit="stern_quiz_battle_and_home" position="1"/>
+    <zone name="21869" adunit="stern_quiz_battle_and_home" position="0"/>
+    <zone name="21863" adunit="stern_quiz_battle_ip_game_board" position="0"/>
+    <zone name="21874" adunit="stern_quiz_battle_ip_home" position="1"/>
+    <zone name="21845" adunit="stern_quiz_battle_ip_home" position="0"/>
+    <zone name="24198" adunit="n-tv_tanknavi_and_ros" position="10"/>
+    <zone name="24200" adunit="n-tv_tanknavi_and_ros" position="0"/>
+    <zone name="24196" adunit="n-tv_tanknavi_and_ros" position="1"/>
+    <zone name="24192" adunit="n-tv_tanknavi_ip_ros" position="10"/>
+    <zone name="24194" adunit="n-tv_tanknavi_ip_ros" position="0"/>
+    <zone name="24190" adunit="n-tv_tanknavi_ip_ros" position="1"/>
+    <zone name="19368" adunit="tripwolf_and_ros" position="1"/>
+    <zone name="19370" adunit="tripwolf_and_ros" position="0"/>
+    <zone name="19364" adunit="tripwolf_ip_ros" position="1"/>
+    <zone name="19366" adunit="tripwolf_ip_ros" position="0"/>
+    <zone name="20569" adunit="tripwolf_ipad_category" position="1"/>
+    <zone name="20567" adunit="tripwolf_ipad_category" position="1"/>
+    <zone name="20538" adunit="tripwolf_ipad_category" position="1"/>
+    <zone name="20536" adunit="tripwolf_ipad_category" position="1"/>
+    <zone name="20558" adunit="tripwolf_ipad_category" position="1" index="true"/>
+    <zone name="20553" adunit="tripwolf_ipad_category" position="1" index="true"/>
+    <zone name="20530" adunit="tripwolf_ipad_category" position="1" index="true"/>
+    <zone name="20528" adunit="tripwolf_ipad_category" position="1" index="true"/>
+    <zone name="20562" adunit="tripwolf_ipad_essentials" position="1" index="true"/>
+    <zone name="20560" adunit="tripwolf_ipad_essentials" position="1" index="true"/>
+    <zone name="20534" adunit="tripwolf_ipad_essentials" position="1" index="true"/>
+    <zone name="20532" adunit="tripwolf_ipad_essentials" position="1" index="true"/>
+    <zone name="20573" adunit="tripwolf_ipad_download" position="0"/>
+    <zone name="20571" adunit="tripwolf_ipad_guide" position="0"/>
+    <zone name="20581" adunit="tripwolf_ipad_guide" position="0"/>
+    <zone name="20579" adunit="tripwolf_ipad_guide" position="0"/>
+    <zone name="20577" adunit="tripwolf_ipad_guide" position="0"/>
+    <zone name="20575" adunit="tripwolf_ipad_guide" position="0"/>
+    <zone name="20583" adunit="tripwolf_ipad_guide" position="0"/>
+    <zone name="20522" adunit="tripwolf_ipad_map" position="10" index="true"/>
+    <zone name="20520" adunit="tripwolf_ipad_map" position="10" index="true"/>
+    <zone name="20542" adunit="tripwolf_ipad_detail" position="1"/>
+    <zone name="20540" adunit="tripwolf_ipad_detail" position="1"/>
+    <zone name="20526" adunit="tripwolf_ipad_ros" position="1"/>
+    <zone name="20524" adunit="tripwolf_ipad_ros" position="1"/>
+    <zone name="19827" adunit="tvtv_and_home" position="0"/>
+    <zone name="23100" adunit="tvtv_and_home" position="2"/>
+    <zone name="19835" adunit="tvtv_and_home" position="1"/>
+    <zone name="19837" adunit="tvtv_and_home" position="1"/>
+    <zone name="19831" adunit="tvtv_and_ros" position="10"/>
+    <zone name="19829" adunit="tvtv_and_ros" position="0"/>
+    <zone name="23102" adunit="tvtv_and_ros" position="2"/>
+    <zone name="19833" adunit="tvtv_and_ros" position="1"/>
+    <zone name="19823" adunit="tvtv_ip_home" position="0"/>
+    <zone name="23096" adunit="tvtv_ip_home" position="2"/>
+    <zone name="19815" adunit="tvtv_ip_home" position="1"/>
+    <zone name="19813" adunit="tvtv_ip_home" position="1"/>
+    <zone name="19819" adunit="tvtv_ip_ros" position="10"/>
+    <zone name="19821" adunit="tvtv_ip_ros" position="0"/>
+    <zone name="23098" adunit="tvtv_ip_ros" position="2"/>
+    <zone name="19817" adunit="tvtv_ip_ros" position="1"/>
+    <zone name="22918" adunit="urbia_schwangerschaft_ip_ros" position="1"/>
+    <zone name="22920" adunit="urbia_schwangerschaft_ip_ros" position="0"/>
+    <zone name="22922" adunit="urbia_schwangerschaft_ip_start" position="0"/>
+    <zone name="19755" adunit="urbia_eisprung_and_ros" position="0"/>
+    <zone name="19753" adunit="urbia_eisprung_and_ros" position="1"/>
+    <zone name="19757" adunit="urbia_eisprung_and_start" position="0"/>
+    <zone name="22141" adunit="urbia_eisprung_ip_ros" position="1"/>
+    <zone name="22307" adunit="urbia_eisprung_ip_start" position="0"/>
+    <zone name="17383" adunit="vox_and_ab_ins_beet" position="1"/>
+    <zone name="17385" adunit="vox_and_ab_ins_beet" position="10" index="true"/>
+    <zone name="17389" adunit="vox_and_ab_ins_beet" position="0"/>
+    <zone name="17387" adunit="vox_and_ab_ins_beet" position="1" index="true"/>
+    <zone name="17391" adunit="vox_and_continuum" position="1"/>
+    <zone name="17393" adunit="vox_and_continuum" position="10" index="true"/>
+    <zone name="17397" adunit="vox_and_continuum" position="0"/>
+    <zone name="17395" adunit="vox_and_continuum" position="1" index="true"/>
+    <zone name="17399" adunit="vox_and_das_perfekte_dinner" position="1"/>
+    <zone name="17401" adunit="vox_and_das_perfekte_dinner" position="10" index="true"/>
+    <zone name="17405" adunit="vox_and_das_perfekte_dinner" position="0"/>
+    <zone name="17403" adunit="vox_and_das_perfekte_dinner" position="1" index="true"/>
+    <zone name="17407" adunit="vox_and_das_perfekte_promi_dinner" position="1"/>
+    <zone name="17409" adunit="vox_and_das_perfekte_promi_dinner" position="10" index="true"/>
+    <zone name="17413" adunit="vox_and_das_perfekte_promi_dinner" position="0"/>
+    <zone name="17411" adunit="vox_and_das_perfekte_promi_dinner" position="1" index="true"/>
+    <zone name="17415" adunit="vox_and_date_my_style" position="1"/>
+    <zone name="17417" adunit="vox_and_date_my_style" position="10" index="true"/>
+    <zone name="17421" adunit="vox_and_date_my_style" position="0"/>
+    <zone name="17419" adunit="vox_and_date_my_style" position="1" index="true"/>
+    <zone name="17423" adunit="vox_and_die_kuechenchefs" position="1"/>
+    <zone name="17425" adunit="vox_and_die_kuechenchefs" position="10" index="true"/>
+    <zone name="17429" adunit="vox_and_die_kuechenchefs" position="0"/>
+    <zone name="17427" adunit="vox_and_die_kuechenchefs" position="1" index="true"/>
+    <zone name="17431" adunit="vox_and_die_superchefs" position="1"/>
+    <zone name="17433" adunit="vox_and_die_superchefs" position="10" index="true"/>
+    <zone name="17437" adunit="vox_and_die_superchefs" position="0"/>
+    <zone name="17435" adunit="vox_and_die_superchefs" position="1" index="true"/>
+    <zone name="17805" adunit="vox_and_formate" position="10"/>
+    <zone name="17803" adunit="vox_and_formate" position="1"/>
+    <zone name="17439" adunit="vox_and_hundkatzemaus" position="1"/>
+    <zone name="17441" adunit="vox_and_hundkatzemaus" position="10" index="true"/>
+    <zone name="17445" adunit="vox_and_hundkatzemaus" position="0"/>
+    <zone name="17443" adunit="vox_and_hundkatzemaus" position="1" index="true"/>
+    <zone name="17447" adunit="vox_and_start" position="0"/>
+    <zone name="17449" adunit="vox_and_menschen_tiere_doktoren" position="1"/>
+    <zone name="17451" adunit="vox_and_menschen_tiere_doktoren" position="10" index="true"/>
+    <zone name="17455" adunit="vox_and_menschen_tiere_doktoren" position="0"/>
+    <zone name="17453" adunit="vox_and_menschen_tiere_doktoren" position="1" index="true"/>
+    <zone name="17457" adunit="vox_and_mieten_kaufen_wohnen" position="1"/>
+    <zone name="17459" adunit="vox_and_mieten_kaufen_wohnen" position="10" index="true"/>
+    <zone name="17463" adunit="vox_and_mieten_kaufen_wohnen" position="0"/>
+    <zone name="17461" adunit="vox_and_mieten_kaufen_wohnen" position="1" index="true"/>
+    <zone name="17465" adunit="vox_and_natuerlich_blond" position="1"/>
+    <zone name="17467" adunit="vox_and_natuerlich_blond" position="10" index="true"/>
+    <zone name="17471" adunit="vox_and_natuerlich_blond" position="0"/>
+    <zone name="17469" adunit="vox_and_natuerlich_blond" position="1" index="true"/>
+    <zone name="17473" adunit="vox_and_promi_kocharena" position="1"/>
+    <zone name="17475" adunit="vox_and_promi_kocharena" position="10" index="true"/>
+    <zone name="17479" adunit="vox_and_promi_kocharena" position="0"/>
+    <zone name="17477" adunit="vox_and_promi_kocharena" position="1" index="true"/>
+    <zone name="17481" adunit="vox_and_promi_shopping_queen" position="1"/>
+    <zone name="17483" adunit="vox_and_promi_shopping_queen" position="10" index="true"/>
+    <zone name="17487" adunit="vox_and_promi_shopping_queen" position="0"/>
+    <zone name="17485" adunit="vox_and_promi_shopping_queen" position="1" index="true"/>
+    <zone name="17489" adunit="vox_and_revenge" position="1"/>
+    <zone name="17491" adunit="vox_and_revenge" position="10" index="true"/>
+    <zone name="17495" adunit="vox_and_revenge" position="0"/>
+    <zone name="17493" adunit="vox_and_revenge" position="1" index="true"/>
+    <zone name="17801" adunit="vox_and_ros" position="10"/>
+    <zone name="17799" adunit="vox_and_ros" position="1"/>
+    <zone name="17497" adunit="vox_and_shopping_queen" position="1"/>
+    <zone name="17499" adunit="vox_and_shopping_queen" position="10" index="true"/>
+    <zone name="17503" adunit="vox_and_shopping_queen" position="0"/>
+    <zone name="17501" adunit="vox_and_shopping_queen" position="1" index="true"/>
+    <zone name="17505" adunit="vox_and_start" position="10" index="true"/>
+    <zone name="17507" adunit="vox_and_start" position="1" index="true"/>
+    <zone name="17797" adunit="vox_and_suchergebnis" position="10" index="true"/>
+    <zone name="17795" adunit="vox_and_suchergebnis" position="1" index="true"/>
+    <zone name="17793" adunit="vox_and_video" position="10" index="true"/>
+    <zone name="17791" adunit="vox_and_video" position="1" index="true"/>
+    <zone name="19441" adunit="vox_ipad_100_songs" position="0"/>
+    <zone name="19439" adunit="vox_ipad_100_songs" position="1" index="true"/>
+    <zone name="19437" adunit="vox_ipad_ab_ins_beet" position="0"/>
+    <zone name="19435" adunit="vox_ipad_ab_ins_beet" position="1" index="true"/>
+    <zone name="19433" adunit="vox_ipad_continuum" position="0"/>
+    <zone name="19431" adunit="vox_ipad_continuum" position="1" index="true"/>
+    <zone name="19429" adunit="vox_ipad_natuerlich_blond" position="0"/>
+    <zone name="19427" adunit="vox_ipad_natuerlich_blond" position="1" index="true"/>
+    <zone name="19421" adunit="vox_ipad_das_perfekte_dinner" position="0"/>
+    <zone name="19419" adunit="vox_ipad_das_perfekte_dinner" position="1" index="true"/>
+    <zone name="19425" adunit="vox_ipad_das_perfekte_promi_dinner" position="0"/>
+    <zone name="19423" adunit="vox_ipad_das_perfekte_promi_dinner" position="1" index="true"/>
+    <zone name="19417" adunit="vox_ipad_date_my_style" position="0"/>
+    <zone name="19415" adunit="vox_ipad_date_my_style" position="1" index="true"/>
+    <zone name="19401" adunit="vox_ipad_die_superchefs" position="0"/>
+    <zone name="19399" adunit="vox_ipad_die_superchefs" position="1" index="true"/>
+    <zone name="19453" adunit="vox_ipad_formate" position="1" index="true"/>
+    <zone name="19397" adunit="vox_ipad_hundkatzemaus" position="0"/>
+    <zone name="19395" adunit="vox_ipad_hundkatzemaus" position="1" index="true"/>
+    <zone name="19405" adunit="vox_ipad_kocharena" position="0"/>
+    <zone name="19403" adunit="vox_ipad_kocharena" position="1" index="true"/>
+    <zone name="19413" adunit="vox_ipad_die_kuechenchefs" position="0"/>
+    <zone name="19411" adunit="vox_ipad_die_kuechenchefs" position="1" index="true"/>
+    <zone name="19445" adunit="vox_ipad_start" position="0"/>
+    <zone name="19393" adunit="vox_ipad_menschen_tiere_doktoren" position="0"/>
+    <zone name="19455" adunit="vox_ipad_menschen_tiere_doktoren" position="1" index="true"/>
+    <zone name="19391" adunit="vox_ipad_mieten_kaufen_wohnen" position="0"/>
+    <zone name="19389" adunit="vox_ipad_mieten_kaufen_wohnen" position="1" index="true"/>
+    <zone name="19409" adunit="vox_ipad_promi_kocharena" position="0"/>
+    <zone name="19407" adunit="vox_ipad_promi_kocharena" position="1" index="true"/>
+    <zone name="19383" adunit="vox_ipad_promi_shopping_queen" position="0"/>
+    <zone name="19381" adunit="vox_ipad_promi_shopping_queen" position="1" index="true"/>
+    <zone name="19387" adunit="vox_ipad_revenge" position="0"/>
+    <zone name="19385" adunit="vox_ipad_revenge" position="1" index="true"/>
+    <zone name="19451" adunit="vox_ipad_ros" position="1" index="true"/>
+    <zone name="19379" adunit="vox_ipad_shopping_queen" position="0"/>
+    <zone name="19377" adunit="vox_ipad_shopping_queen" position="1" index="true"/>
+    <zone name="19443" adunit="vox_ipad_start" position="1" index="true"/>
+    <zone name="19449" adunit="vox_ipad_suchergebnis" position="1" index="true"/>
+    <zone name="19447" adunit="vox_ipad_video" position="1" index="true"/>
+    <zone name="17267" adunit="vox_ip_ab_ins_beet" position="1"/>
+    <zone name="17265" adunit="vox_ip_ab_ins_beet" position="10" index="true"/>
+    <zone name="17261" adunit="vox_ip_ab_ins_beet" position="0"/>
+    <zone name="17263" adunit="vox_ip_ab_ins_beet" position="1" index="true"/>
+    <zone name="17375" adunit="vox_ip_continuum" position="1"/>
+    <zone name="17379" adunit="vox_ip_continuum" position="10" index="true"/>
+    <zone name="17377" adunit="vox_ip_continuum" position="0"/>
+    <zone name="17381" adunit="vox_ip_continuum" position="1" index="true"/>
+    <zone name="17283" adunit="vox_ip_das_perfekte_dinner" position="1"/>
+    <zone name="17281" adunit="vox_ip_das_perfekte_dinner" position="10" index="true"/>
+    <zone name="17277" adunit="vox_ip_das_perfekte_dinner" position="0"/>
+    <zone name="17279" adunit="vox_ip_das_perfekte_dinner" position="1" index="true"/>
+    <zone name="17291" adunit="vox_ip_das_perfekte_promi_dinner" position="1"/>
+    <zone name="17289" adunit="vox_ip_das_perfekte_promi_dinner" position="10" index="true"/>
+    <zone name="17285" adunit="vox_ip_das_perfekte_promi_dinner" position="0"/>
+    <zone name="17287" adunit="vox_ip_das_perfekte_promi_dinner" position="1" index="true"/>
+    <zone name="17341" adunit="vox_ip_date_my_style" position="1"/>
+    <zone name="17337" adunit="vox_ip_date_my_style" position="10" index="true"/>
+    <zone name="17339" adunit="vox_ip_date_my_style" position="0"/>
+    <zone name="17335" adunit="vox_ip_date_my_style" position="1" index="true"/>
+    <zone name="17343" adunit="vox_ip_die_kuechenchefs" position="1"/>
+    <zone name="17347" adunit="vox_ip_die_kuechenchefs" position="10" index="true"/>
+    <zone name="17345" adunit="vox_ip_die_kuechenchefs" position="0"/>
+    <zone name="17349" adunit="vox_ip_die_kuechenchefs" position="1" index="true"/>
+    <zone name="17357" adunit="vox_ip_die_superchefs" position="1"/>
+    <zone name="17353" adunit="vox_ip_die_superchefs" position="10" index="true"/>
+    <zone name="17355" adunit="vox_ip_die_superchefs" position="0"/>
+    <zone name="17351" adunit="vox_ip_die_superchefs" position="1" index="true"/>
+    <zone name="17807" adunit="vox_ip_formate" position="10" index="true"/>
+    <zone name="17809" adunit="vox_ip_formate" position="1" index="true"/>
+    <zone name="17294" adunit="vox_ip_hundkatzemaus" position="1"/>
+    <zone name="17296" adunit="vox_ip_hundkatzemaus" position="10" index="true"/>
+    <zone name="17300" adunit="vox_ip_hundkatzemaus" position="0"/>
+    <zone name="17298" adunit="vox_ip_hundkatzemaus" position="1" index="true"/>
+    <zone name="17255" adunit="vox_ip_start" position="0"/>
+    <zone name="17308" adunit="vox_ip_menschen_tiere_doktoren" position="1"/>
+    <zone name="17306" adunit="vox_ip_menschen_tiere_doktoren" position="10" index="true"/>
+    <zone name="17304" adunit="vox_ip_menschen_tiere_doktoren" position="1" index="true"/>
+    <zone name="17302" adunit="vox_ip_menschen_tiere_doktoren" position="0"/>
+    <zone name="17317" adunit="vox_ip_mieten_kaufen_wohnen" position="1"/>
+    <zone name="17312" adunit="vox_ip_mieten_kaufen_wohnen" position="10" index="true"/>
+    <zone name="17315" adunit="vox_ip_mieten_kaufen_wohnen" position="0"/>
+    <zone name="17310" adunit="vox_ip_mieten_kaufen_wohnen" position="1" index="true"/>
+    <zone name="17275" adunit="vox_ip_natuerlich_blond" position="1"/>
+    <zone name="17273" adunit="vox_ip_natuerlich_blond" position="10" index="true"/>
+    <zone name="17269" adunit="vox_ip_natuerlich_blond" position="0"/>
+    <zone name="17271" adunit="vox_ip_natuerlich_blond" position="1" index="true"/>
+    <zone name="17319" adunit="vox_ip_promi_kocharena" position="1"/>
+    <zone name="17323" adunit="vox_ip_promi_kocharena" position="10" index="true"/>
+    <zone name="17321" adunit="vox_ip_promi_kocharena" position="0"/>
+    <zone name="17325" adunit="vox_ip_promi_kocharena" position="1" index="true"/>
+    <zone name="17333" adunit="vox_ip_promi_shopping_queen" position="1"/>
+    <zone name="17329" adunit="vox_ip_promi_shopping_queen" position="10" index="true"/>
+    <zone name="17331" adunit="vox_ip_promi_shopping_queen" position="0"/>
+    <zone name="17327" adunit="vox_ip_promi_shopping_queen" position="1" index="true"/>
+    <zone name="17373" adunit="vox_ip_revenge" position="1"/>
+    <zone name="17369" adunit="vox_ip_revenge" position="10" index="true"/>
+    <zone name="17371" adunit="vox_ip_revenge" position="0"/>
+    <zone name="17367" adunit="vox_ip_revenge" position="1" index="true"/>
+    <zone name="17811" adunit="vox_ip_ros" position="10" index="true"/>
+    <zone name="17813" adunit="vox_ip_ros" position="1" index="true"/>
+    <zone name="17359" adunit="vox_ip_shopping_queen" position="1"/>
+    <zone name="17363" adunit="vox_ip_shopping_queen" position="10" index="true"/>
+    <zone name="17361" adunit="vox_ip_shopping_queen" position="0"/>
+    <zone name="17365" adunit="vox_ip_shopping_queen" position="1" index="true"/>
+    <zone name="17259" adunit="vox_ip_start" position="10" index="true"/>
+    <zone name="17257" adunit="vox_ip_start" position="1" index="true"/>
+    <zone name="17815" adunit="vox_ip_suchergebnis" position="10" index="true"/>
+    <zone name="17817" adunit="vox_ip_suchergebnis" position="1" index="true"/>
+    <zone name="17819" adunit="vox_ip_video" position="10" index="true"/>
+    <zone name="17821" adunit="vox_ip_video" position="1" index="true"/>
+    <zone name="19523" adunit="vox_tab_100_songs" position="0"/>
+    <zone name="19521" adunit="vox_tab_100_songs" position="1" index="true"/>
+    <zone name="19519" adunit="vox_tab_ab_ins_beet" position="0"/>
+    <zone name="19517" adunit="vox_tab_ab_ins_beet" position="1" index="true"/>
+    <zone name="19515" adunit="vox_tab_continuum" position="0"/>
+    <zone name="19513" adunit="vox_tab_continuum" position="1" index="true"/>
+    <zone name="19511" adunit="vox_tab_natuerlich_blond" position="0"/>
+    <zone name="19509" adunit="vox_tab_natuerlich_blond" position="1" index="true"/>
+    <zone name="19503" adunit="vox_tab_das_perfekte_dinner" position="0"/>
+    <zone name="19501" adunit="vox_tab_das_perfekte_dinner" position="1" index="true"/>
+    <zone name="19507" adunit="vox_tab_das_perfekte_promi_dinner" position="0"/>
+    <zone name="19505" adunit="vox_tab_das_perfekte_promi_dinner" position="1" index="true"/>
+    <zone name="19499" adunit="vox_tab_date_my_style" position="0"/>
+    <zone name="19497" adunit="vox_tab_date_my_style" position="1" index="true"/>
+    <zone name="19483" adunit="vox_tab_die_superchefs" position="0"/>
+    <zone name="19481" adunit="vox_tab_die_superchefs" position="1" index="true"/>
+    <zone name="19535" adunit="vox_tab_formate" position="1" index="true"/>
+    <zone name="19479" adunit="vox_tab_hundkatzemaus" position="0"/>
+    <zone name="19477" adunit="vox_tab_hundkatzemaus" position="1" index="true"/>
+    <zone name="19487" adunit="vox_tab_kocharena" position="0"/>
+    <zone name="19485" adunit="vox_tab_kocharena" position="1" index="true"/>
+    <zone name="19495" adunit="vox_tab_die_kuechenchefs" position="0"/>
+    <zone name="19493" adunit="vox_tab_die_kuechenchefs" position="1" index="true"/>
+    <zone name="19527" adunit="vox_tab_start" position="0"/>
+    <zone name="19475" adunit="vox_tab_menschen_tiere_doktoren" position="0"/>
+    <zone name="19473" adunit="vox_tab_menschen_tiere_doktoren" position="1" index="true"/>
+    <zone name="19471" adunit="vox_tab_mieten_kaufen_wohnen" position="0"/>
+    <zone name="19469" adunit="vox_tab_mieten_kaufen_wohnen" position="1" index="true"/>
+    <zone name="19491" adunit="vox_tab_promi_kocharena" position="0"/>
+    <zone name="19489" adunit="vox_tab_promi_kocharena" position="1" index="true"/>
+    <zone name="19461" adunit="vox_tab_promi_shopping_queen" position="1" index="true"/>
+    <zone name="19463" adunit="vox_tab_promi_shopping_queen" position="0"/>
+    <zone name="19467" adunit="vox_tab_revenge" position="0"/>
+    <zone name="19465" adunit="vox_tab_revenge" position="1" index="true"/>
+    <zone name="19533" adunit="vox_tab_ros" position="1" index="true"/>
+    <zone name="19459" adunit="vox_tab_shopping_queen" position="0"/>
+    <zone name="19457" adunit="vox_tab_shopping_queen" position="1" index="true"/>
+    <zone name="19525" adunit="vox_tab_start" position="1" index="true"/>
+    <zone name="19531" adunit="vox_tab_suchergebnis" position="1" index="true"/>
+    <zone name="19529" adunit="vox_tab_video" position="1" index="true"/>
+    <zone name="17844" adunit="wwr_tab_ros" position="0"/>
+    <zone name="17842" adunit="wwr_tab_ros" position="1"/>
+    <zone name="17174" adunit="wwr_and_ros" position="1"/>
+    <zone name="17176" adunit="wwr_and_ros" position="0"/>
+    <zone name="20135" adunit="wetter_at_and_baden" position="1"/>
+    <zone name="20137" adunit="wetter_at_and_berg" position="1"/>
+    <zone name="20131" adunit="wetter_at_and_fussball" position="1"/>
+    <zone name="20139" adunit="wetter_at_and_golf" position="1"/>
+    <zone name="20127" adunit="wetter_at_and_ros" position="1"/>
+    <zone name="20141" adunit="wetter_at_and_ros" position="0"/>
+    <zone name="24237" adunit="wetter_at_and_ros" position="10"/>
+    <zone name="24233" adunit="wetter_at_and_ros" position="2"/>
+    <zone name="24235" adunit="wetter_at_and_ros" position="3"/>
+    <zone name="20133" adunit="wetter_at_and_ski" position="1"/>
+    <zone name="20129" adunit="wetter_at_and_sport" position="1"/>
+    <zone name="20125" adunit="wetter_at_and_start" position="1"/>
+    <zone name="20143" adunit="wetter_at_and_start" position="0"/>
+    <zone name="20091" adunit="wetter_at_ip_baden" position="1"/>
+    <zone name="20093" adunit="wetter_at_ip_berg" position="1"/>
+    <zone name="20087" adunit="wetter_at_ip_fussball" position="1"/>
+    <zone name="20095" adunit="wetter_at_ip_golf" position="1"/>
+    <zone name="20083" adunit="wetter_at_ip_ros" position="1"/>
+    <zone name="20097" adunit="wetter_at_ip_ros" position="0"/>
+    <zone name="20089" adunit="wetter_at_ip_ski" position="1"/>
+    <zone name="20085" adunit="wetter_at_ip_sport" position="1"/>
+    <zone name="20081" adunit="wetter_at_ip_start" position="1"/>
+    <zone name="20099" adunit="wetter_at_ip_start" position="0"/>
+    <zone name="20111" adunit="wetter_at_ipad_baden" position="1"/>
+    <zone name="20107" adunit="wetter_at_ipad_fussball" position="1"/>
+    <zone name="20115" adunit="wetter_at_ipad_golf" position="1"/>
+    <zone name="20103" adunit="wetter_at_ipad_ros" position="1"/>
+    <zone name="20121" adunit="wetter_at_ipad_ros" position="0"/>
+    <zone name="20117" adunit="wetter_at_ipad_ros" position="0"/>
+    <zone name="20165" adunit="wetter_at_ipad_ros" position="1"/>
+    <zone name="24239" adunit="wetter_at_ipad_ros" position="10"/>
+    <zone name="20109" adunit="wetter_at_ipad_ski" position="1"/>
+    <zone name="20105" adunit="wetter_at_ipad_sport" position="1"/>
+    <zone name="20123" adunit="wetter_at_ipad_start" position="0"/>
+    <zone name="20119" adunit="wetter_at_ipad_start" position="0"/>
+    <zone name="20101" adunit="wetter_at_ipad_start" position="1"/>
+    <zone name="20167" adunit="wetter_at_ipad_start" position="1"/>
+    <zone name="24231" adunit="wetter_at_ip_ros" position="10"/>
+    <zone name="24227" adunit="wetter_at_ip_ros" position="2"/>
+    <zone name="24229" adunit="wetter_at_ip_ros" position="3"/>
+    <zone name="13446" adunit="wetter_de_and_home" position="10"/>
+    <zone name="13448" adunit="wetter_de_and_home" position="2"/>
+    <zone name="17930" adunit="wetter_de_and_home" position="3"/>
+    <zone name="13450" adunit="wetter_de_and_home" position="1"/>
+    <zone name="13440" adunit="wetter_de_and_ros" position="10"/>
+    <zone name="13442" adunit="wetter_de_and_ros" position="2"/>
+    <zone name="13444" adunit="wetter_de_and_ros" position="1"/>
+    <zone name="13424" adunit="wetter_de_ip_home" position="10"/>
+    <zone name="13422" adunit="wetter_de_ip_home" position="2"/>
+    <zone name="17932" adunit="wetter_de_ip_home" position="3"/>
+    <zone name="13420" adunit="wetter_de_ip_home" position="1"/>
+    <zone name="13430" adunit="wetter_de_ip_ros" position="10"/>
+    <zone name="13428" adunit="wetter_de_ip_ros" position="2"/>
+    <zone name="13426" adunit="wetter_de_ip_ros" position="1"/>
+    <zone name="20051" adunit="wetter-deutschland_and_baden" position="1"/>
+    <zone name="20053" adunit="wetter-deutschland_and_berg" position="1"/>
+    <zone name="20047" adunit="wetter-deutschland_and_fussball" position="1"/>
+    <zone name="20055" adunit="wetter-deutschland_and_golf" position="1"/>
+    <zone name="20043" adunit="wetter-deutschland_and_ros" position="1"/>
+    <zone name="20057" adunit="wetter-deutschland_and_ros" position="0"/>
+    <zone name="24260" adunit="wetter-deutschland_and_ros" position="10"/>
+    <zone name="24256" adunit="wetter-deutschland_and_ros" position="2"/>
+    <zone name="24258" adunit="wetter-deutschland_and_ros" position="3"/>
+    <zone name="20049" adunit="wetter-deutschland_and_ski" position="1"/>
+    <zone name="20045" adunit="wetter-deutschland_and_sport" position="1"/>
+    <zone name="20041" adunit="wetter-deutschland_and_start" position="1"/>
+    <zone name="20059" adunit="wetter-deutschland_and_start" position="0"/>
+    <zone name="20006" adunit="wetter-deutschland_ip_berg" position="1"/>
+    <zone name="20008" adunit="wetter-deutschland_ip_berg" position="1"/>
+    <zone name="20002" adunit="wetter-deutschland_ip_fussball" position="1"/>
+    <zone name="20010" adunit="wetter-deutschland_ip_golf" position="1"/>
+    <zone name="19998" adunit="wetter-deutschland_ip_ros" position="1"/>
+    <zone name="20012" adunit="wetter-deutschland_ip_ros" position="0"/>
+    <zone name="20004" adunit="wetter-deutschland_ip_ski" position="1"/>
+    <zone name="20000" adunit="wetter-deutschland_ip_sport" position="1"/>
+    <zone name="19996" adunit="wetter-deutschland_ip_start" position="1"/>
+    <zone name="20014" adunit="wetter-deutschland_ip_start" position="0"/>
+    <zone name="20027" adunit="wetter-deutschland_ipad_baden" position="1"/>
+    <zone name="20023" adunit="wetter-deutschland_ipad_fussball" position="1"/>
+    <zone name="20031" adunit="wetter-deutschland_ipad_golf" position="1"/>
+    <zone name="20019" adunit="wetter-deutschland_ipad_ros" position="1"/>
+    <zone name="20037" adunit="wetter-deutschland_ipad_ros" position="0"/>
+    <zone name="20033" adunit="wetter-deutschland_ipad_ros" position="0"/>
+    <zone name="20169" adunit="wetter-deutschland_ipad_ros" position="1"/>
+    <zone name="24254" adunit="wetter-deutschland_ipad_ros" position="10"/>
+    <zone name="20025" adunit="wetter-deutschland_ipad_ski" position="1"/>
+    <zone name="20021" adunit="wetter-deutschland_ipad_sport" position="1"/>
+    <zone name="20039" adunit="wetter-deutschland_ipad_start" position="0"/>
+    <zone name="20035" adunit="wetter-deutschland_ipad_start" position="0"/>
+    <zone name="20017" adunit="wetter-deutschland_ipad_start" position="1"/>
+    <zone name="20171" adunit="wetter-deutschland_ipad_start" position="1"/>
+    <zone name="24252" adunit="wetter-deutschland_ip_ros" position="10"/>
+    <zone name="24248" adunit="wetter-deutschland_ip_ros" position="2"/>
+    <zone name="24250" adunit="wetter-deutschland_ip_ros" position="3"/>
 </zonemapping>
