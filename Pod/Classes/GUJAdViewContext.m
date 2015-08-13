@@ -267,13 +267,27 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
 - (DFPBannerView *)adViewWithOrigin:(CGPoint)origin {
 
+    BOOL isLandscape = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation);
+
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {  // iPad
+        self.bannerView.validAdSizes = @[
+                NSValueFromGADAdSize(kGADAdSizeBanner),
+                NSValueFromGADAdSize(kGADAdSizeMediumRectangle),
+                NSValueFromGADAdSize(kGADAdSizeFullBanner),
+                NSValueFromGADAdSize(kGADAdSizeLargeBanner),
+                NSValueFromGADAdSize(kGADAdSizeLeaderboard),
+                NSValueFromGADAdSize(isLandscape? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait)
+        ];
+    } else {  //iPhone, iPod
+        self.bannerView.validAdSizes = @[
+                NSValueFromGADAdSize(kGADAdSizeBanner),
+                NSValueFromGADAdSize(kGADAdSizeMediumRectangle),
+                NSValueFromGADAdSize(kGADAdSizeLargeBanner),
+                NSValueFromGADAdSize(isLandscape? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait)
+        ];
+    }
+
     self.bannerView = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait origin:origin];
-    /*self.bannerView.validAdSizes = @[
-            NSValueFromGADAdSize(kGADAdSizeBanner),
-            NSValueFromGADAdSize(kGADAdSizeMediumRectangle),
-            NSValueFromGADAdSize(kGADAdSizeLargeBanner),
-            NSValueFromGADAdSize(kGADAdSizeSmartBannerPortrait)
-    ];/*/
 
     self.bannerView.adUnitID = self.adUnitId;
     self.bannerView.rootViewController = self.rootViewController;
