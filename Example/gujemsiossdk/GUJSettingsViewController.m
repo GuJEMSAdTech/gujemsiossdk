@@ -63,17 +63,18 @@
 }
 
 
-- (IBAction)mapAdspaceIdToAdUnitId:(id)sender {
+- (IBAction)mapAdSpaceIdToAdUnitId:(id)sender {
 
     NSString *adSpaceId = adSpaceIdTextField.text;
     NSString *adUnitId = [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdUnitIdForAdSpaceId:adSpaceId];
     NSInteger position = [[GUJAdSpaceIdToAdUnitIdMapper instance] getPositionForAdSpaceId:adSpaceId];
+    BOOL isIndex = [[GUJAdSpaceIdToAdUnitIdMapper instance] getIsIndexForAdSpaceId:adSpaceId];
 
     if (adUnitId == nil) {
         [[[UIAlertView alloc] initWithTitle:@"" message:@"Ad Space ID not found in mapping file." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     } else {
         adUnitIdTextField.text = adUnitId;
-        positionLabel.text = [NSString stringWithFormat:@"Position: %d", position];
+        positionLabel.text = [NSString stringWithFormat:@"Position: %d %@", position, isIndex ? @"(index)" : @""];
     }
    
     [self dismissKeyboard];

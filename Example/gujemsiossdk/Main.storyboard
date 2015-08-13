@@ -38,7 +38,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="mapAdspaceIdToAdUnitId:" destination="zTn-jk-v75" eventType="touchUpInside" id="PPV-rb-S9k"/>
+                                            <action selector="mapAdSpaceIdToAdUnitId:" destination="zTn-jk-v75" eventType="touchUpInside" id="PPV-rb-S9k"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcg-Qo-5cT">

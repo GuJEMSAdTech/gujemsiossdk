@@ -55,31 +55,43 @@
 
 
 - (NSString *)getAdUnitIdForAdSpaceId:(NSString *)adSpaceId {
+    NSLog(@"getAdUnitIdForAdSpaceId: %@ ...", adSpaceId);
     for (NSDictionary *dict in self.mappingData) {
         if ([dict[@"_name"] isEqual:adSpaceId]) {
-            return [NSString stringWithFormat:@"/%@/%@", DFP_PUBLISHER_ID, dict[@"_adunit"]];
+            NSString *adUnitId = [NSString stringWithFormat:@"/%@/%@", DFP_PUBLISHER_ID, dict[@"_adunit"]];
+            NSLog(@"adUnitId: %@", adUnitId);
+            return adUnitId;
         }
     }
+    NSLog(@"adSpaceId not found in mapping file!");
     return nil;
 }
 
 
 - (NSInteger)getPositionForAdSpaceId:(NSString *)adSpaceId {
+    NSLog(@"getPositionForAdSpaceId: %@ ...", adSpaceId);
     for (NSDictionary *dict in self.mappingData) {
         if ([dict[@"_name"] isEqual:adSpaceId]) {
-            return [dict[@"_position"] intValue];
+            NSInteger position = [dict[@"_position"] intValue];
+            NSLog(@"position: %d", position);
+            return position;
         }
     }
+    NSLog(@"adSpaceId not found in mapping file!");
     return GUJ_AD_VIEW_POSITION_UNDEFINED;
 }
 
 
 - (BOOL)getIsIndexForAdSpaceId:(NSString *)adSpaceId {
+    NSLog(@"getIsIndexForAdSpaceId: %@ ...", adSpaceId);
     for (NSDictionary *dict in self.mappingData) {
         if ([dict[@"_name"] isEqual:adSpaceId]) {
-            return [dict[@"index"] isEqualToString:@"true"];
+            BOOL isIndex = [dict[@"_index"] isEqualToString:@"true"];
+            NSLog(@"isIndex: %@", isIndex ? @"YES" : @"NO");
+            return isIndex;
         }
     }
+    NSLog(@"adSpaceId not found in mapping file!");
     return NO;  // default
 }
 
@@ -88,15 +100,15 @@
 
     for (NSDictionary *dict in self.mappingData) {
         if (isIndex) {
-            if ([dict[@"adunit"] isEqual:adUnitId]
-                    && [dict[@"position"] isEqual:@(position)]
-                    && [dict[@"index"] isEqualToString:@"true"]) {
+            if ([dict[@"_adunit"] isEqual:adUnitId]
+                    && [dict[@"_position"] isEqual:@(position)]
+                    && [dict[@"_index"] isEqualToString:@"true"]) {
                 return dict[@"_name"];
             }
         } else {  // index is optional attribute in dfpmapping.xml, default is false
-            if ([dict[@"adunit"] isEqual:adUnitId]
-                    && [dict[@"position"] isEqual:@(position)]
-                    && ([dict[@"index"] isEqualToString:@"false"] || dict[@"index"] == nil)) {
+            if ([dict[@"_adunit"] isEqual:adUnitId]
+                    && [dict[@"_position"] isEqual:@(position)]
+                    && ([dict[@"_index"] isEqualToString:@"false"] || dict[@"_index"] == nil)) {
                 return dict[@"_name"];
             }
         }
