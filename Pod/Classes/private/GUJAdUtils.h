@@ -35,8 +35,6 @@
 
 + (NSNumber *)getBatteryLevel;
 
-+ (NSString *)getIPAddress;
-
-+ (CLLocationDistance)getAltitude;
++ (BOOL)isLoadingCablePluggedIn;
 
 @end

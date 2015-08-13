@@ -26,11 +26,17 @@
 #import "GUJAdViewContext.h"
 #import "GUJAdSpaceIdToAdUnitIdMapper.h"
 #import "GUJAdViewContextDelegate.h"
-#import <CoreLocation/CoreLocation.h>
+#import "GUJAdUtils.h"
 #import <gujemsiossdk/GUJAdViewContext.h>
 
 
 static NSString *const KEYWORDS_DICT_KEY = @"kw";
+static NSString *const CUSTOM_TARGETING_KEY_POSITION = @"pos";
+static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"idx";
+static NSString *const CUSTOM_TARGETING_KEY_ALTITUDE = @"psa";
+static NSString *const CUSTOM_TARGETING_KEY_SPEED = @"pgv";
+static NSString *const CUSTOM_TARGETING_KEY_DEVICE_STATUS = @"psx";
+static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
 @implementation GUJAdView : DFPBannerView {
     GUJAdViewContext *context;
@@ -77,6 +83,8 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
 
     adViewCompletion adViewCompletionHandler;
     interstitialAdViewCompletion interstitialAdViewCompletionHandler;
+
+    CLLocationManager *locationManager;
 }
 
 
@@ -85,6 +93,23 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
     if (self) {
         customTargetingDict = [NSMutableDictionary new];
         locationServiceDisabled = false;
+
+        customTargetingDict[CUSTOM_TARGETING_KEY_BATTERY_LEVEL] = [GUJAdUtils getBatteryLevel];
+
+        BOOL isHeadsetPluggedIn = [GUJAdUtils isHeadsetPluggedIn];
+        BOOL isLoadingCablePluggedIn = [GUJAdUtils isLoadingCablePluggedIn];
+
+        if (isHeadsetPluggedIn && isLoadingCablePluggedIn) {
+            customTargetingDict[CUSTOM_TARGETING_KEY_DEVICE_STATUS] = @"c,h";
+
+        } else if (isLoadingCablePluggedIn) {
+            customTargetingDict[CUSTOM_TARGETING_KEY_DEVICE_STATUS] = @"c";
+
+        } else if (isHeadsetPluggedIn) {
+            customTargetingDict[CUSTOM_TARGETING_KEY_DEVICE_STATUS] = @"h";
+
+        }
+
     }
     return self;
 }
@@ -150,9 +175,9 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
 - (void)setPosition:(NSInteger)position {
     _position = position;
     if (position != 0) {
-        customTargetingDict[@"pos"] = @(position);
+        customTargetingDict[CUSTOM_TARGETING_KEY_POSITION] = @(position);
     } else {
-        [customTargetingDict removeObjectForKey:@"pos"];
+        [customTargetingDict removeObjectForKey:CUSTOM_TARGETING_KEY_POSITION];
     }
 }
 
@@ -160,9 +185,9 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
 - (void)setIsIndex:(BOOL)isIndex {
     _isIndex = isIndex;
     if (isIndex) {
-        customTargetingDict[@"idx"] = @(YES);
+        customTargetingDict[CUSTOM_TARGETING_KEY_INDEX] = @(YES);
     } else {
-        [customTargetingDict removeObjectForKey:@"idx"];
+        [customTargetingDict removeObjectForKey:CUSTOM_TARGETING_KEY_INDEX];
     }
 }
 
@@ -186,6 +211,47 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
 
 - (void)shouldAutoShowInterstitialView:(BOOL)show {
     autoShowInterstitialView = show;
+}
+
+
+- (DFPRequest *)createRequest {
+    DFPRequest *request = [DFPRequest request];
+
+    if ([CLLocationManager locationServicesEnabled] && !locationServiceDisabled) {
+
+        locationManager = [[CLLocationManager alloc] init];
+
+        BOOL locationAllowed_iOS7 = [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized;
+        BOOL locationAllowed_iOS8 = ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]
+                && ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse ||
+                [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways));
+
+        if (locationAllowed_iOS7 || locationAllowed_iOS8) {
+
+            // we don't require a delegate and location updates
+            // we simply take the last available location, if existing
+
+            CLLocation *location = locationManager.location;
+
+            if (location != nil) {   // might be nil on first start of app, we skip sending location data in this case
+                [request setLocationWithLatitude:locationManager.location.coordinate.latitude
+                                       longitude:locationManager.location.coordinate.longitude
+                                        accuracy:locationManager.location.horizontalAccuracy];
+
+                customTargetingDict[CUSTOM_TARGETING_KEY_ALTITUDE] = @((int) locationManager.location.altitude);
+                customTargetingDict[CUSTOM_TARGETING_KEY_SPEED] = @((int) locationManager.location.speed);
+
+                NSLog(@"Added location data.");
+            } else {
+                NSLog(@"No location data available.");
+            }
+        } else {
+            NSLog(@"Location Services not authorized.");
+        }
+    }
+
+    request.customTargeting = customTargetingDict;
+    return request;
 }
 
 
@@ -213,15 +279,8 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
     self.bannerView.rootViewController = self.rootViewController;
     self.bannerView.delegate = self;
 
-    DFPRequest *request = [DFPRequest request];
-    request.customTargeting = customTargetingDict;
+    DFPRequest *request = [self createRequest];
 
-    if ([CLLocationManager locationServicesEnabled] && !locationServiceDisabled) {
-        CLLocationManager *locationManager_ = [[CLLocationManager alloc] init];
-        [request setLocationWithLatitude:locationManager_.location.coordinate.latitude
-                               longitude:locationManager_.location.coordinate.longitude
-                                accuracy:locationManager_.location.horizontalAccuracy];
-    }
     if ([self.delegate respondsToSelector:@selector(bannerViewInitialized:)]) {
         [self.delegate bannerViewInitialized:(id) self.bannerView];
     }
@@ -267,8 +326,7 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
 - (DFPInterstitial *)interstitialAdView {
     self.interstitial = [[DFPInterstitial alloc] initWithAdUnitID:self.adUnitId];
     self.interstitial.delegate = self;
-    DFPRequest *request = [DFPRequest request];
-    request.customTargeting = customTargetingDict;
+    DFPRequest *request = [self createRequest];
 
     if ([self.delegate respondsToSelector:@selector(interstitialViewInitialized:)]) {
         [self.delegate interstitialViewInitialized:nil];
@@ -319,15 +377,21 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
 
 
 - (void)addCustomTargetingKey:(NSString *)key Value:(NSString *)value {
-    NSAssert(![key isEqualToString:@"pos"], @"Set the position (pos) via position property.");
-    NSAssert(![key isEqualToString:@"idx"], @"Set the isIndex (idx) via isIndex property.");
+    NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_POSITION], @"Set the position (pos) via position property.");
+    NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_INDEX], @"Set the isIndex (idx) via isIndex property.");
+    NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_ALTITUDE], @"psa automatically set by SDK.");
+    NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_SPEED], @"pgv automatically set by SDK.");
+    NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_DEVICE_STATUS], @"psx automatically set by SDK.");
+    NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_BATTERY_LEVEL], @"pbl automatically set by SDK.");
     NSAssert(![key isEqualToString:KEYWORDS_DICT_KEY], @"Set single keyword via the addKeywordForCustomTargeting: method.");
     customTargetingDict[key] = value;
 }
 
 
 - (void)freeInstance {
-    //todo: implement
+    self.bannerView.delegate = nil;
+    self.interstitial.delegate = nil;
+    adLoader.delegate = nil;
 }
 
 
@@ -339,8 +403,7 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
                      options:@[]];
     adLoader.delegate = self;
 
-    DFPRequest *request = [DFPRequest request];
-    request.customTargeting = customTargetingDict;
+    DFPRequest *request = [self createRequest];
     [adLoader loadRequest:request];
 
 }
@@ -406,7 +469,7 @@ static NSString *const KEYWORDS_DICT_KEY = @"kw";
     if (interstitialAdViewCompletionHandler != nil) {
         completionHandlerAllowsToShowInterstitial = interstitialAdViewCompletionHandler(ad, nil);
     }
-    
+
     if (autoShowInterstitialView || completionHandlerAllowsToShowInterstitial) {
         [self showInterstitial];
     }

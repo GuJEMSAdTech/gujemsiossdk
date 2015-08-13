@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
   s.ios.vendored_library = 'Pod/Assets/libAdapterFacebook.a'
 
   s.public_header_files = 'Pod/Classes/*.h'
-  s.frameworks = 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion'
+  s.frameworks = 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation'
   s.dependency 'Google-Mobile-Ads-SDK', '~> 7.0'
   s.dependency 'FBSDKCoreKit', '~> 4.4.0'
   s.dependency 'FBSDKLoginKit', '~> 4.4.0'

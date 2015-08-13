@@ -26,6 +26,7 @@
 #import "GUJBannerViewController.h"
 #import "GUJAdViewContext.h"
 #import "GUJSettingsViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface GUJBannerViewController ()
 @end
@@ -51,12 +52,17 @@
     __weak IBOutlet NSLayoutConstraint *mid1PlaceholderHeightConstraint;
     __weak IBOutlet NSLayoutConstraint *mid2PlaceholderHeightConstraint;
     __weak IBOutlet NSLayoutConstraint *bottomPlaceholderHeightConstraint;
+
+    CLLocationManager *locationManager;
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
+    locationManager = [[CLLocationManager alloc] init];
+    [locationManager requestWhenInUseAuthorization];
 }
 
 
@@ -92,7 +98,6 @@
     bottomAdViewContext.position = GUJ_AD_VIEW_POSITION_BOTTOM;
     bottomAdViewContext.delegate = self;
     [bottomPlaceholderView addSubview:[bottomAdViewContext adView]];
-
 }
 
 

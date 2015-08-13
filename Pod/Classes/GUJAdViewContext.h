@@ -25,6 +25,7 @@
 
 #import <UIKit/UIKit.h>
 #import <GoogleMobileAds.h>
+#import <CoreLocation/CoreLocation.h>
 
 
 @protocol GUJAdViewContextDelegate;
@@ -76,7 +77,7 @@ __attribute__((deprecated("Dont' use methods returning GUJAdView anymore. Use th
 @end
 
 
-@interface GUJAdViewContext : NSObject <GADNativeContentAdLoaderDelegate, GADBannerViewDelegate, GADInterstitialDelegate>
+@interface GUJAdViewContext : NSObject <GADNativeContentAdLoaderDelegate, GADBannerViewDelegate, GADInterstitialDelegate, CLLocationManagerDelegate>
 
 @property(nonatomic, strong) NSString *adUnitId;
 @property(nonatomic, assign) NSInteger position;
