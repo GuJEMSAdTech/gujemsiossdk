@@ -271,23 +271,40 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
     BOOL isLandscape = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation);
 
-    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {  // iPad
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {  // iPad
+
         self.bannerView.validAdSizes = @[
                 NSValueFromGADAdSize(kGADAdSizeBanner),
                 NSValueFromGADAdSize(kGADAdSizeMediumRectangle),
                 NSValueFromGADAdSize(kGADAdSizeFullBanner),
                 NSValueFromGADAdSize(kGADAdSizeLargeBanner),
                 NSValueFromGADAdSize(kGADAdSizeLeaderboard),
-                NSValueFromGADAdSize(isLandscape? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait)
+                NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 50))),
+                NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 75))),
+                NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 150))),
+                NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 75))),
+                NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(728, 90))),
+                NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(180, 150))),
+                NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 600))),
+                NSValueFromGADAdSize(isLandscape ? GADAdSizeFromCGSize(CGSizeMake(1024, 220)) : GADAdSizeFromCGSize(CGSizeMake(768, 300))),
+                NSValueFromGADAdSize(isLandscape ? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait)
         ];
+
     } else {  //iPhone, iPod
+
         self.bannerView.validAdSizes = @[
                 NSValueFromGADAdSize(kGADAdSizeBanner),
                 NSValueFromGADAdSize(kGADAdSizeMediumRectangle),
                 NSValueFromGADAdSize(kGADAdSizeLargeBanner),
-                NSValueFromGADAdSize(isLandscape? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait)
+                NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 50))),
+                NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 75))),
+                NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 75))),
+                NSValueFromGADAdSize(isLandscape ? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait)
         ];
+
+
     }
+
 
     self.bannerView.adUnitID = self.adUnitId;
     self.bannerView.rootViewController = self.rootViewController;
