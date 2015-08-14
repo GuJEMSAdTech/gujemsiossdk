@@ -273,6 +273,25 @@ Load a native add and handle the result via delegate callbacks:
 
 The returned native ad object is of type `GADNativeContentAd` known from the Google SDK for DFP Users on iOS.
 
+
+#### loading video ads with the IMA iOS SDK
+
+
+For integration of preroll videos we included the IMA iOS SDK Version 3 (Beta).  
+You can find an example in our Example App which is based on the Google example in the official documentation 
+of the IMA iOS SDK.
+
+See the [IMA iOS SDK documentation](https://developers.google.com/interactive-media-ads/docs/sdks/ios/) for any details.
+
+To load video ads you need an Ad Tag URL.  
+You receive your Ad Tag URL from the [G+J EMS Team](#contact).  
+It should look similar to this:
+
+```
+https://pubads.g.doubleclick.net/gampad/ads?sz=480x360&iu=/6032/sdktest/preroll&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]"
+```
+
+
 <a name="contact"></a>
 ## Contact
 
