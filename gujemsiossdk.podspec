@@ -9,17 +9,22 @@
 
 Pod::Spec.new do |s|
   s.name             = "gujemsiossdk"
-  s.version          = "0.1.2"
-  s.summary          = "G+J EMS mobile iOS SDK"
+  s.version          = "3.0.0-beta-1"
+  s.summary          = "G+J EMS iOS SDK"
   s.description      = <<-DESC
-                       G+J EMS mobile iOS SDK
+                       G+J EMS iOS SDK
 
-                       * Helps integrating G+J EMS Google Ads
-                       * Replaces G+J EMS SDK based on Amobee, while keeping the same interfaces
+                       * Includes the Google-Mobile-Ads-SDK
+                       * Easily integrate Banner Ads, Interstitials and Native Ads into your App by creating an
+                        AdViewContext summarizing all meta information needed to load the ads from the Google DFP Server
+                       * Includes the GoogleAds-IMA-iOS-SDK-For-AdMob
+                       * Integrate preroll videos by loading VAST files from the Google DFP Server
+                       * Version 3.x.x replaces the G+J EMS iOS SDK 2.1.x based on Amobee ad server, while keeping the same interfaces
+                       * Internal mapping of previously used AdSpace IDs to new AdUnit IDs
                        DESC
   s.homepage         = "https://github.com/GuJEMSAdTech/gujemsiossdk"
   s.license          = 'BSD'
-  s.author           = { "Michael Brügmann" => "mail@michael-bruegmann.de" }
+  s.authors          = { "Jens Jensen" => "jensen.jens@ems.guj.de", "Michael Brügmann" => "mail@michael-bruegmann.de" }
   s.source           = { :git => "https://github.com/GuJEMSAdTech/gujemsiossdk.git", :tag => s.version.to_s }
 
   s.platform     = :ios, '7.0'
