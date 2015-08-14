@@ -25,6 +25,7 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString *const AD_TAG_DEFAULTS_KEY = @"adTag";
 
-@interface GUJVideoAdViewController : UIViewController
+@interface GUJVideoAdViewController : UIViewController <UITextViewDelegate>
 @end

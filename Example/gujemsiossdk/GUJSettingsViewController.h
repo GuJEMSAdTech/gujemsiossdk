@@ -28,7 +28,5 @@
 
 static NSString *const AD_UNIT_USER_DEFAULTS_KEY = @"adUnitId";
 
-static NSString *const POSITION_USER_DEFAULTS_KEY = @"position";
-
 @interface GUJSettingsViewController : UIViewController <UITextFieldDelegate>
 @end
