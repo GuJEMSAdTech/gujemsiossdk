@@ -513,6 +513,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gujemsiossdk/gujemsiossdk-Prefix.pch";
 				INFOPLIST_FILE = "gujemsiossdk/gujemsiossdk-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"`$(inherited)`",
 					"\"${PROJECT_DIR}/gujemsiossdk\"/**",
@@ -538,6 +539,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gujemsiossdk/gujemsiossdk-Prefix.pch";
 				INFOPLIST_FILE = "gujemsiossdk/gujemsiossdk-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"`$(inherited)`",
 					"\"${PROJECT_DIR}/gujemsiossdk\"/**",

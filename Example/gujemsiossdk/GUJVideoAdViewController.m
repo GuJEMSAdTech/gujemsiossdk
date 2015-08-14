@@ -89,6 +89,7 @@ NSString *const kTestAppAdTagUrl =
     [self.adsLoader contentComplete];
     self.playButton.enabled = YES;
     [self.playerLayer removeFromSuperlayer];
+    self.errorLabel.text = @"";
 }
 
 
@@ -122,16 +123,10 @@ NSString *const kTestAppAdTagUrl =
     // Create a player layer for the player.
     self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.contentPlayer];
 
-    // Display the AVPlayer.
+    // Display, size and position the AVPlayer.
 
     [self.videoView.layer addSublayer:self.playerLayer];
-}
 
-
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-
-    // Size and position the AVPlayer.
     self.playerLayer.frame = self.videoView.layer.bounds;
 }
 
@@ -152,7 +147,7 @@ NSString *const kTestAppAdTagUrl =
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *adTagUrl = [userDefaults objectForKey:AD_TAG_DEFAULTS_KEY];
 
-    NSLog(@"requesting Ad with Ad Tag URL: '%@", adTagUrl);
+    NSLog(@"requesting Ad with Ad Tag URL: '%@'", adTagUrl);
 
     // Create an ad request with our ad tag, display container, and optional user context.
     IMAAdsRequest *request = [[IMAAdsRequest alloc] initWithAdTagUrl:kTestAppAdTagUrl

@@ -62,7 +62,13 @@
     // Do any additional setup after loading the view, typically from a nib.
 
     locationManager = [[CLLocationManager alloc] init];
-    [locationManager requestWhenInUseAuthorization];
+
+    // prompt for location permission
+    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [locationManager requestWhenInUseAuthorization];
+    } else {  // iOS7
+        [locationManager startUpdatingLocation];
+    }
 
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *adUnitId = [userDefaults objectForKey:AD_UNIT_USER_DEFAULTS_KEY];
