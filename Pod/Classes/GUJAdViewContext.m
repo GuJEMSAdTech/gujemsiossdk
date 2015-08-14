@@ -267,6 +267,8 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
 - (DFPBannerView *)adViewWithOrigin:(CGPoint)origin {
 
+    self.bannerView = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait origin:origin];
+
     BOOL isLandscape = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation);
 
     if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {  // iPad
@@ -286,8 +288,6 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
                 NSValueFromGADAdSize(isLandscape? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait)
         ];
     }
-
-    self.bannerView = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait origin:origin];
 
     self.bannerView.adUnitID = self.adUnitId;
     self.bannerView.rootViewController = self.rootViewController;
