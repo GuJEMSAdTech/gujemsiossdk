@@ -30,16 +30,10 @@
 
 @implementation GUJNativeAdViewController {
     GUJAdViewContext *adViewContext;
-   
-    __weak IBOutlet UILabel *errorLabel;
-    
-    __weak IBOutlet UILabel *headlineLabel;
-    __weak IBOutlet UIImageView *imageView;
-    __weak IBOutlet UILabel *bodyLabel;
-    __weak IBOutlet UIImageView *secondaryImageView;
 
-    __weak IBOutlet UILabel *calltoactionLabel;
-    __weak IBOutlet UILabel *advertiserLabel;
+    __weak IBOutlet UILabel *errorLabel;
+    __weak IBOutlet UIScrollView *scrollView;
+    __weak IBOutlet UIView *nativeAdPlaceholder;
 
 }
 
@@ -76,28 +70,42 @@
 
 
 - (void)nativeAdLoaderDidLoadData:(GADNativeContentAd *)nativeContentAd ForContext:(GUJAdViewContext *)context {
-    headlineLabel.text = nativeContentAd.headline;
-    bodyLabel.text = nativeContentAd.body;
-    if ([nativeContentAd.images count] >= 1) {
-        imageView.image = ((GADNativeAdImage*) nativeContentAd.images[0]).image;
-    }
-    if ([nativeContentAd.images count] >= 2) {
-        secondaryImageView.image = ((GADNativeAdImage*) nativeContentAd.images[1]).image;
-    }
-    calltoactionLabel.text = nativeContentAd.callToAction;
-    advertiserLabel.text = nativeContentAd.advertiser;
+    // Create a new AdView instance from the xib file
+    GADNativeContentAdView *contentAdView =
+    [[[NSBundle mainBundle] loadNibNamed:@"GUJNativeContentAdView"
+                                   owner:nil
+                                 options:nil] firstObject];
+    
+    // Associate the app install ad view with the app install ad object.
+    // This is required to make the ad clickable.
+    contentAdView.nativeContentAd = nativeContentAd;
+   
+    // Populate the app install ad view with the app install ad assets.
+    ((UILabel *) contentAdView.headlineView).text = nativeContentAd.headline;
+    ((UIImageView *) contentAdView.imageView).image = ((GADNativeAdImage *)[nativeContentAd.images firstObject]).image;
+    ((UILabel *) contentAdView.bodyView).text = nativeContentAd.body;
+    ((UIImageView *) contentAdView.logoView).image = nativeContentAd.logo.image;
+    ((UILabel *) contentAdView.callToActionView).text = nativeContentAd.callToAction;
+    ((UILabel *) contentAdView.advertiserView).text = nativeContentAd.advertiser;
+
+    // Add appInstallAdView to the view controller's view...
+    [nativeAdPlaceholder addSubview:contentAdView];
+
+
 
 }
 
 
 -(void)clearView {
+    [self removeAllSubviewsFromView:nativeAdPlaceholder];
     errorLabel.text = @"";
-    headlineLabel.text = @"";
-    imageView.image = nil;
-    bodyLabel.text = @"";
-    secondaryImageView.image = nil;
-    calltoactionLabel.text = @"";
-    advertiserLabel.text = @"";
+}
+
+
+- (void)removeAllSubviewsFromView:(UIView *)view {
+    for (UIView *subview in view.subviews) {
+        [subview removeFromSuperview];
+    }
 }
 
 
