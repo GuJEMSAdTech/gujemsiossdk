@@ -393,11 +393,6 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 }
 
 
-- (void)initalizationAttempts:(NSUInteger)attempts {
-    //todo: implement
-}
-
-
 - (void)addCustomTargetingKeyword:(NSString *)keyword {
     if (customTargetingDict[KEYWORDS_DICT_KEY] != nil) {
         customTargetingDict[KEYWORDS_DICT_KEY] = [NSMutableArray new];

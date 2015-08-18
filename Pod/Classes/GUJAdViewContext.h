@@ -317,13 +317,6 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
 
 
 /*!
- * Set the maximum of initialization attempts.
- * Has no functionality since 3.0.0
- */
-- (void)initalizationAttempts:(NSUInteger)attempts DEPRECATED_MSG_ATTRIBUTE("has no functionality.");
-
-
-/*!
  * Add a keyword that will be used for the ad request.
  * Can be called multiple times to add multiple keywords.
  * If no suitable ad of a following ad view or interstitial request matches the keyword(s)

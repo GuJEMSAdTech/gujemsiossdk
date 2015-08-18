@@ -10,6 +10,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+The SDK supports iOS 7.0 and higher. 
+
 ## Installation
 
 gujemsiossdk is available through [CocoaPods](http://cocoapods.org). To install
@@ -135,6 +137,15 @@ and
 Also we removed methods returning references to `GUJAdEvent`, something that was removed in former versions already.
 The methods ~~- (void)bannerView:(GUJAdView*)bannerView receivedEvent:(GUJAdViewEvent*)event;~~ and 
 ~~- (void)interstitialViewReceivedEvent:(GUJAdViewEvent*)event;~~ were removed from the `GUJAdViewContextDelegate` protocol. 
+
+
+#### Removed initalizationAttempts handling
+
+In former versions of the SDK it was possible to set a number of possible initialization attempts for checking for
+availability of a view controller while loading interstitials.
+We removed this mechanism and the method ~~- (void)initalizationAttempts:(NSUInteger)attempts~~ because it is the
+responsibility of the developer to set a rootViewController during initialization of the `GUJAdViewContext`.
+
 
 
 <a name="usage"></a>
