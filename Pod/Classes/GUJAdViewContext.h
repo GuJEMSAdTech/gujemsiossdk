@@ -131,7 +131,7 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
  @param adUnitId - adExchange adUnitId
  @result A newly created GUJAdViewContext instance
  */
-+ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId adUnit:(NSString *)adUnitId DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: position: rootViewController: method instead.");
++ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId adUnit:(NSString *)adUnitId DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: position: rootViewController: method or instanceForAdspaceId: method instead.");
 
 
 /*!
@@ -142,7 +142,7 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
  @param delegate A class that implements the GUJAdViewContextDelegate Protocol
  @result A newly created GUJAdViewContext instance
  */
-+ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId adUnit:(NSString *)adUnitId delegate:(id <GUJAdViewContextDelegate>)delegate DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: position: rootViewController: delegate: method instead.");
++ (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId adUnit:(NSString *)adUnitId delegate:(id <GUJAdViewContextDelegate>)delegate DEPRECATED_MSG_ATTRIBUTE("Use instanceForAdUnitId: position: rootViewController: delegate: method or instanceForAdspaceId: delegate: method instead.");
 
 
 /*!
