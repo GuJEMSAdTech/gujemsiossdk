@@ -11,7 +11,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-The SDK supports iOS 7.0 and higher. 
+The SDK supports **iOS 7.0 and higher**.  
+Language Support: **Objective-C**  
+Use **xCode 5.0 or higher**.
 
 
 ## Installation
