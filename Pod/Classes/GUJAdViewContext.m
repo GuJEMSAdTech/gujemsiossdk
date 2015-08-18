@@ -309,9 +309,15 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
     if ([self.delegate respondsToSelector:@selector(bannerViewInitialized:)]) {
         [self.delegate bannerViewInitialized:(id) self.bannerView];
     }
+    if ([self.delegate respondsToSelector:@selector(bannerViewInitializedForContext:)]) {
+        [self.delegate bannerViewInitializedForContext:self];
+    }
 
     if ([self.delegate respondsToSelector:@selector(bannerViewWillLoadAdData:)]) {
         [self.delegate bannerViewWillLoadAdData:(id) self.bannerView];
+    }
+    if ([self.delegate respondsToSelector:@selector(bannerViewWillLoadAdDataForContext:)]) {
+        [self.delegate bannerViewWillLoadAdDataForContext:self];
     }
     [self.bannerView loadRequest:request];
 
@@ -354,10 +360,21 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
     DFPRequest *request = [self createRequest];
 
     if ([self.delegate respondsToSelector:@selector(interstitialViewInitialized:)]) {
-        [self.delegate interstitialViewInitialized:nil];
+        [self.delegate interstitialViewInitialized:[[GUJAdView alloc] initWithContext:self]];
+    }
+    if ([self.delegate respondsToSelector:@selector(interstitialViewInitializedForContext:)]) {
+        [self.delegate interstitialViewInitializedForContext:self];
+    }
+
+    if ([self.delegate respondsToSelector:@selector(interstitialViewWillLoadAdData:)]) {
+        [self.delegate interstitialViewWillLoadAdData:[[GUJAdView alloc] initWithContext:self]];
+    }
+    if ([self.delegate respondsToSelector:@selector(interstitialViewWillLoadAdDataForContext:)]) {
+        [self.delegate interstitialViewWillLoadAdDataForContext:self];
     }
 
     [self.interstitial loadRequest:request];
+
     return self.interstitial;
 }
 
@@ -383,6 +400,12 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 - (void)showInterstitial {
     if (self.interstitial.isReady) {
         [self.interstitial presentFromRootViewController:self.rootViewController];
+        if ([self.delegate respondsToSelector:@selector(interstitialViewDidAppear)]) {
+            [self.delegate interstitialViewDidAppear];
+        }
+        if ([self.delegate respondsToSelector:@selector(interstitialViewDidAppearForContext:)]) {
+            [self.delegate interstitialViewDidAppearForContext:self];
+        }
     }
 }
 
@@ -460,14 +483,8 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
     if ([self.delegate respondsToSelector:@selector(bannerViewDidLoadAdData:)]) {
         [self.delegate bannerViewDidLoadAdData:(GUJAdView *) bannerView];
     }
-    if ([self.delegate respondsToSelector:@selector(bannerViewWillLoadAdDataForContext:)]) {
-        [self.delegate bannerViewWillLoadAdDataForContext:self];
-    }
-    if ([self.delegate respondsToSelector:@selector(bannerViewDidShow:)]) {
-        [self.delegate bannerViewDidShow:(GUJAdView *) bannerView];
-    }
-    if ([self.delegate respondsToSelector:@selector(bannerViewDidShowForContext:)]) {
-        [self.delegate bannerViewDidShowForContext:self];
+    if ([self.delegate respondsToSelector:@selector(bannerViewDidLoadAdDataForContext:)]) {
+        [self.delegate bannerViewDidLoadAdDataForContext:self];
     }
 }
 
@@ -494,12 +511,6 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
         [self showInterstitial];
     }
 
-    if ([self.delegate respondsToSelector:@selector(interstitialViewInitialized:)]) {
-        [self.delegate interstitialViewInitialized:[[GUJAdView alloc] initWithContext:self]];
-    }
-    if ([self.delegate respondsToSelector:@selector(interstitialViewInitializedForContext:)]) {
-        [self.delegate interstitialViewInitializedForContext:self];
-    }
     if ([self.delegate respondsToSelector:@selector(interstitialViewDidLoadAdData:)]) {
         [self.delegate interstitialViewDidLoadAdData:[[GUJAdView alloc] initWithContext:self]];
     }

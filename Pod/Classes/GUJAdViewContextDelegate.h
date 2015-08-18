@@ -66,28 +66,6 @@
 
 
 /*!
- * Will notify the delegate when the Ad-View changes from hidden to visible
- */
-- (void)bannerViewDidShow:(GUJAdView *)bannerView DEPRECATED_MSG_ATTRIBUTE("Use bannerViewDidShowForContext: method instead.");
-
-/*!
- * Will notify the delegate when the Ad-View changes from hidden to visible
- */
-- (void)bannerViewDidShowForContext:(GUJAdViewContext *)context;
-
-
-/*!
- * Will notify the delegate when the Ad-View changes from visible to hidden
- */
-- (void)bannerViewDidHide:(GUJAdView *)bannerView DEPRECATED_MSG_ATTRIBUTE("Use bannerViewDidHideForContext: method instead.");
-
-/*!
- * Will notify the delegate when the Ad-View changes from visible to hidden
- */
-- (void)bannerViewDidHideForContext:(GUJAdViewContext *)context;
-
-
-/*!
  * Will be called if the current AdView will perform the ad server request.
  *
  @param bannerView The adView object

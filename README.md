@@ -8,9 +8,11 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+
 ## Requirements
 
 The SDK supports iOS 7.0 and higher. 
+
 
 ## Installation
 
@@ -28,7 +30,7 @@ the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recomme
 
 ## Upgrading from v2.1.x to v3.0.0
 
-If you are not upgrading, [just skip this chapter](#usage).
+If you are not upgrading just [skip this chapter](#usage).
 
 If you previously used version 2.1.x of this SDK there are several important changes you need to pay attention to.
 
@@ -154,6 +156,18 @@ In case there should be an ad reload based on user interaction (e.g. while swipi
 developers responsibility to refresh the ad.
 
 
+#### Cleanup of GUJAdViewContextDelegate
+
+We refactored the `GUJAdViewContextDelegate` protocol, which was called `GUJAdViewControllerDelegate` before (see above).
+All old methods became deprecated. Most of the methods got a replacement returning a reference to their `GUJAdViewContext`
+so you can distinguish between multiple contexts. The `GUJAdViewContext` then has references to the `bannerView`,
+`interstitial` or `nativeContentAd` created by it.  
+
+The callbacks ~~-(void)bannerViewDidShow:(GUJAdView *)bannerView;~~ and
+~~- (void)bannerViewDidHide:(GUJAdView *)bannerView;~~ were removed completely. Banners will always 
+automatically show and showing/ hiding can be done via the `hidden` property of UIView directly when needed.
+
+
 <a name="usage"></a>
 ## Usage 
 
@@ -200,7 +214,7 @@ Load a banner view to a given origin:
 ```
 
 Alternatively you can simply call the `- (DFPBannerView *)adView;` method and position the returned view via
-autolayout constraints or your preferred view layout.
+autolayout constraints or your preferred view layouting method.
 
 The returned ad view object is of type `DFPBannerView` known from the Google SDK for DFP Users on iOS.
 
@@ -212,8 +226,6 @@ A couple of additional delegate callbacks can be implemented to interact with th
 ```objective-c
 - (void)bannerViewDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context;
 - (void)bannerViewInitializedForContext:(GUJAdViewContext *)context;
-- (void)bannerViewDidShowForContext:(GUJAdViewContext *)context;
-- (void)bannerViewDidHideForContext:(GUJAdViewContext *)context;
 - (void)bannerViewWillLoadAdDataForContext:(GUJAdViewContext *)context;
 - (void)bannerViewDidLoadAdDataForContext:(GUJAdViewContext *)context;
 ```
