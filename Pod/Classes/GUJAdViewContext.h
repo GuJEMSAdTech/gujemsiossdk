@@ -337,7 +337,7 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
  * The GUJAdViewContextDelegate needs be implemented in the caller class to receive
  * the native ad content or loading error.
  */
-- (void)loadNativeAd;
+- (void)loadNativeContentAd;
 
 
 /*!
@@ -346,7 +346,7 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
  * the native ad content or loading error.
  @param keywords keywords that will be used for the ad request
  */
-- (void)loadNativeAdForKeywords:(NSArray *)keywords;
+- (void)loadNativeContentAdForKeywords:(NSArray *)keywords;
 
 @end
 

@@ -203,7 +203,7 @@
  * Tells the delegate that an ad request failed. The failure is normally due to network
  * connectivity or ad availablility (i.e., no fill).
  */
--(void)nativeAdLoaderDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context;
+-(void)nativeContentAdLoaderDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context;
 
 
 /*!
@@ -211,7 +211,7 @@
  *
  @param bannerView The adView object
  */
--(void)nativeAdLoaderDidLoadData:(GADNativeContentAd *)nativeContentAd ForContext:(GUJAdViewContext *)context;
+-(void)nativeContentAdLoaderDidLoadData:(GADNativeContentAd *)nativeContentAd ForContext:(GUJAdViewContext *)context;
 
 
 @end

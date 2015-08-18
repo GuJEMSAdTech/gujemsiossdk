@@ -53,7 +53,7 @@
     adViewContext = [GUJAdViewContext instanceForAdUnitId:adUnitId rootViewController:self];
     adViewContext.delegate = self;
 
-    [adViewContext loadNativeAd];
+    [adViewContext loadNativeContentAd];
 
 }
 
@@ -64,12 +64,12 @@
 }
 
 
-- (void)nativeAdLoaderDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context {
+- (void)nativeContentAdLoaderDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context {
     errorLabel.text = error.localizedDescription;
 }
 
 
-- (void)nativeAdLoaderDidLoadData:(GADNativeContentAd *)nativeContentAd ForContext:(GUJAdViewContext *)context {
+- (void)nativeContentAdLoaderDidLoadData:(GADNativeContentAd *)nativeContentAd ForContext:(GUJAdViewContext *)context {
     // Create a new AdView instance from the xib file
     GADNativeContentAdView *contentAdView =
     [[[NSBundle mainBundle] loadNibNamed:@"GUJNativeContentAdView"

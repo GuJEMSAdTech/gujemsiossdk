@@ -438,7 +438,7 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 }
 
 
-- (void)loadNativeAd {
+- (void)loadNativeContentAd {
     adLoader = [[GADAdLoader alloc]
             initWithAdUnitID:self.adUnitId
           rootViewController:self.rootViewController
@@ -452,17 +452,17 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 }
 
 
-- (void)loadNativeAdForKeywords:(NSArray *)keywords {
+- (void)loadNativeContentAdForKeywords:(NSArray *)keywords {
     customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
-    [self loadNativeAd];
+    [self loadNativeContentAd];
 }
 
 
 # pragma mark - GADAdLoaderDelegate
 
 - (void)adLoader:(GADAdLoader *)adLoader1 didFailToReceiveAdWithError:(GADRequestError *)error {
-    if ([self.delegate respondsToSelector:@selector(nativeAdLoaderDidFailLoadingAdWithError:ForContext:)]) {
-        [self.delegate nativeAdLoaderDidFailLoadingAdWithError:error ForContext:self];
+    if ([self.delegate respondsToSelector:@selector(nativeContentAdLoaderDidFailLoadingAdWithError:ForContext:)]) {
+        [self.delegate nativeContentAdLoaderDidFailLoadingAdWithError:error ForContext:self];
     }
 }
 
@@ -471,8 +471,8 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
 - (void)adLoader:(GADAdLoader *)adLoader1 didReceiveNativeContentAd:(GADNativeContentAd *)nativeContentAd {
     self.nativeContentAd = nativeContentAd;
-    if ([self.delegate respondsToSelector:@selector(nativeAdLoaderDidLoadData:ForContext:)]) {
-        [self.delegate nativeAdLoaderDidLoadData:nativeContentAd ForContext:self];
+    if ([self.delegate respondsToSelector:@selector(nativeContentAdLoaderDidLoadData:ForContext:)]) {
+        [self.delegate nativeContentAdLoaderDidLoadData:nativeContentAd ForContext:self];
     }
 }
 
