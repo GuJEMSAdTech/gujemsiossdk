@@ -73,7 +73,7 @@
     for (NSDictionary *dict in self.mappingData) {
         if ([dict[@"_name"] isEqual:adSpaceId]) {
             NSInteger position = [dict[@"_position"] intValue];
-            NSLog(@"position: %d", position);
+            NSLog(@"position: %ld", (long)position);
             return position;
         }
     }
