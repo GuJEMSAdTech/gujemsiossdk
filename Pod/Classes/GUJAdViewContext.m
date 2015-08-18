@@ -192,12 +192,6 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 }
 
 
-- (void)setReloadInterval:(NSTimeInterval)_reloadInterval {
-    reloadInterval = _reloadInterval;
-    // todo: implement ad reload
-}
-
-
 - (BOOL)disableLocationService {
     locationServiceDisabled = YES;
     return YES;

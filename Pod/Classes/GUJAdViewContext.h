@@ -167,14 +167,6 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
 
 
 /*!
- * Set the global reload interval for this instance.
- *
- @param reloadInterval Reload interval as NSTimeInterval
- */
-- (void)setReloadInterval:(NSTimeInterval)reloadInterval;
-
-
-/*!
  * Disables the location service
  @result YES if the location service was disabled
  */

@@ -143,15 +143,21 @@ The methods ~~- (void)bannerView:(GUJAdView*)bannerView receivedEvent:(GUJAdView
 
 In former versions of the SDK it was possible to set a number of possible initialization attempts for checking for
 availability of a view controller while loading interstitials.
-We removed this mechanism and the method ~~- (void)initalizationAttempts:(NSUInteger)attempts~~ because it is the
+We removed this mechanism and `GUJAdViewContext`s method ~~- (void)initalizationAttempts:(NSUInteger)attempts;~~ because it is the
 responsibility of the developer to set a rootViewController during initialization of the `GUJAdViewContext`.
 
+
+#### Removed Banner reloading
+
+We removed the method ~~- (void)setReloadInterval:(NSTimeInterval)reloadInterval;~~ of `GUJAdViewContext` as automatic ad reloading is not wanted.
+In case there should be an ad reload based on user interaction (e.g. while swiping through a gallery) it is the
+developers responsibility to refresh the ad.
 
 
 <a name="usage"></a>
 ## Usage 
 
-If you are not migration from a 2.1.x version this is your starting point!
+If you are not migrating from a 2.1.x version this is your starting point!
 
 Loading and displaying Banner Ads, Interstitial Ads or Native Ads is straight forward. :)
 
