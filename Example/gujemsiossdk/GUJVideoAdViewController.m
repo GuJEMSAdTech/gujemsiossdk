@@ -100,7 +100,7 @@ NSString *const kTestAppAdTagUrl =
 
 
 - (void)dismissKeyboard {
-    self.adTagUrlTextView.resignFirstResponder;
+    [self.adTagUrlTextView resignFirstResponder];
 }
 
 
