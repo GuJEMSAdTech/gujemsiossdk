@@ -30,7 +30,6 @@
  */
 
 #import <UIKit/UIKit.h>
-#import <GoogleMobileAds.h>
 
 @class GUJAdView;
 @class GUJAdViewContext;
@@ -211,7 +210,7 @@
  *
  @param bannerView The adView object
  */
--(void)nativeContentAdLoaderDidLoadData:(GADNativeContentAd *)nativeContentAd ForContext:(GUJAdViewContext *)context;
+-(void)nativeContentAdLoaderDidLoadDataForContext:(GUJAdViewContext *)context;
 
 
 @end

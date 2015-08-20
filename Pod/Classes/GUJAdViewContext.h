@@ -24,7 +24,6 @@
  */
 
 #import <UIKit/UIKit.h>
-#import <GoogleMobileAds.h>
 #import <CoreLocation/CoreLocation.h>
 
 
@@ -32,6 +31,8 @@
 @class DFPBannerView;
 @class DFPInterstitial;
 @class GUJAdViewContext;
+@class GADInterstitial;
+@class GADNativeContentAd;
 
 static const int GUJ_AD_VIEW_POSITION_UNDEFINED = 0;
 static const int GUJ_AD_VIEW_POSITION_TOP = 1;
@@ -41,7 +42,7 @@ static const int GUJ_AD_VIEW_POSITION_BOTTOM = 10;
 
 
 __attribute__((deprecated("Dont' use methods returning GUJAdView anymore. Use their replacements instead.")))
-@interface GUJAdView : DFPBannerView
+@interface GUJAdView : UIView
 
 - (id)initWithContext:(GUJAdViewContext *)context;
 
@@ -77,8 +78,7 @@ __attribute__((deprecated("Dont' use methods returning GUJAdView anymore. Use th
 @end
 
 
-@interface GUJAdViewContext : NSObject <GADNativeContentAdLoaderDelegate, GADBannerViewDelegate, GADInterstitialDelegate, CLLocationManagerDelegate>
-
+@interface GUJAdViewContext : NSObject
 @property(nonatomic, strong) NSString *adUnitId;
 @property(nonatomic, assign) NSInteger position;
 @property(nonatomic, assign) BOOL isIndex;

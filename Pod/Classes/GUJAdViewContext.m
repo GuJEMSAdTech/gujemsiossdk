@@ -23,6 +23,7 @@
  *
  */
 
+#import <GoogleMobileAds.h>
 #import "GUJAdViewContext.h"
 #import "GUJAdSpaceIdToAdUnitIdMapper.h"
 #import "GUJAdViewContextDelegate.h"
@@ -38,7 +39,7 @@ static NSString *const CUSTOM_TARGETING_KEY_SPEED = @"pgv";
 static NSString *const CUSTOM_TARGETING_KEY_DEVICE_STATUS = @"psx";
 static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
-@implementation GUJAdView : DFPBannerView {
+@implementation GUJAdView {
     GUJAdViewContext *context;
 }
 
@@ -71,7 +72,8 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 @end
 
 
-@interface GUJAdViewContext ()
+@interface GUJAdViewContext () <GADNativeContentAdLoaderDelegate, GADBannerViewDelegate, GADInterstitialDelegate, CLLocationManagerDelegate>
+
 @end
 
 @implementation GUJAdViewContext {
@@ -471,8 +473,8 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
 - (void)adLoader:(GADAdLoader *)adLoader1 didReceiveNativeContentAd:(GADNativeContentAd *)nativeContentAd {
     self.nativeContentAd = nativeContentAd;
-    if ([self.delegate respondsToSelector:@selector(nativeContentAdLoaderDidLoadData:ForContext:)]) {
-        [self.delegate nativeContentAdLoaderDidLoadData:nativeContentAd ForContext:self];
+    if ([self.delegate respondsToSelector:@selector(nativeContentAdLoaderDidLoadDataForContext:)]) {
+        [self.delegate nativeContentAdLoaderDidLoadDataForContext:self];
     }
 }
 

@@ -26,6 +26,7 @@
 #import <gujemsiossdk/GUJAdViewContext.h>
 #import "GUJNativeAdViewController.h"
 #import "GUJSettingsViewController.h"
+#import <GoogleMobileAds.h>
 
 
 @implementation GUJNativeAdViewController {
@@ -69,7 +70,7 @@
 }
 
 
-- (void)nativeContentAdLoaderDidLoadData:(GADNativeContentAd *)nativeContentAd ForContext:(GUJAdViewContext *)context {
+- (void)nativeContentAdLoaderDidLoadDataForContext:(GUJAdViewContext *)context {
     // Create a new AdView instance from the xib file
     GADNativeContentAdView *contentAdView =
     [[[NSBundle mainBundle] loadNibNamed:@"GUJNativeContentAdView"
@@ -78,20 +79,18 @@
     
     // Associate the app install ad view with the app install ad object.
     // This is required to make the ad clickable.
-    contentAdView.nativeContentAd = nativeContentAd;
+    contentAdView.nativeContentAd = context.nativeContentAd;
    
     // Populate the app install ad view with the app install ad assets.
-    ((UILabel *) contentAdView.headlineView).text = nativeContentAd.headline;
-    ((UIImageView *) contentAdView.imageView).image = ((GADNativeAdImage *)[nativeContentAd.images firstObject]).image;
-    ((UILabel *) contentAdView.bodyView).text = nativeContentAd.body;
-    ((UIImageView *) contentAdView.logoView).image = nativeContentAd.logo.image;
-    ((UILabel *) contentAdView.callToActionView).text = nativeContentAd.callToAction;
-    ((UILabel *) contentAdView.advertiserView).text = nativeContentAd.advertiser;
+    ((UILabel *) contentAdView.headlineView).text = context.nativeContentAd.headline;
+    ((UIImageView *) contentAdView.imageView).image = ((GADNativeAdImage *)[context.nativeContentAd.images firstObject]).image;
+    ((UILabel *) contentAdView.bodyView).text = context.nativeContentAd.body;
+    ((UIImageView *) contentAdView.logoView).image = context.nativeContentAd.logo.image;
+    ((UILabel *) contentAdView.callToActionView).text = context.nativeContentAd.callToAction;
+    ((UILabel *) contentAdView.advertiserView).text = context.nativeContentAd.advertiser;
 
     // Add appInstallAdView to the view controller's view...
     [nativeAdPlaceholder addSubview:contentAdView];
-
-
 
 }
 
