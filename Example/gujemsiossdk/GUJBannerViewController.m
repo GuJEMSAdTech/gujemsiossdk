@@ -155,7 +155,7 @@
 }
 
 
-- (void)bannerViewDidShowForContext:(GUJAdViewContext *)context {
+- (void)bannerViewDidLoadAdDataForContext:(GUJAdViewContext *)context{
 
     if (context == topAdViewContext) {
         topPlaceholderHeightConstraint.constant = context.bannerView.frame.size.height;
