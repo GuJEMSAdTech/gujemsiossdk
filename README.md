@@ -288,21 +288,21 @@ Load a native add and handle the result via delegate callbacks:
 }
 
 
-- (void)nativeAdLoaderDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context {
+- (void)nativeContentAdLoaderDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context {
     // handle the error
 }
 
 
-- (void)nativeAdLoaderDidLoadData:(GADNativeContentAd *)nativeContentAd ForContext:(GUJAdViewContext *)context {
-    headlineLabel.text = nativeContentAd.headline;
-    bodyLabel.text = nativeContentAd.body;
+- (void)nativeContentAdLoaderDidLoadDataForContext:(GUJAdViewContext *)context {
+    headlineLabel.text = context.nativeContentAd.headline;
+    bodyLabel.text = context.nativeContentAd.body;
     
     ...
 
 }
 ```
 
-The returned native ad object is of type `GADNativeContentAd` known from the Google SDK for DFP Users on iOS.
+The created native ad object is of type `GADNativeContentAd` known from the Google SDK for DFP Users on iOS.
 To display the native ad make your view extend `GADNativeContentAdView` as described in the [Google SDK for DFP documentation](https://developers.google.com/mobile-ads-sdk/docs/dfp/ios/native).
 `GADNativeContentAdView` will automatically take care for tracking views and clicks and it will make 
 the whole ad clickable to allow the user to be redirected to the specified click-through-URL.
