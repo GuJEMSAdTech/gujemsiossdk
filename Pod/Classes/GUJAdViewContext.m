@@ -81,9 +81,7 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
     NSMutableDictionary *customTargetingDict;
     BOOL locationServiceDisabled;
     BOOL autoShowInterstitialView;
-    NSTimeInterval reloadInterval;
 
-    adViewCompletion adViewCompletionHandler;
     interstitialAdViewCompletion interstitialAdViewCompletionHandler;
 
     CLLocationManager *locationManager;
