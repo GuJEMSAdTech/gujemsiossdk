@@ -82,6 +82,7 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
     BOOL locationServiceDisabled;
     BOOL autoShowInterstitialView;
 
+    adViewCompletion adViewCompletionHandler;
     interstitialAdViewCompletion interstitialAdViewCompletionHandler;
 
     CLLocationManager *locationManager;
@@ -255,7 +256,8 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
 
 - (void)adView:(adViewCompletion)completion {
-    completion([self adView], nil);
+    adViewCompletionHandler = completion;
+    [self adView];
 }
 
 
@@ -326,7 +328,8 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
 
 - (void)adViewWithOrigin:(CGPoint)origin completion:(adViewCompletion)completion {
-    completion([self adViewWithOrigin:origin], nil);
+    adViewCompletionHandler = completion;
+    [self adViewWithOrigin:origin];
 }
 
 
@@ -337,7 +340,8 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
 
 - (void)adViewForKeywords:(NSArray *)keywords completion:(adViewCompletion)completion {
-    completion([self adViewForKeywords:keywords], nil);
+    adViewCompletionHandler = completion;
+    [self adViewForKeywords:keywords];
 }
 
 
@@ -348,7 +352,8 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
 
 - (void)adViewForKeywords:(NSArray *)keywords origin:(CGPoint)origin completion:(adViewCompletion)completion {
-    completion([self adViewForKeywords:keywords origin:origin], nil);
+    adViewCompletionHandler = completion;
+    [self adViewForKeywords:keywords origin:origin];
 }
 
 
@@ -478,6 +483,13 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 #pragma mark - GADBannerViewDelegate
 
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    BOOL completionHandlerAllowsToShowBanner = YES;
+    if (adViewCompletionHandler != nil) {
+        completionHandlerAllowsToShowBanner = adViewCompletionHandler((DFPBannerView *) bannerView, nil);
+    }
+
+    bannerView.hidden = !completionHandlerAllowsToShowBanner;
+
     if ([self.delegate respondsToSelector:@selector(bannerViewDidLoadAdData:)]) {
         [self.delegate bannerViewDidLoadAdData:(GUJAdView *) bannerView];
     }
@@ -488,6 +500,13 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
 
 - (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
+    BOOL completionHandlerAllowsToShowBanner = YES;
+    if (adViewCompletionHandler != nil) {
+        completionHandlerAllowsToShowBanner = adViewCompletionHandler((DFPBannerView *) bannerView, error);
+    }
+
+    bannerView.hidden = !completionHandlerAllowsToShowBanner;
+
     if ([self.delegate respondsToSelector:@selector(bannerView:didFailLoadingAdWithError:)]) {
         [self.delegate bannerView:(GUJAdView *) bannerView didFailLoadingAdWithError:error];
     }

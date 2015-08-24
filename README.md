@@ -237,7 +237,26 @@ autolayout constraints or your preferred view layouting method.
 The returned ad view object is of type `DFPBannerView` known from the Google SDK for DFP Users on iOS.
 
 There are some other Ad View initialization methods that allow you to add keywords or a completion handler.
-The completion handler will return immediately.
+
+e.g. to load a banner view with a completion handler:
+
+```objective-c
+- (void)viewDidAppear:(BOOL)animated {
+    
+    ...
+    [adViewContext adView:^BOOL(DFPBannerView *_adView, NSError *_error) {
+           
+            if (_error == nil) {
+                // banner ready, do some layout setup
+            } else {
+                // handle the error
+            }
+            return YES; // whether or not the banner should show 
+        }];
+        
+}
+```
+
 
 A couple of additional delegate callbacks can be implemented to interact with the banner view while loading/ showing/ hiding:
 
