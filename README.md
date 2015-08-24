@@ -170,6 +170,22 @@ The callbacks ~~-(void)bannerViewDidShow:(GUJAdView *)bannerView;~~ and
 automatically show and showing/ hiding can be done via the `hidden` property of UIView directly when needed.
 
 
+#### Adjusted completion handlers for banners and interstitials
+
+The initialization completion handler for banners will now return a `DFPBanner` view, instead of `GUJAdView` before.
+
+```objective-c
+typedef BOOL (^adViewCompletion)(DFPBannerView *_adView, NSError *_error);
+```
+
+For interstitials there is a separate completion handler now, which directly returns a `GADInterstitial`:
+
+```objective-c
+typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSError *_error);
+```
+
+
+
 <a name="usage"></a>
 ## Usage 
 
