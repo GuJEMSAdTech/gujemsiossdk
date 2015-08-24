@@ -326,8 +326,6 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
 
 - (void)adViewWithOrigin:(CGPoint)origin completion:(adViewCompletion)completion {
-    adViewCompletionHandler = completion;
-
     completion([self adViewWithOrigin:origin], nil);
 }
 
