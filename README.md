@@ -142,6 +142,34 @@ Also we removed methods returning references to `GUJAdEvent`, something that was
 The methods ~~- (void)bannerView:(GUJAdView*)bannerView receivedEvent:(GUJAdViewEvent*)event;~~ and 
 ~~- (void)interstitialViewReceivedEvent:(GUJAdViewEvent*)event;~~ were removed from the `GUJAdViewContextDelegate` protocol. 
 
+Instead we added the following delegate methods to the `GUJAdViewContextDelegate` protocol:
+
+```objective-c
+/*!
+ * Tells the delegate that a full screen view will be presented in response to the user clicking on
+ * an ad. The delegate may want to pause animations and time sensitive interactions.
+ */
+- (void)bannerViewWillPresentScreenForContext:(GUJAdViewContext *)context;
+
+/*!
+ *  Tells the delegate that the full screen view will be dismissed.
+ */
+- (void)bannerViewWillDismissScreenForContext:(GUJAdViewContext *)context;
+
+/*!
+ *  Tells the delegate that the full screen view has been dismissed. The delegate should restart
+ *  anything paused while handling adViewWillPresentScreen:.
+ */
+- (void)bannerViewDidDismissScreenForContext:(GUJAdViewContext *)context;
+
+/*!
+ *  Tells the delegate that the user click will open another app, backgrounding the current
+ *  application. The standard UIApplicationDelegate methods, like applicationDidEnterBackground:,
+ *  are called immediately before this method is called.
+ */
+- (void)bannerViewWillLeaveApplicationForContext:(GUJAdViewContext *)context;
+```
+
 
 #### Removed initalizationAttempts handling
 

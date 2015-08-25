@@ -516,6 +516,26 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 }
 
 
+- (void)adViewWillPresentScreen:(GADBannerView *)bannerView {
+    [self.delegate bannerViewWillPresentScreenForContext:self];
+}
+
+
+- (void)adViewWillDismissScreen:(GADBannerView *)bannerView {
+    [self.delegate bannerViewWillDismissScreenForContext:self];
+}
+
+
+- (void)adViewDidDismissScreen:(GADBannerView *)bannerView {
+    [self.delegate bannerViewDidDismissScreenForContext:self];
+}
+
+
+- (void)adViewWillLeaveApplication:(GADBannerView *)bannerView {
+    [self.delegate bannerViewWillLeaveApplicationForContext:self];
+}
+
+
 #pragma mark - GADInterstitialDelegate
 
 - (void)interstitialDidReceiveAd:(GADInterstitial *)ad {
