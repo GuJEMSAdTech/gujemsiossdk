@@ -298,6 +298,20 @@ A couple of additional delegate callbacks can be implemented to interact with th
 See the documentation in the header file for further information.
 
 
+#### banner view sizes
+
+By default the GUJAdViewContext will allow all possible ad view sizes in a request to the DFP server.
+You can limit the possible sizes, by disabling some of them via the following methods:
+
+```objective-c
+- (void)disableMediumRectangleAds;
+- (void)disableTwoToOneAds;
+- (void)disableBillboardAds;
+- (void)disableDesktopBillboardAds;
+- (void)disableLeaderboardAds;
+```
+
+
 #### load an interstitial
 
 Load an interstitial view with completion handler:

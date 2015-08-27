@@ -174,6 +174,36 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
 
 
 /*!
+ * Disables ads of size medium rectangle.
+ */
+- (void)disableMediumRectangleAds;
+
+
+/*!
+ * Disables ads of 2:1 proportion, i.e. 300x150
+ */
+- (void)disableTwoToOneAds;
+
+
+/*!
+ * Disables ads of size billboard, e.g. 1024x220 or 768, 300
+ */
+- (void)disableBillboardAds;
+
+
+/*!
+ * Disables ads of size desktop billboard, i.e. 800x250
+ */
+- (void)disableDesktopBillboardAds;
+
+
+/*!
+ * Disables ads of size leaderboard, i.e. 728x90.
+ */
+- (void)disableLeaderboardAds;
+
+
+/*!
  * If you do not wish to present the interstital view directly (automatically), set this value to NO.
  * If AutoShow is disabled, you have to present the interstitial AdView manually.
  *

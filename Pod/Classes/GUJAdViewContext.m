@@ -80,6 +80,11 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
     GADAdLoader *adLoader;
     NSMutableDictionary *customTargetingDict;
     BOOL locationServiceDisabled;
+    BOOL mediumRectanglesDisabled;
+    BOOL twoToOneAdsDisabled;
+    BOOL billboardAdsDisabled;
+    BOOL desktopBillboardAdsDisabled;
+    BOOL leaderboardAdsDisabled;
     BOOL autoShowInterstitialView;
 
     adViewCompletion adViewCompletionHandler;
@@ -199,6 +204,31 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 }
 
 
+- (void)disableMediumRectangleAds {
+    mediumRectanglesDisabled = YES;
+}
+
+
+- (void)disableTwoToOneAds {
+    twoToOneAdsDisabled = YES;
+}
+
+
+- (void)disableBillboardAds {
+    billboardAdsDisabled = YES;
+}
+
+
+- (void)disableDesktopBillboardAds {
+    desktopBillboardAdsDisabled = YES;
+}
+
+
+- (void)disableLeaderboardAds {
+    leaderboardAdsDisabled = YES;
+}
+
+
 - (void)shouldAutoShowIntestitialView:(BOOL)show {
     [self shouldAutoShowInterstitialView:show];
 }
@@ -269,35 +299,62 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {  // iPad
 
-        self.bannerView.validAdSizes = @[
-                NSValueFromGADAdSize(kGADAdSizeBanner),
-                NSValueFromGADAdSize(kGADAdSizeMediumRectangle),
-                NSValueFromGADAdSize(kGADAdSizeFullBanner),
-                NSValueFromGADAdSize(kGADAdSizeLargeBanner),
-                NSValueFromGADAdSize(kGADAdSizeLeaderboard),
+        NSMutableArray *validAdSizes = [NSMutableArray new];
+
+        [validAdSizes addObjectsFromArray:@[
+                NSValueFromGADAdSize(kGADAdSizeBanner),  // Typically 320x50.
+                NSValueFromGADAdSize(kGADAdSizeLargeBanner),  // Typically 320x100.
                 NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 50))),
                 NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 75))),
-                NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 150))),
                 NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 75))),
-                NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(728, 90))),
                 NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(180, 150))),
-                NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 600))),
-                NSValueFromGADAdSize(isLandscape ? GADAdSizeFromCGSize(CGSizeMake(1024, 220)) : GADAdSizeFromCGSize(CGSizeMake(768, 300))),
                 NSValueFromGADAdSize(isLandscape ? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait)
-        ];
+        ]];
+
+        if (!mediumRectanglesDisabled) {
+            [validAdSizes addObject:NSValueFromGADAdSize(kGADAdSizeMediumRectangle)];  // Typically 300x250.
+        }
+
+        if (!twoToOneAdsDisabled) {
+            [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 150)))];
+        }
+
+        if (!billboardAdsDisabled) {
+            [validAdSizes addObject:NSValueFromGADAdSize(isLandscape ? GADAdSizeFromCGSize(CGSizeMake(1024, 220)) : GADAdSizeFromCGSize(CGSizeMake(768, 300)))];
+        }
+
+        if (isLandscape && !desktopBillboardAdsDisabled) {
+            [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(800, 250)))];
+        }
+
+        if (!leaderboardAdsDisabled) {
+            [validAdSizes addObject:NSValueFromGADAdSize(kGADAdSizeLeaderboard)];  // Typically 728x90.
+        }
+
+        self.bannerView.validAdSizes = validAdSizes;
 
     } else {  //iPhone, iPod
 
-        self.bannerView.validAdSizes = @[
-                NSValueFromGADAdSize(kGADAdSizeBanner),
-                NSValueFromGADAdSize(kGADAdSizeMediumRectangle),
-                NSValueFromGADAdSize(kGADAdSizeLargeBanner),
+        NSMutableArray *validAdSizes = [NSMutableArray new];
+
+        [validAdSizes addObjectsFromArray:@[
+                NSValueFromGADAdSize(kGADAdSizeBanner), // Typically 320x50.
+                NSValueFromGADAdSize(kGADAdSizeLargeBanner), // Typically 320x100.
                 NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 50))),
                 NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 75))),
                 NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 75))),
                 NSValueFromGADAdSize(isLandscape ? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait)
-        ];
+        ]];
 
+        if (!mediumRectanglesDisabled) {
+            [validAdSizes addObject:NSValueFromGADAdSize(kGADAdSizeMediumRectangle)];  // Typically 300x250.
+        }
+
+        if (!twoToOneAdsDisabled) {
+            [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 150)))];
+        }
+
+        self.bannerView.validAdSizes = validAdSizes;
 
     }
 
