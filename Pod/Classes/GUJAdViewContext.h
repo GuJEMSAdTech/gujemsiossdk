@@ -174,6 +174,12 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
 
 
 /*!
+ * Disables all ad sizes except smart banners (typically 50px height on iPhone, 90px on iPad)
+ */
+- (void)allowSmartBannersOnly;
+
+
+/*!
  * Disables ads of size medium rectangle.
  */
 - (void)disableMediumRectangleAds;

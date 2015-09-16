@@ -313,6 +313,20 @@ You can limit the possible sizes, by disabling some of them via the following me
 - (void)disableLeaderboardAds;
 ```
 
+Alternatively if the only ad size you want to show from the current `GUJAdViewContext` is a smart banner, you can
+limit the possible ad sizes to this by calling the `- (void)allowSmartBannersOnly` method.
+The above listed disabling methods will then have no additional effect. A smart banner typically is 
+50 pixels in height on iPhone/iPod and 90 pixels on iPad.
+
+
+#### show ads from the facebook audience network
+
+Due to a bug in the facebook audience network library it is not possible to receive facebook ads in a request containing
+multiple possible ad sizes.
+The workaround is to call the above mentioned `- (void)allowSmartBannersOnly` method on the `GUJAdViewContext`
+which will then only add the smart banner size to the request and voilà the facebook ad will show up!
+
+
 
 #### load an interstitial
 
