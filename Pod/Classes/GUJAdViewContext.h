@@ -167,6 +167,14 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
 
 
 /*!
+ * Add an optional content URL to the DFP request. This is a URL of a website displaying equivalent content like
+ * your current view.
+ * The DFP server will parse the content of the URL for additional targeting.
+ */
+- (void)setContentURL:(NSString *)contentURL;
+
+
+/*!
  * Disables the location service
  @result YES if the location service was disabled
  */

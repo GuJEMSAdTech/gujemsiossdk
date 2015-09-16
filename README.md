@@ -328,6 +328,17 @@ which will then only add the smart banner size to the request and voilà the fac
 
 
 
+#### add an optional content URL for further targeting
+You can add an optional content URL on the `GUJAdViewContext` to be used in the the DFP request.
+This is a URL of a website displaying equivalent content like your current view.
+The DFP server will parse the content of the URL for additional targeting.
+
+```objective-c
+- (void)setContentURL:(NSString *)contentURL;
+```
+
+
+
 #### load an interstitial
 
 Load an interstitial view with completion handler:

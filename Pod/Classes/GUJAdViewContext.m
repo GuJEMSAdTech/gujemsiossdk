@@ -79,6 +79,8 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 @implementation GUJAdViewContext {
     GADAdLoader *adLoader;
     NSMutableDictionary *customTargetingDict;
+    NSString* _contentURL;
+
     BOOL locationServiceDisabled;
     BOOL allowSmartBannersOnly;
     BOOL mediumRectanglesDisabled;
@@ -199,6 +201,11 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 }
 
 
+-(void)setContentURL:(NSString*) contentURL {
+    _contentURL = contentURL;
+}
+
+
 - (BOOL)disableLocationService {
     locationServiceDisabled = YES;
     return YES;
@@ -247,6 +254,10 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
 - (DFPRequest *)createRequest {
     DFPRequest *request = [DFPRequest request];
+
+    if (_contentURL != nil) {
+        request.contentURL = _contentURL;
+    }
 
     if ([CLLocationManager locationServicesEnabled] && !locationServiceDisabled) {
 
