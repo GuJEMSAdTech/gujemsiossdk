@@ -35,7 +35,7 @@ the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recomme
 #### Handling App Transport Security in iOS 9
 
 Important note on App Transport Security (ATS) in iOS 9: A lot of content delivered by the DFP Server is using URLs not
-yet switched to secure HTTPS. To avoid trouble loading ads by unsing this SDK we recommend to switch of ATS for now.
+yet switched to secure HTTPS. To avoid trouble loading ads with this SDK we recommend to switch of ATS for now.
 
 Adding the following to your Info.plist will disable ATS:
 ```xml
