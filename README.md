@@ -32,7 +32,24 @@ If you don't want to use CocoaPods you should be able to copy the classes from t
 the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recommend to do the installation without CocoaPods.
 
 
-## Upgrading from v2.1.x to v3.0.0
+#### Handling App Transport Security in iOS 9
+
+Important note on App Transport Security (ATS) in iOS 9: A lot of content delivered by the DFP Server is using URLs not
+yet switched to secure HTTPS. To avoid trouble loading ads by unsing this SDK we recommend to switch of ATS for now.
+
+Adding the following to your Info.plist will disable ATS:
+```xml
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+<true/>
+```
+
+See this [Google Developers Blog Post](http://googleadsdeveloper.blogspot.no/2015/08/handling-app-transport-security-in-ios-9.html)
+for details.
+
+
+## Upgrading from v2.1.x to v3.0.x
 
 If you are not upgrading just [skip this chapter](#usage).
 
