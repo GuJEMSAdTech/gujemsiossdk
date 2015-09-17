@@ -327,14 +327,23 @@ The workaround is to call the above mentioned `- (void)allowSmartBannersOnly` me
 which will then only add the smart banner size to the request and voilà the facebook ad will show up!
 
 
-
 #### add an optional content URL for further targeting
+
 You can add an optional content URL on the `GUJAdViewContext` to be used in the the DFP request.
 This is a URL of a website displaying equivalent content like your current view.
 The DFP server will parse the content of the URL for additional targeting.
 
 ```objective-c
 - (void)setContentURL:(NSString *)contentURL;
+```
+
+#### Set the publisher provided identifier (PPID)
+
+You can set a publisher provided identifier (PPID) on the `GUJAdViewContext` for use in frequency capping, 
+audience segmentation and targeting, sequential ad rotation, and other audience-based ad delivery controls across devices.
+
+```objective-c
+- (void)setPublisherProvidedID:(NSString *)publisherProvidedID;
 ```
 
 

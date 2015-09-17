@@ -175,6 +175,12 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
 
 
 /*!
+* Set a publisher provided identifier (PPID) for use in frequency capping.
+*/
+- (void)setPublisherProvidedID:(NSString *)publisherProvidedID;
+
+
+/*!
  * Disables the location service
  @result YES if the location service was disabled
  */

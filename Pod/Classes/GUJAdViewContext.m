@@ -80,6 +80,7 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
     GADAdLoader *adLoader;
     NSMutableDictionary *customTargetingDict;
     NSString* _contentURL;
+    NSString* _publisherProvidedID;
 
     BOOL locationServiceDisabled;
     BOOL allowSmartBannersOnly;
@@ -206,6 +207,11 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 }
 
 
+-(void)setPublisherProvidedID:(NSString*) publisherProvidedID {
+    _publisherProvidedID = publisherProvidedID;
+}
+
+
 - (BOOL)disableLocationService {
     locationServiceDisabled = YES;
     return YES;
@@ -257,6 +263,10 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
     if (_contentURL != nil) {
         request.contentURL = _contentURL;
+    }
+
+    if (_publisherProvidedID != nil) {
+        request.publisherProvidedID = _publisherProvidedID;
     }
 
     if ([CLLocationManager locationServicesEnabled] && !locationServiceDisabled) {
