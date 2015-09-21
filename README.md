@@ -358,7 +358,7 @@ The DFP server will parse the content of the URL for additional targeting.
 
 You can set a publisher provided identifier (PPID) on the `GUJAdViewContext` for use in frequency capping, 
 audience segmentation and targeting, sequential ad rotation, and other audience-based ad delivery controls across devices.
-
+Please do not set the PPID unless otherwise agreed.
 ```objective-c
 - (void)setPublisherProvidedID:(NSString *)publisherProvidedID;
 ```
