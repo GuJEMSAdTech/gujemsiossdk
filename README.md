@@ -60,6 +60,16 @@ Under the hood we exchanged the Amobee Ad Server with Googles DoubleClick for Pu
 Also we did some cleanup to make the SDK better understandable.
 
 
+#### Remove old SDK installation
+
+First step during upgrade from 2.1.x is to remove all libraries and files belonging to the old SDK installation.
+This includes libGUJAdViewContext.a, libGUJAdViewContextSimulator.a, GUJAdViewContext.h, GUJAdViewControllerDelegate.h,
+ORMMAResourceBundle.bundle, VideoAdLib.bundle and may be others depending on your installation.
+
+Then add the new SDK as CocoaPod to your pod file and run `pod install` as described above.
+
+
+
 #### GUJAdViewControllerDelegate renamed to GUJAdViewContextDelegate
 
 First we renamed `GUJAdViewControllerDelegate` to `GUJAdViewContextDelegate`, because it is the delegate of the `GUJAdViewContext`
@@ -241,7 +251,10 @@ If you are not migrating from a 2.1.x version this is your starting point!
 Loading and displaying Banner Ads, Interstitial Ads or Native Ads is straight forward. :)
 
 You always start by creating a `GUJAdViewContext`. Define a class variable to keep the reference.  
-Then set the delegate and specify the position and whether it is an ad on an index page (vs. article).  
+Then set the delegate and specify the position and whether it is an ad on an index page (vs. article). 
+The position can be any value between 1 and 10. You can use the predefined constants `GUJ_AD_VIEW_POSITION_TOP` (1),
+`GUJ_AD_VIEW_POSITION_MID_1` (2), `GUJ_AD_VIEW_POSITION_MID_1` (3) or `GUJ_AD_VIEW_POSITION_BOTTOM` (10) to set the position.
+
 Create multiple `GUJAdViewContext` instances for every ad you want to show.
 
 You receive your Ad Unit ID from the [G+J EMS Team](#contact), an example could be "/6032/sdktest"
@@ -454,6 +467,17 @@ It should look similar to this:
 ```
 https://pubads.g.doubleclick.net/gampad/ads?sz=480x360&iu=/6032/sdktest/preroll&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]
 ```
+
+
+## Submitting your App to App Review
+
+During submission of your App for App Review you will be asked whether your app uses the Advertising Identifier (IDFA).
+This question needs to be answered with Yes.
+
+Then select that your app uses the Advertising Identifier to "Serve advertisements within the app".
+
+If you submit the app again for another review in the future, you will need to fill out the questions again.
+
 
 
 <a name="contact"></a>
