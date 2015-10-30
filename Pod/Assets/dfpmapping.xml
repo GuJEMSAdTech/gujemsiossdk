@@ -422,7 +422,7 @@
     <zone name="15718" adunit="ck_and/rezepte" position="1"/>
     <zone name="16849" adunit="ck_and/rezepte" position="2"/>
     <zone name="16851" adunit="ck_and/rezepte" position="1" index="true"/>
-    <zone name="21687" adunit="ck_ipad/rezepte" position="10" index="true"/>
+    <zone name="21687" adunit="ck_ipad/rezepte" position="1" index="true"/>
     <zone name="21689" adunit="ck_ipad/rezepte" position="1"/>
     <zone name="22303" adunit="ck_tab/rezepte" position="1"/>
     <zone name="15706" adunit="ck_ip/suche" position="1" index="true"/>
