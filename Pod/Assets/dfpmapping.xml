@@ -429,9 +429,9 @@
     <zone name="16828" adunit="ck_ip/suche" position="1" index="true"/>
     <zone name="16834" adunit="ck_ip/suche" position="1" index="true"/>
     <zone name="15716" adunit="ck_and/suche" position="1" index="true"/>
-    <zone name="16847" adunit="ck_and/suche" position="10" index="true"/>
+    <zone name="16847" adunit="ck_and/suche" position="1" index="true"/>
     <zone name="16853" adunit="ck_and/suche" position="1" index="true"/>
-    <zone name="22305" adunit="ck_tab/suche" position="10" index="true"/>
+    <zone name="22305" adunit="ck_tab/suche" position="1" index="true"/>
     <zone name="13085" adunit="comunio_ip/_default" position="1"/>
     <zone name="17828" adunit="comunio_and/_default" position="1"/>
     <zone name="17834" adunit="comunio_and/_default" position="0"/>
