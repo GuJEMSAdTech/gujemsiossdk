@@ -587,7 +587,7 @@
     <zone name="25548" adunit="gala_ip/_default" position="0"/>
     <zone name="25550" adunit="gala_and/_default" position="0"/>
     <zone name="25581" adunit="gala_ip/_default" position="2"/>
-    <zone name="25583" adunit="gala_and/_default" position="2"/>
+    <zone name="25583" adunit="gala_and/_default" position="3"/>
     <zone name="17529" adunit="gala_ip/_default" position="0"/>
     <zone name="17565" adunit="gala_ip/_default" position="1" index="true"/>
     <zone name="17706" adunit="gala_and/_default" position="1" index="true"/>
@@ -597,7 +597,7 @@
     <zone name="21565" adunit="gala_and/_default" position="2" index="true"/>
     <zone name="24290" adunit="gala_ip/_default" position="10" index="true"/>
     <zone name="24329" adunit="gala_and/_default" position="10" index="true"/>
-    <zone name="25562" adunit="gala_and/_default" position="2"/>
+    <zone name="25562" adunit="gala_and/_default" position="3"/>
     <zone name="25574" adunit="gala_ip/_default" position="2"/>
     <zone name="17521" adunit="gala_ip/beauty_fashion" position="0"/>
     <zone name="17551" adunit="gala_ip/beauty_fashion" position="1" index="true"/>
@@ -630,9 +630,9 @@
     <zone name="25164" adunit="gala_ip/beauty_fashion" position="1"/>
     <zone name="25173" adunit="gala_ip/beauty_fashion" position="2"/>
     <zone name="25181" adunit="gala_ip/beauty_fashion" position="10"/>
-    <zone name="25259" adunit="gala_and/beauty_fashion" position="2"/>
+    <zone name="25259" adunit="gala_and/beauty_fashion" position="3"/>
     <zone name="25267" adunit="gala_ip/beauty_fashion" position="2"/>
-    <zone name="25554" adunit="gala_and/beauty_fashion" position="2"/>
+    <zone name="25554" adunit="gala_and/beauty_fashion" position="3"/>
     <zone name="25564" adunit="gala_ip/beauty_fashion" position="2"/>
     <zone name="20615" adunit="gala_ip/_default" position="1" index="true"/>
     <zone name="22676" adunit="gala_and/_default" position="1"/>
@@ -646,7 +646,7 @@
     <zone name="24263" adunit="gala_ip/homepage" position="10" index="true"/>
     <zone name="24301" adunit="gala_ip/homepage" position="0"/>
     <zone name="24339" adunit="gala_and/homepage" position="0"/>
-    <zone name="25577" adunit="gala_and/homepage" position="2"/>
+    <zone name="25577" adunit="gala_and/homepage" position="3"/>
     <zone name="25579" adunit="gala_ip/homepage" position="2"/>
     <zone name="17527" adunit="gala_ip/lifestyle" position="0"/>
     <zone name="17561" adunit="gala_ip/lifestyle" position="1" index="true"/>
@@ -671,9 +671,9 @@
     <zone name="25162" adunit="gala_ip/lifestyle" position="1"/>
     <zone name="25171" adunit="gala_ip/lifestyle" position="2"/>
     <zone name="25179" adunit="gala_ip/lifestyle" position="10"/>
-    <zone name="25257" adunit="gala_and/lifestyle" position="2"/>
+    <zone name="25257" adunit="gala_and/lifestyle" position="3"/>
     <zone name="25265" adunit="gala_ip/lifestyle" position="2"/>
-    <zone name="25560" adunit="gala_and/lifestyle" position="2"/>
+    <zone name="25560" adunit="gala_and/lifestyle" position="3"/>
     <zone name="25572" adunit="gala_ip/lifestyle" position="2"/>
     <zone name="17567" adunit="gala_ip/_default" position="1" index="true"/>
     <zone name="17704" adunit="gala_and/_default" position="1"/>
@@ -705,9 +705,9 @@
     <zone name="25158" adunit="gala_ip/royals" position="1"/>
     <zone name="25167" adunit="gala_ip/royals" position="2"/>
     <zone name="25175" adunit="gala_ip/royals" position="10"/>
-    <zone name="25253" adunit="gala_and/royals" position="2"/>
+    <zone name="25253" adunit="gala_and/royals" position="3"/>
     <zone name="25261" adunit="gala_ip/royals" position="2"/>
-    <zone name="25556" adunit="gala_and/royals" position="2"/>
+    <zone name="25556" adunit="gala_and/royals" position="3"/>
     <zone name="25568" adunit="gala_ip/royals" position="2"/>
     <zone name="17531" adunit="gala_ip/starnews/bilder" position="0"/>
     <zone name="17533" adunit="gala_ip/starnews" position="0"/>
@@ -735,9 +735,9 @@
     <zone name="25160" adunit="gala_ip/starnews" position="1"/>
     <zone name="25169" adunit="gala_ip/starnews" position="2"/>
     <zone name="25177" adunit="gala_ip/starnews" position="10"/>
-    <zone name="25255" adunit="gala_and/starnews" position="2"/>
+    <zone name="25255" adunit="gala_and/starnews" position="3"/>
     <zone name="25263" adunit="gala_ip/starnews" position="2"/>
-    <zone name="25552" adunit="gala_and/starnews" position="2"/>
+    <zone name="25552" adunit="gala_and/starnews" position="3"/>
     <zone name="25566" adunit="gala_ip/starnews" position="2"/>
     <zone name="25113" adunit="gala_ip/starnews" position="2"/>
     <zone name="25115" adunit="gala_and/starnews" position="2"/>
@@ -753,7 +753,7 @@
     <zone name="25521" adunit="gala_ip/starnews" position="10"/>
     <zone name="25524" adunit="gala_and/starnews" position="10"/>
     <zone name="25526" adunit="gala_and/starnews" position="1"/>
-    <zone name="25528" adunit="gala_and/starnews" position="2"/>
+    <zone name="25528" adunit="gala_and/starnews" position="3"/>
     <zone name="25530" adunit="gala_ip/starnews" position="2"/>
     <zone name="17525" adunit="gala_ip/_default" position="0"/>
     <zone name="17559" adunit="gala_ip/_default" position="1" index="true"/>
@@ -767,7 +767,7 @@
     <zone name="24482" adunit="gala_ip/_default" position="1"/>
     <zone name="25508" adunit="gala_and/_default" position="10"/>
     <zone name="25510" adunit="gala_and/_default" position="1"/>
-    <zone name="25558" adunit="gala_and/_default" position="2"/>
+    <zone name="25558" adunit="gala_and/_default" position="3"/>
     <zone name="25570" adunit="gala_ip/_default" position="2"/>
     <zone name="17763" adunit="goalgames_ip/_default" position="1"/>
     <zone name="17765" adunit="goalgames_ipad/_default" position="1"/>
