@@ -166,6 +166,8 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
 
 + (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId position:(NSInteger)position rootViewController:(UIViewController *)rootViewController {
     GUJAdViewContext *adViewContext = [[self alloc] init];
+
+    adUnitId = [GUJAdUtils normalizeAdUnitId:adUnitId];
     adViewContext.adUnitId = adUnitId;
     adViewContext.position = position;
     adViewContext.rootViewController = rootViewController;

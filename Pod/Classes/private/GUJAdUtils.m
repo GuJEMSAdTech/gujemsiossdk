@@ -92,4 +92,16 @@
     return output;
 }
 
+
++ (NSString *)normalizeAdUnitId:(NSString *)adUnitId {
+
+    if (![adUnitId hasPrefix:@"/"]) {
+        adUnitId = [@"/" stringByAppendingString:adUnitId];
+    }
+    if (![adUnitId hasPrefix:@"/6032"]) {
+        adUnitId = [@"/6032" stringByAppendingString:adUnitId];
+    }
+
+    return adUnitId;
+}
 @end

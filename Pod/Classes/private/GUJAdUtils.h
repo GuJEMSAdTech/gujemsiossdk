@@ -40,4 +40,7 @@
 + (NSString *)identifierForAdvertising;
 
 + (NSString *)md5:(NSString *)input;
+
++ (NSString *)normalizeAdUnitId:(NSString *)adUnitId;
+
 @end
