@@ -334,6 +334,7 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
             NSMutableArray *validAdSizes = [NSMutableArray new];
 
             [validAdSizes addObjectsFromArray:@[
+                    NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(1, 1))),
                     NSValueFromGADAdSize(kGADAdSizeBanner),  // Typically 320x50.
                     NSValueFromGADAdSize(kGADAdSizeLargeBanner),  // Typically 320x100.
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 50))),
@@ -370,6 +371,7 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
             NSMutableArray *validAdSizes = [NSMutableArray new];
 
             [validAdSizes addObjectsFromArray:@[
+                    NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(1, 1))),
                     NSValueFromGADAdSize(kGADAdSizeBanner), // Typically 320x50.
                     NSValueFromGADAdSize(kGADAdSizeLargeBanner), // Typically 320x100.
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 50))),
