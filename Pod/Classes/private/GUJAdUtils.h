@@ -39,4 +39,5 @@
 
 + (NSString *)identifierForAdvertising;
 
++ (NSString *)md5:(NSString *)input;
 @end

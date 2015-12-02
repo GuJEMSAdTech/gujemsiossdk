@@ -107,7 +107,7 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
 
         customTargetingDict[CUSTOM_TARGETING_KEY_BATTERY_LEVEL] = [GUJAdUtils getBatteryLevel];
         if ([GUJAdUtils identifierForAdvertising]) {
-            customTargetingDict[CUSTOM_TARGETING_KEY_IDFA] = [GUJAdUtils identifierForAdvertising];
+            customTargetingDict[CUSTOM_TARGETING_KEY_IDFA] = [GUJAdUtils md5:[GUJAdUtils identifierForAdvertising]];
         }
 
         BOOL isHeadsetPluggedIn = [GUJAdUtils isHeadsetPluggedIn];
