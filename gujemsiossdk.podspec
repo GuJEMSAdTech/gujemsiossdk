@@ -34,7 +34,6 @@ Pod::Spec.new do |s|
   s.resource_bundles = {
     'gujemsiossdk' => ['Pod/Assets/*.xml']
   }
-  s.ios.vendored_library = 'Pod/Assets/libAdapterFacebook.a'
 
   s.public_header_files = 'Pod/Classes/*.h'
   s.frameworks = 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation'
