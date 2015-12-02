@@ -42,6 +42,6 @@ Pod::Spec.new do |s|
   s.dependency 'FBSDKLoginKit'
   s.dependency 'FBSDKShareKit'
   s.dependency 'FBAudienceNetwork'
-  s.dependency 'GoogleAds-IMA-iOS-SDK-For-AdMob', '3.0.beta.15'
+  s.dependency 'GoogleAds-IMA-iOS-SDK-For-AdMob', '3.0.beta.16'
 
 end
