@@ -38,6 +38,7 @@ static NSString *const CUSTOM_TARGETING_KEY_ALTITUDE = @"psa";
 static NSString *const CUSTOM_TARGETING_KEY_SPEED = @"pgv";
 static NSString *const CUSTOM_TARGETING_KEY_DEVICE_STATUS = @"psx";
 static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
+static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
 
 @implementation GUJAdView {
     GUJAdViewContext *context;
@@ -105,6 +106,9 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
         locationServiceDisabled = false;
 
         customTargetingDict[CUSTOM_TARGETING_KEY_BATTERY_LEVEL] = [GUJAdUtils getBatteryLevel];
+        if ([GUJAdUtils identifierForAdvertising]) {
+            customTargetingDict[CUSTOM_TARGETING_KEY_IDFA] = [GUJAdUtils identifierForAdvertising];
+        }
 
         BOOL isHeadsetPluggedIn = [GUJAdUtils isHeadsetPluggedIn];
         BOOL isLoadingCablePluggedIn = [GUJAdUtils isLoadingCablePluggedIn];

@@ -37,4 +37,6 @@
 
 + (BOOL)isLoadingCablePluggedIn;
 
++ (NSString *)identifierForAdvertising;
+
 @end

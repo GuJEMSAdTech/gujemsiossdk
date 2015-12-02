@@ -25,7 +25,7 @@
 
 #import "GUJAdUtils.h"
 #import <AVFoundation/AVFoundation.h>
-
+#import <AdSupport/ASIdentifierManager.h>
 
 @implementation GUJAdUtils {
 }
@@ -65,6 +65,16 @@
 
     UIDeviceBatteryState currentState = [[UIDevice currentDevice] batteryState];
     return currentState == UIDeviceBatteryStateCharging || currentState == UIDeviceBatteryStateFull;
+}
+
+
++ (NSString *)identifierForAdvertising {
+    if([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]) {
+        NSUUID *idfa = [[ASIdentifierManager sharedManager] advertisingIdentifier];
+        return [idfa UUIDString];
+    }
+
+    return nil;
 }
 
 @end
