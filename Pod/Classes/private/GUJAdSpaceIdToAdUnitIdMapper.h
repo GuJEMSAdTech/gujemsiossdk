@@ -55,9 +55,10 @@ static NSString *const DFP_PUBLISHER_ID = @"6032";
 
 /**
 * Get a Google Ad custom criteria index page (ind) for the given Amobee AdSpace ID.
-* @return YES if the AdSpace ID is used for an index, NO otherwise
+* Use [NSNumber boolValue]
+* @return YES if the AdSpace ID is used for an index, NO if not, nil if not defined in the mapping file
 */
-- (BOOL)getIsIndexForAdSpaceId:(NSString *)adSpaceId;
+- (NSNumber*)getIsIndexForAdSpaceId:(NSString *)adSpaceId;
 
 
 /**

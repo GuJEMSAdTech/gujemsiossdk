@@ -129,6 +129,10 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
     GUJAdViewContext *adViewContext = [[self alloc] init];
     adViewContext.adUnitId = [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdUnitIdForAdSpaceId:adSpaceId];
     adViewContext.position = [[GUJAdSpaceIdToAdUnitIdMapper instance] getPositionForAdSpaceId:adSpaceId];
+    NSNumber *isIndex =[[GUJAdSpaceIdToAdUnitIdMapper instance] getIsIndexForAdSpaceId:adSpaceId];
+    if (isIndex != nil) {
+        adViewContext.isIndex = [isIndex boolValue];
+    }
     return adViewContext;
 }
 
@@ -195,9 +199,9 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 - (void)setIsIndex:(BOOL)isIndex {
     _isIndex = isIndex;
     if (isIndex) {
-        customTargetingDict[CUSTOM_TARGETING_KEY_INDEX] = @(YES);
+        customTargetingDict[CUSTOM_TARGETING_KEY_INDEX] = @"YES";
     } else {
-        [customTargetingDict removeObjectForKey:CUSTOM_TARGETING_KEY_INDEX];
+        customTargetingDict[CUSTOM_TARGETING_KEY_INDEX] = @"NO";
     }
 }
 

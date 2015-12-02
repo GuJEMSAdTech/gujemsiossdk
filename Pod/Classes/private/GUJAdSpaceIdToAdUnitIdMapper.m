@@ -82,17 +82,20 @@
 }
 
 
-- (BOOL)getIsIndexForAdSpaceId:(NSString *)adSpaceId {
+- (NSNumber*)getIsIndexForAdSpaceId:(NSString *)adSpaceId {
     NSLog(@"getIsIndexForAdSpaceId: %@ ...", adSpaceId);
     for (NSDictionary *dict in self.mappingData) {
         if ([dict[@"_name"] isEqual:adSpaceId]) {
-            BOOL isIndex = [dict[@"_index"] isEqualToString:@"true"];
+            if (dict[@"_index"] == nil) {
+                return nil;
+            }
+            BOOL isIndex = [dict[@"_index"] isEqualToString:@"yes"];
             NSLog(@"isIndex: %@", isIndex ? @"YES" : @"NO");
-            return isIndex;
+            return @(isIndex);
         }
     }
     NSLog(@"adSpaceId not found in mapping file!");
-    return NO;  // default
+    return nil;  // default
 }
 
 
