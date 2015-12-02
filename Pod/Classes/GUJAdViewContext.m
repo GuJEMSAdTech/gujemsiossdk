@@ -33,7 +33,7 @@
 
 static NSString *const KEYWORDS_DICT_KEY = @"kw";
 static NSString *const CUSTOM_TARGETING_KEY_POSITION = @"pos";
-static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"idx";
+static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
 static NSString *const CUSTOM_TARGETING_KEY_ALTITUDE = @"psa";
 static NSString *const CUSTOM_TARGETING_KEY_SPEED = @"pgv";
 static NSString *const CUSTOM_TARGETING_KEY_DEVICE_STATUS = @"psx";
@@ -508,7 +508,7 @@ static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
 
 - (void)addCustomTargetingKey:(NSString *)key Value:(NSString *)value {
     NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_POSITION], @"Set the position (pos) via position property.");
-    NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_INDEX], @"Set the isIndex (idx) via isIndex property.");
+    NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_INDEX], @"Set the isIndex (ind) via isIndex property.");
     NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_ALTITUDE], @"psa automatically set by SDK.");
     NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_SPEED], @"pgv automatically set by SDK.");
     NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_DEVICE_STATUS], @"psx automatically set by SDK.");

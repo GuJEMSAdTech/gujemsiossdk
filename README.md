@@ -120,7 +120,7 @@ We recommend to use the new initialization methods:
 + (GUJAdViewContext *)instanceForAdUnitId:(NSString *)adUnitId rootViewController:(UIViewController *)rootViewController delegate:(id <GUJAdViewControllerDelegate>)delegate;
 ```
 
-... if you also want to set the custom criteria position (pos) and index (idx):
+... if you also want to set the custom criteria position (pos) and index (ind):
 
 ```objective-c
 adViewContext.position = <POSITION>;
