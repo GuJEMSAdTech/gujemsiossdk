@@ -349,14 +349,6 @@ The above listed disabling methods will then have no additional effect. A smart 
 50 pixels in height on iPhone/iPod and 90 pixels on iPad.
 
 
-#### show ads from the facebook audience network
-
-Due to a bug in the facebook audience network library it is not possible to receive facebook ads in a request containing
-multiple possible ad sizes.
-The workaround is to call the above mentioned `- (void)allowSmartBannersOnly` method on the `GUJAdViewContext`
-which will then only add the smart banner size to the request and voilà the facebook ad will show up!
-
-
 #### add an optional content URL for further targeting
 
 You can add an optional content URL on the `GUJAdViewContext` to be used in the the DFP request.
