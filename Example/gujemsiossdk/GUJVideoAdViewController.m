@@ -150,7 +150,7 @@ NSString *const kTestAppAdTagUrl =
     NSLog(@"requesting Ad with Ad Tag URL: '%@'", adTagUrl);
 
     // Create an ad request with our ad tag, display container, and optional user context.
-    IMAAdsRequest *request = [[IMAAdsRequest alloc] initWithAdTagUrl:kTestAppAdTagUrl
+    IMAAdsRequest *request = [[IMAAdsRequest alloc] initWithAdTagUrl:adTagUrl
                                                   adDisplayContainer:adDisplayContainer
                                                          userContext:nil];
     [self.adsLoader requestAdsWithRequest:request];
