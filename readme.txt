@@ -11,5 +11,12 @@ To publish a new version of the SDK as Cocoa Pod:
 
 To verify the podspec:
 
-pod lib lint --verbose --use-libraries --allow-warnings
+> pod lib lint --verbose --use-libraries --allow-warnings
 (we have a lot of dpecations due to our own update process for the SDK from 2.x to 3.0)
+
+
+After updating the podspec:
+
+run...
+> pod update 
+in the Example directory to reflect the changes in xCode!
