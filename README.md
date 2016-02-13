@@ -25,9 +25,9 @@ it, simply add the following line to your Podfile and run `pod install` from the
 pod "gujemsiossdk"
 ```
 
-Make sure you have a recent version of Cocoa Pods installed. We used version 0.38.2 and saw problems with older version of Cocoa Pods.
+Make sure you have a recent version of CocoaPods installed. We used version 0.38.2 and saw problems with older version of CocoaPods.
 
-If you don't have CocoaPods installed so far, check the [Cocoa Pods documentation](https://guides.cocoapods.org/using/using-cocoapods.html).  
+If you don't have CocoaPods installed so far, check the [CocoaPods documentation](https://guides.cocoapods.org/using/using-cocoapods.html).  
 If you don't want to use CocoaPods you should be able to copy the classes from this workspace and manually add 
 the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recommend to do the installation without CocoaPods.
 
