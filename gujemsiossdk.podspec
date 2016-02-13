@@ -35,8 +35,11 @@ Pod::Spec.new do |s|
     'gujemsiossdk' => ['Pod/Assets/*.xml']
   }
 
+  s.vendored_frameworks = 'Pod/Assets/TeadsSDK.framework'
+  s.resource = "Pod/Assets/TeadsSDKResources.bundle"
+
   s.public_header_files = 'Pod/Classes/*.h'
-  s.frameworks = 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation'
+  s.frameworks = 'CoreMedia', 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation', 'CoreTelephony', 'MediaPlayer', 'SystemConfiguration', 'libxml2'
   s.dependency 'Google-Mobile-Ads-SDK', '~> 7.0'
   s.dependency 'GoogleAds-IMA-iOS-SDK-For-AdMob', '3.0.beta.16'
 

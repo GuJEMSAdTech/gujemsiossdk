@@ -233,6 +233,7 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				A2557A34FBC493451190D981 /* Copy Pods Resources */,
+				E088A798584808D032BA4E7D /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,6 +253,7 @@
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
 				400BDF74B51BE73608D6C861 /* Copy Pods Resources */,
+				991922E590A2EF3A02D068F6 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -353,6 +355,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		991922E590A2EF3A02D068F6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A2557A34FBC493451190D981 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -381,6 +398,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E088A798584808D032BA4E7D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

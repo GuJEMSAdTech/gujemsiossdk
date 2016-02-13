@@ -29,6 +29,7 @@
 #import "GUJAdViewContextDelegate.h"
 #import "GUJAdUtils.h"
 #import <gujemsiossdk/GUJAdViewContext.h>
+#import <TeadsSDK/TeadsSDK.h>
 
 
 static NSString *const KEYWORDS_DICT_KEY = @"kw";
