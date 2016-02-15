@@ -25,7 +25,7 @@
 
 @import UIKit;
 
-#import <GoogleMobileAds.h>
+#import <GoogleMobileAds/GoogleMobileAds.h>
 #import <gujemsiossdk/GUJAdViewContextDelegate.h>
 
 

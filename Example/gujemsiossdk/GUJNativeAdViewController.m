@@ -26,7 +26,7 @@
 #import <gujemsiossdk/GUJAdViewContext.h>
 #import "GUJNativeAdViewController.h"
 #import "GUJSettingsViewController.h"
-#import <GoogleMobileAds.h>
+#import <GoogleMobileAds/GoogleMobileAds.h>
 
 
 @implementation GUJNativeAdViewController {
