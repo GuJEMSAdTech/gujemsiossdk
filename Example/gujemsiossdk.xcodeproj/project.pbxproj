@@ -17,6 +17,7 @@
 		4C2F3DC01B82220E008CDF95 /* GUJNativeContentAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F3DBF1B82220E008CDF95 /* GUJNativeContentAdView.xib */; };
 		4C3A2D2D1C71DE48009AC989 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3A2D291C71DAF1009AC989 /* libxml2.2.tbd */; };
 		4C3A2D2E1C71DE48009AC989 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3A2D2A1C71DAF1009AC989 /* libxml2.tbd */; };
+		4C3A2D301C71F2D6009AC989 /* GUJInflowAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A2D2F1C71F2D6009AC989 /* GUJInflowAdViewController.m */; };
 		4E6852D8C132F8FBE05EA816 /* libPods-gujemsiossdk_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77987BFE86D39FFEE5DDD298 /* libPods-gujemsiossdk_Example.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -62,6 +63,8 @@
 		4C2F3DBF1B82220E008CDF95 /* GUJNativeContentAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GUJNativeContentAdView.xib; sourceTree = "<group>"; };
 		4C3A2D291C71DAF1009AC989 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		4C3A2D2A1C71DAF1009AC989 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		4C3A2D2F1C71F2D6009AC989 /* GUJInflowAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUJInflowAdViewController.m; sourceTree = "<group>"; };
+		4C3A2D311C71F2F4009AC989 /* GUJInflowAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUJInflowAdViewController.h; sourceTree = "<group>"; };
 		5E9E232655B670DE66702471 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* gujemsiossdk_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gujemsiossdk_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -173,6 +176,8 @@
 				6003F5A6195388D20070C39A /* GUJBannerViewController.m */,
 				3ED7EBF1E1EEB24A812B86BE /* GUJFacebookNativeAdViewController.h */,
 				3ED7EF59408D0FF2B893AC05 /* GUJFacebookNativeAdViewController.m */,
+				4C3A2D311C71F2F4009AC989 /* GUJInflowAdViewController.h */,
+				4C3A2D2F1C71F2D6009AC989 /* GUJInflowAdViewController.m */,
 				3ED7ED5AD9FCDAC3308952CF /* GUJInterstitialViewController.h */,
 				3ED7E7CFAD5BFBFFCBD45DE1 /* GUJInterstitialViewController.m */,
 				3ED7E99399DBF064E8E4B1B3 /* GUJNativeAdViewController.h */,
@@ -433,6 +438,7 @@
 				6003F59E195388D20070C39A /* GUJAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* GUJBannerViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				4C3A2D301C71F2D6009AC989 /* GUJInflowAdViewController.m in Sources */,
 				3ED7E4E65DE33DBB6B0E6070 /* GUJSettingsViewController.m in Sources */,
 				3ED7E09BD4247630AED2213A /* GUJInterstitialViewController.m in Sources */,
 				3ED7E725EB1D521C1C8782A5 /* GUJNativeAdViewController.m in Sources */,

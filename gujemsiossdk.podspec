@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "gujemsiossdk"
-  s.version          = "3.0.0"
+  s.version          = "3.1.0"
   s.summary          = "G+J EMS iOS SDK"
   s.description      = <<-DESC
                        G+J EMS iOS SDK
@@ -32,15 +32,15 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Pod/Classes/**/*'
   s.resource_bundles = {
-    'gujemsiossdk' => ['Pod/Assets/*.xml']
+    'gujemsiossdk' => ['Pod/Assets/*.xml', 'Pod/Assets/*.png']
   }
 
   s.vendored_frameworks = 'Pod/Assets/TeadsSDK.framework'
   s.resource = "Pod/Assets/TeadsSDKResources.bundle"
 
   s.public_header_files = 'Pod/Classes/*.h'
-s.frameworks = 'CoreMedia', 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation', 'CoreTelephony', 'MediaPlayer', 'SystemConfiguration' #'libxml2'
+  s.frameworks = 'CoreMedia', 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation', 'CoreTelephony', 'MediaPlayer', 'SystemConfiguration' #'libxml2'
   s.dependency 'Google-Mobile-Ads-SDK', '~> 7.0'
-  s.dependency 'GoogleAds-IMA-iOS-SDK-For-AdMob', '3.0.beta.16'
+  s.dependency 'GoogleAds-IMA-iOS-SDK-For-AdMob'
 
 end
