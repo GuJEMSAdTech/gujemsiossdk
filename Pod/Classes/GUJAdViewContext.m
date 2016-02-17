@@ -30,18 +30,13 @@
 #import "GUJAdUtils.h"
 
 
-static NSString *const KEYWORDS_DICT_KEY = @"kw";
 static NSString *const CUSTOM_TARGETING_KEY_POSITION = @"pos";
 static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
-static NSString *const CUSTOM_TARGETING_KEY_ALTITUDE = @"pga";
-static NSString *const CUSTOM_TARGETING_KEY_SPEED = @"pgv";
-static NSString *const CUSTOM_TARGETING_KEY_DEVICE_STATUS = @"psx";
-static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
-static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
 
 @implementation GUJAdView {
     GUJAdViewContext *context;
 }
+
 
 - (void)show {
     super.hidden = NO;
@@ -72,17 +67,15 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
 @end
 
 
-@interface GUJAdViewContext () <GADNativeContentAdLoaderDelegate, GADBannerViewDelegate, GADInterstitialDelegate, CLLocationManagerDelegate>
+@interface GUJAdViewContext () <GADNativeContentAdLoaderDelegate, GADBannerViewDelegate, GADInterstitialDelegate>
 
 @end
 
 @implementation GUJAdViewContext {
     GADAdLoader *adLoader;
-    NSMutableDictionary *customTargetingDict;
     NSString* _contentURL;
     NSString* _publisherProvidedID;
 
-    BOOL locationServiceDisabled;
     BOOL allowSmartBannersOnly;
     BOOL mediumRectanglesDisabled;
     BOOL twoToOneAdsDisabled;
@@ -94,37 +87,6 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
     adViewCompletion adViewCompletionHandler;
     interstitialAdViewCompletion interstitialAdViewCompletionHandler;
 
-    CLLocationManager *locationManager;
-}
-
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        customTargetingDict = [NSMutableDictionary new];
-        locationServiceDisabled = false;
-
-        customTargetingDict[CUSTOM_TARGETING_KEY_BATTERY_LEVEL] = [GUJAdUtils getBatteryLevel];
-        if ([GUJAdUtils identifierForAdvertising]) {
-            customTargetingDict[CUSTOM_TARGETING_KEY_IDFA] = [GUJAdUtils md5:[GUJAdUtils identifierForAdvertising]];
-        }
-
-        BOOL isHeadsetPluggedIn = [GUJAdUtils isHeadsetPluggedIn];
-        BOOL isLoadingCablePluggedIn = [GUJAdUtils isLoadingCablePluggedIn];
-
-        if (isHeadsetPluggedIn && isLoadingCablePluggedIn) {
-            customTargetingDict[CUSTOM_TARGETING_KEY_DEVICE_STATUS] = @"c,h";
-
-        } else if (isLoadingCablePluggedIn) {
-            customTargetingDict[CUSTOM_TARGETING_KEY_DEVICE_STATUS] = @"c";
-
-        } else if (isHeadsetPluggedIn) {
-            customTargetingDict[CUSTOM_TARGETING_KEY_DEVICE_STATUS] = @"h";
-
-        }
-
-    }
-    return self;
 }
 
 
@@ -194,9 +156,9 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
 - (void)setPosition:(NSInteger)position {
     _position = position;
     if (position != 0) {
-        customTargetingDict[CUSTOM_TARGETING_KEY_POSITION] = @(position);
+        self.customTargetingDict[CUSTOM_TARGETING_KEY_POSITION] = @(position);
     } else {
-        [customTargetingDict removeObjectForKey:CUSTOM_TARGETING_KEY_POSITION];
+        [self.customTargetingDict removeObjectForKey:CUSTOM_TARGETING_KEY_POSITION];
     }
 }
 
@@ -204,9 +166,9 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
 - (void)setIsIndex:(BOOL)isIndex {
     _isIndex = isIndex;
     if (isIndex) {
-        customTargetingDict[CUSTOM_TARGETING_KEY_INDEX] = @"YES";
+        self.customTargetingDict[CUSTOM_TARGETING_KEY_INDEX] = @"YES";
     } else {
-        customTargetingDict[CUSTOM_TARGETING_KEY_INDEX] = @"NO";
+        self.customTargetingDict[CUSTOM_TARGETING_KEY_INDEX] = @"NO";
     }
 }
 
@@ -222,8 +184,7 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
 
 
 - (BOOL)disableLocationService {
-    locationServiceDisabled = YES;
-    return YES;
+    return [super disableLocationService];
 }
 
 
@@ -278,40 +239,9 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
         request.publisherProvidedID = _publisherProvidedID;
     }
 
-    if ([CLLocationManager locationServicesEnabled] && !locationServiceDisabled) {
+    [self updateLocationDataInCustomTargetingDictAndOptionallySetLocationDataOnDfpRequest:request];
 
-        locationManager = [[CLLocationManager alloc] init];
-
-        BOOL locationAllowed_iOS7 = [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized;
-        BOOL locationAllowed_iOS8 = ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]
-                && ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse ||
-                [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways));
-
-        if (locationAllowed_iOS7 || locationAllowed_iOS8) {
-
-            // we don't require a delegate and location updates
-            // we simply take the last available location, if existing
-
-            CLLocation *location = locationManager.location;
-
-            if (location != nil) {   // might be nil on first start of app, we skip sending location data in this case
-                [request setLocationWithLatitude:locationManager.location.coordinate.latitude
-                                       longitude:locationManager.location.coordinate.longitude
-                                        accuracy:locationManager.location.horizontalAccuracy];
-
-                customTargetingDict[CUSTOM_TARGETING_KEY_ALTITUDE] = @((int) locationManager.location.altitude);
-                customTargetingDict[CUSTOM_TARGETING_KEY_SPEED] = @((int) locationManager.location.speed);
-
-                NSLog(@"Added location data.");
-            } else {
-                NSLog(@"No location data available.");
-            }
-        } else {
-            NSLog(@"Location Services not authorized.");
-        }
-    }
-
-    request.customTargeting = customTargetingDict;
+    request.customTargeting = self.customTargetingDict;
     return request;
 }
 
@@ -429,7 +359,7 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
 
 
 - (DFPBannerView *)adViewForKeywords:(NSArray *)keywords {
-    customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
+    self.customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
     return [self adView];
 }
 
@@ -441,7 +371,7 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
 
 
 - (DFPBannerView *)adViewForKeywords:(NSArray *)keywords origin:(CGPoint)origin {
-    customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
+    self.customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
     return [self adViewWithOrigin:origin];
 }
 
@@ -484,13 +414,13 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
 
 
 - (DFPInterstitial *)interstitialAdViewForKeywords:(NSArray *)keywords {
-    customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
+    self.customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
     return [self interstitialAdView];
 }
 
 
 - (void)interstitialAdViewForKeywords:(NSArray *)keywords completion:(interstitialAdViewCompletion)completion {
-    customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
+    self.customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
     [self interstitialAdViewWithCompletionHandler:interstitialAdViewCompletionHandler];
 }
 
@@ -509,23 +439,14 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
 
 
 - (void)addCustomTargetingKeyword:(NSString *)keyword {
-    if (customTargetingDict[KEYWORDS_DICT_KEY] != nil) {
-        customTargetingDict[KEYWORDS_DICT_KEY] = [NSMutableArray new];
-    }
-    NSMutableArray *keywordArray = customTargetingDict[KEYWORDS_DICT_KEY];
-    [keywordArray addObject:keyword];
+    [super addCustomTargetingKeyword:keyword];
 }
 
 
 - (void)addCustomTargetingKey:(NSString *)key Value:(NSString *)value {
     NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_POSITION], @"Set the position (pos) via position property.");
     NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_INDEX], @"Set the isIndex (ind) via isIndex property.");
-    NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_ALTITUDE], @"psa automatically set by SDK.");
-    NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_SPEED], @"pgv automatically set by SDK.");
-    NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_DEVICE_STATUS], @"psx automatically set by SDK.");
-    NSAssert(![key isEqualToString:CUSTOM_TARGETING_KEY_BATTERY_LEVEL], @"pbl automatically set by SDK.");
-    NSAssert(![key isEqualToString:KEYWORDS_DICT_KEY], @"Set single keyword via the addKeywordForCustomTargeting: method.");
-    customTargetingDict[key] = value;
+    [super addCustomTargetingKey:key Value:value];
 }
 
 
@@ -551,7 +472,7 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
 
 
 - (void)loadNativeContentAdForKeywords:(NSArray *)keywords {
-    customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
+    self.customTargetingDict[KEYWORDS_DICT_KEY] = keywords;
     [self loadNativeContentAd];
 }
 

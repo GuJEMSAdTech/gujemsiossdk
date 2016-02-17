@@ -25,31 +25,23 @@
 
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import <GoogleInteractiveMediaAds/GoogleInteractiveMediaAds.h>
-#import <TeadsSDK/TeadsSDK.h>
-#import "GUJBaseAdViewContext.h"
+#import "GUJAdUtils.h"
 
+@class DFPRequest;
 
-@interface GUJInflowAdViewContext : GUJBaseAdViewContext <UIGestureRecognizerDelegate, UIScrollViewDelegate, IMAAdsLoaderDelegate, IMAAdsManagerDelegate, TeadsVideoDelegate>
+static NSString *const KEYWORDS_DICT_KEY = @"kw";
 
-@property(nonatomic, strong) NSString *dfpAdunitId;
-@property(nonatomic, strong) NSString *teadsPlacementId;
+@interface GUJBaseAdViewContext : NSObject
 
-@property(nonatomic, strong) UIScrollView *scrollView;
-@property(nonatomic, strong) UIView *inFlowAdPlaceholderView;
-@property(nonatomic, strong) NSLayoutConstraint *inFlowAdPlaceholderViewHeightConstraint;
+@property(nonatomic, strong) NSMutableDictionary *customTargetingDict;
+@property(nonatomic, assign) BOOL locationServiceDisabled;
 
-- (instancetype)initWithScrollView:(UIScrollView *)scrollView inFlowAdPlaceholderView:(UIView *)inFlowAdPlaceholderView inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholderViewHeightConstraint dfpAdunitId:(NSString *)dfpAdunitId teadsPlacementId:(NSString *)teadsPlacementId;
+- (void)updateLocationDataInCustomTargetingDictAndOptionallySetLocationDataOnDfpRequest:(DFPRequest *)request;
 
-- (void)containerViewDidAppear;
-
-- (void)containerViewWillDisappear;
-
-/*!
- * Disables the location service
- @result YES if the location service was disabled
- */
 - (BOOL)disableLocationService;
+
+- (void)addCustomTargetingKeyword:(NSString *)keyword;
+
+- (void)addCustomTargetingKey:(NSString *)key Value:(NSString *)value;
 
 @end

@@ -43,4 +43,5 @@
 
 + (NSString *)normalizeAdUnitId:(NSString *)adUnitId;
 
++ (NSString *)urlencode:(NSString *)unencodedString;
 @end

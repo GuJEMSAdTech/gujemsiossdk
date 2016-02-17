@@ -28,7 +28,7 @@
 
 @implementation GUJInflowAdViewContext {
     id <UIScrollViewDelegate> originalScrollViewDelegate;
-    BOOL adViewExpanded, adsManagerInitialized;
+    BOOL adViewExpanded, adsManagerInitialized, wasClosedByUser;
     IMAAdsLoader *_adsLoader;
     IMAAdsManager *_adsManager;
 
@@ -41,7 +41,11 @@
 }
 
 
-- (instancetype)initWithScrollView:(UIScrollView *)scrollView inFlowAdPlaceholderView:(UIView *)inFlowAdPlaceholderView inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholderViewHeightConstraint {
+- (instancetype)     initWithScrollView:(UIScrollView *)scrollView
+                inFlowAdPlaceholderView:(UIView *)inFlowAdPlaceholderView
+inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholderViewHeightConstraint
+                            dfpAdunitId:(NSString *)dfpAdunitId
+                       teadsPlacementId:(NSString *)teadsPlacementId {
     self = [super init];
     if (self) {
         self.scrollView = scrollView;
@@ -51,6 +55,9 @@
         self.inFlowAdPlaceholderView.backgroundColor = [UIColor blackColor];
         self.inFlowAdPlaceholderView.clipsToBounds = YES;
 
+        self.dfpAdunitId = dfpAdunitId;
+        self.teadsPlacementId = teadsPlacementId;
+
         _adsLoader = [[IMAAdsLoader alloc] initWithSettings:nil];
         _adsLoader.delegate = self;
 
@@ -58,11 +65,6 @@
     }
 
     return self;
-}
-
-
-+ (instancetype)contextWithScrollView:(UIScrollView *)scrollView inFlowAdPlaceholderView:(UIView *)inFlowAdPlaceholderView inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholderViewHeightConstraint {
-    return [[self alloc] initWithScrollView:scrollView inFlowAdPlaceholderView:inFlowAdPlaceholderView inFlowAdPlaceholderViewHeightConstraint:inFlowAdPlaceholderViewHeightConstraint];
 }
 
 
@@ -75,11 +77,20 @@
     if (teadsVideo.isLoaded) {
         [teadsVideo viewControllerAppeared:self.findInFlowAdPlaceholderViewsViewController];
     }
+    if (adsManagerInitialized) {
+        [_adsManager resume];
+    }
 }
 
 
 - (void)containerViewWillDisappear {
     self.scrollView.delegate = originalScrollViewDelegate;
+    [_adsManager pause];
+}
+
+
+- (BOOL)disableLocationService {
+    return [super disableLocationService];
 }
 
 
@@ -92,8 +103,14 @@
             self.scrollView.frame.size.width,
             self.scrollView.frame.size.height);
 
-    if (!adViewExpanded && CGRectIntersectsRect(adViewRect, scrollViewRect)) {
+    if (!adViewExpanded && !wasClosedByUser && CGRectIntersectsRect(adViewRect, scrollViewRect)) {
         [self expandAdView:YES];
+    }
+
+    if (CGRectIntersectsRect(adViewRect, scrollViewRect)) {
+        [_adsManager resume];
+    } else {
+        [_adsManager pause];
     }
 }
 
@@ -103,7 +120,10 @@
     if (expand != adViewExpanded) {
 
         adViewExpanded = expand;
-        self.inFlowAdPlaceholderViewHeightConstraint.constant = expand ? 180 : 0;
+
+        CGFloat expectedHeight = self.inFlowAdPlaceholderView.frame.size.width / 4 * 3;
+
+        self.inFlowAdPlaceholderViewHeightConstraint.constant = expand ? expectedHeight : 0;
 
         [UIView animateWithDuration:1.0f delay:0.2f options:UIViewAnimationOptionAllowUserInteraction animations:^{
             [self.inFlowAdPlaceholderView.superview layoutIfNeeded];
@@ -119,21 +139,35 @@
 
 #pragma mark SDK Setup
 
-
 - (void)requestAds {
     // Create an ad display container for ad rendering.
     IMAAdDisplayContainer *adDisplayContainer =
             [[IMAAdDisplayContainer alloc] initWithAdContainer:self.inFlowAdPlaceholderView companionSlots:nil];
 
+    [self updateLocationDataInCustomTargetingDictAndOptionallySetLocationDataOnDfpRequest:nil];
 
-    NSString *const kTestAppAdTagUrl =
-            @"https://pubads.g.doubleclick.net/gampad/ads?sz=480x360&iu=/6032/sdktest/preroll&impl=s&gdfp_req=1&env=vp&output=xml_vast2";
+    NSString *keyValueParameters = @"";
+    for (NSString *key in self.customTargetingDict) {
 
+        NSString *escapedKey = [GUJAdUtils urlencode:key];
+        NSString *escapedValue = [GUJAdUtils urlencode:self.customTargetingDict[key]];
 
-    // Create an ad request with our ad tag, display container, and optional user context.
-    IMAAdsRequest *request = [[IMAAdsRequest alloc] initWithAdTagUrl:kTestAppAdTagUrl
+        keyValueParameters = [keyValueParameters stringByAppendingString:
+                [NSString stringWithFormat:@"%@=%@&", escapedKey, escapedValue]];
+    }
+
+    keyValueParameters = [GUJAdUtils urlencode:keyValueParameters];
+
+    NSString *adTagUrl =
+            [NSString stringWithFormat:@"https://pubads.g.doubleclick.net/gampad/ads?sz=480x360&iu=%@&gdfp_req=1&env=vp&t=%@",
+                                       self.dfpAdunitId,
+                                       keyValueParameters
+            ];
+    NSLog(@"Requesting ad from URL: %@", adTagUrl);
+
+    IMAAdsRequest *request = [[IMAAdsRequest alloc] initWithAdTagUrl:adTagUrl
                                                   adDisplayContainer:adDisplayContainer
-                                                     contentPlayhead:self
+                                                     contentPlayhead:nil
                                                          userContext:nil];
     [_adsLoader requestAdsWithRequest:request];
 }
@@ -194,6 +228,7 @@
 
 - (void)close {
     [self expandAdView:NO];
+    wasClosedByUser = YES;
 }
 
 
@@ -202,15 +237,13 @@
     NSLog(@"Error loading ads: %@", adErrorData.adError.message);
 
     NSLog(@"using Teads Ads as fallback...");
-    self.teadsPlacementID = @"47140";
-    teadsVideo = [[TeadsVideo alloc] initInReadWithPlacementId:self.teadsPlacementID
+    teadsVideo = [[TeadsVideo alloc] initInReadWithPlacementId:self.teadsPlacementId
                                                    placeholder:self.inFlowAdPlaceholderView
                                               heightConstraint:self.inFlowAdPlaceholderViewHeightConstraint
                                                     scrollView:self.scrollView
                                                       delegate:self];
 
     [teadsVideo load];
-
 }
 
 
@@ -237,7 +270,6 @@
                                         actualTime:&actualTime
                                              error:&error];
     UIImage *image = [UIImage imageWithCGImage:cgIm];
-    CFRelease(cgIm);
 
     if (nil != error) {
         NSLog(@"error making screenshot: %@", [error localizedDescription]);
@@ -268,10 +300,13 @@
                forControlEvents:UIControlEventTouchUpInside];
         unmuteButton.frame = CGRectMake((CGFloat) (self.inFlowAdPlaceholderView.frame.size.width - 30.0), (CGFloat) (self.inFlowAdPlaceholderView.frame.size.height - 30.0), 20.0, 20.0);
         [self.inFlowAdPlaceholderView addSubview:unmuteButton];
+
     }
 
     if (event.type == kIMAAdEvent_COMPLETE) {
+
         endScreenImage = [self screenshotFromPlayer:avPlayer];
+        [unmuteButton removeFromSuperview];
 
         UIImageView *imageView = [[UIImageView alloc] initWithImage:endScreenImage];
         imageView.frame = CGRectMake(0, 0, self.inFlowAdPlaceholderView.frame.size.width, self.inFlowAdPlaceholderView.frame.size.height);

@@ -23,7 +23,6 @@
  *
  */
 
-#import <Foundation/Foundation.h>
 #import "GUJInflowAdViewController.h"
 #import "GUJInflowAdViewContext.h"
 
@@ -36,9 +35,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    NSString *dfpAdunitId = @"/6032/sdktest/preroll";
+    NSString *teadsPlacementId = @"47140";
+
     inflowAdViewContext = [[GUJInflowAdViewContext alloc] initWithScrollView:self.scrollView
                                                      inFlowAdPlaceholderView:self.teadsVideoView
-                                     inFlowAdPlaceholderViewHeightConstraint:self.teadsVideoViewHeightConstraint];
+                                     inFlowAdPlaceholderViewHeightConstraint:self.teadsVideoViewHeightConstraint
+                                                                 dfpAdunitId:dfpAdunitId
+                                                            teadsPlacementId:teadsPlacementId
+    ];
 }
 
 

@@ -25,6 +25,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "GUJBaseAdViewContext.h"
 
 
 @protocol GUJAdViewContextDelegate;
@@ -78,7 +79,7 @@ __attribute__((deprecated("Dont' use methods returning GUJAdView anymore. Use th
 @end
 
 
-@interface GUJAdViewContext : NSObject
+@interface GUJAdViewContext : GUJBaseAdViewContext
 @property(nonatomic, strong) NSString *adUnitId;
 @property(nonatomic, assign) NSInteger position;
 @property(nonatomic, assign) BOOL isIndex;
