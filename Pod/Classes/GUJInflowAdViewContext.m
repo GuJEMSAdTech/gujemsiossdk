@@ -174,35 +174,6 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 }
 
 
-#pragma mark AdsLoader Delegates
-
-- (void)adsLoader:(IMAAdsLoader *)loader adsLoadedWithData:(IMAAdsLoadedData *)adsLoadedData {
-    adsLoaded = YES;
-    NSLog(@"adsLoadedWithData");
-
-    _adsManager = adsLoadedData.adsManager;
-    _adsManager.delegate = self;
-
-    if (adViewExpanded) {
-        [self initAdsManager];
-    }
-}
-
-
-- (void)initAdsManager {
-    adsManagerInitialized = YES;
-
-    // Create ads rendering settings to tell the SDK to use the in-app browser.
-    IMAAdsRenderingSettings *adsRenderingSettings = [[IMAAdsRenderingSettings alloc] init];
-    adsRenderingSettings.webOpenerPresentingController = [self findInFlowAdPlaceholderViewsViewController];
-
-    [_adsManager initializeWithAdsRenderingSettings:adsRenderingSettings];
-
-    avPlayer = [self discoverAVPlayer];
-    avPlayer.muted = YES;
-}
-
-
 - (AVPlayer *)discoverAVPlayer {
     if (self.inFlowAdPlaceholderView.subviews.count > 0) {
         UIView /*IMAAdView */ *adView = self.inFlowAdPlaceholderView.subviews[0];
@@ -230,21 +201,6 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 - (void)close {
     [self expandAdView:NO];
     wasClosedByUser = YES;
-}
-
-
-- (void)adsLoader:(IMAAdsLoader *)loader failedWithErrorData:(IMAAdLoadingErrorData *)adErrorData {
-    // Something went wrong loading ads. May be no fill.
-    NSLog(@"Error loading ads: %@", adErrorData.adError.message);
-
-    NSLog(@"using Teads Ads as fallback...");
-    teadsVideo = [[TeadsVideo alloc] initInReadWithPlacementId:self.teadsPlacementId
-                                                   placeholder:self.inFlowAdPlaceholderView
-                                              heightConstraint:self.inFlowAdPlaceholderViewHeightConstraint
-                                                    scrollView:self.scrollView
-                                                      delegate:self];
-
-    [teadsVideo load];
 }
 
 
@@ -279,6 +235,49 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     }
 
     return image;
+}
+
+
+- (void)initAdsManager {
+    adsManagerInitialized = YES;
+
+    // Create ads rendering settings to tell the SDK to use the in-app browser.
+    IMAAdsRenderingSettings *adsRenderingSettings = [[IMAAdsRenderingSettings alloc] init];
+    adsRenderingSettings.webOpenerPresentingController = [self findInFlowAdPlaceholderViewsViewController];
+
+    [_adsManager initializeWithAdsRenderingSettings:adsRenderingSettings];
+
+    avPlayer = [self discoverAVPlayer];
+    avPlayer.muted = YES;
+}
+
+
+#pragma mark AdsLoader Delegates
+
+- (void)adsLoader:(IMAAdsLoader *)loader adsLoadedWithData:(IMAAdsLoadedData *)adsLoadedData {
+    adsLoaded = YES;
+    NSLog(@"adsLoadedWithData");
+
+    _adsManager = adsLoadedData.adsManager;
+    _adsManager.delegate = self;
+
+    if (adViewExpanded) {
+        [self initAdsManager];
+    }
+}
+
+- (void)adsLoader:(IMAAdsLoader *)loader failedWithErrorData:(IMAAdLoadingErrorData *)adErrorData {
+    // Something went wrong loading ads. May be no fill.
+    NSLog(@"Error loading ads: %@", adErrorData.adError.message);
+
+    NSLog(@"using Teads Ads as fallback...");
+    teadsVideo = [[TeadsVideo alloc] initInReadWithPlacementId:self.teadsPlacementId
+                                                   placeholder:self.inFlowAdPlaceholderView
+                                              heightConstraint:self.inFlowAdPlaceholderViewHeightConstraint
+                                                    scrollView:self.scrollView
+                                                      delegate:self];
+
+    [teadsVideo load];
 }
 
 

@@ -74,7 +74,8 @@
     NSString *adUnitId = [userDefaults objectForKey:AD_UNIT_USER_DEFAULTS_KEY];
 
     if (adUnitId == nil) {
-        [userDefaults setObject:@"/6032/sdktest" forKey:AD_UNIT_USER_DEFAULTS_KEY];
+        adUnitId = @"/6032/sdktest";
+        [userDefaults setObject:adUnitId forKey:AD_UNIT_USER_DEFAULTS_KEY];
         [userDefaults synchronize];
     }
 }

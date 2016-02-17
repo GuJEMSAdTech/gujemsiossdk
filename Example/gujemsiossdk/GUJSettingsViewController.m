@@ -32,6 +32,7 @@
     __weak IBOutlet UITextField *adSpaceIdTextField;
     __weak IBOutlet UIButton *convertButton;
     __weak IBOutlet UILabel *positionLabel;
+    __weak IBOutlet UITextField *teadsPlacementIdTextField;
 }
 
 
@@ -84,12 +85,14 @@
 - (void)dismissKeyboard {
     [adUnitIdTextField resignFirstResponder];
     [adSpaceIdTextField resignFirstResponder];
+    [teadsPlacementIdTextField resignFirstResponder];
 }
 
 
 -(void)saveSettingsToUserDefaults {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:adUnitIdTextField.text forKey:AD_UNIT_USER_DEFAULTS_KEY];
+    [userDefaults setObject:teadsPlacementIdTextField.text forKey:TEADS_PLACEMENT_ID_USER_DEFAULTS_KEY];
     [userDefaults synchronize];
 }
 
@@ -97,6 +100,7 @@
 -(void)initSettingsFromUserDefaults {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     adUnitIdTextField.text = [userDefaults objectForKey:AD_UNIT_USER_DEFAULTS_KEY];
+    teadsPlacementIdTextField.text = [userDefaults objectForKey:TEADS_PLACEMENT_ID_USER_DEFAULTS_KEY];
 }
 
 

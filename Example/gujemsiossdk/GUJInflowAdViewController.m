@@ -25,6 +25,7 @@
 
 #import "GUJInflowAdViewController.h"
 #import "GUJInflowAdViewContext.h"
+#import "GUJSettingsViewController.h"
 
 
 @implementation GUJInflowAdViewController {
@@ -35,8 +36,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NSString *dfpAdunitId = @"/6032/sdktest/preroll";
-    NSString *teadsPlacementId = @"47140";
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+
+    NSString *dfpAdunitId = [userDefaults objectForKey:AD_UNIT_USER_DEFAULTS_KEY];
+    NSString *teadsPlacementId = [userDefaults objectForKey:TEADS_PLACEMENT_ID_USER_DEFAULTS_KEY];
+
+    if (dfpAdunitId == nil) {
+        dfpAdunitId = @"/6032/sdktest/preroll";
+        [userDefaults setObject:dfpAdunitId forKey:AD_UNIT_USER_DEFAULTS_KEY];
+        [userDefaults synchronize];
+    }
+
+    if (teadsPlacementId == nil) {
+        teadsPlacementId = @"47140";
+        [userDefaults setObject:teadsPlacementId forKey:TEADS_PLACEMENT_ID_USER_DEFAULTS_KEY];
+        [userDefaults synchronize];
+    }
 
     inflowAdViewContext = [[GUJInflowAdViewContext alloc] initWithScrollView:self.scrollView
                                                      inFlowAdPlaceholderView:self.teadsVideoView
