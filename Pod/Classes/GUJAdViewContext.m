@@ -281,6 +281,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
 
             if (!mediumRectanglesDisabled) {
                 [validAdSizes addObject:NSValueFromGADAdSize(kGADAdSizeMediumRectangle)];  // Typically 300x250.
+                [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 250)))];
             }
 
             if (!twoToOneAdsDisabled) {
@@ -317,6 +318,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
 
             if (!mediumRectanglesDisabled) {
                 [validAdSizes addObject:NSValueFromGADAdSize(kGADAdSizeMediumRectangle)];  // Typically 300x250.
+                [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 250)))];
             }
 
             if (!twoToOneAdsDisabled) {
