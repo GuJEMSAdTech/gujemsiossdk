@@ -33,7 +33,7 @@
 static NSString *const KEYWORDS_DICT_KEY = @"kw";
 static NSString *const CUSTOM_TARGETING_KEY_POSITION = @"pos";
 static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
-static NSString *const CUSTOM_TARGETING_KEY_ALTITUDE = @"psa";
+static NSString *const CUSTOM_TARGETING_KEY_ALTITUDE = @"pga";
 static NSString *const CUSTOM_TARGETING_KEY_SPEED = @"pgv";
 static NSString *const CUSTOM_TARGETING_KEY_DEVICE_STATUS = @"psx";
 static NSString *const CUSTOM_TARGETING_KEY_BATTERY_LEVEL = @"pbl";
