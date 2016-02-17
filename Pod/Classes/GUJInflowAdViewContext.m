@@ -28,7 +28,7 @@
 
 @implementation GUJInflowAdViewContext {
     id <UIScrollViewDelegate> originalScrollViewDelegate;
-    BOOL adViewExpanded, adsManagerInitialized, wasClosedByUser;
+    BOOL adViewExpanded, adsLoaded, adsManagerInitialized, wasClosedByUser;
     IMAAdsLoader *_adsLoader;
     IMAAdsManager *_adsManager;
 
@@ -103,14 +103,16 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
             self.scrollView.frame.size.width,
             self.scrollView.frame.size.height);
 
-    if (!adViewExpanded && !wasClosedByUser && CGRectIntersectsRect(adViewRect, scrollViewRect)) {
+    if (adsLoaded && !adViewExpanded && !wasClosedByUser && CGRectIntersectsRect(adViewRect, scrollViewRect)) {
         [self expandAdView:YES];
     }
 
-    if (CGRectIntersectsRect(adViewRect, scrollViewRect)) {
-        [_adsManager resume];
-    } else {
-        [_adsManager pause];
+    if (adsManagerInitialized && adViewExpanded) {
+        if (CGRectIntersectsRect(adViewRect, scrollViewRect)) {
+            [_adsManager resume];
+        } else {
+            [_adsManager pause];
+        }
     }
 }
 
@@ -122,13 +124,12 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
         adViewExpanded = expand;
 
         CGFloat expectedHeight = self.inFlowAdPlaceholderView.frame.size.width / 4 * 3;
-
         self.inFlowAdPlaceholderViewHeightConstraint.constant = expand ? expectedHeight : 0;
 
         [UIView animateWithDuration:1.0f delay:0.2f options:UIViewAnimationOptionAllowUserInteraction animations:^{
             [self.inFlowAdPlaceholderView.superview layoutIfNeeded];
         }                completion:^(BOOL finished) {
-            if (!adsManagerInitialized) {
+            if (!adsManagerInitialized && adsLoaded) {
                 [self initAdsManager];
             }
         }];
@@ -176,7 +177,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 #pragma mark AdsLoader Delegates
 
 - (void)adsLoader:(IMAAdsLoader *)loader adsLoadedWithData:(IMAAdsLoadedData *)adsLoadedData {
-
+    adsLoaded = YES;
     NSLog(@"adsLoadedWithData");
 
     _adsManager = adsLoadedData.adsManager;
@@ -342,8 +343,8 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
 # pragma mark - UIScrollViewDelegate
 
-// we are only interested in the scrollViewDidScroll: event, original
-// delegate methods shall always be called!
+// we are only interested in the scrollViewDidScroll: event,
+// original delegate methods shall always be called!
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self checkIfScrolledIntoView];
