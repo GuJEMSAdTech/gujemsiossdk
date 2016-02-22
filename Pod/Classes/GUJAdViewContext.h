@@ -25,8 +25,6 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "GUJBaseAdViewContext.h"
-
 
 @protocol GUJAdViewContextDelegate;
 @class DFPBannerView;
@@ -34,6 +32,7 @@
 @class GUJAdViewContext;
 @class GADInterstitial;
 @class GADNativeContentAd;
+@class GUJBaseAdViewContext;
 
 static const int GUJ_AD_VIEW_POSITION_UNDEFINED = 0;
 static const int GUJ_AD_VIEW_POSITION_TOP = 1;
@@ -400,5 +399,3 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
 - (void)loadNativeContentAdForKeywords:(NSArray *)keywords;
 
 @end
-
-
