@@ -48,8 +48,16 @@ Adding the following to your Info.plist will disable ATS:
 See this [Google Developers Blog Post](http://googleadsdeveloper.blogspot.no/2015/08/handling-app-transport-security-in-ios-9.html)
 for details.
 
+## New in 3.1.x: Inflow Video Ads
 
-## Upgrading from v2.1.x to v3.0.x
+In version 3.1.x we added a new feature: Inflow Video Ads.
+We are using the IMA iOS SDK to load the video ads, then start the video and expand a placeholder once the user scrolls this into view.
+If no video ad is available from the DFP server, there is a fallback to use 
+[Teads iOS SDK](http://mobile.teads.tv/sdk/documentation/) without the need for you to add this fallback on your own.
+Read more in the [Usage](#inflow) chapter.
+
+
+## Upgrading from v2.1.x to v3.x.x
 
 If you are not upgrading just [skip this chapter](#usage).
 
@@ -458,6 +466,62 @@ It should look similar to this:
 
 ```
 https://pubads.g.doubleclick.net/gampad/ads?sz=480x360&iu=/6032/sdktest/preroll&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]
+```
+
+<a name="inflow"></a>
+#### integrate inflow video ads (new in 3.1.x)
+
+Inflow video ads are thought to be presented/ expanded on a scroll view once the user scrolled to a given position.
+
+To add an inflow ad in your xib file of soryboard add a placeholder view somewhere between other views on your scrollview .
+Give it the width of the scroll view and add an autolayout constraint for the height with an initial value of 0.
+Keep in mind to also set the autolayout constraints top, left, right, bottom to link the placeholder view to the superview and/ or its other subviews. 
+Connect the views and the autolayout constraint as outlets to your view controller:
+
+```objective-c
+    __weak IBOutlet UIScrollView *scrollView;
+    __weak IBOutlet UIView *inFlowAdPlaceholderView;
+    __weak IBOutlet NSLayoutConstraint *inFlowAdPlaceholderViewHeightConstraint;
+```
+
+Then create an `GUJInflowAdViewContext` by giving the following parameters to the constructor.
+As the Ad Unit ID you will receive the Teads Placement ID from your [G+J EMS Team](#contact).
+
+```objective-c
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    ...
+    
+    inflowAdViewContext = [[GUJInflowAdViewContext alloc] initWithScrollView:scrollView
+                                                     inFlowAdPlaceholderView:inFlowAdPlaceholderView
+                                     inFlowAdPlaceholderViewHeightConstraint:inFlowAdPlaceholderViewHeightConstraint
+                                                                 dfpAdunitId:<YOUR ADUNIT ID>
+                                                            teadsPlacementId:<YOUR TEADS PLACEMENT ID>
+    ];
+}
+```
+
+Then in the `viewDidAppear` method call:
+
+```objective-c
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    ...
+    
+    [inflowAdViewContext containerViewDidAppear];
+}
+```
+
+In the `viewWillDisappear` method call `containerViewWillDisappear`, so the video can be paused and resumed once the user comes back.
+
+
+```objective-c
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    ...
+    
+    [inflowAdViewContext containerViewWillDisappear];
+}
 ```
 
 
