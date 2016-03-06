@@ -25,8 +25,4 @@
 
 @interface GUJInflowAdViewController : UIViewController <UIScrollViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UIView *teadsVideoView;
-@property (nonatomic, strong) IBOutlet NSLayoutConstraint *teadsVideoViewHeightConstraint;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
 @end

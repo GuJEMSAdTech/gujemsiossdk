@@ -379,9 +379,9 @@ Amobee Ad Space ID:</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="Inflow Ads" image="verticalscroll" id="deO-sr-POr"/>
                     <connections>
-                        <outlet property="scrollView" destination="g0i-6E-Cax" id="UlR-2v-0BB"/>
-                        <outlet property="teadsVideoView" destination="zsA-Dt-Pw1" id="lDe-zn-GHj"/>
-                        <outlet property="teadsVideoViewHeightConstraint" destination="TZe-p1-7th" id="fz0-km-ObB"/>
+                        <outlet property="inFlowAdPlaceholderView" destination="zsA-Dt-Pw1" id="KRM-Dl-eNr"/>
+                        <outlet property="inFlowAdPlaceholderViewHeightConstraint" destination="TZe-p1-7th" id="EIG-EX-3qe"/>
+                        <outlet property="scrollView" destination="g0i-6E-Cax" id="53N-Q8-fJx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvA-nB-egV" userLabel="First Responder" sceneMemberID="firstResponder"/>
