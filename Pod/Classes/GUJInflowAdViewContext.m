@@ -80,7 +80,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     if (teadsVideo.isLoaded) {
         [teadsVideo viewControllerAppeared:self.findInFlowAdPlaceholderViewsViewController];
     }
-    if (adStarted) {
+    if (adStarted && !pausedAtTheEnd) {
         [_adsManager resume];
     }
 }
@@ -88,7 +88,13 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
 - (void)containerViewWillDisappear {
     self.scrollView.delegate = originalScrollViewDelegate;
-    [_adsManager pause];
+
+    if (teadsVideo.isLoaded) {
+        [teadsVideo viewControllerDisappeared:self.findInFlowAdPlaceholderViewsViewController];
+    }
+    if (adStarted) {
+        [_adsManager pause];
+    }
 }
 
 
@@ -110,7 +116,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
         [self expandAdView:YES];
     }
 
-    if (adViewExpanded && adLoaded) {
+    if (adViewExpanded && adStarted && !pausedAtTheEnd) {
         if (CGRectIntersectsRect(adViewRect, scrollViewRect)) {
             [_adsManager resume];
         } else {
@@ -207,7 +213,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 }
 
 
--(void)replay {
+- (void)replay {
     [coverView removeFromSuperview];
     [replayButton removeFromSuperview];
     [closeButton removeFromSuperview];
@@ -298,26 +304,15 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 // todo: Due to a bug in the IMA SDK the didReceiveAdError callback is not fired for some empty vast responses.
 // That's why we use a timeout here to see, if something was loaded.
 // Remove after this was fixed in the IMA SDK!
-
 - (void)fallbackToTeadsAfter2SecondTimeout {
-    NSLog(@"No ads loaded before timeout. Using Teads Ads as fallback...");
-    if (!adLoaded) {
-        [_adsManager destroy];
-        [self startTeads];
-    }
+    NSLog(@"No ads loaded before timeout...");
+    //[self fallbackToTeads];
 }
 
 
-- (void)adsLoader:(IMAAdsLoader *)loader failedWithErrorData:(IMAAdLoadingErrorData *)adErrorData {
-    // Something went wrong loading ads. May be no fill.
-    NSLog(@"Error loading ads: %@", adErrorData.adError.message);
-
-    NSLog(@"using Teads Ads as fallback...");
-    [self startTeads];
-
-}
-
-- (void)startTeads {
+- (void)fallbackToTeads {
+    NSLog(@"Using Teads Ads as fallback.");
+    [_adsManager destroy];
     teadsVideo = [[TeadsVideo alloc] initInReadWithPlacementId:self.teadsPlacementId
                                                    placeholder:self.inFlowAdPlaceholderView
                                               heightConstraint:self.inFlowAdPlaceholderViewHeightConstraint
@@ -328,11 +323,20 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 }
 
 
+- (void)adsLoader:(IMAAdsLoader *)loader failedWithErrorData:(IMAAdLoadingErrorData *)adErrorData {
+    // Something went wrong loading ads. May be no fill.
+    NSLog(@"failedWithErrorData: %@", adErrorData.adError.message);
+
+    [self fallbackToTeads];
+
+}
+
+
 #pragma mark AdsManager Delegate
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdEvent:(IMAAdEvent *)event {
 
-    NSLog(@"didReceiveAdEvent: %@", event.typeString);
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];  // cancel fallbackToTeadsAfter2SecondTimeout
 
     if (event.type == kIMAAdEvent_LOADED) {
         adLoaded = YES;
@@ -356,6 +360,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdError:(IMAAdError *)error {
     // Something went wrong with the ads manager after ads were loaded. Log the error.
     NSLog(@"didReceiveAdError: %@", error.message);
+    [self fallbackToTeads];
 }
 
 
