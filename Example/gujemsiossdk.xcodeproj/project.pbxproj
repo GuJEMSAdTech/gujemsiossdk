@@ -15,8 +15,6 @@
 		3ED7EC1B5F00407CAB12039B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED7ED2AD11E620542B24EC5 /* Main.storyboard */; };
 		3ED7EF53B050D427DDD1D914 /* GUJFacebookNativeAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7EF59408D0FF2B893AC05 /* GUJFacebookNativeAdViewController.m */; };
 		4C2F3DC01B82220E008CDF95 /* GUJNativeContentAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F3DBF1B82220E008CDF95 /* GUJNativeContentAdView.xib */; };
-		4C3A2D2D1C71DE48009AC989 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3A2D291C71DAF1009AC989 /* libxml2.2.tbd */; };
-		4C3A2D2E1C71DE48009AC989 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3A2D2A1C71DAF1009AC989 /* libxml2.tbd */; };
 		4C3A2D301C71F2D6009AC989 /* GUJInflowAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A2D2F1C71F2D6009AC989 /* GUJInflowAdViewController.m */; };
 		4E6852D8C132F8FBE05EA816 /* libPods-gujemsiossdk_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77987BFE86D39FFEE5DDD298 /* libPods-gujemsiossdk_Example.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -96,8 +94,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C3A2D2D1C71DE48009AC989 /* libxml2.2.tbd in Frameworks */,
-				4C3A2D2E1C71DE48009AC989 /* libxml2.tbd in Frameworks */,
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
