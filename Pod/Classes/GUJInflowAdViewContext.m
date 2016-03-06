@@ -372,7 +372,8 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 - (void) adsManager:(IMAAdsManager *)adsManager
 adDidProgressToTime:(NSTimeInterval)mediaTime
           totalTime:(NSTimeInterval)totalTime {
-    NSLog(@"%lf, %lf", mediaTime, totalTime);
+    // called every 200ms
+
     if (!pausedAtTheEnd && totalTime - mediaTime <= .200) {
         [avPlayer pause];
         pausedAtTheEnd = YES;
