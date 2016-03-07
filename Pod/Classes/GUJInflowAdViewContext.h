@@ -40,10 +40,28 @@
 @property(nonatomic, strong) UIView *inFlowAdPlaceholderView;
 @property(nonatomic, strong) NSLayoutConstraint *inFlowAdPlaceholderViewHeightConstraint;
 
+/*!
+ * Returns a GUJInflowAdViewContext instance.
+ *
+ @param scrollView - the main scroll view containing the inFlowAdPlaceholderView as a subview
+ @param inFlowAdPlaceholderView - a placeholder view for the inflow add, give it the width of the scrollview
+ @param inFlowAdPlaceholderViewHeightConstraint an autolayout constraint for the placeholder view with an initial value of 0.
+ @param dfpAdunitId - DFP adUnit ID
+ @param teadsPlacementId - Teads Placement ID
+ @result A newly created GUJAdViewContext instance
+ */
 - (instancetype)initWithScrollView:(UIScrollView *)scrollView inFlowAdPlaceholderView:(UIView *)inFlowAdPlaceholderView inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholderViewHeightConstraint dfpAdunitId:(NSString *)dfpAdunitId teadsPlacementId:(NSString *)teadsPlacementId;
 
+/*!
+ * Starts loading/ resuming of the inflow ad, add will be preloaded and started once scrolled into view.
+ * Should be called in your viewDidAppear method.
+ */
 - (void)containerViewDidAppear;
 
+/*!
+ * Stops/ pauses the inflow ad once the user navigates to the next view controller.
+ * Should be called in your viewWillDisappear method.
+*/
 - (void)containerViewWillDisappear;
 
 /*!

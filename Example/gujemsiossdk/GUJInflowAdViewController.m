@@ -30,6 +30,9 @@
 
 @implementation GUJInflowAdViewController {
     GUJInflowAdViewContext *inflowAdViewContext;
+    __weak IBOutlet UIScrollView *scrollView;
+    __weak IBOutlet UIView *inFlowAdPlaceholderView;
+    __weak IBOutlet NSLayoutConstraint *inFlowAdPlaceholderViewHeightConstraint;
 }
 
 
@@ -53,9 +56,9 @@
         [userDefaults synchronize];
     }
 
-    inflowAdViewContext = [[GUJInflowAdViewContext alloc] initWithScrollView:self.scrollView
-                                                     inFlowAdPlaceholderView:self.teadsVideoView
-                                     inFlowAdPlaceholderViewHeightConstraint:self.teadsVideoViewHeightConstraint
+    inflowAdViewContext = [[GUJInflowAdViewContext alloc] initWithScrollView:scrollView
+                                                     inFlowAdPlaceholderView:inFlowAdPlaceholderView
+                                     inFlowAdPlaceholderViewHeightConstraint:inFlowAdPlaceholderViewHeightConstraint
                                                                  dfpAdunitId:dfpAdunitId
                                                             teadsPlacementId:teadsPlacementId
     ];

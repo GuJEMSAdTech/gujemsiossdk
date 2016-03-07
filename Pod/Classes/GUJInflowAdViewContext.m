@@ -28,14 +28,17 @@
 
 @implementation GUJInflowAdViewContext {
     id <UIScrollViewDelegate> originalScrollViewDelegate;
-    BOOL adViewExpanded, adsLoaded, adsManagerInitialized, wasClosedByUser;
+    BOOL adViewExpanded, adViewExpanding, adLoaded, adStarted, wasClosedByUser, pausedAtTheEnd;
     IMAAdsLoader *_adsLoader;
     IMAAdsManager *_adsManager;
 
     AVPlayer *avPlayer;
+
     UIButton *unmuteButton;
+
+    UIView *coverView;
     UIButton *closeButton;
-    UIImage *endScreenImage;
+    UIButton *replayButton;
 
     TeadsVideo *teadsVideo;
 }
@@ -77,7 +80,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     if (teadsVideo.isLoaded) {
         [teadsVideo viewControllerAppeared:self.findInFlowAdPlaceholderViewsViewController];
     }
-    if (adsManagerInitialized) {
+    if (adStarted && !pausedAtTheEnd) {
         [_adsManager resume];
     }
 }
@@ -85,7 +88,13 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
 - (void)containerViewWillDisappear {
     self.scrollView.delegate = originalScrollViewDelegate;
-    [_adsManager pause];
+
+    if (teadsVideo.isLoaded) {
+        [teadsVideo viewControllerDisappeared:self.findInFlowAdPlaceholderViewsViewController];
+    }
+    if (adStarted) {
+        [_adsManager pause];
+    }
 }
 
 
@@ -103,11 +112,11 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
             self.scrollView.frame.size.width,
             self.scrollView.frame.size.height);
 
-    if (adsLoaded && !adViewExpanded && !wasClosedByUser && CGRectIntersectsRect(adViewRect, scrollViewRect)) {
+    if (adLoaded && !adViewExpanded && !wasClosedByUser && CGRectIntersectsRect(adViewRect, scrollViewRect)) {
         [self expandAdView:YES];
     }
 
-    if (adsManagerInitialized && adViewExpanded) {
+    if (adViewExpanded && adStarted && !pausedAtTheEnd) {
         if (CGRectIntersectsRect(adViewRect, scrollViewRect)) {
             [_adsManager resume];
         } else {
@@ -119,22 +128,22 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
 - (void)expandAdView:(BOOL)expand {
 
-    if (expand != adViewExpanded) {
-
-        adViewExpanded = expand;
-
+    if (expand != adViewExpanded && !adViewExpanding) {
+        adViewExpanding = YES;
         CGFloat expectedHeight = self.inFlowAdPlaceholderView.frame.size.width / 4 * 3;
         self.inFlowAdPlaceholderViewHeightConstraint.constant = expand ? expectedHeight : 0;
 
-        [UIView animateWithDuration:1.0f delay:0.2f options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        [UIView animateWithDuration:0.7f delay:0.2f options:UIViewAnimationOptionAllowUserInteraction animations:^{
             [self.inFlowAdPlaceholderView.superview layoutIfNeeded];
         }                completion:^(BOOL finished) {
-            if (!adsManagerInitialized && adsLoaded) {
-                [self initAdsManager];
+            if (adLoaded) {
+                [_adsManager resume];
+                adStarted = YES;
             }
+            adViewExpanding = NO;
+            adViewExpanded = expand;
         }];
     }
-
 }
 
 
@@ -204,6 +213,17 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 }
 
 
+- (void)replay {
+    [coverView removeFromSuperview];
+    [replayButton removeFromSuperview];
+    [closeButton removeFromSuperview];
+    [avPlayer seekToTime:kCMTimeZero];
+    [avPlayer play];
+    [self addUnmuteButton];
+    pausedAtTheEnd = NO;
+}
+
+
 - (UIViewController *)findInFlowAdPlaceholderViewsViewController {
     UIResponder *responder = self.inFlowAdPlaceholderView;
     while (![responder isKindOfClass:[UIViewController class]]) {
@@ -216,30 +236,57 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 }
 
 
-- (UIImage *)screenshotFromPlayer:(AVPlayer *)player {
-
-    CMTime actualTime;
-    NSError *error;
-
-    AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:player.currentItem.asset];
-
-    CGImageRef cgIm = [generator copyCGImageAtTime:player.currentTime
-                                        actualTime:&actualTime
-                                             error:&error];
-    UIImage *image = [UIImage imageWithCGImage:cgIm];
-
-    if (nil != error) {
-        NSLog(@"error making screenshot: %@", [error localizedDescription]);
-        NSLog(@"actual screenshot time: %f ", CMTimeGetSeconds(actualTime));
-        return nil;
-    }
-
-    return image;
+- (void)addUnmuteButton {
+    unmuteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [unmuteButton setImage:[UIImage imageNamed:@"gujemsiossdk.bundle/sound_off_white.png"] forState:UIControlStateNormal];
+    [unmuteButton setImage:[UIImage imageNamed:@"gujemsiossdk.bundle/sound_on_white.png"] forState:UIControlStateSelected];
+    [unmuteButton addTarget:self
+                     action:@selector(toggleAudioMuting)
+           forControlEvents:UIControlEventTouchUpInside];
+    unmuteButton.frame = CGRectMake((CGFloat) (self.inFlowAdPlaceholderView.frame.size.width - 30.0), (CGFloat) (self.inFlowAdPlaceholderView.frame.size.height - 30.0), 20.0, 20.0);
+    [self.inFlowAdPlaceholderView addSubview:unmuteButton];
 }
 
 
-- (void)initAdsManager {
-    adsManagerInitialized = YES;
+- (void)addCoverView {
+    coverView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.inFlowAdPlaceholderView.frame.size.width, self.inFlowAdPlaceholderView.frame.size.height)];
+    coverView.contentMode = UIViewContentModeScaleAspectFit;
+    coverView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.2];
+    coverView.userInteractionEnabled = NO;
+    [self.inFlowAdPlaceholderView addSubview:coverView];
+}
+
+
+- (void)addReplayButton {
+    replayButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [replayButton setImage:[UIImage imageNamed:@"gujemsiossdk.bundle/replay_white.png"] forState:UIControlStateNormal];
+    [replayButton addTarget:self
+                     action:@selector(replay)
+           forControlEvents:UIControlEventTouchUpInside];
+    replayButton.frame = CGRectMake((CGFloat) (self.inFlowAdPlaceholderView.frame.size.width / 2 - 30.0), (CGFloat) (self.inFlowAdPlaceholderView.frame.size.height / 2 - 30.0), 60.0, 60.0);
+    [self.inFlowAdPlaceholderView addSubview:replayButton];
+}
+
+
+- (void)addCloseButton {
+    closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [closeButton setImage:[UIImage imageNamed:@"gujemsiossdk.bundle/close_white.png"] forState:UIControlStateNormal];
+    [closeButton addTarget:self
+                    action:@selector(close)
+          forControlEvents:UIControlEventTouchUpInside];
+    closeButton.frame = CGRectMake((CGFloat) (self.inFlowAdPlaceholderView.frame.size.width - 30.0), (CGFloat) (self.inFlowAdPlaceholderView.frame.size.height - 30.0), 20.0, 20.0);
+    [self.inFlowAdPlaceholderView addSubview:closeButton];
+}
+
+
+#pragma mark AdsLoader Delegates
+
+- (void)adsLoader:(IMAAdsLoader *)loader adsLoadedWithData:(IMAAdsLoadedData *)adsLoadedData {
+
+    NSLog(@"adsLoadedWithData");
+
+    _adsManager = adsLoadedData.adsManager;
+    _adsManager.delegate = self;
 
     // Create ads rendering settings to tell the SDK to use the in-app browser.
     IMAAdsRenderingSettings *adsRenderingSettings = [[IMAAdsRenderingSettings alloc] init];
@@ -249,28 +296,23 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
     avPlayer = [self discoverAVPlayer];
     avPlayer.muted = YES;
+
+    [self performSelector:@selector(fallbackToTeadsAfter2SecondTimeout) withObject:nil afterDelay:2];
 }
 
 
-#pragma mark AdsLoader Delegates
-
-- (void)adsLoader:(IMAAdsLoader *)loader adsLoadedWithData:(IMAAdsLoadedData *)adsLoadedData {
-    adsLoaded = YES;
-    NSLog(@"adsLoadedWithData");
-
-    _adsManager = adsLoadedData.adsManager;
-    _adsManager.delegate = self;
-
-    if (adViewExpanded) {
-        [self initAdsManager];
-    }
+// todo: Due to a bug in the IMA SDK the didReceiveAdError callback is not fired for some empty vast responses.
+// That's why we use a timeout here to see, if something was loaded.
+// Remove after this was fixed in the IMA SDK!
+- (void)fallbackToTeadsAfter2SecondTimeout {
+    NSLog(@"No ads loaded before timeout...");
+    //[self fallbackToTeads];
 }
 
-- (void)adsLoader:(IMAAdsLoader *)loader failedWithErrorData:(IMAAdLoadingErrorData *)adErrorData {
-    // Something went wrong loading ads. May be no fill.
-    NSLog(@"Error loading ads: %@", adErrorData.adError.message);
 
-    NSLog(@"using Teads Ads as fallback...");
+- (void)fallbackToTeads {
+    NSLog(@"Using Teads Ads as fallback.");
+    [_adsManager destroy];
     teadsVideo = [[TeadsVideo alloc] initInReadWithPlacementId:self.teadsPlacementId
                                                    placeholder:self.inFlowAdPlaceholderView
                                               heightConstraint:self.inFlowAdPlaceholderViewHeightConstraint
@@ -281,52 +323,44 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 }
 
 
+- (void)adsLoader:(IMAAdsLoader *)loader failedWithErrorData:(IMAAdLoadingErrorData *)adErrorData {
+    // Something went wrong loading ads. May be no fill.
+    NSLog(@"failedWithErrorData: %@", adErrorData.adError.message);
+
+    [self fallbackToTeads];
+
+}
+
+
 #pragma mark AdsManager Delegate
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdEvent:(IMAAdEvent *)event {
 
-    NSLog(@"didReceiveAdEvent: %@", event.typeString);
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];  // cancel fallbackToTeadsAfter2SecondTimeout
 
     if (event.type == kIMAAdEvent_LOADED) {
-        [adsManager start];
+        adLoaded = YES;
+        if (adViewExpanded) {
+            adStarted = YES;
+        }
     }
 
     if (event.type == kIMAAdEvent_STARTED) {
-        unmuteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [unmuteButton setImage:[UIImage imageNamed:@"gujemsiossdk.bundle/sound_off_white.png"] forState:UIControlStateNormal];
-        [unmuteButton setImage:[UIImage imageNamed:@"gujemsiossdk.bundle/sound_on_white.png"] forState:UIControlStateSelected];
-        [unmuteButton addTarget:self
-                         action:@selector(toggleAudioMuting)
-               forControlEvents:UIControlEventTouchUpInside];
-        unmuteButton.frame = CGRectMake((CGFloat) (self.inFlowAdPlaceholderView.frame.size.width - 30.0), (CGFloat) (self.inFlowAdPlaceholderView.frame.size.height - 30.0), 20.0, 20.0);
-        [self.inFlowAdPlaceholderView addSubview:unmuteButton];
-
+        if (!adViewExpanded) {
+            [_adsManager pause];  // pause until view is expanded
+        }
+        [self addUnmuteButton];
     }
 
-    if (event.type == kIMAAdEvent_COMPLETE) {
-
-        endScreenImage = [self screenshotFromPlayer:avPlayer];
-        [unmuteButton removeFromSuperview];
-
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:endScreenImage];
-        imageView.frame = CGRectMake(0, 0, self.inFlowAdPlaceholderView.frame.size.width, self.inFlowAdPlaceholderView.frame.size.height);
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.inFlowAdPlaceholderView addSubview:imageView];
-
-        closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [closeButton setImage:[UIImage imageNamed:@"gujemsiossdk.bundle/close_white.png"] forState:UIControlStateNormal];
-        [closeButton addTarget:self
-                        action:@selector(close)
-              forControlEvents:UIControlEventTouchUpInside];
-        closeButton.frame = CGRectMake((CGFloat) (self.inFlowAdPlaceholderView.frame.size.width - 30.0), 10.0, 20.0, 20.0);
-        [self.inFlowAdPlaceholderView addSubview:closeButton];
+    if (event.type == kIMAAdEvent_RESUME) {
+        [self addUnmuteButton];
     }
 }
-
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdError:(IMAAdError *)error {
     // Something went wrong with the ads manager after ads were loaded. Log the error.
     NSLog(@"didReceiveAdError: %@", error.message);
+    [self fallbackToTeads];
 }
 
 
@@ -337,6 +371,25 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
 - (void)adsManagerDidRequestContentResume:(IMAAdsManager *)adsManager {
     // ignored because we don't have an underlying video
+}
+
+
+- (void) adsManager:(IMAAdsManager *)adsManager
+adDidProgressToTime:(NSTimeInterval)mediaTime
+          totalTime:(NSTimeInterval)totalTime {
+    // called every 200ms
+
+    if (!pausedAtTheEnd && totalTime - mediaTime <= .200) {
+        [avPlayer pause];
+        pausedAtTheEnd = YES;
+
+        [unmuteButton removeFromSuperview];
+
+        [self addCoverView];
+        [self addCloseButton];
+        [self addReplayButton];
+    }
+
 }
 
 
