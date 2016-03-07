@@ -24,8 +24,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
-
 
 @interface GUJAdUtils : NSObject
 

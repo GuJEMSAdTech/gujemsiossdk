@@ -25,6 +25,7 @@
 
 
 #import "GUJInflowAdViewContext.h"
+#import "GUJAdUtils.h"
 
 @implementation GUJInflowAdViewContext {
     id <UIScrollViewDelegate> originalScrollViewDelegate;

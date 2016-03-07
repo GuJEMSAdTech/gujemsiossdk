@@ -24,6 +24,7 @@
  */
 
 #import <GoogleMobileAds/GoogleMobileAds.h>
+#import <CoreLocation/CoreLocation.h>
 #import "GUJBaseAdViewContext.h"
 #import "GUJAdUtils.h"
 
