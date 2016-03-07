@@ -25,7 +25,7 @@
 
 #import <GoogleMobileAds/GoogleMobileAds.h>
 #import "GUJBaseAdViewContext.h"
-
+#import "GUJAdUtils.h"
 
 static NSString *const CUSTOM_TARGETING_KEY_ALTITUDE = @"pga";
 static NSString *const CUSTOM_TARGETING_KEY_SPEED = @"pgv";
