@@ -24,7 +24,6 @@
  */
 
 #import <GoogleMobileAds/GoogleMobileAds.h>
-#import "GUJBaseAdViewContext.h"
 #import "GUJAdViewContext.h"
 #import "GUJAdSpaceIdToAdUnitIdMapper.h"
 #import "GUJAdViewContextDelegate.h"
