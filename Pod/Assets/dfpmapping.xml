@@ -391,6 +391,9 @@
     <zone name="26251" adunit="ck_and/kochbuch" position="1" index="yes"/>
     <zone name="26253" adunit="ck_ip/einkaufsliste" position="1" index="yes"/>
     <zone name="26255" adunit="ck_ip/kochbuch" position="1" index="yes"/>
+    <zone name="99907" adunit="ck_ipad/suche" position="1" index="yes"/>
+    <zone name="99906" adunit="ck_ipad/suche" position="2" index="yes"/>
+    <zone name="99905" adunit="ck_ipad/suche" position="10" index="yes"/>
     <zone name="26259" adunit="ck_ipad/einkaufsliste" position="1" index="yes"/>
     <zone name="26257" adunit="ck_ipad/kochbuch" position="1" index="yes"/>
     <zone name="26261" adunit="ck_tab/einkaufsliste" position="1" index="yes"/>
@@ -398,13 +401,19 @@
     <zone name="16824" adunit="ck_ip/einkaufsliste" position="10" index="yes"/>
     <zone name="16838" adunit="ck_ip/einkaufsliste" position="1" index="yes"/>
     <zone name="15710" adunit="ck_and/merkzettel" position="1" index="yes"/>
+    <zone name="99897" adunit="ck_and/merkzettel" position="2" index="yes"/>
+    <zone name="99896" adunit="ck_and/merkzettel" position="10" index="yes"/>
     <zone name="16843" adunit="ck_and/einkaufsliste" position="10" index="yes"/>
     <zone name="16859" adunit="ck_and/einkaufsliste" position="1" index="yes"/>
     <zone name="1489" adunit="ck_ip/merkzettel" position="1" index="yes"/>
+    <zone name="99895" adunit="ck_ip/merkzettel" position="2" index="yes"/>
+    <zone name="99894" adunit="ck_ip/merkzettel" position="10" index="yes"/>
     <zone name="1483" adunit="ck_ip/homepage" position="1" index="yes"/>
+    <zone name="99918" adunit="ck_ip/homepage" position="2" index="yes"/> 
     <zone name="15702" adunit="ck_ip/homepage" position="10" index="yes"/>
     <zone name="16840" adunit="ck_ip/homepage" position="1" index="yes"/>
     <zone name="15712" adunit="ck_and/homepage" position="1" index="yes"/>
+    <zone name="99919" adunit="ck_and/homepage" position="2" index="yes"/>
     <zone name="15720" adunit="ck_and/homepage" position="10" index="yes"/>
     <zone name="16857" adunit="ck_and/homepage" position="1" index="yes"/>
     <zone name="15704" adunit="ck_ip/_default" position="1" index="yes"/>
@@ -413,25 +422,48 @@
     <zone name="15714" adunit="ck_and/_default" position="1" index="yes"/>
     <zone name="16845" adunit="ck_and/_default" position="10" index="yes"/>
     <zone name="16855" adunit="ck_and/_default" position="1" index="yes"/>
+    <zone name="99893" adunit="ck_ipad/merkzettel" position="1" index="yes"/>
+    <zone name="99892" adunit="ck_ipad/merkzettel" position="2" index="yes"/>
+    <zone name="99891" adunit="ck_ipad/merkzettel" position="10" index="yes"/>
+    <zone name="99890" adunit="ck_tab/merkzettel" position="1" index="yes"/>
+    <zone name="99889" adunit="ck_tab/merkzettel" position="2" index="yes"/>
+    <zone name="99888" adunit="ck_tab/merkzettel" position="10" index="yes"/>
     <zone name="21691" adunit="ck_ipad/_default" position="1" index="yes"/>
+    <zone name="99917" adunit="ck_ipad/homepage" position="1" index="yes"/>
+    <zone name="99916" adunit="ck_ipad/homepage" position="2" index="yes"/>
+    <zone name="99915" adunit="ck_ipad/homepage" position="10" index="yes"/>
+    <zone name="99914" adunit="ck_tab/homepage" position="1" index="yes"/>
+    <zone name="99913" adunit="ck_tab/homepage" position="2" index="yes"/>
+    <zone name="99912" adunit="ck_tab/homepage" position="10" index="yes"/>
     <zone name="22301" adunit="ck_tab/_default" position="1" index="yes"/>
     <zone name="1482" adunit="ck_ip/rezepte" position="1" index="yes"/>
     <zone name="15708" adunit="ck_ip/rezepte" position="1" index="no"/>
     <zone name="16826" adunit="ck_ip/rezepte" position="2" index="no"/>
     <zone name="16836" adunit="ck_ip/rezepte" position="1" index="yes"/>
+    <zone name="99901" adunit="ck_ip/rezepte" position="10" index="yes"/>
     <zone name="15718" adunit="ck_and/rezepte" position="1" index="no"/>
     <zone name="16849" adunit="ck_and/rezepte" position="2" index="no"/>
     <zone name="16851" adunit="ck_and/rezepte" position="1" index="yes"/>
+    <zone name="99902" adunit="ck_and/rezepte" position="10" index="yes"/>
     <zone name="21687" adunit="ck_ipad/rezepte" position="10" index="yes"/>
+    <zone name="99900" adunit="ck_ipad/rezepte" position="2" index="no"/>
     <zone name="21689" adunit="ck_ipad/rezepte" position="1" index="no"/>
     <zone name="22303" adunit="ck_tab/rezepte" position="1" index="no"/>
+    <zone name="99899" adunit="ck_tab/rezepte" position="2" index="no"/>
+    <zone name="99898" adunit="ck_tab/rezepte" position="10" index="no"/>
     <zone name="15706" adunit="ck_ip/suche" position="1" index="yes"/>
     <zone name="16828" adunit="ck_ip/suche" position="1" index="yes"/>
     <zone name="16834" adunit="ck_ip/suche" position="1" index="yes"/>
+    <zone name="99909" adunit="ck_ip/suche" position="2" index="yes"/>
+    <zone name="99908" adunit="ck_ip/suche" position="10" index="yes"/>
     <zone name="15716" adunit="ck_and/suche" position="1" index="yes"/>
     <zone name="16847" adunit="ck_and/suche" position="1" index="yes"/>
     <zone name="16853" adunit="ck_and/suche" position="1" index="yes"/>
+    <zone name="99911" adunit="ck_and/suche" position="2" index="yes"/>
+    <zone name="99910" adunit="ck_and/suche" position="10" index="yes"/>
     <zone name="22305" adunit="ck_tab/suche" position="1" index="yes"/>
+    <zone name="99904" adunit="ck_tab/suche" position="2" index="yes"/>
+    <zone name="99903" adunit="ck_tab/suche" position="10" index="yes"/>
     <zone name="13085" adunit="comunio_ip/_default" position="1" index="no"/>
     <zone name="17828" adunit="comunio_and/_default" position="1" index="no"/>
     <zone name="17834" adunit="comunio_and/_default" position="0"/>
