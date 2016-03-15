@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Pod/Classes/**/*'
   s.resource_bundles = {
-    'gujemsiossdk.bundle' => ['Pod/Assets/*.xml', 'Pod/Assets/*.png']
+    'gujemsiossdk' => ['Pod/Assets/*.xml', 'Pod/Assets/*.png']
   }
 
   s.vendored_frameworks = 'Pod/Assets/TeadsSDK.framework'
