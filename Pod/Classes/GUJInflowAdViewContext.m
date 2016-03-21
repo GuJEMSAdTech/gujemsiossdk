@@ -302,7 +302,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 // Remove after this was fixed in the IMA SDK!
 - (void)fallbackToTeadsAfter2SecondTimeout {
     NSLog(@"No ads loaded before timeout...");
-    //[self fallbackToTeads];
+    [self fallbackToTeads];
 }
 
 
