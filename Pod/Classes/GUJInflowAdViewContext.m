@@ -307,15 +307,18 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
 
 - (void)fallbackToTeads {
-    NSLog(@"Using Teads Ads as fallback.");
-    [_adsManager destroy];
-    teadsVideo = [[TeadsVideo alloc] initInReadWithPlacementId:self.teadsPlacementId
-                                                   placeholder:self.inFlowAdPlaceholderView
-                                              heightConstraint:self.inFlowAdPlaceholderViewHeightConstraint
-                                                    scrollView:self.scrollView
-                                                      delegate:self];
-
-    [teadsVideo load];
+    if (self.teadsPlacementId == nil) {
+        NSLog(@"No teads placement ID configured.");
+    } else {
+        NSLog(@"Using Teads Ads as fallback.");
+        [_adsManager destroy];
+        teadsVideo = [[TeadsVideo alloc] initInReadWithPlacementId:self.teadsPlacementId
+                                                       placeholder:self.inFlowAdPlaceholderView
+                                                  heightConstraint:self.inFlowAdPlaceholderViewHeightConstraint
+                                                        scrollView:self.scrollView
+                                                          delegate:self];
+        [teadsVideo load];
+    }
 }
 
 
