@@ -288,11 +288,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     _adsManager = adsLoadedData.adsManager;
     _adsManager.delegate = self;
 
-    // Create ads rendering settings to tell the SDK to use the in-app browser.
-    IMAAdsRenderingSettings *adsRenderingSettings = [[IMAAdsRenderingSettings alloc] init];
-    adsRenderingSettings.webOpenerPresentingController = [self findInFlowAdPlaceholderViewsViewController];
-
-    [_adsManager initializeWithAdsRenderingSettings:adsRenderingSettings];
+    [_adsManager initializeWithAdsRenderingSettings:nil];
 
     avPlayer = [self discoverAVPlayer];
     avPlayer.muted = YES;
