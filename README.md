@@ -544,7 +544,7 @@ In case of any questions send us an email or give us a call!
 
 
 **Jens Jensen**  
-Product Manager Mobile  
+Technical Projects Manager  
 \+ 49 (0) 40 / 3703 7475  
 jensen.jens@ems.guj.de
 
