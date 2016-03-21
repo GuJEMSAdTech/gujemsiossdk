@@ -237,6 +237,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
 
 - (void)addUnmuteButton {
+    [unmuteButton removeFromSuperview];
     unmuteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [unmuteButton setImage:[UIImage imageNamed:@"gujemsiossdk.bundle/sound_off_white.png"] forState:UIControlStateNormal];
     [unmuteButton setImage:[UIImage imageNamed:@"gujemsiossdk.bundle/sound_on_white.png"] forState:UIControlStateSelected];
