@@ -1216,6 +1216,22 @@
     <zone name="12699" adunit="n-tv_ip/reise" position="10" index="yes"/>
     <zone name="12741" adunit="n-tv_ip/reise" position="0"/>
     <zone name="13223" adunit="n-tv_ip/reise" position="1" index="no"/>
+    <zone name="99995" adunit="n-tv_ip/reise" position="2" index="no"/>
+    <zone name="22868" adunit="n-tv_ip/reise" position="10" index="no"/>
+    <zone name="99993" adunit="n-tv_ipad/reise" position="1" index="yes"/>
+    <zone name="99992" adunit="n-tv_ipad/reise" position="2" index="yes"/>
+    <zone name="99991" adunit="n-tv_ipad/reise" position="10" index="yes"/>
+    <zone name="99870" adunit="n-tv_ipad/reise" position="0"/>
+    <zone name="99990" adunit="n-tv_ipad/reise" position="1" index="no"/>
+    <zone name="99989" adunit="n-tv_ipad/reise" position="2" index="no"/>
+    <zone name="99988" adunit="n-tv_ipad/reise" position="10" index="no"/>
+    <zone name="99987" adunit="n-tv_ipad/reise" position="1" index="yes"/>
+    <zone name="99986" adunit="n-tv_ipad/reise" position="2" index="yes"/>
+    <zone name="99985" adunit="n-tv_ipad/reise" position="10" index="yes"/>
+    <zone name="99869" adunit="n-tv_ipad/reise" position="0"/>
+    <zone name="99984" adunit="n-tv_ipad/reise" position="1" index="no"/>
+    <zone name="99983" adunit="n-tv_ipad/reise" position="2" index="no"/>
+    <zone name="99982" adunit="n-tv_ipad/reise" position="10" index="no"/>
     <zone name="13613" adunit="n-tv_and/reise" position="1" index="yes"/>
     <zone name="13615" adunit="n-tv_and/reise" position="2" index="yes"/>
     <zone name="13617" adunit="n-tv_and/reise" position="10" index="no"/>
