@@ -473,7 +473,7 @@ https://pubads.g.doubleclick.net/gampad/ads?sz=480x360&iu=/6032/sdktest/preroll&
 
 Inflow video ads are thought to be presented/ expanded on a scroll view once the user scrolled to a given position.
 
-To add an inflow ad in your xib file of soryboard add a placeholder view somewhere between other views on your scrollview .
+To add an inflow ad in your xib file of storyboard add a placeholder view somewhere between other views on your scrollview.
 Give it the width of the scroll view and add an autolayout constraint for the height with an initial value of 0.
 Keep in mind to also set the autolayout constraints top, left, right, bottom to link the placeholder view to the superview and/ or its other subviews. 
 Connect the views and the autolayout constraint as outlets to your view controller:
@@ -486,6 +486,7 @@ Connect the views and the autolayout constraint as outlets to your view controll
 
 Then create an `GUJInflowAdViewContext` by giving the following parameters to the constructor.
 As the Ad Unit ID you will receive the Teads Placement ID from your [G+J EMS Team](#contact).
+Set the `teadsPlacementId` to `nil` if you don't want to use the Teads fallback.
 
 ```objective-c
 - (void)viewDidLoad {
@@ -543,7 +544,7 @@ In case of any questions send us an email or give us a call!
 
 
 **Jens Jensen**  
-Product Manager Mobile  
+Technical Projects Manager  
 \+ 49 (0) 40 / 3703 7475  
 jensen.jens@ems.guj.de
 

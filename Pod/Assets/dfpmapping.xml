@@ -1216,6 +1216,22 @@
     <zone name="12699" adunit="n-tv_ip/reise" position="10" index="yes"/>
     <zone name="12741" adunit="n-tv_ip/reise" position="0"/>
     <zone name="13223" adunit="n-tv_ip/reise" position="1" index="no"/>
+    <zone name="99995" adunit="n-tv_ip/reise" position="2" index="no"/>
+    <zone name="22868" adunit="n-tv_ip/reise" position="10" index="no"/>
+    <zone name="99993" adunit="n-tv_ipad/reise" position="1" index="yes"/>
+    <zone name="99992" adunit="n-tv_ipad/reise" position="2" index="yes"/>
+    <zone name="99991" adunit="n-tv_ipad/reise" position="10" index="yes"/>
+    <zone name="99870" adunit="n-tv_ipad/reise" position="0"/>
+    <zone name="99990" adunit="n-tv_ipad/reise" position="1" index="no"/>
+    <zone name="99989" adunit="n-tv_ipad/reise" position="2" index="no"/>
+    <zone name="99988" adunit="n-tv_ipad/reise" position="10" index="no"/>
+    <zone name="99987" adunit="n-tv_tab/reise" position="1" index="yes"/>
+    <zone name="99986" adunit="n-tv_tab/reise" position="2" index="yes"/>
+    <zone name="99985" adunit="n-tv_tab/reise" position="10" index="yes"/>
+    <zone name="99869" adunit="n-tv_tab/reise" position="0"/>
+    <zone name="99984" adunit="n-tv_tab/reise" position="1" index="no"/>
+    <zone name="99983" adunit="n-tv_tab/reise" position="2" index="no"/>
+    <zone name="99982" adunit="n-tv_tab/reise" position="10" index="no"/>
     <zone name="13613" adunit="n-tv_and/reise" position="1" index="yes"/>
     <zone name="13615" adunit="n-tv_and/reise" position="2" index="yes"/>
     <zone name="13617" adunit="n-tv_and/reise" position="10" index="no"/>
@@ -2362,4 +2378,36 @@
     <zone name="17732" adunit="testseiteems/gala_and_banner" position="3"/>
     <zone name="17732" adunit="testseiteems/gala_and_banner" position="10"/>
     <zone name="17734" adunit="testseiteems/gala_and_interstitial" position=""/>
+    <zone name="25754" adunit="gala_sales_ip/homepage" position="1" index=""/>
+<zone name="25756" adunit="gala_sales_ip/homepage" position="2" index=""/>
+<zone name="25812" adunit="gala_sales_ip/homepage" position="3" index=""/>
+<zone name="25758" adunit="gala_sales_ip/homepage" position="10" index=""/>
+<zone name="25772" adunit="gala_sales_ip/starnews" position="1" index=""/>
+<zone name="25774" adunit="gala_sales_ip/starnews" position="2" index=""/>
+<zone name="25806" adunit="gala_sales_ip/starnews" position="3" index=""/>
+<zone name="25776" adunit="gala_sales_ip/starnews" position="10" index=""/>
+<zone name="25121" adunit="gala_sales_ip/starnews" position="1" index=""/>
+<zone name="25117" adunit="gala_sales_ip/starnews" position="2" index=""/>
+<zone name="25528" adunit="gala_sales_ip/starnews" position="3" index=""/>
+<zone name="25123" adunit="gala_sales_ip/starnews" position="10" index=""/>
+<zone name="17706" adunit="gala_sales_ip/bilder" position="1" index=""/>
+<zone name="21565" adunit="gala_sales_ip/bilder" position="2" index=""/>
+<zone name="25562" adunit="gala_sales_ip/bilder" position="3" index=""/>
+<zone name="24329" adunit="gala_sales_ip/bilder" position="10" index=""/>
+<zone name="17712" adunit="gala_sales_ip/videos" position="1" index=""/>
+<zone name="21561" adunit="gala_sales_ip/videos" position="2" index=""/>
+<zone name="25558" adunit="gala_sales_ip/videos" position="3" index=""/>
+<zone name="24321" adunit="gala_sales_ip/videos" position="10" index=""/>
+<zone name="25778" adunit="gala_sales_ip/royals" position="1" index=""/>
+<zone name="25780" adunit="gala_sales_ip/royals" position="2" index=""/>
+<zone name="25804" adunit="gala_sales_ip/royals" position="3" index=""/>
+<zone name="25782" adunit="gala_sales_ip/royals" position="10" index=""/>
+<zone name="25760" adunit="gala_sales_ip/beauty-fashion" position="1" index=""/>
+<zone name="25762" adunit="gala_sales_ip/beauty-fashion" position="2" index=""/>
+<zone name="25810" adunit="gala_sales_ip/beauty-fashion" position="3" index=""/>
+<zone name="25764" adunit="gala_sales_ip/beauty-fashion" position="10" index=""/>
+<zone name="25766" adunit="gala_sales_ip/lifestyle" position="1" index=""/>
+<zone name="25768" adunit="gala_sales_ip/lifestyle" position="2" index=""/>
+<zone name="25808" adunit="gala_sales_ip/lifestyle" position="3" index=""/>
+<zone name="25770" adunit="gala_sales_ip/lifestyle" position="10" index=""/>
 </zonemapping>

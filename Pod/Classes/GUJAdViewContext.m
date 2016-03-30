@@ -267,25 +267,38 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {  // iPad
 
             NSMutableArray *validAdSizes = [NSMutableArray new];
-
             [validAdSizes addObjectsFromArray:@[
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(1, 1))),
                     NSValueFromGADAdSize(kGADAdSizeBanner),  // Typically 320x50.
-                    NSValueFromGADAdSize(kGADAdSizeLargeBanner),  // Typically 320x100.
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 50))),
-                    NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 75))),
+                    NSValueFromGADAdSize(kGADAdSizeLargeBanner),  // Typically 320x100.
+                    NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 100))),
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 75))),
+                    NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 75))),
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(180, 150))),
-                    NSValueFromGADAdSize(isLandscape ? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait)
+                    NSValueFromGADAdSize(isLandscape ? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait),
+
+                    // iq media
+                    NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 53))),
+                    NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 80))),
+                    NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 106)))
             ]];
 
             if (!mediumRectanglesDisabled) {
                 [validAdSizes addObject:NSValueFromGADAdSize(kGADAdSizeMediumRectangle)];  // Typically 300x250.
                 [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 250)))];
+
+                // iq media
+                [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 320)))];
+                [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 416)))];
             }
 
             if (!twoToOneAdsDisabled) {
                 [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 150)))];
+                [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 150)))];
+
+                // iq media
+                [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 160)))];
             }
 
             if (!billboardAdsDisabled) {
@@ -309,20 +322,34 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
             [validAdSizes addObjectsFromArray:@[
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(1, 1))),
                     NSValueFromGADAdSize(kGADAdSizeBanner), // Typically 320x50.
-                    NSValueFromGADAdSize(kGADAdSizeLargeBanner), // Typically 320x100.
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 50))),
+                    NSValueFromGADAdSize(kGADAdSizeLargeBanner), // Typically 320x100.
+                    NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 100))),
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 75))),
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 75))),
-                    NSValueFromGADAdSize(isLandscape ? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait)
+                    NSValueFromGADAdSize(isLandscape ? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait),
+
+                    // iq media
+                    NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 53))),
+                    NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 80))),
+                    NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 106)))
             ]];
 
             if (!mediumRectanglesDisabled) {
                 [validAdSizes addObject:NSValueFromGADAdSize(kGADAdSizeMediumRectangle)];  // Typically 300x250.
                 [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 250)))];
+
+                // iq media
+                [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 320)))];
+                [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 416)))];
             }
 
             if (!twoToOneAdsDisabled) {
                 [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 150)))];
+                [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 150)))];
+
+                // iq media
+                [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 160)))];
             }
 
             self.bannerView.validAdSizes = validAdSizes;

@@ -238,6 +238,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
 
 - (void)addUnmuteButton {
+    [unmuteButton removeFromSuperview];
     unmuteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [unmuteButton setImage:[UIImage imageNamed:@"gujemsiossdk.bundle/sound_off_white.png"] forState:UIControlStateNormal];
     [unmuteButton setImage:[UIImage imageNamed:@"gujemsiossdk.bundle/sound_on_white.png"] forState:UIControlStateSelected];
@@ -289,11 +290,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     _adsManager = adsLoadedData.adsManager;
     _adsManager.delegate = self;
 
-    // Create ads rendering settings to tell the SDK to use the in-app browser.
-    IMAAdsRenderingSettings *adsRenderingSettings = [[IMAAdsRenderingSettings alloc] init];
-    adsRenderingSettings.webOpenerPresentingController = [self findInFlowAdPlaceholderViewsViewController];
-
-    [_adsManager initializeWithAdsRenderingSettings:adsRenderingSettings];
+    [_adsManager initializeWithAdsRenderingSettings:nil];
 
     avPlayer = [self discoverAVPlayer];
     avPlayer.muted = YES;
@@ -307,20 +304,23 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 // Remove after this was fixed in the IMA SDK!
 - (void)fallbackToTeadsAfter2SecondTimeout {
     NSLog(@"No ads loaded before timeout...");
-    //[self fallbackToTeads];
+    [self fallbackToTeads];
 }
 
 
 - (void)fallbackToTeads {
-    NSLog(@"Using Teads Ads as fallback.");
-    [_adsManager destroy];
-    teadsVideo = [[TeadsVideo alloc] initInReadWithPlacementId:self.teadsPlacementId
-                                                   placeholder:self.inFlowAdPlaceholderView
-                                              heightConstraint:self.inFlowAdPlaceholderViewHeightConstraint
-                                                    scrollView:self.scrollView
-                                                      delegate:self];
-
-    [teadsVideo load];
+    if (self.teadsPlacementId == nil) {
+        NSLog(@"No teads placement ID configured.");
+    } else {
+        NSLog(@"Using Teads Ads as fallback.");
+        [_adsManager destroy];
+        teadsVideo = [[TeadsVideo alloc] initInReadWithPlacementId:self.teadsPlacementId
+                                                       placeholder:self.inFlowAdPlaceholderView
+                                                  heightConstraint:self.inFlowAdPlaceholderViewHeightConstraint
+                                                        scrollView:self.scrollView
+                                                          delegate:self];
+        [teadsVideo load];
+    }
 }
 
 
