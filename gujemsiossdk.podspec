@@ -32,11 +32,11 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Pod/Classes/**/*'
   s.resource_bundles = {
-    'gujemsiossdk' => ['Pod/Assets/*.xml', 'Pod/Assets/*.png'],
-    'TeadsSDKResources' => ['Pod/Assets/TeadsSDKResources.bundle']
+    'gujemsiossdk' => ['Pod/Assets/*.xml', 'Pod/Assets/*.png']
   }
 
   s.vendored_frameworks = 'Pod/Assets/TeadsSDK.framework'
+  s.resource = "Pod/Assets/TeadsSDKResources.bundle"
 
   s.public_header_files = 'Pod/Classes/*.h'
   s.frameworks = 'CoreMedia', 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation', 'CoreTelephony', 'MediaPlayer', 'SystemConfiguration'
