@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "gujemsiossdk"
-  s.version          = "3.1.0"
+  s.version          = "3.1.3"
   s.summary          = "G+J EMS iOS SDK"
   s.description      = <<-DESC
                        G+J EMS iOS SDK
@@ -36,7 +36,8 @@ Pod::Spec.new do |s|
   }
 
   s.vendored_frameworks = 'Pod/Assets/TeadsSDK.framework'
-
+  s.resource = "Pod/Assets/TeadsSDKResources.bundle"
+  
   s.public_header_files = 'Pod/Classes/*.h'
   s.frameworks = 'CoreMedia', 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation', 'CoreTelephony', 'MediaPlayer', 'SystemConfiguration'
   s.libraries = 'xml2'
