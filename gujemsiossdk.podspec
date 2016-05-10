@@ -9,11 +9,10 @@
 
 Pod::Spec.new do |s|
   s.name             = "gujemsiossdk"
-  s.version          = "3.1.3"
+  s.version          = "3.1.5"
   s.summary          = "G+J EMS iOS SDK"
   s.description      = <<-DESC
                        G+J EMS iOS SDK
-
                        * Includes the Google-Mobile-Ads-SDK
                        * Easily integrate Banner Ads, Interstitials and Native Ads into your App by creating an
                         AdViewContext summarizing all meta information needed to load the ads from the Google DFP Server
@@ -36,8 +35,8 @@ Pod::Spec.new do |s|
   }
 
   s.vendored_frameworks = 'Pod/Assets/TeadsSDK.framework'
-  #s.resource = "Pod/Assets/TeadsSDKResources.bundle"
-  
+  s.resource = "Pod/Assets/TeadsSDKResources.bundle"
+
   s.public_header_files = 'Pod/Classes/*.h'
   s.frameworks = 'CoreMedia', 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation', 'CoreTelephony', 'MediaPlayer', 'SystemConfiguration'
   s.libraries = 'xml2'
