@@ -9,11 +9,10 @@
 
 Pod::Spec.new do |s|
   s.name             = "gujemsiossdk"
-  s.version          = "3.1.0"
+  s.version          = "3.1.5"
   s.summary          = "G+J EMS iOS SDK"
   s.description      = <<-DESC
                        G+J EMS iOS SDK
-
                        * Includes the Google-Mobile-Ads-SDK
                        * Easily integrate Banner Ads, Interstitials and Native Ads into your App by creating an
                         AdViewContext summarizing all meta information needed to load the ads from the Google DFP Server

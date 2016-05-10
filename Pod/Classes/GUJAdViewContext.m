@@ -24,10 +24,10 @@
  */
 
 #import <GoogleMobileAds/GoogleMobileAds.h>
-#import "GUJBaseAdViewContext.h"
 #import "GUJAdViewContext.h"
 #import "GUJAdSpaceIdToAdUnitIdMapper.h"
 #import "GUJAdViewContextDelegate.h"
+#import "GUJAdUtils.h"
 
 
 static NSString *const CUSTOM_TARGETING_KEY_POSITION = @"pos";
