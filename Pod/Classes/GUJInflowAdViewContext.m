@@ -169,7 +169,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     keyValueParameters = [GUJAdUtils urlencode:keyValueParameters];
 
     NSString *adTagUrl =
-            [NSString stringWithFormat:@"https://pubads.g.doubleclick.net/gampad/ads?sz=480x360&iu=%@&gdfp_req=1&env=vp&t=%@",
+            [NSString stringWithFormat:@"https://pubads.g.doubleclick.net/gampad/ads?sz=400x300&iu=%@&gdfp_req=1&env=vp&t=%@",
                                        self.dfpAdunitId,
                                        keyValueParameters
             ];
