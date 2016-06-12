@@ -71,6 +71,11 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 }
 
 
+- (void) dealloc {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+}
+
+
 - (void)containerViewDidAppear {
     NSLog(@"containerViewDidAppear");
 
