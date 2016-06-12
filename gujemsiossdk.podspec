@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "gujemsiossdk"
-  s.version          = "3.1.0"
+  s.version          = "3.1.7"
   s.summary          = "G+J EMS iOS SDK"
   s.description      = <<-DESC
                        G+J EMS iOS SDK
@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
                        * Integrate preroll videos by loading VAST files from the Google DFP Server
                        * Version 3.x.x replaces the G+J EMS iOS SDK 2.1.x based on Amobee ad server, while keeping the same interfaces
                        * Internal mapping of previously used AdSpace IDs to new AdUnit IDs
+                       * Inflow Ads
                        DESC
   s.homepage         = "https://github.com/GuJEMSAdTech/gujemsiossdk"
   s.license          = 'BSD'
