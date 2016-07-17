@@ -92,6 +92,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
 
 - (void)containerViewWillDisappear {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
     self.scrollView.delegate = originalScrollViewDelegate;
 
     if (teadsVideo.isLoaded) {
