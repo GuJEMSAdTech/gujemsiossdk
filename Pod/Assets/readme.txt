@@ -1,5 +1,5 @@
 Teads SDK framework
 Build Version:
-2.0.3
+2.3.1
 Build Date:
-16.03.10 18:07:54
+16.07.13 17:09:26
