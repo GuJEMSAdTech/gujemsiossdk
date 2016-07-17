@@ -31,10 +31,11 @@
 #import "GUJBaseAdViewContext.h"
 
 
-@interface GUJInflowAdViewContext : GUJBaseAdViewContext <UIGestureRecognizerDelegate, UIScrollViewDelegate, IMAAdsLoaderDelegate, IMAAdsManagerDelegate, TeadsVideoDelegate>
+@interface GUJInflowAdViewContext : GUJBaseAdViewContext <UIGestureRecognizerDelegate, UIScrollViewDelegate, IMAAdsLoaderDelegate, IMAAdsManagerDelegate>
 
 @property(nonatomic, strong) NSString *dfpAdunitId;
 @property(nonatomic, strong) NSString *teadsPlacementId;
+@property(nonatomic, weak) id<TeadsVideoDelegate> teadsVideoDelegate;
 
 @property(nonatomic, strong) UIScrollView *scrollView;
 @property(nonatomic, strong) UIView *inFlowAdPlaceholderView;

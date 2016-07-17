@@ -323,7 +323,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
                                                        placeholder:self.inFlowAdPlaceholderView
                                                   heightConstraint:self.inFlowAdPlaceholderViewHeightConstraint
                                                         scrollView:self.scrollView
-                                                          delegate:self];
+                                                          delegate:self.teadsVideoDelegate];
         [teadsVideo load];
     }
 }
