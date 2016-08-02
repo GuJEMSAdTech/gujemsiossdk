@@ -41,6 +41,8 @@
     UIButton *replayButton;
 
     TeadsVideo *teadsVideo;
+    
+    NSString *originalAudioSessionCategory;
 }
 
 
@@ -66,13 +68,15 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
         [self requestAds];
     }
-
+    originalAudioSessionCategory = [AVAudioSession sharedInstance].category;
+    [[AVAudioSession sharedInstance]setCategory:AVAudioSessionCategoryAmbient error:nil];
     return self;
 }
 
 
 - (void) dealloc {
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [[AVAudioSession sharedInstance]setCategory:originalAudioSessionCategory error:nil];
 }
 
 
@@ -208,7 +212,13 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
 
 - (void)toggleAudioMuting {
+    if (avPlayer.muted) {
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    } else {
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
+    }
     avPlayer.muted = !avPlayer.muted;
+    
     unmuteButton.selected = !avPlayer.muted;
 }
 
