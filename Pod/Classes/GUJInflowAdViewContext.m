@@ -101,6 +101,8 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
     if (teadsVideo.isLoaded) {
         [teadsVideo viewControllerDisappeared:self.findInFlowAdPlaceholderViewsViewController];
+    } else {
+        [teadsVideo cancelLoad];
     }
     if (adStarted) {
         [_adsManager pause];
