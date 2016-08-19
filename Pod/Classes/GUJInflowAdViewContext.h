@@ -35,7 +35,7 @@
 
 @property(nonatomic, strong) NSString *dfpAdunitId;
 @property(nonatomic, strong) NSString *teadsPlacementId;
-@property(nonatomic, weak) id<TeadsVideoDelegate> teadsVideoDelegate;
+@property(nonatomic, weak) id<TeadsAdDelegate> teadsAdDelegate;
 
 @property(nonatomic, strong) UIScrollView *scrollView;
 @property(nonatomic, strong) UIView *inFlowAdPlaceholderView;

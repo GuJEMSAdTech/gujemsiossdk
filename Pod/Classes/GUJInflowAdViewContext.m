@@ -40,8 +40,8 @@
     UIButton *closeButton;
     UIButton *replayButton;
 
-    TeadsVideo *teadsVideo;
-    
+    TeadsAd *teadsAd;
+
     NSString *originalAudioSessionCategory;
 }
 
@@ -86,8 +86,8 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     originalScrollViewDelegate = self.scrollView.delegate;
     self.scrollView.delegate = self;
 
-    if (teadsVideo.isLoaded) {
-        [teadsVideo viewControllerAppeared:self.findInFlowAdPlaceholderViewsViewController];
+    if (teadsAd.isLoaded) {
+        [teadsAd viewControllerAppeared:self.findInFlowAdPlaceholderViewsViewController];
     }
     if (adStarted && !pausedAtTheEnd) {
         [_adsManager resume];
@@ -99,8 +99,8 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     self.scrollView.delegate = originalScrollViewDelegate;
 
-    if (teadsVideo.isLoaded) {
-        [teadsVideo viewControllerDisappeared:self.findInFlowAdPlaceholderViewsViewController];
+    if (teadsAd.isLoaded) {
+        [teadsAd viewControllerDisappeared:self.findInFlowAdPlaceholderViewsViewController];
     }
     if (adStarted) {
         [_adsManager pause];
@@ -218,7 +218,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
     }
     avPlayer.muted = !avPlayer.muted;
-    
+
     unmuteButton.selected = !avPlayer.muted;
 }
 
@@ -329,12 +329,12 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     } else {
         NSLog(@"Using Teads Ads as fallback.");
         [_adsManager destroy];
-        teadsVideo = [[TeadsVideo alloc] initInReadWithPlacementId:self.teadsPlacementId
+        teadsAd = [[TeadsAd alloc] initInReadWithPlacementId:self.teadsPlacementId
                                                        placeholder:self.inFlowAdPlaceholderView
                                                   heightConstraint:self.inFlowAdPlaceholderViewHeightConstraint
                                                         scrollView:self.scrollView
-                                                          delegate:self.teadsVideoDelegate];
-        [teadsVideo load];
+                                                          delegate:self.teadsAdDelegate];
+        [teadsAd load];
     }
 }
 
