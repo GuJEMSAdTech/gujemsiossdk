@@ -95,6 +95,11 @@
 
 + (NSString *)normalizeAdUnitId:(NSString *)adUnitId {
 
+    if (adUnitId == nil) {
+        NSLog(@"ERROR: AdUnitId is may not be nil.");
+        return nil;
+    }
+
     if (![adUnitId hasPrefix:@"/"]) {
         adUnitId = [@"/" stringByAppendingString:adUnitId];
     }
