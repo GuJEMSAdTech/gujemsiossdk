@@ -31,8 +31,13 @@ If you don't have CocoaPods installed so far, check the [CocoaPods documentation
 If you don't want to use CocoaPods you should be able to copy the classes from this workspace and manually add 
 the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recommend to do the installation without CocoaPods.
 
+## Changelog
 
-#### Handling App Transport Security in iOS 9
+#### v3.1.10 | 19/Dec/2016
+Moved deployment target from iOS7 to iOS8. Make sure your project has a minimum deployment target of 8.0.
+
+
+## Handling App Transport Security in iOS 9
 
 Important note on App Transport Security (ATS) in iOS 9: A lot of content delivered by the DFP Server is using URLs not
 yet switched to secure HTTPS. To avoid trouble loading ads with this SDK we recommend to switch of ATS for now.
