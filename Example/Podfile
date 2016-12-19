@@ -1,6 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-target 'gujemsiossdk_Example', :exclusive => true do
+target 'gujemsiossdk_Example' do
   pod "gujemsiossdk", :path => "../"
   pod 'FBAudienceNetwork'
   pod 'FBSDKCoreKit'
@@ -9,7 +9,7 @@ target 'gujemsiossdk_Example', :exclusive => true do
 
 end
 
-target 'gujemsiossdk_Tests', :exclusive => true do
+target 'gujemsiossdk_Tests' do
   pod "gujemsiossdk", :path => "../"
 end
 
