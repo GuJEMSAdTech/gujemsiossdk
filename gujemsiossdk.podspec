@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "gujemsiossdk"
-  s.version          = "3.1.7"
+  s.version          = "3.1.10"
   s.summary          = "G+J EMS iOS SDK"
   s.description      = <<-DESC
                        G+J EMS iOS SDK
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
                        DESC
   s.homepage         = "https://github.com/GuJEMSAdTech/gujemsiossdk"
   s.license          = 'BSD'
-  s.authors          = { "Jens Jensen" => "jensen.jens@ems.guj.de", "Michael Brügmann" => "mail@michael-bruegmann.de" }
+  s.authors          = { "Daniel Gerold" => "gerold.daniel@ems.guj.de", "Sebastian Otte" => "otte.sebastian@ems.guj.de", "Michael Brügmann" => "mail@michael-bruegmann.de" }
   s.source           = { :git => "https://github.com/GuJEMSAdTech/gujemsiossdk.git", :tag => s.version.to_s }
 
   s.platform     = :ios, '7.0'
