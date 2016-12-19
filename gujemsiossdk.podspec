@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   s.authors          = { "Daniel Gerold" => "gerold.daniel@ems.guj.de", "Sebastian Otte" => "otte.sebastian@ems.guj.de", "Michael Brügmann" => "mail@michael-bruegmann.de" }
   s.source           = { :git => "https://github.com/GuJEMSAdTech/gujemsiossdk.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '8.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
