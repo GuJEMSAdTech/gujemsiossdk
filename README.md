@@ -11,9 +11,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-The SDK supports **iOS 7.0 and higher**.  
+The SDK supports **iOS 8.0 and higher**.  
 Language Support: **Objective-C**  
-Use **Xcode 5.0 or higher**.
+Use **Xcode 8.1 or higher**.
 
 
 ## Installation
@@ -25,7 +25,7 @@ it, simply add the following line to your Podfile and run `pod install` from the
 pod "gujemsiossdk"
 ```
 
-Make sure you have a recent version of CocoaPods installed. We used version 0.38.2 and saw problems with older version of CocoaPods.
+Make sure you have a recent version of CocoaPods installed. We used version 1.0.0 and saw problems with older version of CocoaPods.
 
 If you don't have CocoaPods installed so far, check the [CocoaPods documentation](https://guides.cocoapods.org/using/using-cocoapods.html).  
 If you don't want to use CocoaPods you should be able to copy the classes from this workspace and manually add 
@@ -543,10 +543,10 @@ If you submit the app again for another review in the future, you will need to f
 In case of any questions send us an email or give us a call!
 
 
-**Jens Jensen**  
+**Sebastian Otte**  
 Technical Projects Manager  
-\+ 49 (0) 40 / 3703 7475  
-jensen.jens@ems.guj.de
+\+ 49 (0) 40 / 3703 2991  
+otte.sebastian@ems.guj.de
 
 **Daniel Gerold**  
 Head of Technical Projects  
