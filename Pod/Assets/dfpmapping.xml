@@ -2436,4 +2436,6 @@
 <zone name="25768" adunit="gala_sales_ip/lifestyle" position="2" index=""/>
 <zone name="25808" adunit="gala_sales_ip/lifestyle" position="3" index=""/>
 <zone name="25770" adunit="gala_sales_ip/lifestyle" position="10" index=""/>
+<zone name="99956" adunit="ck_ip/merkzettel" position="3" index="yes"/> 
+<zone name="99957" adunit="ck_ipad/merkzettel" position="3" index="yes"/>
 </zonemapping>
