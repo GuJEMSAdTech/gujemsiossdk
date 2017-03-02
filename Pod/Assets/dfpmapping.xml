@@ -390,7 +390,7 @@
     <zone name="26249" adunit="ck_and/einkaufsliste" position="1" index="yes"/>
     <zone name="26251" adunit="ck_and/kochbuch" position="1" index="yes"/>
     <zone name="26253" adunit="ck_ip/einkaufsliste" position="1" index="yes"/>
-    <zone name="26255" adunit="ck_ip/kochbuch" position="1" index="yes"/>
+    <zone name="26255" adunit="ck_ip/kochbuch" position="1" index="no"/>
     <zone name="99907" adunit="ck_ipad/suche" position="1" index="yes"/>
     <zone name="99906" adunit="ck_ipad/suche" position="2" index="yes"/>
     <zone name="99905" adunit="ck_ipad/suche" position="10" index="yes"/>
@@ -2438,4 +2438,33 @@
 <zone name="25770" adunit="gala_sales_ip/lifestyle" position="10" index=""/>
 <zone name="99956" adunit="ck_ip/merkzettel" position="3" index="yes"/> 
 <zone name="99957" adunit="ck_ipad/merkzettel" position="3" index="yes"/>
+<zone name="99958" adunit="ck_ip/kommentare" position="1" index="no"/> 
+<zone name="99959" adunit="ck_ip/kommentare" position="2" index="no"/> 
+<zone name="88839" adunit="ck_ip/kommentare" position="3" index="no"/> 
+<zone name="99960" adunit="ck_ip/kommentare" position="10" index="no"/> 
+<zone name="88820" adunit="ck_ip/einkaufsliste" position="2" index="yes"/>
+<zone name="88821" adunit="ck_ip/einkaufsliste" position="3" index="yes"/>
+<zone name="88871" adunit="ck_ip/suche" position="3" index="yes"/>
+<zone name="99972" adunit="ck_ip/kochbuchuebersicht" position="1" index="yes"/> 
+<zone name="99973" adunit="ck_ip/kochbuchuebersicht" position="2" index="yes"/> 
+<zone name="99974" adunit="ck_ip/kochbuchuebersicht" position="3" index="yes"/> 
+<zone name="99975" adunit="ck_ip/kochbuchuebersicht" position="10" index="yes"/> 
+<zone name="88805" adunit="ck_ip/kochbuch" position="2" index="no"/>
+<zone name="88806" adunit="ck_ip/kochbuch" position="3" index="no"/>
+<zone name="88807" adunit="ck_ip/kochbuch" position="10" index="no"/>
+<zone name="88870" adunit="ck_ipad/suche" position="3" index="yes"/>
+<zone name="99962" adunit="ck_ipad/kochbuchuebersicht" position="1" index="yes"/> 
+<zone name="99963" adunit="ck_ipad/kochbuchuebersicht" position="2" index="yes"/> 
+<zone name="99964" adunit="ck_ipad/kochbuchuebersicht" position="3" index="yes"/> 
+<zone name="99965" adunit="ck_ipad/kochbuchuebersicht" position="10" index="yes"/> 
+<zone name="88809" adunit="ck_ipad/kochbuch" position="2" index="no"/>
+<zone name="88810" adunit="ck_ipad/kochbuch" position="3" index="no"/>
+<zone name="88811" adunit="ck_ipad/kochbuch" position="10" index="no"/>
+<zone name="88840" adunit="ck_ipad/kommentare" position="1" index="no"/> 
+<zone name="88841" adunit="ck_ipad/kommentare" position="2" index="no"/> 
+<zone name="88842" adunit="ck_ipad/kommentare" position="3" index="no"/> 
+<zone name="88843" adunit="ck_ipad/kommentare" position="10" index="no"/> 
+<zone name="88823" adunit="ck_ipad/einkaufsliste" position="2" index="yes"/>
+<zone name="88824" adunit="ck_ipad/einkaufsliste" position="3" index="yes"/>
+<zone name="88825" adunit="ck_ipad/einkaufsliste" position="10" index="yes"/>
 </zonemapping>
