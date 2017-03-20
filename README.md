@@ -39,6 +39,9 @@ Moved deployment target from iOS7 to iOS8. Make sure your project has a minimum 
 #### v3.1.11 | 27/Jan/2017
 Updated mapping of Ad Space IDs to Ad Unit IDs.
 
+#### v3.1.12 | 20/Mar/2017
+Updated mapping of Ad Space IDs to Ad Unit IDs.
+
 ## Handling App Transport Security in iOS 9
 
 Important note on App Transport Security (ATS) in iOS 9: A lot of content delivered by the DFP Server is using URLs not
