@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *bannerAreaView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerAreaViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerAreaViewWidth;
 
 @end
 
@@ -31,10 +32,13 @@
 
 - (void)loadAd {
     
+    //reset banner area view
     for (UIView *subview in self.bannerAreaView.subviews) {
         [subview removeFromSuperview];
     }
     
+    self.bannerAreaViewHeight.constant = 120;
+    self.bannerAreaViewWidth.constant = 320;
     
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -55,6 +59,8 @@
 -(void) iqAdView:(GUJIQAdViewContext *) viewContext changeSize:(CGSize) size duration:(CGFloat) duration {
     
     self.bannerAreaViewHeight.constant = size.height;
+    self.bannerAreaViewWidth.constant = size.width;
+    
     [UIView animateWithDuration:duration animations:^{
         [self.bannerAreaView layoutIfNeeded];
     }];
