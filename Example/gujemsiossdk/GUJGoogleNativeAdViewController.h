@@ -24,17 +24,8 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <gujemsiossdk/GUJAdViewContextDelegate.h>
 
 
-static NSString *const AD_UNIT_USER_DEFAULTS_KEY = @"adUnitId";
-static NSString *const FACEBOOK_AD_UNIT_USER_DEFAULTS_KEY = @"facebookAdUnitId";
-static NSString *const PUBMATIC_PUBLISHER_USER_DEFAULTS_KEY = @"pubmaticPublisherId";
-static NSString *const PUBMATIC_AD_UNIT_USER_DEFAULTS_KEY = @"pubmaticAdUnitId";
-static NSString *const NATIVE_BASE_URI_USER_DEFAULTS_KEY = @"nativeAdBaseURI";
-static NSString *const SMART_CLIP_URL_USER_DEFAULTS_KEY = @"smartClipURL";
-static NSString *const IQ_APP_EVENTS_AD_UNIT_USER_DEFAULTS_KEY = @"iqAppEventsAdUnitId";
-
-static NSString *const FACEBOOK_TEST_MODE = @"facebookTestMode";
-
-@interface GUJSettingsViewController : UIViewController <UITextFieldDelegate>
+@interface GUJGoogleNativeAdViewController : UIViewController <GUJAdViewContextDelegate>
 @end

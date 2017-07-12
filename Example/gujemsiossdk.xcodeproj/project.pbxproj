@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2462CED0513F6A802B948168 /* libPods-gujemsiossdk_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 968D56560A5EEA5D2DC0C439 /* libPods-gujemsiossdk_Tests.a */; };
+		1809D4A61EB0BAE500F4DE4D /* GUJPubMaticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809D4A51EB0BAE500F4DE4D /* GUJPubMaticViewController.m */; };
+		1825517F1ECCA2F20076A8DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1825517E1ECCA2F20076A8DE /* LaunchScreen.storyboard */; };
+		18EA04DA1EE0576300F83ED0 /* GUJNativeAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EA04D91EE0576300F83ED0 /* GUJNativeAdViewController.m */; };
 		3ED7E09BD4247630AED2213A /* GUJInterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7E7CFAD5BFBFFCBD45DE1 /* GUJInterstitialViewController.m */; };
 		3ED7E3B2FFC5F3F49D7187BB /* GUJVideoAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7E1DD3F12F8D46D05E220 /* GUJVideoAdViewController.m */; };
 		3ED7E4E65DE33DBB6B0E6070 /* GUJSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7E1B00B7B1B1A2B24F7C4 /* GUJSettingsViewController.m */; };
-		3ED7E725EB1D521C1C8782A5 /* GUJNativeAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7EF277737DB1B814569E0 /* GUJNativeAdViewController.m */; };
+		3ED7E725EB1D521C1C8782A5 /* GUJGoogleNativeAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7EF277737DB1B814569E0 /* GUJGoogleNativeAdViewController.m */; };
 		3ED7EC1B5F00407CAB12039B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ED7ED2AD11E620542B24EC5 /* Main.storyboard */; };
 		3ED7EF53B050D427DDD1D914 /* GUJFacebookNativeAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7EF59408D0FF2B893AC05 /* GUJFacebookNativeAdViewController.m */; };
-		4C2F3DC01B82220E008CDF95 /* GUJNativeContentAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F3DBF1B82220E008CDF95 /* GUJNativeContentAdView.xib */; };
+		4C2F3DC01B82220E008CDF95 /* GUJGoogleNativeContentAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F3DBF1B82220E008CDF95 /* GUJGoogleNativeContentAdView.xib */; };
 		4C3A2D301C71F2D6009AC989 /* GUJInflowAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A2D2F1C71F2D6009AC989 /* GUJInflowAdViewController.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -29,7 +31,9 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		9AC76D2A08701421DA6E82A1 /* libPods-gujemsiossdk_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F5D4801EF6C80CA594E3FF /* libPods-gujemsiossdk_Example.a */; };
+		7A635664C43FC1B3608F4346 /* libPods-gujemsiossdk_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD6952CCC9BA4CBF62BED86 /* libPods-gujemsiossdk_Example.a */; };
+		7F7D17D8C51F2D1F8731292A /* libPods-gujemsiossdk_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5161528446F75E3F89E953 /* libPods-gujemsiossdk_Tests.a */; };
+		8B3F2B0E1F13697900B68F07 /* GUJIQAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F2B0D1F13697900B68F07 /* GUJIQAdViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,26 +47,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		11C8D81BDD2F2327405692CB /* Pods-gujemsiossdk_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gujemsiossdk_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		121A746B3E153018CB2A279D /* gujemsiossdk.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = gujemsiossdk.podspec; path = ../gujemsiossdk.podspec; sourceTree = "<group>"; };
-		2370FE1AD4CD85C317F933D5 /* Pods-gujemsiossdk_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gujemsiossdk_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		1809D4A41EB0BAE500F4DE4D /* GUJPubMaticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUJPubMaticViewController.h; sourceTree = "<group>"; };
+		1809D4A51EB0BAE500F4DE4D /* GUJPubMaticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUJPubMaticViewController.m; sourceTree = "<group>"; };
+		1825517E1ECCA2F20076A8DE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		18EA04D81EE0576300F83ED0 /* GUJNativeAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUJNativeAdViewController.h; sourceTree = "<group>"; };
+		18EA04D91EE0576300F83ED0 /* GUJNativeAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUJNativeAdViewController.m; sourceTree = "<group>"; };
 		3427CF1635D514830E8FBE55 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		3ED7E1801D271309C5EB49D5 /* GUJVideoAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUJVideoAdViewController.h; sourceTree = "<group>"; };
 		3ED7E1B00B7B1B1A2B24F7C4 /* GUJSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUJSettingsViewController.m; sourceTree = "<group>"; };
 		3ED7E1DD3F12F8D46D05E220 /* GUJVideoAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUJVideoAdViewController.m; sourceTree = "<group>"; };
 		3ED7E7CFAD5BFBFFCBD45DE1 /* GUJInterstitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUJInterstitialViewController.m; sourceTree = "<group>"; };
-		3ED7E99399DBF064E8E4B1B3 /* GUJNativeAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUJNativeAdViewController.h; sourceTree = "<group>"; };
+		3ED7E99399DBF064E8E4B1B3 /* GUJGoogleNativeAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUJGoogleNativeAdViewController.h; sourceTree = "<group>"; };
 		3ED7EBF1E1EEB24A812B86BE /* GUJFacebookNativeAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUJFacebookNativeAdViewController.h; sourceTree = "<group>"; };
 		3ED7ED2AD11E620542B24EC5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = gujemsiossdk/Main.storyboard; sourceTree = "<group>"; };
 		3ED7ED5AD9FCDAC3308952CF /* GUJInterstitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUJInterstitialViewController.h; sourceTree = "<group>"; };
 		3ED7EE6D4BF1EF6D6347D751 /* GUJSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUJSettingsViewController.h; sourceTree = "<group>"; };
-		3ED7EF277737DB1B814569E0 /* GUJNativeAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUJNativeAdViewController.m; sourceTree = "<group>"; };
+		3ED7EF277737DB1B814569E0 /* GUJGoogleNativeAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUJGoogleNativeAdViewController.m; sourceTree = "<group>"; };
 		3ED7EF59408D0FF2B893AC05 /* GUJFacebookNativeAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUJFacebookNativeAdViewController.m; sourceTree = "<group>"; };
-		4C2F3DBF1B82220E008CDF95 /* GUJNativeContentAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GUJNativeContentAdView.xib; sourceTree = "<group>"; };
+		4C2F3DBF1B82220E008CDF95 /* GUJGoogleNativeContentAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GUJGoogleNativeContentAdView.xib; sourceTree = "<group>"; };
 		4C3A2D291C71DAF1009AC989 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		4C3A2D2A1C71DAF1009AC989 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		4C3A2D2F1C71F2D6009AC989 /* GUJInflowAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUJInflowAdViewController.m; sourceTree = "<group>"; };
 		4C3A2D311C71F2F4009AC989 /* GUJInflowAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUJInflowAdViewController.h; sourceTree = "<group>"; };
+		4C5161528446F75E3F89E953 /* libPods-gujemsiossdk_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gujemsiossdk_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E9E232655B670DE66702471 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* gujemsiossdk_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gujemsiossdk_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -83,10 +91,13 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		9117DF57FFC5CDC7D986406D /* Pods-gujemsiossdk_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gujemsiossdk_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example.release.xcconfig"; sourceTree = "<group>"; };
-		968D56560A5EEA5D2DC0C439 /* libPods-gujemsiossdk_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gujemsiossdk_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3969CA753A9AEA0B02F55DC /* Pods-gujemsiossdk_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gujemsiossdk_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		C7F5D4801EF6C80CA594E3FF /* libPods-gujemsiossdk_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gujemsiossdk_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		655AA1421ED8341D7C3BF325 /* Pods-gujemsiossdk_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gujemsiossdk_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		6AD6952CCC9BA4CBF62BED86 /* libPods-gujemsiossdk_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gujemsiossdk_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DE75EA9C62B064EFDE360E7 /* Pods-gujemsiossdk_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gujemsiossdk_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B3F2B0C1F13697900B68F07 /* GUJIQAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUJIQAdViewController.h; sourceTree = "<group>"; };
+		8B3F2B0D1F13697900B68F07 /* GUJIQAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUJIQAdViewController.m; sourceTree = "<group>"; };
+		978E071CCB8E9A1675F06CA6 /* Pods-gujemsiossdk_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gujemsiossdk_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		B1466FAC1F3DAAF25BFEEC3A /* Pods-gujemsiossdk_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gujemsiossdk_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +108,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				9AC76D2A08701421DA6E82A1 /* libPods-gujemsiossdk_Example.a in Frameworks */,
+				7A635664C43FC1B3608F4346 /* libPods-gujemsiossdk_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,20 +119,20 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				2462CED0513F6A802B948168 /* libPods-gujemsiossdk_Tests.a in Frameworks */,
+				7F7D17D8C51F2D1F8731292A /* libPods-gujemsiossdk_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		42694103620E7AFE3FFEA403 /* Pods */ = {
+		08662B23CDB8CF961B4DEA5A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2370FE1AD4CD85C317F933D5 /* Pods-gujemsiossdk_Example.debug.xcconfig */,
-				9117DF57FFC5CDC7D986406D /* Pods-gujemsiossdk_Example.release.xcconfig */,
-				A3969CA753A9AEA0B02F55DC /* Pods-gujemsiossdk_Tests.debug.xcconfig */,
-				11C8D81BDD2F2327405692CB /* Pods-gujemsiossdk_Tests.release.xcconfig */,
+				655AA1421ED8341D7C3BF325 /* Pods-gujemsiossdk_Example.debug.xcconfig */,
+				B1466FAC1F3DAAF25BFEEC3A /* Pods-gujemsiossdk_Example.release.xcconfig */,
+				7DE75EA9C62B064EFDE360E7 /* Pods-gujemsiossdk_Tests.debug.xcconfig */,
+				978E071CCB8E9A1675F06CA6 /* Pods-gujemsiossdk_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -134,7 +145,7 @@
 				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
-				42694103620E7AFE3FFEA403 /* Pods */,
+				08662B23CDB8CF961B4DEA5A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,8 +168,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				C7F5D4801EF6C80CA594E3FF /* libPods-gujemsiossdk_Example.a */,
-				968D56560A5EEA5D2DC0C439 /* libPods-gujemsiossdk_Tests.a */,
+				6AD6952CCC9BA4CBF62BED86 /* libPods-gujemsiossdk_Example.a */,
+				4C5161528446F75E3F89E953 /* libPods-gujemsiossdk_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -176,15 +187,21 @@
 				4C3A2D2F1C71F2D6009AC989 /* GUJInflowAdViewController.m */,
 				3ED7ED5AD9FCDAC3308952CF /* GUJInterstitialViewController.h */,
 				3ED7E7CFAD5BFBFFCBD45DE1 /* GUJInterstitialViewController.m */,
-				3ED7E99399DBF064E8E4B1B3 /* GUJNativeAdViewController.h */,
-				3ED7EF277737DB1B814569E0 /* GUJNativeAdViewController.m */,
-				4C2F3DBF1B82220E008CDF95 /* GUJNativeContentAdView.xib */,
+				3ED7E99399DBF064E8E4B1B3 /* GUJGoogleNativeAdViewController.h */,
+				3ED7EF277737DB1B814569E0 /* GUJGoogleNativeAdViewController.m */,
+				4C2F3DBF1B82220E008CDF95 /* GUJGoogleNativeContentAdView.xib */,
 				3ED7EE6D4BF1EF6D6347D751 /* GUJSettingsViewController.h */,
 				3ED7E1B00B7B1B1A2B24F7C4 /* GUJSettingsViewController.m */,
 				3ED7E1801D271309C5EB49D5 /* GUJVideoAdViewController.h */,
 				3ED7E1DD3F12F8D46D05E220 /* GUJVideoAdViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				1809D4A41EB0BAE500F4DE4D /* GUJPubMaticViewController.h */,
+				1809D4A51EB0BAE500F4DE4D /* GUJPubMaticViewController.m */,
+				18EA04D81EE0576300F83ED0 /* GUJNativeAdViewController.h */,
+				18EA04D91EE0576300F83ED0 /* GUJNativeAdViewController.m */,
+				8B3F2B0C1F13697900B68F07 /* GUJIQAdViewController.h */,
+				8B3F2B0D1F13697900B68F07 /* GUJIQAdViewController.m */,
 			);
 			name = "Example for gujemsiossdk";
 			path = gujemsiossdk;
@@ -197,6 +214,7 @@
 				6003F596195388D20070C39A /* InfoPlist.strings */,
 				6003F599195388D20070C39A /* main.m */,
 				6003F59B195388D20070C39A /* gujemsiossdk-Prefix.pch */,
+				1825517E1ECCA2F20076A8DE /* LaunchScreen.storyboard */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -237,12 +255,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "gujemsiossdk_Example" */;
 			buildPhases = (
-				FC35C60F49996A8CA06A61C2 /* [CP] Check Pods Manifest.lock */,
+				182642931BBC3FD32F6A6C01 /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				0EAAAB5F9685FF51ED235AF4 /* [CP] Embed Pods Frameworks */,
-				CEDE1BA4CF93E3D177B0AF17 /* [CP] Copy Pods Resources */,
+				54B94045BDE3B282356DC1E0 /* [CP] Embed Pods Frameworks */,
+				1302148C109E2CD48950286C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,12 +275,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "gujemsiossdk_Tests" */;
 			buildPhases = (
-				59B2B41820F631EE0DA38000 /* [CP] Check Pods Manifest.lock */,
+				FBF8F70613FADC851EA7CBCA /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				3D70792D7C0D1C989E7F964A /* [CP] Embed Pods Frameworks */,
-				FBCD5F0EE16222CAD4DE7A02 /* [CP] Copy Pods Resources */,
+				F3578253DB301BCE440173DF /* [CP] Embed Pods Frameworks */,
+				600AC4357EDCAAFAA0D37B5B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -285,7 +303,8 @@
 				ORGANIZATIONNAME = "Michael Brügmann";
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = 8KNGYC2JYD;
+						DevelopmentTeam = F89AVEEKGL;
+						ProvisioningStyle = Automatic;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -319,7 +338,8 @@
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				3ED7EC1B5F00407CAB12039B /* Main.storyboard in Resources */,
-				4C2F3DC01B82220E008CDF95 /* GUJNativeContentAdView.xib in Resources */,
+				1825517F1ECCA2F20076A8DE /* LaunchScreen.storyboard in Resources */,
+				4C2F3DC01B82220E008CDF95 /* GUJGoogleNativeContentAdView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,52 +354,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0EAAAB5F9685FF51ED235AF4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3D70792D7C0D1C989E7F964A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		59B2B41820F631EE0DA38000 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		CEDE1BA4CF93E3D177B0AF17 /* [CP] Copy Pods Resources */ = {
+		1302148C109E2CD48950286C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -394,7 +369,37 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FBCD5F0EE16222CAD4DE7A02 /* [CP] Copy Pods Resources */ = {
+		182642931BBC3FD32F6A6C01 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		54B94045BDE3B282356DC1E0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		600AC4357EDCAAFAA0D37B5B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -409,7 +414,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FC35C60F49996A8CA06A61C2 /* [CP] Check Pods Manifest.lock */ = {
+		F3578253DB301BCE440173DF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBF8F70613FADC851EA7CBCA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -433,11 +453,14 @@
 			files = (
 				6003F59E195388D20070C39A /* GUJAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* GUJBannerViewController.m in Sources */,
+				8B3F2B0E1F13697900B68F07 /* GUJIQAdViewController.m in Sources */,
+				1809D4A61EB0BAE500F4DE4D /* GUJPubMaticViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				18EA04DA1EE0576300F83ED0 /* GUJNativeAdViewController.m in Sources */,
 				4C3A2D301C71F2D6009AC989 /* GUJInflowAdViewController.m in Sources */,
 				3ED7E4E65DE33DBB6B0E6070 /* GUJSettingsViewController.m in Sources */,
 				3ED7E09BD4247630AED2213A /* GUJInterstitialViewController.m in Sources */,
-				3ED7E725EB1D521C1C8782A5 /* GUJNativeAdViewController.m in Sources */,
+				3ED7E725EB1D521C1C8782A5 /* GUJGoogleNativeAdViewController.m in Sources */,
 				3ED7E3B2FFC5F3F49D7187BB /* GUJVideoAdViewController.m in Sources */,
 				3ED7EF53B050D427DDD1D914 /* GUJFacebookNativeAdViewController.m in Sources */,
 			);
@@ -555,13 +578,14 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2370FE1AD4CD85C317F933D5 /* Pods-gujemsiossdk_Example.debug.xcconfig */;
+			baseConfigurationReference = 655AA1421ED8341D7C3BF325 /* Pods-gujemsiossdk_Example.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = F89AVEEKGL;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gujemsiossdk/gujemsiossdk-Prefix.pch";
@@ -580,8 +604,9 @@
 				);
 				INFOPLIST_FILE = "gujemsiossdk/gujemsiossdk-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					"`$(inherited)`",
+					"$(inherited)",
 					"\"${PROJECT_DIR}/gujemsiossdk\"/**",
 					"\"${PROJECT_DIR}/../Pod/Assets\"/**",
 				);
@@ -589,10 +614,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"Bolts\"",
-					"-l\"FBSDKCoreKit\"",
-					"-l\"FBSDKLoginKit\"",
-					"-l\"FBSDKShareKit\"",
 					"-l\"gujemsiossdk\"",
 					"-framework",
 					"\"AVFoundation\"",
@@ -639,8 +660,6 @@
 					"-framework",
 					"\"SystemConfiguration\"",
 					"-framework",
-					"\"TeadsSDK\"",
-					"-framework",
 					"\"UIKit\"",
 					"-weak_framework",
 					"\"Accounts\"",
@@ -669,8 +688,10 @@
 					"-weak_framework",
 					"\"WebKit\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.generationdigitale.apps.ios.gujemsiossdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -678,13 +699,14 @@
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9117DF57FFC5CDC7D986406D /* Pods-gujemsiossdk_Example.release.xcconfig */;
+			baseConfigurationReference = B1466FAC1F3DAAF25BFEEC3A /* Pods-gujemsiossdk_Example.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = F89AVEEKGL;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gujemsiossdk/gujemsiossdk-Prefix.pch";
@@ -703,8 +725,9 @@
 				);
 				INFOPLIST_FILE = "gujemsiossdk/gujemsiossdk-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
-					"`$(inherited)`",
+					"$(inherited)",
 					"\"${PROJECT_DIR}/gujemsiossdk\"/**",
 					"\"${PROJECT_DIR}/../Pod/Assets\"/**",
 				);
@@ -712,10 +735,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"Bolts\"",
-					"-l\"FBSDKCoreKit\"",
-					"-l\"FBSDKLoginKit\"",
-					"-l\"FBSDKShareKit\"",
 					"-l\"gujemsiossdk\"",
 					"-framework",
 					"\"AVFoundation\"",
@@ -762,8 +781,6 @@
 					"-framework",
 					"\"SystemConfiguration\"",
 					"-framework",
-					"\"TeadsSDK\"",
-					"-framework",
 					"\"UIKit\"",
 					"-weak_framework",
 					"\"Accounts\"",
@@ -792,8 +809,10 @@
 					"-weak_framework",
 					"\"WebKit\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.generationdigitale.apps.ios.gujemsiossdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -801,7 +820,7 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3969CA753A9AEA0B02F55DC /* Pods-gujemsiossdk_Tests.debug.xcconfig */;
+			baseConfigurationReference = 7DE75EA9C62B064EFDE360E7 /* Pods-gujemsiossdk_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -824,7 +843,7 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11C8D81BDD2F2327405692CB /* Pods-gujemsiossdk_Tests.release.xcconfig */;
+			baseConfigurationReference = 978E071CCB8E9A1675F06CA6 /* Pods-gujemsiossdk_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

@@ -67,7 +67,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
 @end
 
 
-@interface GUJAdViewContext () <GADNativeContentAdLoaderDelegate, GADBannerViewDelegate, GADInterstitialDelegate>
+@interface GUJAdViewContext () <GADNativeContentAdLoaderDelegate, GADBannerViewDelegate, GADInterstitialDelegate, GADAppEventDelegate>
 
 @end
 
@@ -359,7 +359,8 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
     self.bannerView.adUnitID = self.adUnitId;
     self.bannerView.rootViewController = self.rootViewController;
     self.bannerView.delegate = self;
-
+    self.bannerView.appEventDelegate = self;
+    
     DFPRequest *request = [self createRequest];
 
     if ([self.delegate respondsToSelector:@selector(bannerViewInitialized:)]) {
@@ -376,10 +377,9 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
         [self.delegate bannerViewWillLoadAdDataForContext:self];
     }
     [self.bannerView loadRequest:request];
-
+    
     return self.bannerView;
 }
-
 
 - (void)adViewWithOrigin:(CGPoint)origin completion:(adViewCompletion)completion {
     adViewCompletionHandler = completion;
@@ -585,6 +585,13 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
 - (void)adViewWillLeaveApplication:(GADBannerView *)bannerView {
     if ([self.delegate respondsToSelector:@selector(bannerViewWillLeaveApplicationForContext:)]) {
         [self.delegate bannerViewWillLeaveApplicationForContext:self];
+    }
+}
+
+- (void)adView:(GADBannerView *)banner didReceiveAppEvent:(NSString *)name
+      withInfo:(NSString *GAD_NULLABLE_TYPE)info {
+    if ([self.delegate respondsToSelector:@selector(bannerViewDidRecieveEventForContext:eventName:withInfo:)]) {
+        [self.delegate bannerViewDidRecieveEventForContext:self eventName:name withInfo:info];
     }
 }
 

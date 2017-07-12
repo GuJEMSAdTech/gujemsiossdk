@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<style>
+		body { margin: 0; }
+		#container {
+			-webkit-transition: none !important;
+			transition: none !important;
+		}
+	</style>
+	
+	<script>
+		var scLogs = [];
+		(function () {
+			var log = console.log;
+			console.log = function () {
+				var args = Array.prototype.slice.call(arguments)
+				log.apply(this, args);
+				scLogs.push(args);
+			};
+		 }());
+	</script>
+</head>
+<body>
+
+<div id="container"></div>
+<script src="https://dco.smartclip.net/?type=scm&aid=%@"></script>
+
+</body>
+</html>

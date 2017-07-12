@@ -32,7 +32,14 @@
     __weak IBOutlet UITextField *adSpaceIdTextField;
     __weak IBOutlet UIButton *convertButton;
     __weak IBOutlet UILabel *positionLabel;
-    __weak IBOutlet UITextField *teadsPlacementIdTextField;
+    
+    __weak IBOutlet UITextField *facebookAdUnitTextField;
+    __weak IBOutlet UITextField *pubmaticPublisherIdTextField;
+    __weak IBOutlet UITextField *pubmaticAdUnitTextField;
+    __weak IBOutlet UITextField *nativeBaseUrlTextField;
+    
+    __weak IBOutlet UITextField *smartClipUrlField;
+    __weak IBOutlet UITextField *iqAppEventsAdUnitField;
 }
 
 
@@ -48,14 +55,40 @@
     [self initSettingsFromUserDefaults];
 
     adUnitIdTextField.delegate = self;
+    
+    
+    
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
     [self saveSettingsToUserDefaults];
     [self resetAdspaceIdConverter];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
 }
 
 - (void)resetAdspaceIdConverter {
@@ -83,16 +116,19 @@
 
 
 - (void)dismissKeyboard {
-    [adUnitIdTextField resignFirstResponder];
-    [adSpaceIdTextField resignFirstResponder];
-    [teadsPlacementIdTextField resignFirstResponder];
+    [self.view endEditing:YES];
 }
 
 
 -(void)saveSettingsToUserDefaults {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:adUnitIdTextField.text forKey:AD_UNIT_USER_DEFAULTS_KEY];
-    [userDefaults setObject:teadsPlacementIdTextField.text forKey:TEADS_PLACEMENT_ID_USER_DEFAULTS_KEY];
+    [userDefaults setObject:facebookAdUnitTextField.text forKey:FACEBOOK_AD_UNIT_USER_DEFAULTS_KEY];
+    [userDefaults setObject:pubmaticPublisherIdTextField.text forKey:PUBMATIC_PUBLISHER_USER_DEFAULTS_KEY];
+    [userDefaults setObject:pubmaticAdUnitTextField.text forKey:PUBMATIC_AD_UNIT_USER_DEFAULTS_KEY];
+    [userDefaults setObject:nativeBaseUrlTextField.text forKey:NATIVE_BASE_URI_USER_DEFAULTS_KEY];
+    [userDefaults setObject:smartClipUrlField.text forKey:SMART_CLIP_URL_USER_DEFAULTS_KEY];
+    [userDefaults setObject:iqAppEventsAdUnitField.text forKey:IQ_APP_EVENTS_AD_UNIT_USER_DEFAULTS_KEY];
     [userDefaults synchronize];
 }
 
@@ -100,12 +136,74 @@
 -(void)initSettingsFromUserDefaults {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     adUnitIdTextField.text = [userDefaults objectForKey:AD_UNIT_USER_DEFAULTS_KEY];
-    teadsPlacementIdTextField.text = [userDefaults objectForKey:TEADS_PLACEMENT_ID_USER_DEFAULTS_KEY];
+    facebookAdUnitTextField.text = [userDefaults objectForKey:FACEBOOK_AD_UNIT_USER_DEFAULTS_KEY];
+    pubmaticPublisherIdTextField.text = [userDefaults objectForKey:PUBMATIC_PUBLISHER_USER_DEFAULTS_KEY];
+    pubmaticAdUnitTextField.text = [userDefaults objectForKey:PUBMATIC_AD_UNIT_USER_DEFAULTS_KEY];
+    nativeBaseUrlTextField.text = [userDefaults objectForKey:NATIVE_BASE_URI_USER_DEFAULTS_KEY];
+    smartClipUrlField.text = [userDefaults objectForKey:SMART_CLIP_URL_USER_DEFAULTS_KEY];
+    iqAppEventsAdUnitField.text = [userDefaults objectForKey:IQ_APP_EVENTS_AD_UNIT_USER_DEFAULTS_KEY];
 }
 
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     [self resetAdspaceIdConverter];
+}
+
+
+#pragma mark Keyboard
+
+-(UIView *) findFirstResponderInView:(UIView *) view {
+    for (UIView *v in view.subviews) {
+        if (v.isFirstResponder) {
+            return v;
+        }
+        
+        UIView *recurciveView = [self findFirstResponderInView:v];
+        if (recurciveView) {
+            return recurciveView;
+        }
+    }
+    
+    return nil;
+}
+
+-(CGPoint) textfieldOrigin:(UIView *) view {
+    return [self.view convertPoint:view.frame.origin fromView:view.superview];
+}
+
+-(void)keyboardWillShow:(NSNotification *)notification
+{
+    NSDictionary* userInfo = [notification userInfo];
+    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    NSNumber *durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
+    
+    UIView *text = [self findFirstResponderInView:self.view];
+    if (text) {
+        CGPoint textOrigin = [self textfieldOrigin:text];
+        
+        CGFloat endTextPoint = self.view.frame.size.height - (self.view.frame.size.height - textOrigin.y - text.frame.size.height);
+        CGFloat keyboardPoint = self.view.frame.size.height - keyboardSize.height;
+        
+        if (endTextPoint > keyboardPoint) {
+            [UIView animateWithDuration:durationValue.doubleValue animations:^{
+                CGRect frame = self.view.frame;
+                frame.origin.y = 0 - (endTextPoint - keyboardPoint) - 10;
+                self.view.frame = frame;
+            }];
+        }
+    }
+}
+
+-(void)keyboardWillHide:(NSNotification *)notification
+{
+    NSDictionary* userInfo = [notification userInfo];
+    NSNumber *durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
+    
+    [UIView animateWithDuration:durationValue.doubleValue animations:^{
+        CGRect frame = self.view.frame;
+        frame.origin.y = 0;
+        self.view.frame = frame;
+    }];
 }
 
 

@@ -122,6 +122,10 @@
 - (void)bannerViewWillLeaveApplicationForContext:(GUJAdViewContext *)context;
 
 
+- (void)bannerViewDidRecieveEventForContext:(GUJAdViewContext *)context eventName:(NSString *)name
+                                   withInfo:(NSString *)info;
+
+
 #pragma mark - Interstitial Views
 
 /*!
@@ -239,6 +243,7 @@
  @param bannerView The adView object
  */
 -(void)nativeContentAdLoaderDidLoadDataForContext:(GUJAdViewContext *)context;
+
 
 
 

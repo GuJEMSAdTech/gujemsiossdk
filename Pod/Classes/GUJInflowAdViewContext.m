@@ -26,9 +26,24 @@
 
 #import "GUJInflowAdViewContext.h"
 
+
+typedef NS_ENUM(NSInteger, GUJInflowAdType) {
+    GUJInflowAdTypeNone,
+    GUJInflowAdTypeIMA,
+    GUJInflowAdTypeSmartClip
+};
+
+@interface GUJInflowAdViewContext ()
+
+@property (nonatomic) GUJInflowAdType adType;
+
+@property(nonatomic, strong) SCMobileSDKController *smartClipVC;
+
+@end
+
 @implementation GUJInflowAdViewContext {
     id <UIScrollViewDelegate> originalScrollViewDelegate;
-    BOOL adViewExpanded, adViewExpanding, adLoaded, adStarted, wasClosedByUser, pausedAtTheEnd;
+    BOOL adViewExpanded, adViewExpanding, adStarted, wasClosedByUser, pausedAtTheEnd;
     IMAAdsLoader *_adsLoader;
     IMAAdsManager *_adsManager;
 
@@ -40,9 +55,9 @@
     UIButton *closeButton;
     UIButton *replayButton;
 
-    TeadsAd *teadsAd;
-
     NSString *originalAudioSessionCategory;
+    
+    BOOL isAdLoaded;
 }
 
 
@@ -50,7 +65,7 @@
                 inFlowAdPlaceholderView:(UIView *)inFlowAdPlaceholderView
 inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholderViewHeightConstraint
                             dfpAdunitId:(NSString *)dfpAdunitId
-                       teadsPlacementId:(NSString *)teadsPlacementId {
+                           smartClipUrl:(NSString *)smartClipUrl {
     self = [super init];
     if (self) {
         self.scrollView = scrollView;
@@ -61,8 +76,9 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
         self.inFlowAdPlaceholderView.clipsToBounds = YES;
 
         self.dfpAdunitId = dfpAdunitId;
-        self.teadsPlacementId = teadsPlacementId;
 
+        self.smartClipUrl = smartClipUrl;
+        
         _adsLoader = [[IMAAdsLoader alloc] initWithSettings:nil];
         _adsLoader.delegate = self;
 
@@ -86,11 +102,8 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     originalScrollViewDelegate = self.scrollView.delegate;
     self.scrollView.delegate = self;
 
-    if (teadsAd.isLoaded) {
-        [teadsAd viewControllerAppeared:self.findInFlowAdPlaceholderViewsViewController];
-    }
     if (adStarted && !pausedAtTheEnd) {
-        [_adsManager resume];
+        [self playAd];
     }
 }
 
@@ -99,11 +112,8 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     self.scrollView.delegate = originalScrollViewDelegate;
 
-    if (teadsAd.isLoaded) {
-        [teadsAd viewControllerDisappeared:self.findInFlowAdPlaceholderViewsViewController];
-    }
     if (adStarted) {
-        [_adsManager pause];
+        [self pauseAd];
     }
 }
 
@@ -122,15 +132,15 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
             self.scrollView.frame.size.width,
             self.scrollView.frame.size.height);
 
-    if (adLoaded && !adViewExpanded && !wasClosedByUser && CGRectIntersectsRect(adViewRect, scrollViewRect)) {
-        [self expandAdView:YES];
+    if (isAdLoaded && !adViewExpanded && !wasClosedByUser && CGRectIntersectsRect(adViewRect, scrollViewRect)) {
+        //[self expandAdView:YES];
     }
 
     if (adViewExpanded && adStarted && !pausedAtTheEnd) {
         if (CGRectIntersectsRect(adViewRect, scrollViewRect)) {
-            [_adsManager resume];
+            [self playAd];
         } else {
-            [_adsManager pause];
+            [self pauseAd];
         }
     }
 }
@@ -146,13 +156,34 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
         [UIView animateWithDuration:0.7f delay:0.2f options:UIViewAnimationOptionAllowUserInteraction animations:^{
             [self.inFlowAdPlaceholderView.superview layoutIfNeeded];
         }                completion:^(BOOL finished) {
-            if (adLoaded) {
-                [_adsManager resume];
+            if (isAdLoaded) {
+                [self playAd];
                 adStarted = YES;
             }
             adViewExpanding = NO;
             adViewExpanded = expand;
         }];
+    }
+}
+
+
+-(void) playAd {
+    if (self.adType == GUJInflowAdTypeIMA) {
+        [_adsManager resume];
+    }
+    
+    if (self.adType == GUJInflowAdTypeSmartClip) {
+        [self.smartClipVC playAd];
+    }
+}
+
+-(void) pauseAd {
+    if (self.adType == GUJInflowAdTypeIMA) {
+        [_adsManager pause];
+    }
+    
+    if (self.adType == GUJInflowAdTypeSmartClip) {
+        [self.smartClipVC pauseAd];
     }
 }
 
@@ -295,7 +326,6 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     [self.inFlowAdPlaceholderView addSubview:closeButton];
 }
 
-
 #pragma mark AdsLoader Delegates
 
 - (void)adsLoader:(IMAAdsLoader *)loader adsLoadedWithData:(IMAAdsLoadedData *)adsLoadedData {
@@ -309,61 +339,40 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
     avPlayer = [self discoverAVPlayer];
     avPlayer.muted = YES;
-
-    [self performSelector:@selector(fallbackToTeadsAfter2SecondTimeout) withObject:nil afterDelay:2];
-}
-
-
-// todo: Due to a bug in the IMA SDK the didReceiveAdError callback is not fired for some empty vast responses.
-// That's why we use a timeout here to see, if something was loaded.
-// Remove after this was fixed in the IMA SDK!
-- (void)fallbackToTeadsAfter2SecondTimeout {
-    NSLog(@"No ads loaded before timeout...");
-    [self fallbackToTeads];
-}
-
-
-- (void)fallbackToTeads {
-    if (self.teadsPlacementId == nil) {
-        NSLog(@"No teads placement ID configured.");
-    } else {
-        NSLog(@"Using Teads Ads as fallback.");
-        [_adsManager destroy];
-        teadsAd = [[TeadsAd alloc] initInReadWithPlacementId:self.teadsPlacementId
-                                                       placeholder:self.inFlowAdPlaceholderView
-                                                  heightConstraint:self.inFlowAdPlaceholderViewHeightConstraint
-                                                        scrollView:self.scrollView
-                                                          delegate:self.teadsAdDelegate];
-        [teadsAd load];
-    }
+    
+    [self performSelector:@selector(fallbackRequestAfter2SecondTimeout) withObject:nil afterDelay:2];
 }
 
 
 - (void)adsLoader:(IMAAdsLoader *)loader failedWithErrorData:(IMAAdLoadingErrorData *)adErrorData {
     // Something went wrong loading ads. May be no fill.
     NSLog(@"failedWithErrorData: %@", adErrorData.adError.message);
-
-    [self fallbackToTeads];
-
+    
+    [self requestSmartClipAd];
 }
 
 
 #pragma mark AdsManager Delegate
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdEvent:(IMAAdEvent *)event {
-
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];  // cancel fallbackToTeadsAfter2SecondTimeout
-
+    
     if (event.type == kIMAAdEvent_LOADED) {
-        adLoaded = YES;
+        
+        self.adType = GUJInflowAdTypeIMA;
+        
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];  // cancel fallbackRequestAfter2SecondTimeout
+        
+        isAdLoaded = YES;
         if (adViewExpanded) {
             adStarted = YES;
+        } else {
+            [self expandAdView:YES];
         }
     }
 
     if (event.type == kIMAAdEvent_STARTED) {
         if (!adViewExpanded) {
-            [_adsManager pause];  // pause until view is expanded
+            [self pauseAd];  // pause until view is expanded
         }
         [self addUnmuteButton];
     }
@@ -376,7 +385,8 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdError:(IMAAdError *)error {
     // Something went wrong with the ads manager after ads were loaded. Log the error.
     NSLog(@"didReceiveAdError: %@", error.message);
-    [self fallbackToTeads];
+    
+    [self requestSmartClipAd];
 }
 
 
@@ -466,5 +476,65 @@ adDidProgressToTime:(NSTimeInterval)mediaTime
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
     [originalScrollViewDelegate scrollViewDidScrollToTop:scrollView];
 }
+
+
+
+#pragma mark SmartClip
+
+// todo: Due to a bug in the IMA SDK the didReceiveAdError callback is not fired for some empty vast responses.
+// That's why we use a timeout here to see, if something was loaded.
+// Remove after this was fixed in the IMA SDK!
+- (void)fallbackRequestAfter2SecondTimeout {
+    NSLog(@"No ads loaded before timeout...");
+    [self requestSmartClipAd];
+}
+
+-(void) requestSmartClipAd {
+    
+    if (self.smartClipUrl == nil) {
+        NSLog(@"No Smart Clip URL configured.");
+    } else {
+        NSLog(@"Using Smart Clip as fallback.");
+        [_adsManager destroy];
+    
+        self.adType = GUJInflowAdTypeSmartClip;
+
+        UIView *view = [[UIView alloc] initWithFrame:self.inFlowAdPlaceholderView.bounds];
+        view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self.inFlowAdPlaceholderView addSubview:view];
+
+        self.smartClipVC = [[SCMobileSDKController alloc] initWithAnchor:view adURL:self.smartClipUrl];
+        self.smartClipVC.delegate = self;
+    }
+}
+
+
+- (void)onEndCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
+    NSLog(@"onEndCallbackWithController");
+    [self expandAdView:NO];
+}
+- (void)onStartCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
+    NSLog(@"onStartCallbackWithController");
+    [self expandAdView:YES];
+}
+
+- (void)onPrefetchCompleteCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
+    NSLog(@"onPrefetchCompleteCallbackWithController");
+    
+    isAdLoaded = YES;
+}
+
+- (void)onCappedCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
+    NSLog(@"onCappedCallbackWithController");
+}
+
+- (BOOL)onClickthruWithController:(SCMobileSDKController * _Nonnull)controller targetURL:(NSURL * _Nonnull)targetURL {
+    NSLog(@"onClickthruWithController");
+    
+    [controller pauseAd];
+    
+    return NO;
+}
+
 
 @end

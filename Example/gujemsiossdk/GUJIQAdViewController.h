@@ -1,5 +1,5 @@
 //
-//  GUJNativeAdViewController.h
+//  GUJIQAdViewController.h
 //  gujemsiossdk
 //
 //  
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GUJNativeAdViewController : UIViewController
+@interface GUJIQAdViewController : UIViewController
 
 @end

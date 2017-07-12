@@ -2,10 +2,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'gujemsiossdk_Example' do
   pod "gujemsiossdk", :path => "../"
-  pod 'FBAudienceNetwork'
-  pod 'FBSDKCoreKit'
-  pod 'FBSDKLoginKit'
-  pod 'FBSDKShareKit'
+  #pod 'FBAudienceNetwork'
+  #pod 'FBSDKCoreKit'
+  #pod 'FBSDKLoginKit'
+  #pod 'FBSDKShareKit'
 
 end
 
