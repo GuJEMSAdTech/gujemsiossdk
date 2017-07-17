@@ -74,7 +74,7 @@
 - (void)loadBannerViewWithBids:(NSDictionary*)bids {
     
     PMBid *bid = [bids valueForKey:[self adUnitId]];
-    NSLog(@"Creatives: %@", bids.description);
+    //NSLog(@"Creatives: %@", bids.description);
     
     NSMutableDictionary *targeting = [NSMutableDictionary dictionaryWithDictionary:self.adViewContext.customTargetingDict];
     if (bid) {
@@ -110,7 +110,9 @@
 
 - (void)prefetchManager:(PMPrefetchManager *)prefetchManager didReceiveBids:(NSDictionary *)bids
 {
-    [self loadBannerViewWithBids:bids];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self loadBannerViewWithBids:bids];
+    });
 }
 
 - (void)prefetchManager:(PMPrefetchManager *)prefetchManager didFailWithError:(NSError *)error
