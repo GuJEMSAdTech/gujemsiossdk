@@ -42,13 +42,12 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
     NSString *dfpAdunitId = [userDefaults objectForKey:AD_UNIT_USER_DEFAULTS_KEY];
-    NSString *smartClipUrl = [userDefaults objectForKey:SMART_CLIP_URL_USER_DEFAULTS_KEY];
+    //NSString *smartClipUrl = [userDefaults objectForKey:SMART_CLIP_URL_USER_DEFAULTS_KEY];
     
     inflowAdViewContext = [[GUJInflowAdViewContext alloc] initWithScrollView:scrollView
                                                      inFlowAdPlaceholderView:inFlowAdPlaceholderView
                                      inFlowAdPlaceholderViewHeightConstraint:inFlowAdPlaceholderViewHeightConstraint
                                                                  dfpAdunitId:dfpAdunitId
-                                                                smartClipUrl:smartClipUrl
     ];
 }
 

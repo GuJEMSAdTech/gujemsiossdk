@@ -351,26 +351,8 @@ Amobee Ad Space ID:</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smartclip Ad Url" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjI-xM-fjM">
-                                <rect key="frame" x="16" y="511" width="343" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="PvP-ft-eVI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wrl-dI-mdV">
-                                <rect key="frame" x="16" y="531" width="343" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="KnB-Si-3of"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iq digital app events Ad Unit Id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izi-4t-vhk">
-                                <rect key="frame" x="16" y="573" width="343" height="15"/>
+                                <rect key="frame" x="16" y="511" width="343" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="uJh-5y-mPl"/>
                                 </constraints>
@@ -379,7 +361,7 @@ Amobee Ad Space ID:</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="chB-JN-T13">
-                                <rect key="frame" x="16" y="593" width="343" height="27"/>
+                                <rect key="frame" x="16" y="531" width="343" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="HWK-13-fRv"/>
                                 </constraints>
@@ -388,7 +370,7 @@ Amobee Ad Space ID:</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icons made by Plainicon and Freepik from www.flaticon.com are licensed under CC BY 3.0" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRZ-hM-Aaa">
-                                <rect key="frame" x="32" y="642" width="311" height="34"/>
+                                <rect key="frame" x="32" y="580" width="311" height="34"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" red="0.50430082070707072" green="0.50430082070707072" blue="0.50430082070707072" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -397,22 +379,19 @@ Amobee Ad Space ID:</string>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="MSe-jF-Aou" secondAttribute="trailing" constant="16" id="0TI-IW-U8q"/>
-                            <constraint firstAttribute="trailing" secondItem="zjI-xM-fjM" secondAttribute="trailing" constant="16" id="2Nx-Kr-boz"/>
                             <constraint firstAttribute="trailing" secondItem="chB-JN-T13" secondAttribute="trailing" constant="16" id="2rN-7y-1Jx"/>
                             <constraint firstAttribute="trailing" secondItem="fHb-aP-vfn" secondAttribute="trailing" constant="16" id="5At-jm-fBM"/>
                             <constraint firstItem="TnK-la-5NW" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="9ew-iJ-w4Z"/>
                             <constraint firstItem="MSe-jF-Aou" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="ACU-ft-O1t"/>
                             <constraint firstItem="Hko-vQ-ugx" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="AbB-Gs-ciq"/>
-                            <constraint firstItem="zjI-xM-fjM" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="EEx-kU-ay8"/>
-                            <constraint firstItem="zjI-xM-fjM" firstAttribute="top" secondItem="DBj-sl-K1z" secondAttribute="bottom" constant="20" id="Fxw-85-ACK"/>
                             <constraint firstItem="d0n-d3-lbH" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="H40-tk-dkt"/>
-                            <constraint firstAttribute="trailing" secondItem="Wrl-dI-mdV" secondAttribute="trailing" constant="16" id="I9Y-O2-wzm"/>
                             <constraint firstItem="Izi-4t-vhk" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="IQ8-dZ-tZc"/>
                             <constraint firstItem="fHb-aP-vfn" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="MAF-Jr-11S"/>
                             <constraint firstItem="vRZ-hM-Aaa" firstAttribute="top" secondItem="chB-JN-T13" secondAttribute="bottom" constant="22" id="N7L-hi-8tb"/>
                             <constraint firstAttribute="trailing" secondItem="6rH-9b-4zD" secondAttribute="trailing" constant="16" id="PDv-lS-hSt"/>
                             <constraint firstAttribute="trailing" secondItem="Hko-vQ-ugx" secondAttribute="trailing" constant="16" id="QCV-zs-2kj"/>
                             <constraint firstItem="fHb-aP-vfn" firstAttribute="top" secondItem="2bM-9b-FIZ" secondAttribute="bottom" constant="8" id="Qtd-pd-gHb"/>
+                            <constraint firstItem="Izi-4t-vhk" firstAttribute="top" secondItem="DBj-sl-K1z" secondAttribute="bottom" constant="20" id="Rsz-u0-443"/>
                             <constraint firstAttribute="trailing" secondItem="Izi-4t-vhk" secondAttribute="trailing" constant="16" id="SK7-nf-GqL"/>
                             <constraint firstItem="DBj-sl-K1z" firstAttribute="top" secondItem="TnK-la-5NW" secondAttribute="bottom" constant="5" id="TdA-5N-x9C"/>
                             <constraint firstItem="2bM-9b-FIZ" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="TyH-AV-XUE"/>
@@ -422,14 +401,11 @@ Amobee Ad Space ID:</string>
                             <constraint firstItem="K6P-JZ-edE" firstAttribute="top" secondItem="qQE-xb-Noi" secondAttribute="bottom" constant="20" id="XoY-Cf-Bea"/>
                             <constraint firstItem="DBj-sl-K1z" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="YH4-Wa-L3u"/>
                             <constraint firstAttribute="trailing" secondItem="DBj-sl-K1z" secondAttribute="trailing" constant="16" id="ZwB-9z-CUa"/>
-                            <constraint firstItem="Wrl-dI-mdV" firstAttribute="top" secondItem="zjI-xM-fjM" secondAttribute="bottom" constant="5" id="bU0-Lm-lSF"/>
                             <constraint firstItem="dS7-iL-HyU" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="bwr-S8-bWg"/>
                             <constraint firstItem="6rH-9b-4zD" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="cxF-0J-Ho3"/>
                             <constraint firstItem="2bM-9b-FIZ" firstAttribute="top" secondItem="Hko-vQ-ugx" secondAttribute="bottom" constant="5" id="enC-wg-mPf"/>
                             <constraint firstItem="6rH-9b-4zD" firstAttribute="top" secondItem="K6P-JZ-edE" secondAttribute="bottom" constant="5" id="fVW-Tl-oXK"/>
-                            <constraint firstItem="Wrl-dI-mdV" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="gRE-JE-XQE"/>
                             <constraint firstItem="K6P-JZ-edE" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="hkT-Q8-r9o"/>
-                            <constraint firstItem="Izi-4t-vhk" firstAttribute="top" secondItem="Wrl-dI-mdV" secondAttribute="bottom" constant="15" id="i7z-nR-bzj"/>
                             <constraint firstAttribute="trailing" secondItem="d0n-d3-lbH" secondAttribute="trailing" constant="16" id="iTQ-Iq-ABJ"/>
                             <constraint firstAttribute="trailing" secondItem="K6P-JZ-edE" secondAttribute="trailing" constant="16" id="jdX-KY-w3l"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vRZ-hM-Aaa" secondAttribute="trailing" constant="16" id="k5c-I0-Cx8"/>
@@ -460,7 +436,6 @@ Amobee Ad Space ID:</string>
                         <outlet property="positionLabel" destination="2bM-9b-FIZ" id="9qv-QS-FHD"/>
                         <outlet property="pubmaticAdUnitTextField" destination="6rH-9b-4zD" id="Qcd-eK-xHL"/>
                         <outlet property="pubmaticPublisherIdTextField" destination="qQE-xb-Noi" id="fgR-hI-RaP"/>
-                        <outlet property="smartClipUrlField" destination="Wrl-dI-mdV" id="qy8-bS-cfp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfQ-Sv-Bp2" userLabel="First Responder" sceneMemberID="firstResponder"/>

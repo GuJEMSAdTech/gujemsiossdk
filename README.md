@@ -583,6 +583,8 @@ Connect the views and the autolayout constraint as outlets to your view controll
     ];
 }
 ```
+
+If there will not be an ad on DFP server, ad will be loaded from Smart Clip service. <SMART CLIP URL> is link for ad on Smart Clip
  
 Then in the `viewDidAppear` method call:
  

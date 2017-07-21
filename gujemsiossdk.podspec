@@ -36,9 +36,8 @@ Pod::Spec.new do |s|
     'gujemsiossdk' => ['Pod/Assets/*.xml', 'Pod/Assets/*.png']
   }
 
-  s.vendored_frameworks = 'Pod/Assets/SCMobileSDK.framework'
-  # s.vendored_frameworks = 'Pod/Assets/TeadsSDK.framework'
-  # s.resource = "Pod/Assets/TeadsSDKResources.bundle"
+
+  #s.vendored_frameworks = 'Pod/Assets/SCMobileSDK.framework'
 
   s.public_header_files = 'Pod/Classes/*.h'
   s.frameworks = 'CoreMedia', 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation', 'CoreTelephony', 'MediaPlayer', 'SystemConfiguration'
@@ -46,7 +45,6 @@ Pod::Spec.new do |s|
   s.dependency 'Google-Mobile-Ads-SDK', '7.20'
   s.dependency 'GoogleMediaFramework', '~> 1.0'
   s.dependency 'FBAudienceNetwork'
-  #s.dependency 'PubMaticSDK'
   s.dependency 'PubMaticSDK-HB'
 
 end
