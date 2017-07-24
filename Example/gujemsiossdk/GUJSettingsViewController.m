@@ -107,7 +107,7 @@
         [[[UIAlertView alloc] initWithTitle:@"" message:@"Ad Space ID not found in mapping file." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     } else {
         adUnitIdTextField.text = adUnitId;
-        positionLabel.text = [NSString stringWithFormat:@"Position: %d %@", position, isIndex ? @"(index)" : @""];
+        positionLabel.text = [NSString stringWithFormat:@"Position: %ld %@", (long)position, isIndex ? @"(index)" : @""];
     }
    
     [self dismissKeyboard];

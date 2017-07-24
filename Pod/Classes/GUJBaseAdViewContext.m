@@ -75,12 +75,11 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
 
         locationManager = [[CLLocationManager alloc] init];
 
-        BOOL locationAllowed_iOS7 = [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized;
         BOOL locationAllowed_iOS8 = ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]
                 && ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse ||
                 [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways));
 
-        if (locationAllowed_iOS7 || locationAllowed_iOS8) {
+        if (locationAllowed_iOS8) {
 
             // we don't require a delegate and location updates
             // we simply take the last available location, if existing

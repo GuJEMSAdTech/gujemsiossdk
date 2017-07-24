@@ -78,9 +78,11 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
         _adsLoader.delegate = self;
 
         [self requestAds];
+        
+        originalAudioSessionCategory = [AVAudioSession sharedInstance].category;
+        [[AVAudioSession sharedInstance]setCategory:AVAudioSessionCategoryAmbient error:nil];
     }
-    originalAudioSessionCategory = [AVAudioSession sharedInstance].category;
-    [[AVAudioSession sharedInstance]setCategory:AVAudioSessionCategoryAmbient error:nil];
+    
     return self;
 }
 
