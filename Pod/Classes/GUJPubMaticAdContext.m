@@ -52,7 +52,7 @@
     PMSize *impSize = [PMSize sizeWithWidth:self.adSize.width height:self.adSize.height];
     NSString *impressionId = self.adUnitId;
     if (self.position > 0) {
-        impressionId = [impressionId stringByAppendingFormat:@"-%ld", self.position];
+        impressionId = [impressionId stringByAppendingFormat:@"-%ld", (long)self.position];
     }
     
     PMBannerImpression *impression = [[PMBannerImpression alloc] initWithImpressionId:impressionId slotName:self.adUnitId slotIndex:self.position sizes:impSize, nil];
@@ -78,7 +78,7 @@
     
     NSMutableDictionary *targeting = [NSMutableDictionary dictionaryWithDictionary:self.adViewContext.customTargetingDict];
     if (bid) {
-        [targeting setValuesForKeysWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:bid.impId, @"bidid",[NSString stringWithFormat:@"%d", bid.status.intValue], @"bidstatus", [NSString stringWithFormat:@"%f", bid.price], @"bid", bid.dealId, @"wdeal", nil]];
+        [targeting setValuesForKeysWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:bid.impId, @"bidid",[NSString stringWithFormat:@"%ld", (long)bid.status.integerValue], @"bidstatus", [NSString stringWithFormat:@"%f", bid.price], @"bid", bid.dealId, @"wdeal", nil]];
     }
     
     [self.adViewContext setCustomTargetingDict:targeting];
