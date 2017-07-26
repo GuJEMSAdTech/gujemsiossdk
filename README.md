@@ -55,7 +55,7 @@ Fixed version numbers for Google-Mobile-Ads-SDK and GoogleAds-IMA-iOS-SDK-For-Ad
  
 ## New in 3.2.0
 Version 3.2.0 includes the following updates:
-- In this version Teads has been removed, and SmartClip was added in return as it provides the opportunity to use mobile video ad.
+- In this version Teads has been removed
 - The current version includes updates for Facebook Audience Network SDK. The app can retrieve a facebook placement ID from the Google SDK, which is then handled by our SDK automatically.
 - We have added Pubmatic Header Bidding. With Pubmatic TKP it becomes possible to compare the DFP-Ad-Server with other campaigns over DFP mediation or a key-value-solution. 
 - Native Ad Functionality over XML has been implemented as an interface between the iOS SDK and a publisher server to request a XML-file. The XML-content can be used in a native ad view, which app developers can style individually (look & feel) in their apps.
@@ -535,8 +535,47 @@ self.bannerContext = [GUJPubMaticAdContext adWithAdUnitId:<YOUR ADUNIT ID> publi
  
 }
 ```
- 
- 
+
+
+
+#### Load native Facebook ad
+
+For loading a native Facebook ad use `GUJFacebookNativeAdManager`
+
+```objective-c
+self.adManager = [[GUJFacebookNativeAdManager alloc] init];
+self.adManager.delegate = self;
+[self.adManager loadWithAdUnitId:<YOUR ADUNIT ID> inController:self];
+```
+
+`GUJFacebookNativeAdManager` with delegate callbacks will return `FBNativeAd` object, or `GUJAdViewContext` if ad doesn't contain facebook placement id, or error
+
+```objective-c
+-(void) facebookNativeAdManager:(GUJFacebookNativeAdManager *) manager didLoadAdDataForContext:(GUJAdViewContext *)context {
+}
+
+-(void) facebookNativeAdManager:(GUJFacebookNativeAdManager *) manager didLoadNativeAd:(FBNativeAd *)nativeAd {
+}
+
+-(void) facebookNativeAdManager:(GUJFacebookNativeAdManager *) manager didFailWithError:(NSError *)error {
+} 
+```
+
+#### Iq Digital app events
+
+`GUJIQAdViewContext` can handle events in ad with callbacks:
+
+```objective-c
+-(void) iqAdView:(GUJIQAdViewContext *) viewContext didReceivedLog:(NSString *) log {
+}
+
+-(void) iqAdView:(GUJIQAdViewContext *) viewContext changeSize:(CGSize) size duration:(CGFloat) duration {
+}
+
+-(void) iqAdViewDidRemoveFromView:(GUJIQAdViewContext *) viewContext {
+}
+```
+
 #### loading video ads with the IMA iOS SDK
  
  
@@ -579,12 +618,10 @@ Connect the views and the autolayout constraint as outlets to your view controll
                                                      inFlowAdPlaceholderView:inFlowAdPlaceholderView
                                      inFlowAdPlaceholderViewHeightConstraint:inFlowAdPlaceholderViewHeightConstraint
                                                                  dfpAdunitId:<YOUR ADUNIT ID>
-                                                                smartClipUrl:<SMART CLIP URL>
     ];
 }
 ```
 
-If there will not be an ad on DFP server, ad will be loaded from Smart Clip service. <SMART CLIP URL> is link for ad on Smart Clip
  
 Then in the `viewDidAppear` method call:
  
