@@ -582,6 +582,7 @@ For detailed information see:
 ```
 
 The app events consist of a name and a "data" string.
+
 setsize event
 The setsize event is called to change the size of the ad webview of the ad position.
 The "data" string has the following format "width:height“. 
@@ -592,17 +593,23 @@ width – the new width of the ad webview in pixels (device-independent-pixels) 
 height – the new height of the ad webview in pixels (device-independent-pixels) as whole number. Exception: the value max is used for adjustment to the maximum available height.
 
 Call examples:
+
 "setsize","320:80" 	Ad webview is given the new size of 320x80 pixels
+
 "setsize","320:240" 	Ad webview is given the new size of 320x240 pixels
+
 "setsize","max:160" 		Ad webview is adjusted to the maximum available width and a height of 160 pixels.
+
 "setsize","max:max" 		Ad webview is adjusted to the maximum available width and the maximum available height.
 
 
 noad event
+
 The noad event is called to signal to the app that no booking is present for the position and the app should remove the ad position and the corresponding ad label.
 The "data" is not relevant for this event and can be ignored.
 
 log event
+
 The log event is called in order to write a message in the app log. This is for debug purposes.
 The "data" string contains the message that is to be entered in the log by the app.
 
