@@ -584,6 +584,7 @@ For detailed information see:
 The app events consist of a name and a "data" string.
 
 setsize event
+
 The setsize event is called to change the size of the ad webview of the ad position.
 The "data" string has the following format "width:height“. 
 	
