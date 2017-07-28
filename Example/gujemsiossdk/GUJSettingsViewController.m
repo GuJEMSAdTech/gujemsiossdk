@@ -34,8 +34,6 @@
     __weak IBOutlet UILabel *positionLabel;
     
     __weak IBOutlet UITextField *facebookAdUnitTextField;
-    __weak IBOutlet UITextField *pubmaticPublisherIdTextField;
-    __weak IBOutlet UITextField *pubmaticAdUnitTextField;
     __weak IBOutlet UITextField *nativeBaseUrlTextField;
     
     __weak IBOutlet UITextField *iqAppEventsAdUnitField;
@@ -123,8 +121,6 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:adUnitIdTextField.text forKey:AD_UNIT_USER_DEFAULTS_KEY];
     [userDefaults setObject:facebookAdUnitTextField.text forKey:FACEBOOK_AD_UNIT_USER_DEFAULTS_KEY];
-    [userDefaults setObject:pubmaticPublisherIdTextField.text forKey:PUBMATIC_PUBLISHER_USER_DEFAULTS_KEY];
-    [userDefaults setObject:pubmaticAdUnitTextField.text forKey:PUBMATIC_AD_UNIT_USER_DEFAULTS_KEY];
     [userDefaults setObject:nativeBaseUrlTextField.text forKey:NATIVE_BASE_URI_USER_DEFAULTS_KEY];
     [userDefaults setObject:iqAppEventsAdUnitField.text forKey:IQ_APP_EVENTS_AD_UNIT_USER_DEFAULTS_KEY];
     [userDefaults synchronize];
@@ -135,8 +131,6 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     adUnitIdTextField.text = [userDefaults objectForKey:AD_UNIT_USER_DEFAULTS_KEY];
     facebookAdUnitTextField.text = [userDefaults objectForKey:FACEBOOK_AD_UNIT_USER_DEFAULTS_KEY];
-    pubmaticPublisherIdTextField.text = [userDefaults objectForKey:PUBMATIC_PUBLISHER_USER_DEFAULTS_KEY];
-    pubmaticAdUnitTextField.text = [userDefaults objectForKey:PUBMATIC_AD_UNIT_USER_DEFAULTS_KEY];
     nativeBaseUrlTextField.text = [userDefaults objectForKey:NATIVE_BASE_URI_USER_DEFAULTS_KEY];
     iqAppEventsAdUnitField.text = [userDefaults objectForKey:IQ_APP_EVENTS_AD_UNIT_USER_DEFAULTS_KEY];
 }

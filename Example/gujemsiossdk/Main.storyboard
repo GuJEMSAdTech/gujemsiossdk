@@ -128,70 +128,6 @@
             </objects>
             <point key="canvasLocation" x="-2132" y="1447.8260869565217"/>
         </scene>
-        <!--PubMatic-->
-        <scene sceneID="C2A-1N-7rR">
-            <objects>
-                <viewController id="bGV-aw-qgb" customClass="GUJPubMaticViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="FDk-cb-40C"/>
-                        <viewControllerLayoutGuide type="bottom" id="wmL-ey-VlC"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1Ze-cd-jHY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gso-Wx-FaA">
-                                <rect key="frame" x="0.0" y="60" width="375" height="50"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="SPi-c6-vMW"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFn-84-mWe">
-                                <rect key="frame" x="10" y="118" width="355" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="sax-S3-YAO"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lv8-ty-kh5">
-                                <rect key="frame" x="142" y="558" width="90" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="EmL-oG-ea8"/>
-                                    <constraint firstAttribute="width" constant="90" id="rKB-f2-dqd"/>
-                                </constraints>
-                                <state key="normal" title="Reload Ad"/>
-                                <connections>
-                                    <action selector="loadAd" destination="bGV-aw-qgb" eventType="touchUpInside" id="zYY-IQ-g2T"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="gso-Wx-FaA" firstAttribute="leading" secondItem="1Ze-cd-jHY" secondAttribute="leading" id="3g2-1R-SKf"/>
-                            <constraint firstItem="XFn-84-mWe" firstAttribute="top" secondItem="gso-Wx-FaA" secondAttribute="bottom" constant="8" id="CVK-Ol-cPx"/>
-                            <constraint firstAttribute="trailing" secondItem="gso-Wx-FaA" secondAttribute="trailing" id="HqI-HC-O5c"/>
-                            <constraint firstAttribute="trailing" secondItem="XFn-84-mWe" secondAttribute="trailing" constant="10" id="UA2-op-jeJ"/>
-                            <constraint firstItem="wmL-ey-VlC" firstAttribute="top" secondItem="Lv8-ty-kh5" secondAttribute="bottom" constant="30" id="ZHS-fz-t8p"/>
-                            <constraint firstItem="Lv8-ty-kh5" firstAttribute="centerX" secondItem="1Ze-cd-jHY" secondAttribute="centerX" id="cUc-u4-QQt"/>
-                            <constraint firstItem="gso-Wx-FaA" firstAttribute="top" secondItem="FDk-cb-40C" secondAttribute="bottom" constant="40" id="scg-hu-2tR"/>
-                            <constraint firstItem="XFn-84-mWe" firstAttribute="leading" secondItem="1Ze-cd-jHY" secondAttribute="leading" constant="10" id="tUb-Ip-hGI"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="PubMatic" image="squares95" id="wwr-Oe-qeb"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="adArea" destination="gso-Wx-FaA" id="7Gx-xb-R4V"/>
-                        <outlet property="adAreaHeight" destination="SPi-c6-vMW" id="EJw-E1-gWu"/>
-                        <outlet property="adErrorLabel" destination="XFn-84-mWe" id="g5Y-t6-RTj"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="p2z-xz-X36" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1351.2" y="1447.8260869565217"/>
-        </scene>
         <!--Einstellungen-->
         <scene sceneID="hgb-kj-aWz">
             <objects>
@@ -297,44 +233,8 @@ Amobee Ad Space ID:</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PubMatic Publisher ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dS7-iL-HyU">
-                                <rect key="frame" x="16" y="310" width="343" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="eMQ-rI-DCp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQE-xb-Noi">
-                                <rect key="frame" x="16" y="330" width="343" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="HbR-Ip-Wlz"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PubMatic Ad Unit ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6P-JZ-edE">
-                                <rect key="frame" x="16" y="377" width="343" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="Zyy-IK-kcU"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6rH-9b-4zD">
-                                <rect key="frame" x="16" y="397" width="343" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="q6p-Wc-xgV"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Article Base URI for Native Ad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnK-la-5NW">
-                                <rect key="frame" x="16" y="444" width="343" height="15"/>
+                                <rect key="frame" x="16" y="310" width="343" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="roj-Km-A96"/>
                                 </constraints>
@@ -343,7 +243,7 @@ Amobee Ad Space ID:</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DBj-sl-K1z">
-                                <rect key="frame" x="16" y="464" width="343" height="27"/>
+                                <rect key="frame" x="16" y="330" width="343" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="kMP-A3-lYQ"/>
                                 </constraints>
@@ -352,7 +252,7 @@ Amobee Ad Space ID:</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iq digital app events Ad Unit Id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izi-4t-vhk">
-                                <rect key="frame" x="16" y="511" width="343" height="15"/>
+                                <rect key="frame" x="16" y="377" width="343" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="uJh-5y-mPl"/>
                                 </constraints>
@@ -361,7 +261,7 @@ Amobee Ad Space ID:</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="chB-JN-T13">
-                                <rect key="frame" x="16" y="531" width="343" height="27"/>
+                                <rect key="frame" x="16" y="397" width="343" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="HWK-13-fRv"/>
                                 </constraints>
@@ -370,7 +270,7 @@ Amobee Ad Space ID:</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icons made by Plainicon and Freepik from www.flaticon.com are licensed under CC BY 3.0" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRZ-hM-Aaa">
-                                <rect key="frame" x="32" y="580" width="311" height="34"/>
+                                <rect key="frame" x="32" y="446" width="311" height="34"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" red="0.50430082070707072" green="0.50430082070707072" blue="0.50430082070707072" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -388,7 +288,6 @@ Amobee Ad Space ID:</string>
                             <constraint firstItem="Izi-4t-vhk" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="IQ8-dZ-tZc"/>
                             <constraint firstItem="fHb-aP-vfn" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="MAF-Jr-11S"/>
                             <constraint firstItem="vRZ-hM-Aaa" firstAttribute="top" secondItem="chB-JN-T13" secondAttribute="bottom" constant="22" id="N7L-hi-8tb"/>
-                            <constraint firstAttribute="trailing" secondItem="6rH-9b-4zD" secondAttribute="trailing" constant="16" id="PDv-lS-hSt"/>
                             <constraint firstAttribute="trailing" secondItem="Hko-vQ-ugx" secondAttribute="trailing" constant="16" id="QCV-zs-2kj"/>
                             <constraint firstItem="fHb-aP-vfn" firstAttribute="top" secondItem="2bM-9b-FIZ" secondAttribute="bottom" constant="8" id="Qtd-pd-gHb"/>
                             <constraint firstItem="Izi-4t-vhk" firstAttribute="top" secondItem="DBj-sl-K1z" secondAttribute="bottom" constant="20" id="Rsz-u0-443"/>
@@ -397,29 +296,18 @@ Amobee Ad Space ID:</string>
                             <constraint firstItem="2bM-9b-FIZ" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="TyH-AV-XUE"/>
                             <constraint firstItem="chB-JN-T13" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="Vi2-ph-IQI"/>
                             <constraint firstAttribute="trailing" secondItem="2Pl-mh-gR5" secondAttribute="trailing" constant="16" id="W8Z-fo-vaC"/>
-                            <constraint firstItem="qQE-xb-Noi" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="Wtg-TZ-684"/>
-                            <constraint firstItem="K6P-JZ-edE" firstAttribute="top" secondItem="qQE-xb-Noi" secondAttribute="bottom" constant="20" id="XoY-Cf-Bea"/>
                             <constraint firstItem="DBj-sl-K1z" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="YH4-Wa-L3u"/>
                             <constraint firstAttribute="trailing" secondItem="DBj-sl-K1z" secondAttribute="trailing" constant="16" id="ZwB-9z-CUa"/>
-                            <constraint firstItem="dS7-iL-HyU" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="bwr-S8-bWg"/>
-                            <constraint firstItem="6rH-9b-4zD" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="cxF-0J-Ho3"/>
+                            <constraint firstItem="TnK-la-5NW" firstAttribute="top" secondItem="MSe-jF-Aou" secondAttribute="bottom" constant="20" id="bo4-kB-G5n"/>
                             <constraint firstItem="2bM-9b-FIZ" firstAttribute="top" secondItem="Hko-vQ-ugx" secondAttribute="bottom" constant="5" id="enC-wg-mPf"/>
-                            <constraint firstItem="6rH-9b-4zD" firstAttribute="top" secondItem="K6P-JZ-edE" secondAttribute="bottom" constant="5" id="fVW-Tl-oXK"/>
-                            <constraint firstItem="K6P-JZ-edE" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="hkT-Q8-r9o"/>
                             <constraint firstAttribute="trailing" secondItem="d0n-d3-lbH" secondAttribute="trailing" constant="16" id="iTQ-Iq-ABJ"/>
-                            <constraint firstAttribute="trailing" secondItem="K6P-JZ-edE" secondAttribute="trailing" constant="16" id="jdX-KY-w3l"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vRZ-hM-Aaa" secondAttribute="trailing" constant="16" id="k5c-I0-Cx8"/>
                             <constraint firstAttribute="trailing" secondItem="TnK-la-5NW" secondAttribute="trailing" constant="16" id="kfW-6E-tbq"/>
-                            <constraint firstItem="dS7-iL-HyU" firstAttribute="top" secondItem="MSe-jF-Aou" secondAttribute="bottom" constant="20" id="koQ-40-exT"/>
                             <constraint firstItem="Hko-vQ-ugx" firstAttribute="top" secondItem="2Pl-mh-gR5" secondAttribute="bottom" constant="8" id="mhM-9Z-mEu"/>
                             <constraint firstItem="chB-JN-T13" firstAttribute="top" secondItem="Izi-4t-vhk" secondAttribute="bottom" constant="5" id="nC2-OJ-lUe"/>
                             <constraint firstItem="MSe-jF-Aou" firstAttribute="top" secondItem="d0n-d3-lbH" secondAttribute="bottom" constant="5" id="nYp-v2-fSX"/>
                             <constraint firstItem="2Pl-mh-gR5" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leading" constant="16" id="nu6-Kr-Meo"/>
-                            <constraint firstAttribute="trailing" secondItem="dS7-iL-HyU" secondAttribute="trailing" constant="16" id="nu7-fY-TPz"/>
-                            <constraint firstItem="TnK-la-5NW" firstAttribute="top" secondItem="6rH-9b-4zD" secondAttribute="bottom" constant="20" id="oAm-Pn-eA3"/>
                             <constraint firstItem="d0n-d3-lbH" firstAttribute="top" secondItem="fHb-aP-vfn" secondAttribute="bottom" constant="20" id="oxH-DN-Chs"/>
-                            <constraint firstItem="qQE-xb-Noi" firstAttribute="top" secondItem="dS7-iL-HyU" secondAttribute="bottom" constant="5" id="pW1-ab-6SH"/>
-                            <constraint firstAttribute="trailing" secondItem="qQE-xb-Noi" secondAttribute="trailing" constant="16" id="r4x-0U-8Wn"/>
                             <constraint firstItem="vRZ-hM-Aaa" firstAttribute="leading" secondItem="J8b-ac-RqE" secondAttribute="leadingMargin" constant="16" id="ru1-Ql-f0Q"/>
                             <constraint firstAttribute="trailing" secondItem="2bM-9b-FIZ" secondAttribute="trailing" constant="16" id="tx1-vP-IQT"/>
                             <constraint firstItem="2Pl-mh-gR5" firstAttribute="top" secondItem="pft-HK-qW8" secondAttribute="bottom" constant="8" id="xev-12-tbH"/>
@@ -434,8 +322,6 @@ Amobee Ad Space ID:</string>
                         <outlet property="iqAppEventsAdUnitField" destination="chB-JN-T13" id="sjj-xN-jLI"/>
                         <outlet property="nativeBaseUrlTextField" destination="DBj-sl-K1z" id="avV-6O-OD6"/>
                         <outlet property="positionLabel" destination="2bM-9b-FIZ" id="9qv-QS-FHD"/>
-                        <outlet property="pubmaticAdUnitTextField" destination="6rH-9b-4zD" id="Qcd-eK-xHL"/>
-                        <outlet property="pubmaticPublisherIdTextField" destination="qQE-xb-Noi" id="fgR-hI-RaP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfQ-Sv-Bp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1182,7 +1068,6 @@ Amobee Ad Space ID:</string>
                         <segue destination="5MH-OV-P4b" kind="relationship" relationship="viewControllers" id="xKl-rK-Ua2"/>
                         <segue destination="oBW-Qt-MMX" kind="relationship" relationship="viewControllers" id="cmI-k0-8SF"/>
                         <segue destination="3Er-TS-JzQ" kind="relationship" relationship="viewControllers" id="Cex-Hf-9eu"/>
-                        <segue destination="bGV-aw-qgb" kind="relationship" relationship="viewControllers" id="4aD-Vl-VLs"/>
                         <segue destination="FJG-jM-nD5" kind="relationship" relationship="viewControllers" id="Pfu-3Y-Ppa"/>
                         <segue destination="DRk-Tg-Y0g" kind="relationship" relationship="viewControllers" id="1sO-ET-2Ls"/>
                     </connections>

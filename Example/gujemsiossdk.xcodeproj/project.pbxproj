@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1809D4A61EB0BAE500F4DE4D /* GUJPubMaticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809D4A51EB0BAE500F4DE4D /* GUJPubMaticViewController.m */; };
 		1825517F1ECCA2F20076A8DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1825517E1ECCA2F20076A8DE /* LaunchScreen.storyboard */; };
 		18EA04DA1EE0576300F83ED0 /* GUJNativeAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EA04D91EE0576300F83ED0 /* GUJNativeAdViewController.m */; };
 		3ED7E09BD4247630AED2213A /* GUJInterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7E7CFAD5BFBFFCBD45DE1 /* GUJInterstitialViewController.m */; };
@@ -48,8 +47,6 @@
 
 /* Begin PBXFileReference section */
 		121A746B3E153018CB2A279D /* gujemsiossdk.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = gujemsiossdk.podspec; path = ../gujemsiossdk.podspec; sourceTree = "<group>"; };
-		1809D4A41EB0BAE500F4DE4D /* GUJPubMaticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUJPubMaticViewController.h; sourceTree = "<group>"; };
-		1809D4A51EB0BAE500F4DE4D /* GUJPubMaticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUJPubMaticViewController.m; sourceTree = "<group>"; };
 		1825517E1ECCA2F20076A8DE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18EA04D81EE0576300F83ED0 /* GUJNativeAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUJNativeAdViewController.h; sourceTree = "<group>"; };
 		18EA04D91EE0576300F83ED0 /* GUJNativeAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUJNativeAdViewController.m; sourceTree = "<group>"; };
@@ -196,8 +193,6 @@
 				3ED7E1DD3F12F8D46D05E220 /* GUJVideoAdViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
-				1809D4A41EB0BAE500F4DE4D /* GUJPubMaticViewController.h */,
-				1809D4A51EB0BAE500F4DE4D /* GUJPubMaticViewController.m */,
 				18EA04D81EE0576300F83ED0 /* GUJNativeAdViewController.h */,
 				18EA04D91EE0576300F83ED0 /* GUJNativeAdViewController.m */,
 				8B3F2B0C1F13697900B68F07 /* GUJIQAdViewController.h */,
@@ -304,7 +299,7 @@
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
 						DevelopmentTeam = F89AVEEKGL;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -454,7 +449,6 @@
 				6003F59E195388D20070C39A /* GUJAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* GUJBannerViewController.m in Sources */,
 				8B3F2B0E1F13697900B68F07 /* GUJIQAdViewController.m in Sources */,
-				1809D4A61EB0BAE500F4DE4D /* GUJPubMaticViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				18EA04DA1EE0576300F83ED0 /* GUJNativeAdViewController.m in Sources */,
 				4C3A2D301C71F2D6009AC989 /* GUJInflowAdViewController.m in Sources */,
@@ -716,8 +710,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = F89AVEEKGL;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gujemsiossdk/gujemsiossdk-Prefix.pch";
@@ -822,8 +816,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.generationdigitale.apps.ios.gujemsiossdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "627533fd-e4c3-4132-b57f-ae1deb6f219a";
-				PROVISIONING_PROFILE_SPECIFIER = "gujemsiossdk(AppStore)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};

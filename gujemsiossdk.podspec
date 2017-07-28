@@ -45,6 +45,6 @@ Pod::Spec.new do |s|
   s.dependency 'Google-Mobile-Ads-SDK', '7.20'
   s.dependency 'GoogleMediaFramework', '~> 1.0'
   s.dependency 'FBAudienceNetwork'
-  s.dependency 'PubMaticSDK-HB'
+  #s.dependency 'PubMaticSDK-HB'
 
 end
