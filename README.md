@@ -35,8 +35,7 @@ the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recomme
  
 #### v3.2.0-beta-1 |  12/July/2017
 - Updated Google Mobile Ads SDK to version 7.20.0
-- Teads removed / Smartclip added in preliminary version
-- Pubmatic SDK for Header Bidding added (preliminary)
+- Teads removed
 - Facebook Audience Network SDK added
 - Native Ad Functionality over XML added
 - iq digital app events Functionality added
@@ -57,8 +56,6 @@ Fixed version numbers for Google-Mobile-Ads-SDK and GoogleAds-IMA-iOS-SDK-For-Ad
 Version 3.2.0 includes the following updates:
 - In this version Teads has been removed
 - The current version includes updates for Facebook Audience Network SDK. The app can retrieve a facebook placement ID from the Google SDK, which is then handled by our SDK automatically.
-- We have added Pubmatic Header Bidding. With Pubmatic TKP it becomes possible to compare the DFP-Ad-Server with other campaigns over DFP mediation or a key-value-solution. 
-- Native Ad Functionality over XML has been implemented as an interface between the iOS SDK and a publisher server to request a XML-file. The XML-content can be used in a native ad view, which app developers can style individually (look & feel) in their apps.
 - iq digital app events Functionality added. The app events consist of a name and a "data" string. The events "setsize", "noad" and "log" are available. Please see the example app source code or the iq digital documentation for details. "setsize" can be problematic when used inside a scrollable container and should not be used for ads at the bottom of a container.
  
  
@@ -516,30 +513,6 @@ For tracking views and clicks call `registerViewForInteraction` after loading ad
 For detailed information see our example implementation: gujemsiossdk/Products/Main.storyboard —> NativeAd Scene
  
  
-#### load PubMatic ad
- 
-Load a native ad and handle the result via delegate callbacks:
- 
-```objective-c
-self.bannerContext = [GUJPubMaticAdContext adWithAdUnitId:<YOUR ADUNIT ID> publisherId:<YOUR PUBLISHER ID>];
-    self.bannerContext.delegate = self;
-    [self.bannerContext loadBannerViewForViewController:self];
-```
- 
-    
-    
-```objective-c
-- (void)bannerViewDidLoad:(GUJAdViewContext *)adViewContext {
- 
-}
- 
-- (void)bannerView:(GUJAdViewContext *)adViewContext didFailWithError:(NSError *)error {
- 
-}
-```
-
-
-
 #### Load native Facebook ad
 
 For loading a native Facebook ad use `GUJFacebookNativeAdManager`

@@ -17,6 +17,8 @@ static NSString *NoadEventName = @"noad";
 
 @interface GUJIQAdViewContext () <GADAppEventDelegate>
 
+@property (nonatomic, strong) NSString *changedStringSize;
+
 @end
 
 
@@ -58,6 +60,15 @@ didReceiveAppEvent:(NSString *)name
 
 
 -(void) didRecieveSetSizeEvent:(NSString *) info {
+    
+    //when you change frame of banner view, Google SDK call adView:didReceiveAppEvent:withInfo: again
+    //don't change frame if sizeInfo same
+    
+    if ([self.changedStringSize isEqualToString:info]) {
+        return;
+    }
+    
+    self.changedStringSize = info;
     
     NSArray *values = [info componentsSeparatedByString:@":"];
     
