@@ -155,6 +155,9 @@ SWIFT_CLASS("_TtC11SCMobileSDK21SCMobileSDKController")
 - (nonnull instancetype)initWithAdURL:(NSString * _Nonnull)adURL OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)viewDidLoad;
+- (void)viewDidDisappear:(BOOL)animated;
+- (void)viewWillLayoutSubviews;
+- (void)observeValueForKeyPath:(NSString * _Nullable)keyPath ofObject:(id _Nullable)object change:(NSDictionary<NSKeyValueChangeKey, id> * _Nullable)change context:(void * _Nullable)context;
 @property (nonatomic, readonly) BOOL prefersStatusBarHidden;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
 @end
@@ -180,24 +183,32 @@ SWIFT_PROTOCOL("_TtP11SCMobileSDK19SCMobileSDKDelegate_")
 - (BOOL)onClickthruWithController:(SCMobileSDKController * _Nonnull)controller targetURL:(NSURL * _Nonnull)targetURL SWIFT_WARN_UNUSED_RESULT;
 @end
 
+@protocol SCMobileSDKSequencingDelegate;
 
-/// TODOS:
-/// \code
-/// - ipd tag - videos do not seem to work in ios
-/// - save duration to instance var
-/// - implement ipd popup menu on clickthru in demo
-/// - fullscreen, resume, open landingpage, skip/stop
-///
-/// \endcode
 SWIFT_CLASS("_TtC11SCMobileSDK31SCMobileSDKSequencingController")
 @interface SCMobileSDKSequencingController : NSObject
 @property (nonatomic, readonly, strong) UIView * _Nullable anchor;
 @property (nonatomic, readonly, copy) NSDictionary<NSNumber *, NSString *> * _Nonnull sequenceMap;
 @property (nonatomic, weak) id <SCMobileSDKDelegate> _Nullable sdkDelegate;
+@property (nonatomic, weak) id <SCMobileSDKSequencingDelegate> _Nullable sequencingDelegate;
 - (nonnull instancetype)initWithAnchor:(UIView * _Nonnull)anchor duration:(double)duration OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithSequenceMap:(NSDictionary<NSNumber *, NSString *> * _Nonnull)sequenceMap anchor:(UIView * _Nonnull)anchor duration:(double)duration OBJC_DESIGNATED_INITIALIZER;
-- (void)timeUpdateWithPosition:(double)position;
+- (BOOL)timeUpdateWithPosition:(double)position SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
+@end
+
+@class SCMobileSDKVARIANTS;
+
+SWIFT_PROTOCOL("_TtP11SCMobileSDK29SCMobileSDKSequencingDelegate_")
+@protocol SCMobileSDKSequencingDelegate
+- (SCMobileSDKVARIANTS * _Nonnull)addVariantsAt:(double)position controller:(SCMobileSDKSequencingController * _Nonnull)controller SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC11SCMobileSDK19SCMobileSDKVARIANTS")
+@interface SCMobileSDKVARIANTS : NSObject
+- (nonnull instancetype)initWithOpener:(NSString * _Nullable)opener closer:(NSString * _Nullable)closer prebumper:(NSString * _Nullable)prebumper OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 

@@ -29,6 +29,8 @@
 #import <GoogleMediaFramework/GoogleMediaFramework.h>
 #import "GUJBaseAdViewContext.h"
 
+#import <SCMobileSDK/SCMobileSDK-Swift.h>
+
 @interface GUJInflowAdViewContext : GUJBaseAdViewContext <UIGestureRecognizerDelegate, UIScrollViewDelegate, IMAAdsLoaderDelegate, IMAAdsManagerDelegate>
 
 @property(nonatomic, strong) NSString *dfpAdunitId;
@@ -50,6 +52,9 @@
  @result A newly created GUJAdViewContext instance
  */
 - (instancetype)initWithScrollView:(UIScrollView *)scrollView inFlowAdPlaceholderView:(UIView *)inFlowAdPlaceholderView inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholderViewHeightConstraint dfpAdunitId:(NSString *)dfpAdunitId;
+
+
+- (instancetype)initWithScrollView:(UIScrollView *)scrollView inFlowAdPlaceholderView:(UIView *)inFlowAdPlaceholderView inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholderViewHeightConstraint dfpAdunitId:(NSString *)dfpAdunitId smartClipUrl:(NSString *)smartClipUrl;
 
 /*!
  * Starts loading/ resuming of the inflow ad, add will be preloaded and started once scrolled into view.

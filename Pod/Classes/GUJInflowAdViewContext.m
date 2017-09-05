@@ -25,7 +25,7 @@
 
 
 #import "GUJInflowAdViewContext.h"
-
+#import <SCMobileSDK/SCMobileSDK-Swift.h>
 
 typedef NS_ENUM(NSInteger, GUJInflowAdType) {
     GUJInflowAdTypeNone,
@@ -33,9 +33,12 @@ typedef NS_ENUM(NSInteger, GUJInflowAdType) {
     GUJInflowAdTypeSmartClip
 };
 
-@interface GUJInflowAdViewContext ()
+@interface GUJInflowAdViewContext () <SCMobileSDKDelegate>
 
 @property (nonatomic) GUJInflowAdType adType;
+
+@property(nonatomic, strong) NSString *smartClipUrl;
+@property(nonatomic, strong) SCMobileSDKController *smartClipVC;
 
 @end
 
@@ -63,20 +66,29 @@ typedef NS_ENUM(NSInteger, GUJInflowAdType) {
                 inFlowAdPlaceholderView:(UIView *)inFlowAdPlaceholderView
 inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholderViewHeightConstraint
                             dfpAdunitId:(NSString *)dfpAdunitId {
+    
+    return [self initWithScrollView:scrollView inFlowAdPlaceholderView:inFlowAdPlaceholderView inFlowAdPlaceholderViewHeightConstraint:inFlowAdPlaceholderViewHeightConstraint dfpAdunitId:dfpAdunitId smartClipUrl:nil];
+}
+
+- (instancetype)     initWithScrollView:(UIScrollView *)scrollView
+                inFlowAdPlaceholderView:(UIView *)inFlowAdPlaceholderView
+inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholderViewHeightConstraint
+                            dfpAdunitId:(NSString *)dfpAdunitId
+                           smartClipUrl:(NSString *)smartClipUrl {
     self = [super init];
     if (self) {
         self.scrollView = scrollView;
         self.inFlowAdPlaceholderView = inFlowAdPlaceholderView;
         self.inFlowAdPlaceholderViewHeightConstraint = inFlowAdPlaceholderViewHeightConstraint;
-
-        self.inFlowAdPlaceholderView.backgroundColor = [UIColor blackColor];
+        
         self.inFlowAdPlaceholderView.clipsToBounds = YES;
-
+        
         self.dfpAdunitId = dfpAdunitId;
+        self.smartClipUrl = smartClipUrl;
         
         _adsLoader = [[IMAAdsLoader alloc] initWithSettings:nil];
         _adsLoader.delegate = self;
-
+        
         [self requestAds];
         
         originalAudioSessionCategory = [AVAudioSession sharedInstance].category;
@@ -168,11 +180,22 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     if (self.adType == GUJInflowAdTypeIMA) {
         [_adsManager resume];
     }
+    
+    if (self.adType == GUJInflowAdTypeSmartClip) {
+        [self.smartClipVC playAd];
+    }
 }
 
 -(void) pauseAd {
     if (self.adType == GUJInflowAdTypeIMA) {
         [_adsManager pause];
+    }
+    
+    if (self.adType == GUJInflowAdTypeSmartClip) {
+        if (self.smartClipVC) {
+            NSLog(@"ddddd");
+        }
+        [self.smartClipVC pauseAd];
     }
 }
 
@@ -337,6 +360,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     // Something went wrong loading ads. May be no fill.
     NSLog(@"failedWithErrorData: %@", adErrorData.adError.message);
 
+    [self requestSmartClipAd];
 }
 
 
@@ -374,6 +398,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     // Something went wrong with the ads manager after ads were loaded. Log the error.
     NSLog(@"didReceiveAdError: %@", error.message);
 
+    [self requestSmartClipAd];
 }
 
 
@@ -474,6 +499,56 @@ adDidProgressToTime:(NSTimeInterval)mediaTime
 - (void)fallbackRequestAfter2SecondTimeout {
     NSLog(@"No ads loaded before timeout...");
 
+    [self requestSmartClipAd];
+}
+
+-(void) requestSmartClipAd {
+    
+    if (self.smartClipUrl == nil) {
+        NSLog(@"No Smart Clip URL configured.");
+    } else {
+        NSLog(@"Using Smart Clip as fallback.");
+        [_adsManager destroy];
+        
+        self.adType = GUJInflowAdTypeSmartClip;
+        
+        UIView *view = [[UIView alloc] initWithFrame:self.inFlowAdPlaceholderView.bounds];
+        view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self.inFlowAdPlaceholderView addSubview:view];
+        
+        self.smartClipVC = [[SCMobileSDKController alloc] initWithAnchor:view adURL:self.smartClipUrl];
+        self.smartClipVC.delegate = self;
+    }
+}
+
+
+- (void)onEndCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
+    NSLog(@"onEndCallbackWithController");
+    [self expandAdView:NO];
+}
+- (void)onStartCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
+    NSLog(@"onStartCallbackWithController");
+    [self expandAdView:YES];
+}
+
+- (void)onPrefetchCompleteCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
+    NSLog(@"onPrefetchCompleteCallbackWithController");
+    
+    isAdLoaded = YES;
+}
+
+- (void)onCappedCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
+    NSLog(@"onCappedCallbackWithController");
+}
+
+- (BOOL)onClickthruWithController:(SCMobileSDKController * _Nonnull)controller targetURL:(NSURL * _Nonnull)targetURL {
+    NSLog(@"onClickthruWithController");
+    
+    [controller pauseAd];
+    
+    [[UIApplication sharedApplication] openURL:targetURL];
+    
+    return YES;
 }
 
 

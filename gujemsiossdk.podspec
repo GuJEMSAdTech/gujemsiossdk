@@ -31,20 +31,20 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
+  s.source_files = 'Pod/Classes/**/*', 'Pod/PubMaticSdk/**/*'
   s.resource_bundles = {
     'gujemsiossdk' => ['Pod/Assets/*.xml', 'Pod/Assets/*.png']
   }
 
 
-  #s.vendored_frameworks = 'Pod/Assets/SCMobileSDK.framework'
+  s.vendored_frameworks = 'Pod/Assets/SCMobileSDK.framework'
 
-  s.public_header_files = 'Pod/Classes/*.h'
+  s.public_header_files = 'Pod/Classes/*.h', 'Pod/PubMaticSdk/*.h'
   s.frameworks = 'CoreMedia', 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation', 'CoreTelephony', 'MediaPlayer', 'SystemConfiguration'
   s.libraries = 'xml2'
   s.dependency 'Google-Mobile-Ads-SDK', '7.20'
   s.dependency 'GoogleMediaFramework', '~> 1.0'
   s.dependency 'FBAudienceNetwork'
-  #s.dependency 'PubMaticSDK-HB'
+  s.dependency 'mopub-ios-sdk' #for PubMaticSdk
 
 end

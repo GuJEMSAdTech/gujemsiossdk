@@ -45,5 +45,11 @@ SmartPlay('#container', {
 		} catch(err) {}
 	},
 
+	onShutdown: function() {
+		try {
+			webkit.messageHandlers.SCNative.postMessage("onShutdownCallback");
+		} catch(err) {}
+	},
+
 	prefetching: true
 });
