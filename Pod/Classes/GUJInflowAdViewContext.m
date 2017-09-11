@@ -78,6 +78,9 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     self = [super init];
     if (self) {
         self.scrollView = scrollView;
+        
+        
+        
         self.inFlowAdPlaceholderView = inFlowAdPlaceholderView;
         self.inFlowAdPlaceholderViewHeightConstraint = inFlowAdPlaceholderViewHeightConstraint;
         
@@ -106,7 +109,6 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
 
 - (void)containerViewDidAppear {
-    NSLog(@"containerViewDidAppear");
 
     originalScrollViewDelegate = self.scrollView.delegate;
     self.scrollView.delegate = self;
@@ -159,9 +161,15 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
     if (expand != adViewExpanded && !adViewExpanding) {
         adViewExpanding = YES;
+        
         CGFloat expectedHeight = self.inFlowAdPlaceholderView.frame.size.width / 4 * 3;
+        if (self.adType == GUJInflowAdTypeSmartClip) {
+            expectedHeight = self.inFlowAdPlaceholderView.frame.size.width / 16 * 9;
+        }
+        
         self.inFlowAdPlaceholderViewHeightConstraint.constant = expand ? expectedHeight : 0;
-
+        
+    
         [UIView animateWithDuration:0.7f delay:0.2f options:UIViewAnimationOptionAllowUserInteraction animations:^{
             [self.inFlowAdPlaceholderView.superview layoutIfNeeded];
         }                completion:^(BOOL finished) {
@@ -192,9 +200,6 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     }
     
     if (self.adType == GUJInflowAdTypeSmartClip) {
-        if (self.smartClipVC) {
-            NSLog(@"ddddd");
-        }
         [self.smartClipVC pauseAd];
     }
 }
@@ -523,27 +528,22 @@ adDidProgressToTime:(NSTimeInterval)mediaTime
 
 
 - (void)onEndCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
-    NSLog(@"onEndCallbackWithController");
     [self expandAdView:NO];
 }
 - (void)onStartCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
-    NSLog(@"onStartCallbackWithController");
     [self expandAdView:YES];
 }
 
 - (void)onPrefetchCompleteCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
-    NSLog(@"onPrefetchCompleteCallbackWithController");
-    
     isAdLoaded = YES;
 }
 
 - (void)onCappedCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
-    NSLog(@"onCappedCallbackWithController");
+
 }
 
 - (BOOL)onClickthruWithController:(SCMobileSDKController * _Nonnull)controller targetURL:(NSURL * _Nonnull)targetURL {
-    NSLog(@"onClickthruWithController");
-    
+
     [controller pauseAd];
     
     [[UIApplication sharedApplication] openURL:targetURL];
