@@ -56,8 +56,8 @@
 @property (nonatomic, strong) NSString *adUnitId;
 @property (nonatomic, weak) id<GUJNativeAdDelegate> delegate;
 
-//base url, what will be used if ad not return click url
-@property (nonatomic, strong) NSString *baseClickUrl;
+//click url, what will be used if ad not return click url
+@property (nonatomic, strong) NSString *defaultClickURL;
 
 //text for Presentership
 @property (nonatomic, strong) NSString *presenterText;
@@ -87,21 +87,10 @@
 -(void) loadAd;
 
 -(void) registerViewForInteraction:(UIView *) view;
+-(void) unregisterViewForInteraction:(UIView *) view;
 
-@end
-
-
-
-
-/*
- used for sending impressionTrackers requests
- */
-
-@interface GUJNativeAdTracker : NSObject
-
-+ (instancetype)sharedManager;
-
--(void) addTracker:(NSString *) tracker;
+-(void) clickAction;
 -(void) sendTrackers;
 
 @end
+

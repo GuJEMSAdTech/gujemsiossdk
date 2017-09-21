@@ -28,6 +28,120 @@
 #import "UIView+GUJExtention.h"
 
 
+
+
+/*
+ used for sending impressionTrackers requests
+ */
+
+@interface GUJNativeAdTracker : NSObject <UIWebViewDelegate>
+
++ (instancetype)sharedManager;
+
+@property (nonatomic, strong) UIWebView *invisibleWebView;
+@property (nonatomic, strong) NSMutableArray *trackers;
+
+@property (nonatomic, strong) NSString *activeTracker;
+-(void) addTracker:(NSString *) tracker;
+-(void) sendTrackers;
+
+@end
+
+
+@implementation GUJNativeAdTracker
+
++ (instancetype)sharedManager
+{
+    static GUJNativeAdTracker *instance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[GUJNativeAdTracker alloc] init];
+        instance.trackers = [NSMutableArray array];
+    });
+    
+    return instance;
+}
+
+-(void) addTracker:(NSString *) tracker {
+    if (tracker != nil) {
+        [self.trackers addObject:tracker];
+    }
+}
+
+-(BOOL) trackerIsLink:(NSString *) tracker {
+    return [tracker hasPrefix:@"http"];
+}
+
+-(NSString *) htmlForTracker:(NSString *) tracker {
+    return [NSString stringWithFormat:@"<html><body>%@</body></html>", tracker];
+}
+
+-(void) sendTrackers {
+    
+    if (self.invisibleWebView.isLoading) {
+        return;
+    }
+    
+    if (self.invisibleWebView == nil) {
+        self.invisibleWebView = [[UIWebView alloc] init];
+        self.invisibleWebView.delegate = self;
+    }
+    
+    if (self.trackers.count) {
+        [self sendTrackerItem:self.trackers.firstObject];
+    } else {
+        [self clearTracker];
+    }
+}
+
+-(void) sendTrackerItem:(NSString *) tracker {
+    self.activeTracker = tracker;
+    
+    if ([self trackerIsLink:tracker]) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:tracker]];
+        [self.invisibleWebView loadRequest:request];
+    } else {
+        [self.invisibleWebView loadHTMLString:[self htmlForTracker:tracker] baseURL:nil];
+    }
+}
+
+-(void) didFinishSendTrackerItem {
+    [self.trackers removeObject:self.activeTracker];
+    self.activeTracker = nil;
+    
+    //check if need send next tracker
+    [self sendTrackers];
+}
+
+-(void) clearTracker {
+    self.activeTracker = nil;
+    
+    [self.invisibleWebView stopLoading];
+    self.invisibleWebView.delegate = nil;
+    self.invisibleWebView = nil;
+}
+
+#pragma mark UIWebView
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [self didFinishSendTrackerItem];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    [self didFinishSendTrackerItem];
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
 static NSString *const NATIVE_AD_SERVER_ADDRESS = @"https://pubads.g.doubleclick.net/gampad/adx";
 
 
@@ -100,13 +214,21 @@ static NSString *const NATIVE_AD_SERVER_ADDRESS = @"https://pubads.g.doubleclick
 }
 
 -(void) registerViewForInteraction:(UIView *) view {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = view.bounds;
-    [button addTarget:self action:@selector(clickAction) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:button];
-    view.nativeAd = self;
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickAction)];
+    [view addGestureRecognizer:tapRecognizer];
+    view.guj_nativeAd = self;
     
     [self sendTrackers];
+}
+
+-(void) unregisterViewForInteraction:(UIView *) view {
+    
+    for (UIGestureRecognizer *recognizer in view.gestureRecognizers) {
+        if (recognizer.numberOfTouches == 1) {
+            [view removeGestureRecognizer:recognizer];
+        }
+    }
 }
 
 
@@ -130,8 +252,8 @@ static NSString *const NATIVE_AD_SERVER_ADDRESS = @"https://pubads.g.doubleclick
         NSString *encodedClickUrl = [self.clickUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         return [self.clickUrlServer stringByAppendingString:encodedClickUrl];
     } else {
-        if (self.baseClickUrl) {
-            NSString *clickUrl = [NSString stringWithFormat:@"%@s:%@-a:%@-t:n", self.baseClickUrl, self.specialAdUnit, self.articleId];
+        if (self.defaultClickURL) {
+            NSString *clickUrl = [NSString stringWithFormat:@"%@s:%@-a:%@-t:n", self.defaultClickURL, self.specialAdUnit, self.articleId];
             NSString *encodedClickUrl = [clickUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             return [self.clickUrlServer stringByAppendingString:encodedClickUrl];
         }
@@ -293,110 +415,6 @@ static NSString *const NATIVE_AD_SERVER_ADDRESS = @"https://pubads.g.doubleclick
     }
     
     return NO;
-}
-
-@end
-
-
-
-
-
-
-
-
-
-
-@interface GUJNativeAdTracker () <UIWebViewDelegate>
-
-@property (nonatomic, strong) UIWebView *invisibleWebView;
-@property (nonatomic, strong) NSMutableArray *trackers;
-
-@property (nonatomic, strong) NSString *activeTracker;
-
-@end
-
-
-@implementation GUJNativeAdTracker
-
-+ (instancetype)sharedManager
-{
-    static GUJNativeAdTracker *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[GUJNativeAdTracker alloc] init];
-        instance.trackers = [NSMutableArray array];
-    });
-    
-    return instance;
-}
-
--(void) addTracker:(NSString *) tracker {
-    if (tracker != nil) {
-        [self.trackers addObject:tracker];
-    }
-}
-
--(BOOL) trackerIsLink:(NSString *) tracker {
-    return [tracker hasPrefix:@"http"];
-}
-
--(NSString *) htmlForTracker:(NSString *) tracker {
-    return [NSString stringWithFormat:@"<html><body>%@</body></html>", tracker];
-}
-
--(void) sendTrackers {
-    
-    if (self.invisibleWebView.isLoading) {
-        return;
-    }
-    
-    if (self.invisibleWebView == nil) {
-        self.invisibleWebView = [[UIWebView alloc] init];
-        self.invisibleWebView.delegate = self;
-    }
-    
-    if (self.trackers.count) {
-        [self sendTrackerItem:self.trackers.firstObject];
-    } else {
-        [self clearTracker];
-    }
-}
-
--(void) sendTrackerItem:(NSString *) tracker {
-    self.activeTracker = tracker;
-    
-    if ([self trackerIsLink:tracker]) {
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:tracker]];
-        [self.invisibleWebView loadRequest:request];
-    } else {
-        [self.invisibleWebView loadHTMLString:[self htmlForTracker:tracker] baseURL:nil];
-    }
-}
-
--(void) didFinishSendTrackerItem {
-    [self.trackers removeObject:self.activeTracker];
-    self.activeTracker = nil;
-    
-    //check if need send next tracker
-    [self sendTrackers];
-}
-
--(void) clearTracker {
-    self.activeTracker = nil;
-    
-    [self.invisibleWebView stopLoading];
-    self.invisibleWebView.delegate = nil;
-    self.invisibleWebView = nil;
-}
-
-#pragma mark UIWebView
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [self didFinishSendTrackerItem];
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    [self didFinishSendTrackerItem];
 }
 
 @end

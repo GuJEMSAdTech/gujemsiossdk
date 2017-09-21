@@ -11,12 +11,12 @@
 
 @implementation UIView (GUJExtention)
 
-- (id)nativeAd {
-    return objc_getAssociatedObject(self, @selector(nativeAd));
+- (id)guj_nativeAd {
+    return objc_getAssociatedObject(self, @selector(guj_nativeAd));
 }
 
-- (void)setNativeAd:(id)nativeAd {
-    objc_setAssociatedObject(self, @selector(nativeAd), nativeAd, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setGuj_nativeAd:(id)guj_nativeAd {
+    objc_setAssociatedObject(self, @selector(guj_nativeAd), guj_nativeAd, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

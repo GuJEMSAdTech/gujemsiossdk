@@ -49,7 +49,7 @@
     self.adManager = [GUJNativeAdManager new];
     
     GUJNativeAd *ad = [self.adManager nativeAdWithUnitID:[self adUnitId]];
-    ad.baseClickUrl = [self baseUrl];
+    ad.defaultClickURL = [self baseUrl];
     ad.delegate = self;
     [ad loadAd];
     
@@ -61,7 +61,7 @@
     self.adView.hidden = YES;
     
     GUJNativeAd *ad = [self.adManager nativeAdWithUnitID:[self adUnitId]];
-    ad.baseClickUrl = [self baseUrl];
+    ad.defaultClickURL = [self baseUrl];
     ad.delegate = self;
     [ad loadAd];
     

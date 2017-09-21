@@ -10,6 +10,6 @@
 
 @interface UIView ()
 
-@property (nonatomic, strong) id nativeAd;
+@property (nonatomic, strong) id guj_nativeAd;
 
 @end
