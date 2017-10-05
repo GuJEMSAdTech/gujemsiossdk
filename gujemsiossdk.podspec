@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "gujemsiossdk"
-  s.version          = "3.1.10"
+  s.version          = "3.1.14"
   s.summary          = "G+J EMS iOS SDK"
   s.description      = <<-DESC
                        G+J EMS iOS SDK
@@ -42,7 +42,7 @@ Pod::Spec.new do |s|
   s.public_header_files = 'Pod/Classes/*.h'
   s.frameworks = 'CoreMedia', 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation', 'CoreTelephony', 'MediaPlayer', 'SystemConfiguration'
   s.libraries = 'xml2'
-  s.dependency 'Google-Mobile-Ads-SDK', '7.16.0'
+  s.dependency 'Google-Mobile-Ads-SDK', '7.24.1'
   s.dependency 'GoogleAds-IMA-iOS-SDK-For-AdMob', '3.3.1'
 
 end
