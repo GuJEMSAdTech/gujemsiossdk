@@ -154,9 +154,6 @@ static NSString *const NATIVE_AD_SERVER_ADDRESS = @"https://pubads.g.doubleclick
 //a HTML Tag, <img> or <script>,to load in an invisible Webview
 @property (nonatomic, strong) NSArray *impressionTrackers;
 
-//URL linkout
-@property (nonatomic, strong) NSString *clickUrl;
-
 //a Native Ad View can have a  "Anzeige"-Label  false deactivates this (hides it), true shows it
 @property (nonatomic) BOOL isAdLabelShow;
 

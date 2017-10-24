@@ -4,14 +4,16 @@
 //
 
 #import "GUJFacebookNativeAdViewController.h"
-#import "GUJFacebookNativeAdManager.h"
-
 #import "GUJSettingsViewController.h"
 
+#import "GUJGenericAdContext.h"
 
-@interface GUJFacebookNativeAdViewController () <GUJFacebookNativeAdManagerDelegate>
 
-@property (nonatomic, strong) GUJFacebookNativeAdManager *adManager;
+
+
+@interface GUJFacebookNativeAdViewController () <GUJGenericAdContextDelegate>
+
+@property (nonatomic, strong) GUJGenericAdContext *adContext;
 @property (strong , nonatomic) FBMediaView *adCoverMediaView;
 
 @property (weak, nonatomic) IBOutlet UIView *contextAdView;
@@ -44,8 +46,7 @@
         self.facebookTestModeSwitch.on = NO;
     }
     
-    self.adManager = [[GUJFacebookNativeAdManager alloc] init];
-    self.adManager.delegate = self;
+    self.adContext = [GUJGenericAdContext contextWithOptions:GUJGenericAdContextOptionUseFacebook delegate:self];
 }
 
 
@@ -59,7 +60,7 @@
         return;
     }
     
-    [self.adManager loadWithAdUnitId:adUnitId inController:self];
+    [self.adContext loadWithAdUnitId:adUnitId inController:self];
 }
 
 -(void) startLoadAnimation {
@@ -125,19 +126,19 @@
 
 #pragma mark GUJFacebookNativeAdManagerDelegate
 
--(void) facebookNativeAdManager:(GUJFacebookNativeAdManager *) manager didLoadAdDataForContext:(GUJAdViewContext *)context {
+- (void)genericAdContextDidLoadData:(GUJAdViewContext *)adViewContext {
     [self stopLoadAnimation:nil];
     
-    [self adWithContextDidLoad:context];
+    [self adWithContextDidLoad:adViewContext];
 }
 
--(void) facebookNativeAdManager:(GUJFacebookNativeAdManager *) manager didLoadNativeAd:(FBNativeAd *)nativeAd {
+- (void)genericAdContextDidLoadFacebookNativeAd:(FBNativeAd *)nativeAd {
     [self stopLoadAnimation:nil];
     
     [self nativeAdDidLoad:nativeAd];
 }
 
--(void) facebookNativeAdManager:(GUJFacebookNativeAdManager *) manager didFailWithError:(NSError *)error {
+- (void)genericAdContext:(GUJAdViewContext *)adViewContext didFailWithError:(NSError *)error {
     [self stopLoadAnimation:error.localizedDescription];
 }
 

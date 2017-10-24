@@ -59,6 +59,9 @@
 //click url, what will be used if ad not return click url
 @property (nonatomic, strong) NSString *defaultClickURL;
 
+//URL linkout
+@property (nonatomic, strong, readonly) NSString *clickUrl;
+
 //text for Presentership
 @property (nonatomic, strong) NSString *presenterText;
 

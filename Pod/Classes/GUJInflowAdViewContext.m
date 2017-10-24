@@ -33,12 +33,12 @@ typedef NS_ENUM(NSInteger, GUJInflowAdType) {
     GUJInflowAdTypeSmartClip
 };
 
-@interface GUJInflowAdViewContext () <SCMobileSDKDelegate>
+@interface GUJInflowAdViewContext () <SCAdListener>
 
 @property (nonatomic) GUJInflowAdType adType;
 
 @property(nonatomic, strong) NSString *smartClipUrl;
-@property(nonatomic, strong) SCMobileSDKController *smartClipVC;
+@property(nonatomic, strong) SCAdViewController *smartClipVC;
 
 @end
 
@@ -190,7 +190,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     }
     
     if (self.adType == GUJInflowAdTypeSmartClip) {
-        [self.smartClipVC playAd];
+        [self.smartClipVC play];
     }
 }
 
@@ -200,7 +200,7 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     }
     
     if (self.adType == GUJInflowAdTypeSmartClip) {
-        [self.smartClipVC pauseAd];
+        [self.smartClipVC pause];
     }
 }
 
@@ -521,36 +521,38 @@ adDidProgressToTime:(NSTimeInterval)mediaTime
         view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self.inFlowAdPlaceholderView addSubview:view];
         
-        self.smartClipVC = [[SCMobileSDKController alloc] initWithAnchor:view adURL:self.smartClipUrl];
-        self.smartClipVC.delegate = self;
+        self.smartClipVC = [[SCAdViewController alloc] initWithAnchor:view adURL:self.smartClipUrl];
+        self.smartClipVC.listener = self;
     }
 }
 
 
-- (void)onEndCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
+/// Called when advertisement playback has ended
+- (void)onEndCallbackWithController:(SCAdViewController * _Nonnull)controller {
     [self expandAdView:NO];
 }
-- (void)onStartCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
+/// Called when advertisement playback has started
+- (void)onStartCallbackWithController:(SCAdViewController * _Nonnull)controller {
     [self expandAdView:YES];
 }
-
-- (void)onPrefetchCompleteCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
+/// Called when an emmpty video ad was delivered
+- (void)onCappedCallbackWithController:(SCAdViewController * _Nonnull)controller {
+    
+}
+/// Called when prefetching of data for advertisement has finished
+- (void)onPrefetchCompleteCallbackWithController:(SCAdViewController * _Nonnull)controller {
     isAdLoaded = YES;
 }
-
-- (void)onCappedCallbackWithController:(SCMobileSDKController * _Nonnull)controller {
-
-}
-
-- (BOOL)onClickthruWithController:(SCMobileSDKController * _Nonnull)controller targetURL:(NSURL * _Nonnull)targetURL {
-
-    [controller pauseAd];
+/// Called when the advertisement is clicked. You can prevent linking to the
+/// advertisers WebSite by catching click events.
+- (BOOL)onClickthruWithController:(SCAdViewController * _Nonnull)controller targetURL:(NSURL * _Nonnull)targetURL {
+    
+    [controller pause];
     
     [[UIApplication sharedApplication] openURL:targetURL];
     
     return YES;
 }
-
 
 
 @end

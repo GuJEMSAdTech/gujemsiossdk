@@ -34,7 +34,7 @@ the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recomme
 ## Changelog
  
 #### v3.2.0-beta-1 |  12/July/2017
-- Updated Google Mobile Ads SDK to version 7.20.0
+- Updated Google Mobile Ads SDK to version 7.24.1
 - Teads removed / Smartclip added in preliminary version
 - Pubmatic SDK for Header Bidding added (preliminary)
 - Facebook Audience Network SDK added
@@ -56,11 +56,12 @@ Fixed version numbers for Google-Mobile-Ads-SDK and GoogleAds-IMA-iOS-SDK-For-Ad
 ## New in 3.2.0
 Version 3.2.0 includes the following updates:
 - In this version Teads has been removed, and SmartClip was added in return as it provides the opportunity to use mobile video ad.
+- GUJGenericAdContext added to handle FB Audience Network SDK, Pubmatic Header Bidding and iq digital app events
+- GUJGenericAdContext can be used instead of GUJAdViewContext
 - The current version includes updates for Facebook Audience Network SDK. The app can retrieve a facebook placement ID from the Google SDK, which is then handled by our SDK automatically.
-- We have added Pubmatic Header Bidding. With Pubmatic TKP it becomes possible to compare the DFP-Ad-Server with other campaigns over DFP mediation or a key-value-solution. 
-- Native Ad Functionality over XML has been implemented as an interface between the iOS SDK and a publisher server to request a XML-file. The XML-content can be used in a native ad view, which app developers can style individually (look & feel) in their apps.
+- We have added Pubmatic Header Bidding. With Pubmatic TKP it becomes possible to compare the DFP-Ad-Server with other campaigns over DFP mediation or a key-value-solution.
 - iq digital app events Functionality added. The app events consist of a name and a "data" string. The events "setsize", "noad" and "log" are available. Please see the example app source code or the iq digital documentation for details. "setsize" can be problematic when used inside a scrollable container and should not be used for ads at the bottom of a container.
- 
+- Native Ad Functionality over XML has been implemented as an interface between the iOS SDK and a publisher server to request a XML-file. The XML-content can be used in a native ad view, which app developers can style individually (look & feel) in their apps.
  
 ## Handling App Transport Security in iOS 9
  
@@ -288,12 +289,12 @@ If you are not migrating from a 2.1.x version this is your starting point!
  
 Loading and displaying Banner Ads, Interstitial Ads or Native Ads is straight forward. :)
  
-You always start by creating a `GUJAdViewContext`. Define a class variable to keep the reference.  
+You always start by creating a `GUJAdViewContext` or a `GUJGenericAdContext`. With `GUJGenericAdContext` you can automatically handle Facebook Audicence Network SDK - Ads, use Pubmatic Header Bidding or iq digital app events. Define a class variable to keep the reference.
 Then set the delegate and specify the position and whether it is an ad on an index page (vs. article). 
 The position can be any value between 1 and 10. You can use the predefined constants `GUJ_AD_VIEW_POSITION_TOP` (1),
 `GUJ_AD_VIEW_POSITION_MID_1` (2), `GUJ_AD_VIEW_POSITION_MID_1` (3) or `GUJ_AD_VIEW_POSITION_BOTTOM` (10) to set the position.
  
-Create multiple `GUJAdViewContext` instances for every ad you want to show.
+Create multiple `GUJAdViewContext` or `GUJGenericAdContext` instances for every ad you want to show.
  
 You receive your Ad Unit ID from the [G+J EMS Team](#contact), an example could be "/6032/sdktest"
  
@@ -448,7 +449,7 @@ A couple of additional delegate callbacks can be implemented to interact with th
 See the documentation in the header file for further information.
  
  
-#### load a native ad
+#### GADNativeContentAd (Google Native Ad) load a native ad
  
 Load a native ad and handle the result via delegate callbacks:
  
@@ -481,7 +482,7 @@ To display the native ad make your view extend `GADNativeContentAdView` as descr
 the whole ad clickable to allow the user to be redirected to the specified click-through-URL.
  
  
-#### Load native ad from XML
+#### GUJNativeAd (Gruner & Jahr Native Ad) Load native ad from XML
  
 For loading a native ad from XML, use `GUJNativeAdManager` to create one or several native ads for the same view.
 Load a native ad with method `loadAd` of `GUJNativeAd` and handle the result via delegate callbacks:
@@ -517,65 +518,75 @@ For detailed information see our example implementation: gujemsiossdk/Products/M
 
 #### load PubMatic ad
  
-Load a native ad and handle the result via delegate callbacks:
+Load a GUJGenericAdContext with 'contextWithOptions' set for Pubmatic, also a PubmaticPublisherId must be set and an AdUnitId as usual:
  
 ```objective-c
-self.bannerContext = [GUJPubMaticAdContext adWithAdUnitId:<YOUR ADUNIT ID> publisherId:<YOUR PUBLISHER ID>];
-    self.bannerContext.delegate = self;
-    [self.bannerContext loadBannerViewForViewController:self];
+
+GUJGenericAdContext * adContext = [GUJGenericAdContext contextWithOptions:GUJGenericAdContextOptionUsePubMatic delegate:self];
+[adContext setPubmaticPublisherId:publisherId];
+[adContext loadWithAdUnitId:unitId inController:self];
+
 ```
- 
-    
-    
-```objective-c
-- (void)bannerViewDidLoad:(GUJAdViewContext *)adViewContext {
- 
-}
- 
-- (void)bannerView:(GUJAdViewContext *)adViewContext didFailWithError:(NSError *)error {
- 
-}
-``` 
  
 #### Load native Facebook ad
 
-For loading a native Facebook ad use `GUJFacebookNativeAdManager`
+Load a GUJGenericAdContext with 'contextWithOptions' set for Facebook, also  an AdUnitId must be set as usual:
 
 ```objective-c
-self.adManager = [[GUJFacebookNativeAdManager alloc] init];
-self.adManager.delegate = self;
-[self.adManager loadWithAdUnitId:<YOUR ADUNIT ID> inController:self];
+GUJGenericAdContext * adContext = [GUJGenericAdContext contextWithOptions:GUJGenericAdContextOptionUseFacebook delegate:self];
+[adContext loadWithAdUnitId:unitId inController:self];
 ```
 
-`GUJFacebookNativeAdManager` with delegate callbacks will return `FBNativeAd` object, or `GUJAdViewContext` if ad doesn't contain facebook placement id, or error
+`GUJGenericAdContext` with delegate callbacks will return `FBNativeAd` object, or `GUJAdViewContext` if ad doesn't contain facebook placement id, or error
 
 ```objective-c
--(void) facebookNativeAdManager:(GUJFacebookNativeAdManager *) manager didLoadAdDataForContext:(GUJAdViewContext *)context {
+
+- (void)genericAdContextDidLoadFacebookNativeAd:(FBNativeAd *)fbNativeAd {
 }
 
--(void) facebookNativeAdManager:(GUJFacebookNativeAdManager *) manager didLoadNativeAd:(FBNativeAd *)nativeAd {
+- (void)genericAdContextDidLoadData:(GUJAdViewContext *)adViewContext {
 }
 
--(void) facebookNativeAdManager:(GUJFacebookNativeAdManager *) manager didFailWithError:(NSError *)error {
-} 
+- (void)genericAdContext:(GUJAdViewContext *)adViewContext didFailWithError:(NSError *)error {
+}
+
 ```
+For testing:
+- a Google Ad Unit Id is needed to call a creative via DFP
+- in this creative is placed a Facebook Placement Id e.g.:
+```
+<script type='text/javascript' src='https://media.admob.com/api/v1/google_mobile_app_ads.js'></script> 
+<script>
+admob.events.dispatchAppEvent('handOverAdViewToFacebook', '147386355810773_147386802477395');
+</script>
+```
+- to see example ads, you need to be logged into your Facebook App and to give your Facebook ID to your Facebook ad provider
+
 For detailed information see:
 - Facebook’s own documentation https://developers.facebook.com/docs/audience-network/ios-native
 - Our example implementation: gujemsiossdk/Products/Main.storyboard -> FB Native Ads Scene
+- Do not hesitate to contact us for clarification and help
 
 #### Iq Digital app events
 
-`GUJIQAdViewContext` can handle events in ad with callbacks:
+Load a GUJGenericAdContext with 'contextWithOptions' set for Iq Digital app events, also  an AdUnitId must be set as usual
+`GUJGenericAdContext` can then handle events in ad with callbacks:
 
 ```objective-c
--(void) iqAdView:(GUJIQAdViewContext *) viewContext didReceivedLog:(NSString *) log {
+
+GUJGenericAdContext * adContext = [GUJGenericAdContext
+contextWithOptions: GUJGenericAdContextOptionUseIQEvents delegate:self];
+[adContext loadWithAdUnitId:unitId inController:self];
+
+- (void)genericAdContextDidChangeBannerSize:(CGSize)size duration:(CGFloat) duration {
 }
 
--(void) iqAdView:(GUJIQAdViewContext *) viewContext changeSize:(CGSize) size duration:(CGFloat) duration {
+- (void)genericAdContextDidReceiveLog:(NSString *) log {
 }
 
--(void) iqAdViewDidRemoveFromView:(GUJIQAdViewContext *) viewContext {
+- (void)genericAdContextDidRemoveBannerFromView {
 }
+
 ```
 
 The app events consist of a name and a "data" string.
@@ -596,9 +607,9 @@ Call examples:
 
 "setsize","320:240" 	Ad webview is given the new size of 320x240 pixels
 
-"setsize","max:160" 		Ad webview is adjusted to the maximum available width and a height of 160 pixels.
+"setsize","max:160" 	Ad webview is adjusted to the maximum available width and a height of 160 pixels.
 
-"setsize","max:max" 		Ad webview is adjusted to the maximum available width and the maximum available height.
+"setsize","max:max" 	Ad webview is adjusted to the maximum available width and the maximum available height.
 
 
 noad event

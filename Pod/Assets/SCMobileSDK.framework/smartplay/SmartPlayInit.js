@@ -2,8 +2,9 @@ SmartPlay('#container', {
 	uiLayout: 'overlay',
 
 	adRequest: %@,
-	
-	debug: true,
+    %@
+    %@
+	debug: %@,
 
 	featureMatrix: {
 		'endingScreen': {

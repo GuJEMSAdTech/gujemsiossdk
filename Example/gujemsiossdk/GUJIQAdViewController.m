@@ -7,12 +7,13 @@
 //
 
 #import "GUJIQAdViewController.h"
-#import "GUJIQAdViewContext.h"
 #import "GUJSettingsViewController.h"
 
-@interface GUJIQAdViewController () <GUJAdViewContextDelegate, GUJIQAdViewContextDelegate>
+#import "GUJGenericAdContext.h"
 
-@property (nonatomic, strong) GUJIQAdViewContext *adViewContext;
+@interface GUJIQAdViewController () <GUJGenericAdContextDelegate>
+
+@property (nonatomic, strong) GUJGenericAdContext *adContext;
 
 @property (weak, nonatomic) IBOutlet UIView *bannerAreaView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerAreaViewHeight;
@@ -44,19 +45,18 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *adUnitId = [userDefaults objectForKey:IQ_APP_EVENTS_AD_UNIT_USER_DEFAULTS_KEY];
     
-    self.adViewContext = [[GUJIQAdViewContext alloc] init];
-    [self.adViewContext loadBannerWithAdUnitId:adUnitId rootViewController:self delegate:self];
+    self.adContext = [GUJGenericAdContext contextWithOptions:GUJGenericAdContextOptionUseIQEvents delegate:self];
+    [self.adContext loadWithAdUnitId:adUnitId inController:self];
 
-    [self.bannerAreaView addSubview:[self.adViewContext bannerView]];
+    [self.bannerAreaView addSubview:[self.adContext bannerView]];
 }
 
 #pragma mark GUJIQAdViewContextDelegate
 
--(void) iqAdView:(GUJIQAdViewContext *) viewContext didReceivedLog:(NSString *) log {
+- (void)genericAdContextDidReceiveLog:(NSString *) log {
     NSLog(@"iq ad logging: %@", log);
 }
-
--(void) iqAdView:(GUJIQAdViewContext *) viewContext changeSize:(CGSize) size duration:(CGFloat) duration {
+- (void)genericAdContextDidChangeBannerSize:(CGSize)size duration:(CGFloat) duration {
     
     self.bannerAreaViewHeight.constant = size.height;
     self.bannerAreaViewWidth.constant = size.width;
@@ -66,7 +66,7 @@
     }];
 }
 
--(void) iqAdViewDidRemoveFromView:(GUJIQAdViewContext *) viewContext {
+- (void)genericAdContextDidRemoveBannerFromView {
     self.bannerAreaViewHeight.constant = 0;
 }
 

@@ -9,25 +9,18 @@
 #import "GUJPubMaticViewController.h"
 #import "GUJSettingsViewController.h"
 
-#import "GUJPubMaticAdContext.h"
+#import "GUJGenericAdContext.h"
 
-
-
-@interface GUJPubMaticViewController () <GUJPubMaticAdContextDelegate>
+@interface GUJPubMaticViewController () <GUJGenericAdContextDelegate>
 
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *adAreaHeight;
 @property (weak, nonatomic) IBOutlet UIView *adArea;
 @property (weak, nonatomic) IBOutlet UILabel *adErrorLabel;
 
-@property(nonatomic, strong) GUJPubMaticAdContext *bannerContext;
-@property(nonatomic, strong) GUJPubMaticAdContext *interstitialContext;
+@property(nonatomic, strong) GUJGenericAdContext *adContext;
 
 @end
-
-
-
-
 
 
 
@@ -75,18 +68,18 @@
     NSString *publisherId = [self publisherId];
     
     if (unitId && publisherId) {
-        self.bannerContext = [GUJPubMaticAdContext adWithAdUnitId:unitId publisherId:publisherId];
-        [self.bannerContext setPosition:3];
-        [self.bannerContext setAdSize:CGSizeMake(300, 250)];
-        self.bannerContext.delegate = self;
-        [self.bannerContext loadBannerViewForViewController:self];
+        self.adContext = [GUJGenericAdContext contextWithOptions:GUJGenericAdContextOptionUsePubMatic delegate:self];
+        [self.adContext setPubmaticPublisherId:publisherId];
+        [self.adContext setPosition:3];
+        [self.adContext setAdSize:CGSizeMake(300, 250)];
+        [self.adContext loadWithAdUnitId:unitId inController:self];
     }
 }
 
 
 #pragma mark - GUJPubMaticAdContextDelegate
 
-- (void)bannerViewDidLoad:(GUJAdViewContext *)adViewContext {
+- (void)genericAdContextDidLoadData:(GUJAdViewContext *)adViewContext {
     UIView *bannerView = (UIView *)adViewContext.bannerView;
     [self.adArea addSubview:bannerView];
     self.adAreaHeight.constant = bannerView.frame.size.height;
@@ -94,8 +87,7 @@
     self.adErrorLabel.text = nil;
 }
 
-- (void)bannerView:(GUJAdViewContext *)adViewContext didFailWithError:(NSError *)error {
-    
+- (void)genericAdContext:(GUJAdViewContext *)adViewContext didFailWithError:(NSError *)error {
     self.adErrorLabel.text = error.localizedDescription;
 }
 
