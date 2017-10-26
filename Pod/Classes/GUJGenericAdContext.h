@@ -22,17 +22,16 @@ typedef NS_OPTIONS(NSUInteger, GUJGenericAdContextOption) {
 @interface GUJGenericAdContext : NSObject
 
 @property (nonatomic, strong, readonly) NSString *adUnitId;
-@property(nonatomic, weak) id <GUJGenericAdContextDelegate> delegate;
+@property (nonatomic, strong) GUJAdViewContext *adViewContext;
+@property (nonatomic, weak) id <GUJGenericAdContextDelegate> delegate;
 
-+(GUJGenericAdContext *) contextWithOptions:(GUJGenericAdContextOption) options delegate:(id <GUJGenericAdContextDelegate>) delegate;
--(void) loadWithAdUnitId:(NSString *) adUnitId inController:(UIViewController *) vc;
++(GUJGenericAdContext *) contextForAdUnitId:(NSString *) adUnitId withOptions:(GUJGenericAdContextOption) options delegate:(id <GUJGenericAdContextDelegate>) delegate;
+
+-(void) loadInViewController:(UIViewController *) vc;
 
 -(GADBannerView *) bannerView;
 
--(void) setPubmaticPublisherId:(NSString *) publisherId;
--(void) setAdSize:(CGSize) size;
--(void) setPosition:(NSInteger) position;
--(void) setIsIndex:(BOOL) isIndex;
+-(void)setPubmaticPublisherId:(NSString *)publisherId size:(CGSize) size;
 
 
 @end

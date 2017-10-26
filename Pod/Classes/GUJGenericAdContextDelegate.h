@@ -4,19 +4,19 @@
 //
 //
 
-@class GUJAdViewContext;
+@class GUJGenericAdContext;
 
 @protocol GUJGenericAdContextDelegate <NSObject>
 
 @optional
 
-- (void)genericAdContext:(GUJAdViewContext *)adViewContext didFailWithError:(NSError *)error;
-- (void)genericAdContextDidLoadData:(GUJAdViewContext *)adViewContext;
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didLoadData:(GUJAdViewContext *)adViewContext;
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didFailWithError:(NSError *)error;
 
-- (void)genericAdContextDidLoadFacebookNativeAd:(FBNativeAd *)fbNativeAd;
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didLoadFacebookNativeAd:(FBNativeAd *)fbNativeAd;
 
-- (void)genericAdContextDidChangeBannerSize:(CGSize)size duration:(CGFloat) duration;
-- (void)genericAdContextDidReceiveLog:(NSString *) log;
-- (void)genericAdContextDidRemoveBannerFromView;
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didChangeBannerSize:(CGSize)size duration:(CGFloat) duration;
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didReceiveLog:(NSString *) log;
+- (void)genericAdContextDidRemoveBannerFromView:(GUJGenericAdContext *)adContext;
 
 @end

@@ -522,9 +522,13 @@ Load a GUJGenericAdContext with 'contextWithOptions' set for Pubmatic, also a Pu
  
 ```objective-c
 
-GUJGenericAdContext * adContext = [GUJGenericAdContext contextWithOptions:GUJGenericAdContextOptionUsePubMatic delegate:self];
-[adContext setPubmaticPublisherId:publisherId];
-[adContext loadWithAdUnitId:unitId inController:self];
+self.adContext = [GUJGenericAdContext contextForAdUnitId:unitId
+withOptions:GUJGenericAdContextOptionUsePubMatic
+delegate:self];
+
+[self.adContext setPubmaticPublisherId:publisherId size:CGSizeMake(300, 250)];
+self.adContext.adViewContext.position = GUJ_AD_VIEW_POSITION_TOP;
+[self.adContext loadInViewController:self];
 
 ```
  
@@ -533,21 +537,22 @@ GUJGenericAdContext * adContext = [GUJGenericAdContext contextWithOptions:GUJGen
 Load a GUJGenericAdContext with 'contextWithOptions' set for Facebook, also  an AdUnitId must be set as usual:
 
 ```objective-c
-GUJGenericAdContext * adContext = [GUJGenericAdContext contextWithOptions:GUJGenericAdContextOptionUseFacebook delegate:self];
-[adContext loadWithAdUnitId:unitId inController:self];
+self.adContext = [GUJGenericAdContext contextForAdUnitId:adUnitId
+withOptions:GUJGenericAdContextOptionUseFacebook
+delegate:self];
 ```
 
 `GUJGenericAdContext` with delegate callbacks will return `FBNativeAd` object, or `GUJAdViewContext` if ad doesn't contain facebook placement id, or error
 
 ```objective-c
 
-- (void)genericAdContextDidLoadFacebookNativeAd:(FBNativeAd *)fbNativeAd {
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didLoadFacebookNativeAd:(FBNativeAd *)fbNativeAd {
 }
 
-- (void)genericAdContextDidLoadData:(GUJAdViewContext *)adViewContext {
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didLoadData:(GUJAdViewContext *)adViewContext {
 }
 
-- (void)genericAdContext:(GUJAdViewContext *)adViewContext didFailWithError:(NSError *)error {
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didFailWithError:(NSError *)error{
 }
 
 ```
@@ -574,17 +579,17 @@ Load a GUJGenericAdContext with 'contextWithOptions' set for Iq Digital app even
 
 ```objective-c
 
-GUJGenericAdContext * adContext = [GUJGenericAdContext
-contextWithOptions: GUJGenericAdContextOptionUseIQEvents delegate:self];
-[adContext loadWithAdUnitId:unitId inController:self];
+self.adContext = [GUJGenericAdContext contextForAdUnitId:adUnitId
+withOptions:GUJGenericAdContextOptionUseIQEvents
+delegate:self];
 
-- (void)genericAdContextDidChangeBannerSize:(CGSize)size duration:(CGFloat) duration {
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didChangeBannerSize:(CGSize)size duration:(CGFloat) duration {
 }
 
-- (void)genericAdContextDidReceiveLog:(NSString *) log {
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didReceiveLog:(NSString *) log {
 }
 
-- (void)genericAdContextDidRemoveBannerFromView {
+- (void)genericAdContextDidRemoveBannerFromView:(GUJGenericAdContext *)adContext {
 }
 
 ```

@@ -45,18 +45,21 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *adUnitId = [userDefaults objectForKey:IQ_APP_EVENTS_AD_UNIT_USER_DEFAULTS_KEY];
     
-    self.adContext = [GUJGenericAdContext contextWithOptions:GUJGenericAdContextOptionUseIQEvents delegate:self];
-    [self.adContext loadWithAdUnitId:adUnitId inController:self];
+    self.adContext = [GUJGenericAdContext contextForAdUnitId:adUnitId
+                                                 withOptions:GUJGenericAdContextOptionUseIQEvents
+                                                    delegate:self];
+    
+    [self.adContext loadInViewController:self];
 
     [self.bannerAreaView addSubview:[self.adContext bannerView]];
 }
 
 #pragma mark GUJIQAdViewContextDelegate
 
-- (void)genericAdContextDidReceiveLog:(NSString *) log {
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didReceiveLog:(NSString *) log {
     NSLog(@"iq ad logging: %@", log);
 }
-- (void)genericAdContextDidChangeBannerSize:(CGSize)size duration:(CGFloat) duration {
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didChangeBannerSize:(CGSize)size duration:(CGFloat) duration {
     
     self.bannerAreaViewHeight.constant = size.height;
     self.bannerAreaViewWidth.constant = size.width;
@@ -66,7 +69,7 @@
     }];
 }
 
-- (void)genericAdContextDidRemoveBannerFromView {
+- (void)genericAdContextDidRemoveBannerFromView:(GUJGenericAdContext *)adContext {
     self.bannerAreaViewHeight.constant = 0;
 }
 

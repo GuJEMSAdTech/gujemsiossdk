@@ -68,18 +68,21 @@
     NSString *publisherId = [self publisherId];
     
     if (unitId && publisherId) {
-        self.adContext = [GUJGenericAdContext contextWithOptions:GUJGenericAdContextOptionUsePubMatic delegate:self];
-        [self.adContext setPubmaticPublisherId:publisherId];
-        [self.adContext setPosition:3];
-        [self.adContext setAdSize:CGSizeMake(300, 250)];
-        [self.adContext loadWithAdUnitId:unitId inController:self];
+        
+        self.adContext = [GUJGenericAdContext contextForAdUnitId:unitId
+                                                     withOptions:GUJGenericAdContextOptionUsePubMatic
+                                                        delegate:self];
+        
+        [self.adContext setPubmaticPublisherId:publisherId size:CGSizeMake(300, 250)];
+        self.adContext.adViewContext.position = GUJ_AD_VIEW_POSITION_TOP;
+        [self.adContext loadInViewController:self];
     }
 }
 
 
 #pragma mark - GUJPubMaticAdContextDelegate
 
-- (void)genericAdContextDidLoadData:(GUJAdViewContext *)adViewContext {
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didLoadData:(GUJAdViewContext *)adViewContext {
     UIView *bannerView = (UIView *)adViewContext.bannerView;
     [self.adArea addSubview:bannerView];
     self.adAreaHeight.constant = bannerView.frame.size.height;
@@ -87,7 +90,7 @@
     self.adErrorLabel.text = nil;
 }
 
-- (void)genericAdContext:(GUJAdViewContext *)adViewContext didFailWithError:(NSError *)error {
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didFailWithError:(NSError *)error {
     self.adErrorLabel.text = error.localizedDescription;
 }
 

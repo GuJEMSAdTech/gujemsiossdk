@@ -24,14 +24,11 @@ static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
 
 @interface GUJGenericAdContext () <GUJAdViewContextDelegate, PMPrefetchDelegate, FBNativeAdDelegate, GADAppEventDelegate>
 
-@property (nonatomic, strong) GUJAdViewContext *adViewContext;
 @property GUJGenericAdContextOption options;
 
-@property (nonatomic) CGSize adSize;
-@property (nonatomic) NSInteger position;
-@property (nonatomic) BOOL isIndex;
-
 @property (nonatomic, strong) NSString *pubmaticPublisherId;
+@property (nonatomic) CGSize pubmaticSize;
+
 @property (nonatomic, strong) NSString *facebookPlacementId;
 @property (nonatomic, strong) NSString *igChangedSizeString;
 
@@ -40,31 +37,31 @@ static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
 
 @implementation GUJGenericAdContext
 
-+(GUJGenericAdContext *) contextWithOptions:(GUJGenericAdContextOption) options delegate:(id <GUJGenericAdContextDelegate>) delegate {
++(GUJGenericAdContext *) contextForAdUnitId:(NSString *) adUnitId withOptions:(GUJGenericAdContextOption) options delegate:(id <GUJGenericAdContextDelegate>) delegate {
     
-    GUJGenericAdContext *context = [[GUJGenericAdContext alloc] init];
+    GUJGenericAdContext *context = [[GUJGenericAdContext alloc] initWithAdUnitId:adUnitId];
     context.options = options;
     context.delegate = delegate;
-    
-    //default values
-    [context setPosition:GUJ_AD_VIEW_POSITION_TOP];
-    if (options & GUJGenericAdContextOptionUsePubMatic) {
-        [context setAdSize:CGSizeMake(320, 50)];
-    }
     
     return context;
 }
 
--(void) loadWithAdUnitId:(NSString *) adUnitId inController:(UIViewController *) vc {
+-(instancetype) initWithAdUnitId:(NSString *) adUnitId {
+    if (self = [super init]) {
+        _adUnitId = adUnitId;
+        _adViewContext = [GUJAdViewContext instanceForAdUnitId:adUnitId rootViewController:nil];
+        _adViewContext.position = GUJ_AD_VIEW_POSITION_TOP;
+    }
     
-    _adUnitId = adUnitId;
+    return self;
+}
+
+-(void) loadInViewController:(UIViewController *) vc {
     
     self.facebookPlacementId = nil;
     
-    self.adViewContext = [GUJAdViewContext instanceForAdUnitId:self.adUnitId rootViewController:vc];
-    self.adViewContext.position = self.position;
     self.adViewContext.delegate = self;
-    self.adViewContext.isIndex = self.isIndex;
+    self.adViewContext.rootViewController = vc;
     
     if (self.options & GUJGenericAdContextOptionUsePubMatic) {
         if (self.pubmaticPublisherId == nil) {
@@ -72,7 +69,7 @@ static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
             return;
         }
         
-        [self loadPubmaticTargetInfo:self.pubmaticPublisherId];
+        [self loadPubmaticTargetInfo:self.pubmaticPublisherId size:self.pubmaticSize];
         return;
     }
     
@@ -96,7 +93,7 @@ static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
                                      userInfo:userInfo];
     
     if ([self.delegate respondsToSelector:@selector(genericAdContext:didFailWithError:)]) {
-        [self.delegate genericAdContext:nil didFailWithError:error];
+        [self.delegate genericAdContext:self didFailWithError:error];
     }
 }
 
@@ -104,7 +101,7 @@ static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
 
 - (void)bannerViewDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context {
     if ([self.delegate respondsToSelector:@selector(genericAdContext:didFailWithError:)]) {
-        [self.delegate genericAdContext:context didFailWithError:error];
+        [self.delegate genericAdContext:self didFailWithError:error];
     }
 }
 
@@ -141,9 +138,9 @@ static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
         return;
     }
 
-    if ([self.delegate respondsToSelector:@selector(genericAdContextDidLoadData:)]) {
+    if ([self.delegate respondsToSelector:@selector(genericAdContext:didLoadData:)]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate genericAdContextDidLoadData:context];
+            [self.delegate genericAdContext:self didLoadData:context];
         });
     }
 }
@@ -152,15 +149,20 @@ static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
 
 #pragma mark - Pubmatic
 
--(void) loadPubmaticTargetInfo:(NSString *) publisherId {
+-(void)setPubmaticPublisherId:(NSString *)publisherId size:(CGSize) size {
+    self.pubmaticPublisherId = publisherId;
+    self.pubmaticSize = size;
+}
+
+-(void) loadPubmaticTargetInfo:(NSString *) publisherId size:(CGSize) size {
     
-    PMSize *impSize = [PMSize sizeWithWidth:self.adSize.width height:self.adSize.height];
+    PMSize *impSize = [PMSize sizeWithWidth:size.width height:size.height];
     NSString *impressionId = self.adUnitId;
-    if (self.position > 0) {
-        impressionId = [impressionId stringByAppendingFormat:@"-%ld", (long)self.position];
+    if (self.adViewContext.position > 0) {
+        impressionId = [impressionId stringByAppendingFormat:@"-%ld", (long)self.adViewContext.position];
     }
     
-    PMBannerImpression *impression = [[PMBannerImpression alloc] initWithImpressionId:impressionId slotName:self.adUnitId slotIndex:self.position sizes:@[impSize]];
+    PMBannerImpression *impression = [[PMBannerImpression alloc] initWithImpressionId:impressionId slotName:self.adUnitId slotIndex:self.adViewContext.position sizes:@[impSize]];
     
     
     PMPrefetchManager *prefetchManager = [PMPrefetchManager sharedInstance];
@@ -197,7 +199,7 @@ static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
 {
     if ([self.delegate respondsToSelector:@selector(genericAdContext:didFailWithError:)]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate genericAdContext:nil didFailWithError:error];
+            [self.delegate genericAdContext:self didFailWithError:error];
         });
     }
 }
@@ -216,9 +218,9 @@ static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
 
 - (void)nativeAdDidLoad:(FBNativeAd *)nativeAd {
     
-    if ([self.delegate respondsToSelector:@selector(genericAdContextDidLoadFacebookNativeAd:)]) {
+    if ([self.delegate respondsToSelector:@selector(genericAdContext:didLoadFacebookNativeAd:)]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate genericAdContextDidLoadFacebookNativeAd:nativeAd];
+            [self.delegate genericAdContext:self didLoadFacebookNativeAd:nativeAd];
         });
     }
 }
@@ -226,7 +228,7 @@ static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
 - (void)nativeAd:(FBNativeAd *)nativeAd didFailWithError:(NSError *)error {
     if ([self.delegate respondsToSelector:@selector(genericAdContext:didFailWithError:)]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate genericAdContext:nil didFailWithError:error];
+            [self.delegate genericAdContext:self didFailWithError:error];
         });
     }
 }
@@ -282,23 +284,23 @@ static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
             [self bannerView].frame = frame;
         }];
         
-        if ([self.delegate respondsToSelector:@selector(genericAdContextDidChangeBannerSize:duration:)]) {
-            [self.delegate genericAdContextDidChangeBannerSize:size duration:timeValue];
+        if ([self.delegate respondsToSelector:@selector(genericAdContext:didChangeBannerSize:duration:)]) {
+            [self.delegate genericAdContext:self didChangeBannerSize:size duration:timeValue];
         }
     });
 }
 
 -(void) didRecieveLogEvent:(NSString *) info {
-    if ([self.delegate respondsToSelector:@selector(genericAdContextDidReceiveLog:)]) {
-        [self.delegate genericAdContextDidReceiveLog:info];
+    if ([self.delegate respondsToSelector:@selector(genericAdContext:didReceiveLog:)]) {
+        [self.delegate genericAdContext:self didReceiveLog:info];
     }
 }
 
 -(void) didRecieveNoadEvent {
     [[self bannerView] removeFromSuperview];
     
-    if ([self.delegate respondsToSelector:@selector(genericAdContextDidRemoveBannerFromView)]) {
-        [self.delegate genericAdContextDidRemoveBannerFromView];
+    if ([self.delegate respondsToSelector:@selector(genericAdContextDidRemoveBannerFromView:)]) {
+        [self.delegate genericAdContextDidRemoveBannerFromView:self];
     }
 }
 

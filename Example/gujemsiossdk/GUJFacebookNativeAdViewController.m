@@ -45,8 +45,6 @@
         [self disableTestMode];
         self.facebookTestModeSwitch.on = NO;
     }
-    
-    self.adContext = [GUJGenericAdContext contextWithOptions:GUJGenericAdContextOptionUseFacebook delegate:self];
 }
 
 
@@ -60,7 +58,13 @@
         return;
     }
     
-    [self.adContext loadWithAdUnitId:adUnitId inController:self];
+    if (self.adContext == nil) {
+        self.adContext = [GUJGenericAdContext contextForAdUnitId:adUnitId
+                                                     withOptions:GUJGenericAdContextOptionUseFacebook
+                                                        delegate:self];
+    }
+    
+    [self.adContext loadInViewController:self];
 }
 
 -(void) startLoadAnimation {
@@ -126,19 +130,19 @@
 
 #pragma mark GUJFacebookNativeAdManagerDelegate
 
-- (void)genericAdContextDidLoadData:(GUJAdViewContext *)adViewContext {
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didLoadData:(GUJAdViewContext *)adViewContext {
     [self stopLoadAnimation:nil];
     
     [self adWithContextDidLoad:adViewContext];
 }
 
-- (void)genericAdContextDidLoadFacebookNativeAd:(FBNativeAd *)nativeAd {
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didLoadFacebookNativeAd:(FBNativeAd *)nativeAd {
     [self stopLoadAnimation:nil];
     
     [self nativeAdDidLoad:nativeAd];
 }
 
-- (void)genericAdContext:(GUJAdViewContext *)adViewContext didFailWithError:(NSError *)error {
+- (void)genericAdContext:(GUJGenericAdContext *)adContext didFailWithError:(NSError *)error {
     [self stopLoadAnimation:error.localizedDescription];
 }
 
