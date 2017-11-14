@@ -108,7 +108,7 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
 /*!
  * Returns a GUJAdViewContext instance.
  *
- @param adSpaceId - automatically mapped to an AdUnit ID and custom criteria pos/ ind
+ @param AdSpace ID - automatically mapped to an AdUnit ID and custom criteria pos/ ind
  @result A newly created GUJAdViewContext instance
  */
 + (GUJAdViewContext *)instanceForAdspaceId:(NSString *)adSpaceId;
@@ -117,7 +117,7 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
 /*!
  * Returns a GUJAdViewContext instance.
  *
- @param adSpaceId - automatically mapped to an AdUnit ID and custom criteria pos/ ind
+ @param AdSpace ID - automatically mapped to an AdUnit ID and custom criteria pos/ ind
  @param delegate A class that implements the GUJAdViewContextDelegate Protocol
  @result A newly created GUJAdViewContext instance
  */
@@ -127,7 +127,7 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
 /*!
  * Returns a GUJAdViewContext instance.
  *
- @param adSpaceId - automatically mapped to an AdUnit ID and custom criteria pos/ ind
+ @param Ad-Space-Id
  @param adUnitId - adExchange adUnitId
  @result A newly created GUJAdViewContext instance
  */
@@ -137,7 +137,7 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
 /*!
  * Returns a GUJAdViewContext instance.
  *
- @param adSpaceId - automatically mapped to an AdUnit ID and custom criteria pos/ ind
+ @param Ad-Space-Id
  @param adUnitId - adExchange adUnitId
  @param delegate A class that implements the GUJAdViewContextDelegate Protocol
  @result A newly created GUJAdViewContext instance

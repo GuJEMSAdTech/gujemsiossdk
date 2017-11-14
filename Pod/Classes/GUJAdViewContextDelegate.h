@@ -74,6 +74,7 @@
 /*!
  * Will be called if the current AdView will perform the ad server request.
  *
+ @param bannerView The adView object
  */
 - (void)bannerViewWillLoadAdDataForContext:(GUJAdViewContext *)context;
 
@@ -88,6 +89,7 @@
 /*!
  * Will be called if the current AdView did successfully perform the ad server request
  *
+ @param bannerView The adView object
  */
 - (void)bannerViewDidLoadAdDataForContext:(GUJAdViewContext *)context;
 
@@ -120,10 +122,6 @@
 - (void)bannerViewWillLeaveApplicationForContext:(GUJAdViewContext *)context;
 
 
-- (void)bannerViewDidRecieveEventForContext:(GUJAdViewContext *)context eventName:(NSString *)name
-                                   withInfo:(NSString *)info;
-
-
 #pragma mark - Interstitial Views
 
 /*!
@@ -153,12 +151,14 @@
 /*!
  * Will be called if the current AdView is an interstitial and will perform the ad server request.
  *
+ @param bannerView The adView object
  */
 - (void)interstitialViewWillLoadAdData:(GUJAdView *)interstitialView DEPRECATED_MSG_ATTRIBUTE("Use interstitialViewWillLoadAdDataForContext: method instead.");
 
 /*!
  * Will be called if the current AdView is an interstitial and will perform the ad server request.
  *
+ @param bannerView The adView object
  */
 - (void)interstitialViewWillLoadAdDataForContext:(GUJAdViewContext *)context;
 
@@ -166,12 +166,14 @@
 /*!
  * Will be called if the current AdView is an interstitial and did successfully perform the ad server request
  *
+ @param bannerView The adView object
  */
 - (void)interstitialViewDidLoadAdData:(GUJAdView *)interstitialView DEPRECATED_MSG_ATTRIBUTE("Use interstitialViewDidLoadAdDataForContext: method instead.");
 
 /*!
  * Will be called if the current AdView is an interstitial and did successfully perform the ad server request
  *
+ @param bannerView The adView object
  */
 - (void)interstitialViewDidLoadAdDataForContext:(GUJAdViewContext *)context;
 
@@ -234,9 +236,9 @@
 /*!
  * Will be called if an native ad load was trigggered and did successfully perform the ad server request
  *
+ @param bannerView The adView object
  */
 -(void)nativeContentAdLoaderDidLoadDataForContext:(GUJAdViewContext *)context;
-
 
 
 

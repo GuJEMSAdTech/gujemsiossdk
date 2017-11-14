@@ -32,18 +32,7 @@
     __weak IBOutlet UITextField *adSpaceIdTextField;
     __weak IBOutlet UIButton *convertButton;
     __weak IBOutlet UILabel *positionLabel;
-    
-    __weak IBOutlet UITextField *facebookAdUnitTextField;
-    __weak IBOutlet UITextField *nativeBaseUrlTextField;
-    
-    __weak IBOutlet UITextField *iqAppEventsAdUnitField;
-    
-    __weak IBOutlet UITextField *smartClipUrlField;
-    
-    __weak IBOutlet UITextField *pubmaticPublisherField;
-    __weak IBOutlet UITextField *pubmaticAdUnitField;
-    
-    __weak IBOutlet UITextField *keywordsField;
+    __weak IBOutlet UITextField *teadsPlacementIdTextField;
 }
 
 
@@ -59,40 +48,14 @@
     [self initSettingsFromUserDefaults];
 
     adUnitIdTextField.delegate = self;
-    
-    
-    
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
-}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
     [self saveSettingsToUserDefaults];
     [self resetAdspaceIdConverter];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardWillShowNotification
-                                                  object:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardWillHideNotification
-                                                  object:nil];
 }
 
 - (void)resetAdspaceIdConverter {
@@ -106,13 +69,13 @@
     NSString *adSpaceId = adSpaceIdTextField.text;
     NSString *adUnitId = [[GUJAdSpaceIdToAdUnitIdMapper instance] getAdUnitIdForAdSpaceId:adSpaceId];
     NSInteger position = [[GUJAdSpaceIdToAdUnitIdMapper instance] getPositionForAdSpaceId:adSpaceId];
-    BOOL isIndex = [[GUJAdSpaceIdToAdUnitIdMapper instance] getIsIndexForAdSpaceId:adSpaceId].boolValue;
+    BOOL isIndex = [[GUJAdSpaceIdToAdUnitIdMapper instance] getIsIndexForAdSpaceId:adSpaceId];
 
     if (adUnitId == nil) {
         [[[UIAlertView alloc] initWithTitle:@"" message:@"Ad Space ID not found in mapping file." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     } else {
         adUnitIdTextField.text = adUnitId;
-        positionLabel.text = [NSString stringWithFormat:@"Position: %ld %@", (long)position, isIndex ? @"(index)" : @""];
+        positionLabel.text = [NSString stringWithFormat:@"Position: %d %@", position, isIndex ? @"(index)" : @""];
     }
    
     [self dismissKeyboard];
@@ -120,23 +83,16 @@
 
 
 - (void)dismissKeyboard {
-    [self.view endEditing:YES];
+    [adUnitIdTextField resignFirstResponder];
+    [adSpaceIdTextField resignFirstResponder];
+    [teadsPlacementIdTextField resignFirstResponder];
 }
 
 
 -(void)saveSettingsToUserDefaults {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:adUnitIdTextField.text forKey:AD_UNIT_USER_DEFAULTS_KEY];
-    [userDefaults setObject:facebookAdUnitTextField.text forKey:FACEBOOK_AD_UNIT_USER_DEFAULTS_KEY];
-    [userDefaults setObject:nativeBaseUrlTextField.text forKey:NATIVE_BASE_URI_USER_DEFAULTS_KEY];
-    [userDefaults setObject:iqAppEventsAdUnitField.text forKey:IQ_APP_EVENTS_AD_UNIT_USER_DEFAULTS_KEY];
-    [userDefaults setObject:smartClipUrlField.text forKey:SMART_CLIP_URL_USER_DEFAULTS_KEY];
-    
-    [userDefaults setObject:pubmaticPublisherField.text forKey:PUBMATIC_PUBLISHER_USER_DEFAULTS_KEY];
-    [userDefaults setObject:pubmaticAdUnitField.text forKey:PUBMATIC_AD_UNIT_USER_DEFAULTS_KEY];
-    
-    [userDefaults setObject:keywordsField.text forKey:KEYWORD_DEFAULTS_KEY];
-    
+    [userDefaults setObject:teadsPlacementIdTextField.text forKey:TEADS_PLACEMENT_ID_USER_DEFAULTS_KEY];
     [userDefaults synchronize];
 }
 
@@ -144,78 +100,12 @@
 -(void)initSettingsFromUserDefaults {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     adUnitIdTextField.text = [userDefaults objectForKey:AD_UNIT_USER_DEFAULTS_KEY];
-    facebookAdUnitTextField.text = [userDefaults objectForKey:FACEBOOK_AD_UNIT_USER_DEFAULTS_KEY];
-    nativeBaseUrlTextField.text = [userDefaults objectForKey:NATIVE_BASE_URI_USER_DEFAULTS_KEY];
-    iqAppEventsAdUnitField.text = [userDefaults objectForKey:IQ_APP_EVENTS_AD_UNIT_USER_DEFAULTS_KEY];
-    smartClipUrlField.text = [userDefaults objectForKey:SMART_CLIP_URL_USER_DEFAULTS_KEY];
-    
-    pubmaticPublisherField.text = [userDefaults objectForKey:PUBMATIC_PUBLISHER_USER_DEFAULTS_KEY];
-    pubmaticAdUnitField.text = [userDefaults objectForKey:PUBMATIC_AD_UNIT_USER_DEFAULTS_KEY];
-    
-    keywordsField.text = [userDefaults objectForKey:KEYWORD_DEFAULTS_KEY];
-
+    teadsPlacementIdTextField.text = [userDefaults objectForKey:TEADS_PLACEMENT_ID_USER_DEFAULTS_KEY];
 }
 
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     [self resetAdspaceIdConverter];
-}
-
-
-#pragma mark Keyboard
-
--(UIView *) findFirstResponderInView:(UIView *) view {
-    for (UIView *v in view.subviews) {
-        if (v.isFirstResponder) {
-            return v;
-        }
-        
-        UIView *recurciveView = [self findFirstResponderInView:v];
-        if (recurciveView) {
-            return recurciveView;
-        }
-    }
-    
-    return nil;
-}
-
--(CGPoint) textfieldOrigin:(UIView *) view {
-    return [self.view convertPoint:view.frame.origin fromView:view.superview];
-}
-
--(void)keyboardWillShow:(NSNotification *)notification
-{
-    NSDictionary* userInfo = [notification userInfo];
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    NSNumber *durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
-    
-    UIView *text = [self findFirstResponderInView:self.view];
-    if (text) {
-        CGPoint textOrigin = [self textfieldOrigin:text];
-        
-        CGFloat endTextPoint = self.view.frame.size.height - (self.view.frame.size.height - textOrigin.y - text.frame.size.height);
-        CGFloat keyboardPoint = self.view.frame.size.height - keyboardSize.height;
-        
-        if (endTextPoint > keyboardPoint) {
-            [UIView animateWithDuration:durationValue.doubleValue animations:^{
-                CGRect frame = self.view.frame;
-                frame.origin.y = 0 - (endTextPoint - keyboardPoint) - 10;
-                self.view.frame = frame;
-            }];
-        }
-    }
-}
-
--(void)keyboardWillHide:(NSNotification *)notification
-{
-    NSDictionary* userInfo = [notification userInfo];
-    NSNumber *durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey];
-    
-    [UIView animateWithDuration:durationValue.doubleValue animations:^{
-        CGRect frame = self.view.frame;
-        frame.origin.y = 0;
-        self.view.frame = frame;
-    }];
 }
 
 

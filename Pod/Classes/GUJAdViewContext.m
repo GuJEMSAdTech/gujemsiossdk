@@ -67,7 +67,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
 @end
 
 
-@interface GUJAdViewContext () <GADNativeContentAdLoaderDelegate, GADBannerViewDelegate, GADInterstitialDelegate, GADAppEventDelegate>
+@interface GUJAdViewContext () <GADNativeContentAdLoaderDelegate, GADBannerViewDelegate, GADInterstitialDelegate>
 
 @end
 
@@ -359,33 +359,27 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
     self.bannerView.adUnitID = self.adUnitId;
     self.bannerView.rootViewController = self.rootViewController;
     self.bannerView.delegate = self;
-    self.bannerView.appEventDelegate = self;
-    
+
     DFPRequest *request = [self createRequest];
 
     if ([self.delegate respondsToSelector:@selector(bannerViewInitialized:)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [self.delegate bannerViewInitialized:(id) self.bannerView];
-#pragma clang diagnostic pop
     }
     if ([self.delegate respondsToSelector:@selector(bannerViewInitializedForContext:)]) {
         [self.delegate bannerViewInitializedForContext:self];
     }
 
     if ([self.delegate respondsToSelector:@selector(bannerViewWillLoadAdData:)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [self.delegate bannerViewWillLoadAdData:(id) self.bannerView];
-#pragma clang diagnostic pop
     }
     if ([self.delegate respondsToSelector:@selector(bannerViewWillLoadAdDataForContext:)]) {
         [self.delegate bannerViewWillLoadAdDataForContext:self];
     }
     [self.bannerView loadRequest:request];
-    
+
     return self.bannerView;
 }
+
 
 - (void)adViewWithOrigin:(CGPoint)origin completion:(adViewCompletion)completion {
     adViewCompletionHandler = completion;
@@ -423,20 +417,14 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
     DFPRequest *request = [self createRequest];
 
     if ([self.delegate respondsToSelector:@selector(interstitialViewInitialized:)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [self.delegate interstitialViewInitialized:[[GUJAdView alloc] initWithContext:self]];
-#pragma clang diagnostic pop
     }
     if ([self.delegate respondsToSelector:@selector(interstitialViewInitializedForContext:)]) {
         [self.delegate interstitialViewInitializedForContext:self];
     }
 
     if ([self.delegate respondsToSelector:@selector(interstitialViewWillLoadAdData:)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [self.delegate interstitialViewWillLoadAdData:[[GUJAdView alloc] initWithContext:self]];
-#pragma clang diagnostic pop
     }
     if ([self.delegate respondsToSelector:@selector(interstitialViewWillLoadAdDataForContext:)]) {
         [self.delegate interstitialViewWillLoadAdDataForContext:self];
@@ -470,10 +458,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
     if (self.interstitial.isReady) {
         [self.interstitial presentFromRootViewController:self.rootViewController];
         if ([self.delegate respondsToSelector:@selector(interstitialViewDidAppear)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
             [self.delegate interstitialViewDidAppear];
-#pragma clang diagnostic pop
         }
         if ([self.delegate respondsToSelector:@selector(interstitialViewDidAppearForContext:)]) {
             [self.delegate interstitialViewDidAppearForContext:self];
@@ -551,10 +536,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
     bannerView.hidden = !completionHandlerAllowsToShowBanner;
 
     if ([self.delegate respondsToSelector:@selector(bannerViewDidLoadAdData:)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [self.delegate bannerViewDidLoadAdData:(GUJAdView *) bannerView];
-#pragma clang diagnostic pop
     }
     if ([self.delegate respondsToSelector:@selector(bannerViewDidLoadAdDataForContext:)]) {
         [self.delegate bannerViewDidLoadAdDataForContext:self];
@@ -571,10 +553,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
     bannerView.hidden = !completionHandlerAllowsToShowBanner;
 
     if ([self.delegate respondsToSelector:@selector(bannerView:didFailLoadingAdWithError:)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [self.delegate bannerView:(GUJAdView *) bannerView didFailLoadingAdWithError:error];
-#pragma clang diagnostic pop
     }
     if ([self.delegate respondsToSelector:@selector(bannerViewDidFailLoadingAdWithError:ForContext:)]) {
         [self.delegate bannerViewDidFailLoadingAdWithError:error ForContext:self];
@@ -609,13 +588,6 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
     }
 }
 
-- (void)adView:(GADBannerView *)banner didReceiveAppEvent:(NSString *)name
-      withInfo:(NSString *GAD_NULLABLE_TYPE)info {
-    if ([self.delegate respondsToSelector:@selector(bannerViewDidRecieveEventForContext:eventName:withInfo:)]) {
-        [self.delegate bannerViewDidRecieveEventForContext:self eventName:name withInfo:info];
-    }
-}
-
 
 #pragma mark - GADInterstitialDelegate
 
@@ -630,10 +602,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
     }
 
     if ([self.delegate respondsToSelector:@selector(interstitialViewDidLoadAdData:)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [self.delegate interstitialViewDidLoadAdData:[[GUJAdView alloc] initWithContext:self]];
-#pragma clang diagnostic pop
     }
     if ([self.delegate respondsToSelector:@selector(interstitialViewDidLoadAdDataForContext:)]) {
         [self.delegate interstitialViewDidLoadAdDataForContext:self];
@@ -646,10 +615,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
         interstitialAdViewCompletionHandler(ad, error);
     }
     if ([self.delegate respondsToSelector:@selector(interstitialView:didFailLoadingAdWithError:)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [self.delegate interstitialView:[[GUJAdView alloc] initWithContext:self] didFailLoadingAdWithError:error];
-#pragma clang diagnostic pop
     }
     if ([self.delegate respondsToSelector:@selector(interstitialViewDidFailLoadingAdWithError:ForContext:)]) {
         [self.delegate interstitialViewDidFailLoadingAdWithError:error ForContext:self];
@@ -659,10 +625,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
 
 - (void)interstitialWillPresentScreen:(GADInterstitial *)ad {
     if ([self.delegate respondsToSelector:@selector(interstitialViewWillAppear)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [self.delegate interstitialViewWillAppear];
-#pragma clang diagnostic pop
     }
     if ([self.delegate respondsToSelector:@selector(interstitialViewWillAppearForContext:)]) {
         [self.delegate interstitialViewWillAppearForContext:self];
@@ -672,10 +635,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
 
 - (void)interstitialWillDismissScreen:(GADInterstitial *)ad {
     if ([self.delegate respondsToSelector:@selector(interstitialViewWillDisappear)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [self.delegate interstitialViewWillDisappear];
-#pragma clang diagnostic pop
     }
     if ([self.delegate respondsToSelector:@selector(interstitialViewWillDisappearForContext:)]) {
         [self.delegate interstitialViewWillDisappearForContext:self];
@@ -685,10 +645,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
 
 - (void)interstitialDidDismissScreen:(GADInterstitial *)ad {
     if ([self.delegate respondsToSelector:@selector(interstitialViewDidDisappear)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [self.delegate interstitialViewDidDisappear];
-#pragma clang diagnostic pop
     }
     if ([self.delegate respondsToSelector:@selector(interstitialViewDidDisappearForContext:)]) {
         [self.delegate interstitialViewDidDisappearForContext:self];

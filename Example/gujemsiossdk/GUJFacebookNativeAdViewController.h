@@ -4,12 +4,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FBNativeAd.h"
+#import <FBAudienceNetwork/FBAudienceNetwork.h>
 
 
-@interface GUJFacebookNativeAdViewController : UIViewController
+@interface GUJFacebookNativeAdViewController : UIViewController <FBNativeAdDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *placementIdTextField;
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-@property (weak, nonatomic) IBOutlet UIButton *loadButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *adIconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *adTitleLabel;
@@ -18,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *adSocialContextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sponsoredLabel;
 
-@property (weak, nonatomic) IBOutlet UIView *nativeAdView;
+@property (strong , nonatomic) FBMediaView *adCoverMediaView;
+
+@property (weak, nonatomic) IBOutlet UIView *adView;
 
 @end
