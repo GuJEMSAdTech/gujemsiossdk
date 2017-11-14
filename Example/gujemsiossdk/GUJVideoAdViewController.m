@@ -24,7 +24,7 @@
  */
 
 #import "GUJVideoAdViewController.h"
-#import "GoogleInteractiveMediaAds.h"
+#import <GoogleMediaFramework/GoogleMediaFramework.h>
 
 
 @interface GUJVideoAdViewController () <IMAAdsLoaderDelegate, IMAAdsManagerDelegate>
@@ -149,9 +149,13 @@ NSString *const kTestAppAdTagUrl =
 
     NSLog(@"requesting Ad with Ad Tag URL: '%@'", adTagUrl);
 
+    // Create a content playhead so the SDK can track our content for VMAP and ad rules.
+    [self createContentPlayhead];
+    
     // Create an ad request with our ad tag, display container, and optional user context.
     IMAAdsRequest *request = [[IMAAdsRequest alloc] initWithAdTagUrl:adTagUrl
                                                   adDisplayContainer:adDisplayContainer
+                                                     contentPlayhead:self.contentPlayhead
                                                          userContext:nil];
     [self.adsLoader requestAdsWithRequest:request];
 }
@@ -183,11 +187,10 @@ NSString *const kTestAppAdTagUrl =
     // Create ads rendering settings to tell the SDK to use the in-app browser.
     IMAAdsRenderingSettings *adsRenderingSettings = [[IMAAdsRenderingSettings alloc] init];
     adsRenderingSettings.webOpenerPresentingController = self;
-    // Create a content playhead so the SDK can track our content for VMAP and ad rules.
-    [self createContentPlayhead];
+    
     // Initialize the ads manager.
-    [self.adsManager initializeWithContentPlayhead:self.contentPlayhead
-                              adsRenderingSettings:adsRenderingSettings];
+    
+    [self.adsManager initializeWithAdsRenderingSettings:adsRenderingSettings];
 }
 
 

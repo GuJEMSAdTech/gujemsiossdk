@@ -1,0 +1,11 @@
+framework module SCMobileSDK {
+  umbrella header "SCMobileSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module SCMobileSDK.Swift {
+    header "SCMobileSDK-Swift.h"
+    requires objc
+}

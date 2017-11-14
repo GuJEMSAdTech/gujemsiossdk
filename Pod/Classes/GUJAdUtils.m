@@ -82,7 +82,7 @@
 + (NSString *)md5:(NSString *)input {
     const char *cStr = [input UTF8String];
     unsigned char digest[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(cStr, strlen(cStr), digest); // This is the md5 call
+    CC_MD5(cStr, (CC_LONG)strlen(cStr), digest); // This is the md5 call
 
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
 
@@ -114,7 +114,7 @@
 + (NSString *)urlencode:(NSString*)unencodedString {
     NSMutableString *output = [NSMutableString string];
     const unsigned char *source = (const unsigned char *)[unencodedString UTF8String];
-    int sourceLen = strlen((const char *)source);
+    int sourceLen = (int)strlen((const char *)source);
     for (int i = 0; i < sourceLen; ++i) {
         const unsigned char thisChar = source[i];
         if (thisChar == ' '){

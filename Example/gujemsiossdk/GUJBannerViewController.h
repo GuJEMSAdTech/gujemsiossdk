@@ -29,6 +29,6 @@
 #import <gujemsiossdk/GUJAdViewContextDelegate.h>
 
 
-@interface GUJBannerViewController : UIViewController <GADInterstitialDelegate, GUJAdViewContextDelegate>
+@interface GUJBannerViewController : UIViewController
 
 @end
