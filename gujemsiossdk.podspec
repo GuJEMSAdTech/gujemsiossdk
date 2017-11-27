@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "gujemsiossdk"
-  s.version          = "3.1.10"
+  s.version          = "3.2.0-beta-1"
   s.summary          = "G+J EMS iOS SDK"
   s.description      = <<-DESC
                        G+J EMS iOS SDK

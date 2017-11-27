@@ -28,6 +28,7 @@ typedef NS_OPTIONS(NSUInteger, GUJGenericAdContextOption) {
 +(GUJGenericAdContext *) contextForAdUnitId:(NSString *) adUnitId withOptions:(GUJGenericAdContextOption) options delegate:(id <GUJGenericAdContextDelegate>) delegate;
 
 -(void) loadInViewController:(UIViewController *) vc;
+-(void) addKeyword:(NSString *)keyword;
 
 -(GADBannerView *) bannerView;
 

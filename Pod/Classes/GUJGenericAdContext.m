@@ -2,6 +2,7 @@
 //  GUJGenericAdContext.m
 //  gujemsiossdk-gujemsiossdk
 //
+//  Created by triare-imac on 18.10.17.
 //
 
 #import "GUJGenericAdContext.h"
@@ -76,7 +77,11 @@ static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
     [self loadAd];
 }
 
--(void) loadAd {
+-(void) addKeyword:(NSString *)keyword {
+    [self.adViewContext addCustomTargetingKeyword:keyword];
+}
+
+-(void) loadAd {    
     [self.adViewContext adView];
 }
 

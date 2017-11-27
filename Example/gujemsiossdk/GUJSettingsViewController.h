@@ -33,6 +33,7 @@ static NSString *const PUBMATIC_AD_UNIT_USER_DEFAULTS_KEY = @"pubmaticAdUnitId";
 static NSString *const NATIVE_BASE_URI_USER_DEFAULTS_KEY = @"nativeAdBaseURI";
 static NSString *const SMART_CLIP_URL_USER_DEFAULTS_KEY = @"smartClipURL";
 static NSString *const IQ_APP_EVENTS_AD_UNIT_USER_DEFAULTS_KEY = @"iqAppEventsAdUnitId";
+static NSString *const KEYWORD_DEFAULTS_KEY = @"keywordKey";
 
 static NSString *const FACEBOOK_TEST_MODE = @"facebookTestMode";
 

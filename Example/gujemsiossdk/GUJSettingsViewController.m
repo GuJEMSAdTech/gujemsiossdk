@@ -43,6 +43,7 @@
     __weak IBOutlet UITextField *pubmaticPublisherField;
     __weak IBOutlet UITextField *pubmaticAdUnitField;
     
+    __weak IBOutlet UITextField *keywordsField;
 }
 
 
@@ -134,6 +135,8 @@
     [userDefaults setObject:pubmaticPublisherField.text forKey:PUBMATIC_PUBLISHER_USER_DEFAULTS_KEY];
     [userDefaults setObject:pubmaticAdUnitField.text forKey:PUBMATIC_AD_UNIT_USER_DEFAULTS_KEY];
     
+    [userDefaults setObject:keywordsField.text forKey:KEYWORD_DEFAULTS_KEY];
+    
     [userDefaults synchronize];
 }
 
@@ -148,6 +151,9 @@
     
     pubmaticPublisherField.text = [userDefaults objectForKey:PUBMATIC_PUBLISHER_USER_DEFAULTS_KEY];
     pubmaticAdUnitField.text = [userDefaults objectForKey:PUBMATIC_AD_UNIT_USER_DEFAULTS_KEY];
+    
+    keywordsField.text = [userDefaults objectForKey:KEYWORD_DEFAULTS_KEY];
+
 }
 
 
