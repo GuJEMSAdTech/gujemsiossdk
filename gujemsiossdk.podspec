@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "gujemsiossdk"
-  s.version          = "3.2.0-beta-1"
+  s.version          = "3.1.10"
   s.summary          = "G+J EMS iOS SDK"
   s.description      = <<-DESC
                        G+J EMS iOS SDK
@@ -29,6 +29,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/GuJEMSAdTech/gujemsiossdk.git", :tag => s.version.to_s }
 
   s.platform     = :ios, '8.0'
+  s.ios.deployment_target  = '8.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*', 'Pod/PubMaticSdk/**/*'
@@ -43,7 +44,7 @@ Pod::Spec.new do |s|
   s.frameworks = 'CoreMedia', 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation', 'CoreTelephony', 'MediaPlayer', 'SystemConfiguration'
   s.libraries = 'xml2'
   s.dependency 'Google-Mobile-Ads-SDK', '7.24.1'
-  s.dependency 'GoogleMediaFramework', '~> 1.0'
+  s.dependency 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
   s.dependency 'FBAudienceNetwork'
   s.dependency 'mopub-ios-sdk' #for PubMaticSdk
 

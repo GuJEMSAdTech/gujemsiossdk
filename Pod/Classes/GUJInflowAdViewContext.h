@@ -26,7 +26,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <GoogleMediaFramework/GoogleMediaFramework.h>
+#import <GoogleInteractiveMediaAds/GoogleInteractiveMediaAds.h>
 #import "GUJBaseAdViewContext.h"
 
 #import <SCMobileSDK/SCMobileSDK-Swift.h>

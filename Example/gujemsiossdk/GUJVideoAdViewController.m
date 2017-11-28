@@ -24,7 +24,7 @@
  */
 
 #import "GUJVideoAdViewController.h"
-#import <GoogleMediaFramework/GoogleMediaFramework.h>
+#import <GoogleInteractiveMediaAds/GoogleInteractiveMediaAds.h>
 
 
 @interface GUJVideoAdViewController () <IMAAdsLoaderDelegate, IMAAdsManagerDelegate>
@@ -90,6 +90,8 @@ NSString *const kTestAppAdTagUrl =
     self.playButton.enabled = YES;
     [self.playerLayer removeFromSuperlayer];
     self.errorLabel.text = @"";
+    
+    [self.contentPlayer pause];
 }
 
 
