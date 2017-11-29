@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "gujemsiossdk"
-  s.version          = "3.1.14"
+  s.version          = "3.1.10"
   s.summary          = "G+J EMS iOS SDK"
   s.description      = <<-DESC
                        G+J EMS iOS SDK
@@ -29,20 +29,23 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/GuJEMSAdTech/gujemsiossdk.git", :tag => s.version.to_s }
 
   s.platform     = :ios, '8.0'
+  s.ios.deployment_target  = '8.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
+  s.source_files = 'Pod/Classes/**/*', 'Pod/PubMaticSdk/**/*'
   s.resource_bundles = {
     'gujemsiossdk' => ['Pod/Assets/*.xml', 'Pod/Assets/*.png']
   }
 
-  s.vendored_frameworks = 'Pod/Assets/TeadsSDK.framework'
-  s.resource = "Pod/Assets/TeadsSDKResources.bundle"
 
-  s.public_header_files = 'Pod/Classes/*.h'
+  s.vendored_frameworks = 'Pod/Assets/SCMobileSDK.framework'
+
+  s.public_header_files = 'Pod/Classes/*.h', 'Pod/PubMaticSdk/*.h'
   s.frameworks = 'CoreMedia', 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation', 'CoreTelephony', 'MediaPlayer', 'SystemConfiguration'
   s.libraries = 'xml2'
   s.dependency 'Google-Mobile-Ads-SDK', '7.24.1'
-  s.dependency 'GoogleAds-IMA-iOS-SDK-For-AdMob', '3.3.1'
+  s.dependency 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
+  s.dependency 'FBAudienceNetwork'
+  s.dependency 'mopub-ios-sdk' #for PubMaticSdk
 
 end

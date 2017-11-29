@@ -24,19 +24,20 @@
  */
 
 #import "GUJBannerViewController.h"
-#import "GUJAdViewContext.h"
 #import "GUJSettingsViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface GUJBannerViewController ()
+#import "GUJGenericAdContext.h"
+
+@interface GUJBannerViewController () <GUJGenericAdContextDelegate>
 @end
 
 @implementation GUJBannerViewController {
 
-    GUJAdViewContext *topAdViewContext;
-    GUJAdViewContext *mid1AdViewContext;
-    GUJAdViewContext *mid2AdViewContext;
-    GUJAdViewContext *bottomAdViewContext;
+    GUJGenericAdContext *topAdContext;
+    GUJGenericAdContext *mid1AdContext;
+    GUJGenericAdContext *mid2AdContext;
+    GUJGenericAdContext *bottomAdContext;
 
     __weak IBOutlet UIView *topPlaceholderView;
     __weak IBOutlet UIView *mid1PlaceholderView;
@@ -86,43 +87,52 @@
 
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *adUnitId = [userDefaults objectForKey:AD_UNIT_USER_DEFAULTS_KEY];
+    NSString *keyword = [userDefaults objectForKey:KEYWORD_DEFAULTS_KEY];
 
     // TOP
-    topAdViewContext = [GUJAdViewContext instanceForAdUnitId:adUnitId rootViewController:self];
-    topAdViewContext.position = GUJ_AD_VIEW_POSITION_TOP;
-    topAdViewContext.delegate = self;
-    [topPlaceholderView addSubview:[topAdViewContext adView]];
-
-
+    topAdContext = [GUJGenericAdContext contextForAdUnitId:adUnitId
+                                                   withOptions:GUJGenericAdContextOptionDefault
+                                                    delegate:self];
+    topAdContext.adViewContext.position = GUJ_AD_VIEW_POSITION_TOP;
+    [topAdContext addKeyword:keyword];
+    [topAdContext loadInViewController:self];
+    [topPlaceholderView addSubview:[topAdContext bannerView]];
+    
+    
+    
     // MID 1
-    mid1AdViewContext = [GUJAdViewContext instanceForAdUnitId:adUnitId rootViewController:self];
-    mid1AdViewContext.position = GUJ_AD_VIEW_POSITION_MID_1;
-    mid1AdViewContext.delegate = self;
-    [mid1PlaceholderView addSubview:[mid1AdViewContext adView]];
-
+    mid1AdContext = [GUJGenericAdContext contextForAdUnitId:adUnitId
+                                                   withOptions:GUJGenericAdContextOptionDefault
+                                                      delegate:self];
+    mid1AdContext.adViewContext.position = GUJ_AD_VIEW_POSITION_MID_1;
+    [mid1AdContext addKeyword:keyword];
+    [mid1AdContext loadInViewController:self];
+    [mid1PlaceholderView addSubview:[mid1AdContext bannerView]];
 
     // MID 2
-    mid2AdViewContext = [GUJAdViewContext instanceForAdUnitId:adUnitId rootViewController:self];
-    mid2AdViewContext.position = GUJ_AD_VIEW_POSITION_MID_2;
-    mid2AdViewContext.delegate = self;
-    [mid2PlaceholderView addSubview:[mid2AdViewContext adView]];
+    mid2AdContext = [GUJGenericAdContext contextForAdUnitId:adUnitId
+                                                    withOptions:GUJGenericAdContextOptionDefault
+                                                       delegate:self];
+    mid2AdContext.adViewContext.position = GUJ_AD_VIEW_POSITION_MID_2;
+    [mid2AdContext addKeyword:keyword];
+    [mid2AdContext loadInViewController:self];
+    [mid2PlaceholderView addSubview:[mid2AdContext bannerView]];
 
 
     // BOTTOM
-    bottomAdViewContext = [GUJAdViewContext instanceForAdUnitId:adUnitId rootViewController:self];
-    bottomAdViewContext.position = GUJ_AD_VIEW_POSITION_BOTTOM;
-    bottomAdViewContext.delegate = self;
-    [bottomPlaceholderView addSubview:[bottomAdViewContext adView]];
+    bottomAdContext = [GUJGenericAdContext contextForAdUnitId:adUnitId
+                                                    withOptions:GUJGenericAdContextOptionDefault
+                                                       delegate:self];
+    bottomAdContext.adViewContext.position = GUJ_AD_VIEW_POSITION_BOTTOM;
+    [bottomAdContext addKeyword:keyword];
+    [bottomAdContext loadInViewController:self];
+    [bottomPlaceholderView addSubview:[bottomAdContext bannerView]];
+
 }
 
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-
-    topAdViewContext.delegate = nil;
-    mid1AdViewContext.delegate = nil;
-    mid2AdViewContext.delegate = nil;
-    bottomAdViewContext.delegate = nil;
 
     [self removeAllSubviewsFromView:topPlaceholderView];
     [self removeAllSubviewsFromView:mid1PlaceholderView];
@@ -143,35 +153,33 @@
 }
 
 
-- (void)bannerViewDidFailLoadingAdWithError:(NSError *)error ForContext:(GUJAdViewContext *)context {
-    if (context == topAdViewContext) {
+- (void)genericAdContext:(GUJGenericAdContext *)context didLoadData:(GUJAdViewContext *)adViewContext {
+    if (context == topAdContext) {
+        topPlaceholderHeightConstraint.constant = context.bannerView.frame.size.height;
+        
+    } else if (context == mid1AdContext) {
+        mid1PlaceholderHeightConstraint.constant = context.bannerView.frame.size.height;
+        
+    } else if (context == mid2AdContext) {
+        mid2PlaceholderHeightConstraint.constant = context.bannerView.frame.size.height;
+        
+    } else if (context == bottomAdContext) {
+        bottomPlaceholderHeightConstraint.constant = context.bannerView.frame.size.height;
+    }
+}
+
+- (void)genericAdContext:(GUJGenericAdContext *)context didFailWithError:(NSError *)error {
+    if (context == topAdContext) {
         topErrorLabel.text = error.localizedDescription;
-    } else if (context == mid1AdViewContext) {
+    } else if (context == mid1AdContext) {
         mid1ErrorLabel.text = error.localizedDescription;
-    } else if (context == mid2AdViewContext) {
+    } else if (context == mid2AdContext) {
         mid2ErrorLabel.text = error.localizedDescription;
-    } else if (context == bottomAdViewContext) {
+    } else if (context == bottomAdContext) {
         bottomErrorLabel.text = error.localizedDescription;
     }
 }
 
-
-- (void)bannerViewDidLoadAdDataForContext:(GUJAdViewContext *)context{
-
-    if (context == topAdViewContext) {
-        topPlaceholderHeightConstraint.constant = context.bannerView.frame.size.height;
-
-    } else if (context == mid1AdViewContext) {
-        mid1PlaceholderHeightConstraint.constant = context.bannerView.frame.size.height;
-
-    } else if (context == mid2AdViewContext) {
-        mid2PlaceholderHeightConstraint.constant = context.bannerView.frame.size.height;
-
-    } else if (context == bottomAdViewContext) {
-        bottomPlaceholderHeightConstraint.constant = context.bannerView.frame.size.height;
-
-    }
-}
 
 
 @end
