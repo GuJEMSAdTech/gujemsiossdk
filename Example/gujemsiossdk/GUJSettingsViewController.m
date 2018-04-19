@@ -38,8 +38,6 @@
     
     __weak IBOutlet UITextField *iqAppEventsAdUnitField;
     
-    __weak IBOutlet UITextField *smartClipUrlField;
-    
     __weak IBOutlet UITextField *pubmaticPublisherField;
     __weak IBOutlet UITextField *pubmaticAdUnitField;
     
@@ -130,7 +128,6 @@
     [userDefaults setObject:facebookAdUnitTextField.text forKey:FACEBOOK_AD_UNIT_USER_DEFAULTS_KEY];
     [userDefaults setObject:nativeBaseUrlTextField.text forKey:NATIVE_BASE_URI_USER_DEFAULTS_KEY];
     [userDefaults setObject:iqAppEventsAdUnitField.text forKey:IQ_APP_EVENTS_AD_UNIT_USER_DEFAULTS_KEY];
-    [userDefaults setObject:smartClipUrlField.text forKey:SMART_CLIP_URL_USER_DEFAULTS_KEY];
     
     [userDefaults setObject:pubmaticPublisherField.text forKey:PUBMATIC_PUBLISHER_USER_DEFAULTS_KEY];
     [userDefaults setObject:pubmaticAdUnitField.text forKey:PUBMATIC_AD_UNIT_USER_DEFAULTS_KEY];
@@ -147,8 +144,7 @@
     facebookAdUnitTextField.text = [userDefaults objectForKey:FACEBOOK_AD_UNIT_USER_DEFAULTS_KEY];
     nativeBaseUrlTextField.text = [userDefaults objectForKey:NATIVE_BASE_URI_USER_DEFAULTS_KEY];
     iqAppEventsAdUnitField.text = [userDefaults objectForKey:IQ_APP_EVENTS_AD_UNIT_USER_DEFAULTS_KEY];
-    smartClipUrlField.text = [userDefaults objectForKey:SMART_CLIP_URL_USER_DEFAULTS_KEY];
-    
+
     pubmaticPublisherField.text = [userDefaults objectForKey:PUBMATIC_PUBLISHER_USER_DEFAULTS_KEY];
     pubmaticAdUnitField.text = [userDefaults objectForKey:PUBMATIC_AD_UNIT_USER_DEFAULTS_KEY];
     

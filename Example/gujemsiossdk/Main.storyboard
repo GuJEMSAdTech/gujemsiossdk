@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="U8G-9c-EW3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="U8G-9c-EW3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -340,31 +340,13 @@ Amobee Ad Space ID:</string>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icons made by Plainicon and Freepik from www.flaticon.com are licensed under CC BY 3.0" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWZ-Eq-aBi">
-                                                <rect key="frame" x="24" y="648" width="327" height="34"/>
+                                                <rect key="frame" x="24" y="584" width="327" height="34"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <color key="textColor" red="0.50430082070000004" green="0.50430082070000004" blue="0.50430082070000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SmartClip URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9n-hd-Zmx">
-                                                <rect key="frame" x="16" y="468" width="343" height="15"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="15" id="10K-So-YWo"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9wg-uJ-kgd">
-                                                <rect key="frame" x="16" y="488" width="343" height="27"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="27" id="YxX-Pb-d8T"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PubMatic publisher ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMV-3a-jEm">
-                                                <rect key="frame" x="15" y="532" width="345" height="15"/>
+                                                <rect key="frame" x="15" y="468" width="345" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="em6-j2-i1R"/>
                                                 </constraints>
@@ -373,7 +355,7 @@ Amobee Ad Space ID:</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cf6-4d-9SF">
-                                                <rect key="frame" x="15" y="552" width="345" height="27"/>
+                                                <rect key="frame" x="15" y="488" width="345" height="27"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="27" id="KP1-Gg-ZTU"/>
                                                 </constraints>
@@ -382,7 +364,7 @@ Amobee Ad Space ID:</string>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PubMatic Ad Unit ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsH-Ig-HuU">
-                                                <rect key="frame" x="15" y="596" width="345" height="15"/>
+                                                <rect key="frame" x="15" y="532" width="345" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="BW2-iM-EN4"/>
                                                 </constraints>
@@ -391,7 +373,7 @@ Amobee Ad Space ID:</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Nk-uC-eOt">
-                                                <rect key="frame" x="15" y="616" width="345" height="27"/>
+                                                <rect key="frame" x="15" y="552" width="345" height="27"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="27" id="Oqk-of-ZhO"/>
                                                 </constraints>
@@ -430,7 +412,6 @@ Amobee Ad Space ID:</string>
                                             <constraint firstItem="Qx9-sN-Rzb" firstAttribute="top" secondItem="4tA-Cd-Itr" secondAttribute="bottom" constant="5" id="C7i-bS-Gmd"/>
                                             <constraint firstItem="4jU-lh-AOw" firstAttribute="leading" secondItem="3ge-PA-o4k" secondAttribute="leading" constant="16" id="CnG-jT-B6A"/>
                                             <constraint firstItem="PsH-Ig-HuU" firstAttribute="leading" secondItem="3ge-PA-o4k" secondAttribute="leading" constant="15" id="DIU-e6-fRN"/>
-                                            <constraint firstItem="ZMV-3a-jEm" firstAttribute="top" secondItem="9wg-uJ-kgd" secondAttribute="bottom" constant="17" id="E3Q-pB-al9"/>
                                             <constraint firstItem="Cf6-4d-9SF" firstAttribute="leading" secondItem="3ge-PA-o4k" secondAttribute="leading" constant="15" id="EXS-JR-SEd"/>
                                             <constraint firstItem="aaF-Af-ttF" firstAttribute="top" secondItem="3ue-wj-ern" secondAttribute="bottom" constant="5" id="FM9-xj-lzM"/>
                                             <constraint firstAttribute="trailing" secondItem="isj-38-RT5" secondAttribute="trailing" constant="16" id="G7V-7j-KdF"/>
@@ -442,7 +423,6 @@ Amobee Ad Space ID:</string>
                                             <constraint firstAttribute="trailing" secondItem="Cf6-4d-9SF" secondAttribute="trailing" constant="15" id="Jmb-tB-ouL"/>
                                             <constraint firstItem="4tA-Cd-Itr" firstAttribute="top" secondItem="4jU-lh-AOw" secondAttribute="bottom" constant="5" id="K5q-LR-O4L"/>
                                             <constraint firstAttribute="trailing" secondItem="FkX-Bt-1DN" secondAttribute="trailing" constant="16" id="NSg-Cm-EZF"/>
-                                            <constraint firstAttribute="trailing" secondItem="m9n-hd-Zmx" secondAttribute="trailing" constant="16" id="Nru-Sr-qwY"/>
                                             <constraint firstItem="7Z6-te-8Gj" firstAttribute="top" secondItem="Qx9-sN-Rzb" secondAttribute="bottom" constant="70" id="O2x-M7-Zkr"/>
                                             <constraint firstAttribute="trailing" secondItem="ZVh-F3-Sxb" secondAttribute="trailing" constant="16" id="POA-eL-U0a"/>
                                             <constraint firstAttribute="trailing" secondItem="Qx9-sN-Rzb" secondAttribute="trailing" constant="16" id="Q1Y-vC-h5D"/>
@@ -451,23 +431,18 @@ Amobee Ad Space ID:</string>
                                             <constraint firstItem="isj-38-RT5" firstAttribute="leading" secondItem="3ge-PA-o4k" secondAttribute="leading" constant="16" id="RrO-xX-dXT"/>
                                             <constraint firstItem="aaF-Af-ttF" firstAttribute="leading" secondItem="3ge-PA-o4k" secondAttribute="leading" constant="16" id="SCS-un-ZnV"/>
                                             <constraint firstItem="7Nk-uC-eOt" firstAttribute="leading" secondItem="3ge-PA-o4k" secondAttribute="leading" constant="15" id="TgY-25-6KW"/>
-                                            <constraint firstAttribute="trailing" secondItem="9wg-uJ-kgd" secondAttribute="trailing" constant="16" id="Upb-V9-HNb"/>
                                             <constraint firstAttribute="trailing" secondItem="3ue-wj-ern" secondAttribute="trailing" constant="16" id="Vp7-ty-8FN"/>
                                             <constraint firstItem="FkX-Bt-1DN" firstAttribute="top" secondItem="tnV-1p-gKD" secondAttribute="bottom" constant="5" id="VzB-Cu-Nvi"/>
                                             <constraint firstAttribute="trailing" secondItem="4jU-lh-AOw" secondAttribute="trailing" constant="16" id="XhA-Os-uqI"/>
                                             <constraint firstItem="3ue-wj-ern" firstAttribute="top" secondItem="7Z6-te-8Gj" secondAttribute="bottom" constant="17" id="YHT-wX-yIl"/>
                                             <constraint firstAttribute="trailing" secondItem="tnV-1p-gKD" secondAttribute="trailing" constant="16" id="ZIi-fh-B6s"/>
-                                            <constraint firstItem="m9n-hd-Zmx" firstAttribute="leading" secondItem="3ge-PA-o4k" secondAttribute="leading" constant="16" id="Zaz-y8-wzm"/>
                                             <constraint firstItem="isj-38-RT5" firstAttribute="top" secondItem="AhD-Sp-KtZ" secondAttribute="bottom" constant="5" id="aj1-vh-89N"/>
-                                            <constraint firstItem="m9n-hd-Zmx" firstAttribute="top" secondItem="FkX-Bt-1DN" secondAttribute="bottom" constant="17" id="bIH-qL-VCw"/>
                                             <constraint firstItem="Cf6-4d-9SF" firstAttribute="top" secondItem="ZMV-3a-jEm" secondAttribute="bottom" constant="5" id="baC-e8-yOj"/>
                                             <constraint firstItem="tnV-1p-gKD" firstAttribute="leading" secondItem="3ge-PA-o4k" secondAttribute="leading" constant="16" id="cL4-Um-puY"/>
                                             <constraint firstItem="AhD-Sp-KtZ" firstAttribute="top" secondItem="Qx9-sN-Rzb" secondAttribute="bottom" constant="5" id="dbP-iU-uwV"/>
                                             <constraint firstItem="7Nk-uC-eOt" firstAttribute="top" secondItem="PsH-Ig-HuU" secondAttribute="bottom" constant="5" id="hDd-Lz-nIx"/>
                                             <constraint firstItem="4jU-lh-AOw" firstAttribute="top" secondItem="3ge-PA-o4k" secondAttribute="top" constant="20" id="hH0-Kn-GoJ"/>
-                                            <constraint firstItem="9wg-uJ-kgd" firstAttribute="top" secondItem="m9n-hd-Zmx" secondAttribute="bottom" constant="5" id="lq7-fU-Wbq"/>
                                             <constraint firstAttribute="height" constant="800" id="mje-oj-DKH"/>
-                                            <constraint firstItem="9wg-uJ-kgd" firstAttribute="leading" secondItem="3ge-PA-o4k" secondAttribute="leading" constant="16" id="p31-kY-ezc"/>
                                             <constraint firstItem="3ue-wj-ern" firstAttribute="leading" secondItem="3ge-PA-o4k" secondAttribute="leading" constant="16" id="pIK-gK-sqD"/>
                                             <constraint firstItem="hWZ-Eq-aBi" firstAttribute="leading" secondItem="3ge-PA-o4k" secondAttribute="leadingMargin" constant="16" id="r8A-I1-JEz"/>
                                             <constraint firstItem="ZVh-F3-Sxb" firstAttribute="leading" secondItem="3ge-PA-o4k" secondAttribute="leading" constant="16" id="rNQ-eS-Atr"/>
@@ -475,6 +450,7 @@ Amobee Ad Space ID:</string>
                                             <constraint firstAttribute="trailing" secondItem="ZMV-3a-jEm" secondAttribute="trailing" constant="15" id="t9g-g3-hZc"/>
                                             <constraint firstItem="FkX-Bt-1DN" firstAttribute="leading" secondItem="3ge-PA-o4k" secondAttribute="leading" constant="16" id="vTB-rx-EN2"/>
                                             <constraint firstItem="PsH-Ig-HuU" firstAttribute="top" secondItem="Cf6-4d-9SF" secondAttribute="bottom" constant="17" id="vv9-Ca-hqs"/>
+                                            <constraint firstItem="ZMV-3a-jEm" firstAttribute="top" secondItem="FkX-Bt-1DN" secondAttribute="bottom" constant="17" id="xjj-as-n4u"/>
                                             <constraint firstItem="hWZ-Eq-aBi" firstAttribute="top" secondItem="7Nk-uC-eOt" secondAttribute="bottom" constant="5" id="xrA-wZ-asD"/>
                                             <constraint firstItem="ZVh-F3-Sxb" firstAttribute="top" secondItem="aaF-Af-ttF" secondAttribute="bottom" constant="17" id="zE0-PS-4Zi"/>
                                             <constraint firstItem="ZMV-3a-jEm" firstAttribute="leading" secondItem="3ge-PA-o4k" secondAttribute="leading" constant="15" id="zIa-p2-5DS"/>
@@ -510,7 +486,6 @@ Amobee Ad Space ID:</string>
                         <outlet property="positionLabel" destination="Qx9-sN-Rzb" id="s4i-jx-TNi"/>
                         <outlet property="pubmaticAdUnitField" destination="7Nk-uC-eOt" id="97k-li-FFg"/>
                         <outlet property="pubmaticPublisherField" destination="Cf6-4d-9SF" id="Y16-In-28H"/>
-                        <outlet property="smartClipUrlField" destination="9wg-uJ-kgd" id="Qdu-W9-ipl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfQ-Sv-Bp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -801,24 +776,24 @@ Amobee Ad Space ID:</string>
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rma-xD-yun">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="222"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="749.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bW-hk-iAq">
-                                                <rect key="frame" x="20" y="31" width="335" height="20.5"/>
+                                                <rect key="frame" x="20" y="31" width="335" height="122"/>
                                                 <string key="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita </string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zsA-Dt-Pw1">
-                                                <rect key="frame" x="0.0" y="71.5" width="375" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="173" width="375" height="0.0"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" id="TZe-p1-7th"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2L-bD-qsY">
-                                                <rect key="frame" x="20" y="91.5" width="335" height="20.5"/>
+                                                <rect key="frame" x="20" y="193" width="335" height="446.5"/>
                                                 <string key="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

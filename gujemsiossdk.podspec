@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "gujemsiossdk"
-  s.version          = "3.2.0"
+  s.version          = "3.1.10"
   s.summary          = "G+J EMS iOS SDK"
   s.description      = <<-DESC
                        G+J EMS iOS SDK
@@ -38,7 +38,7 @@ Pod::Spec.new do |s|
   }
 
 
-  s.vendored_frameworks = 'Pod/Assets/SCMobileSDK.framework'
+  #s.vendored_frameworks = 'Pod/Assets/SCMobileSDK.framework'
 
   s.public_header_files = 'Pod/Classes/*.h', 'Pod/PubMaticSdk/*.h'
   s.frameworks = 'CoreMedia', 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation', 'CoreTelephony', 'MediaPlayer', 'SystemConfiguration'

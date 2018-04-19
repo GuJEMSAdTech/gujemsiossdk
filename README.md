@@ -32,6 +32,9 @@ If you don't want to use CocoaPods you should be able to copy the classes from t
 the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recommend to do the installation without CocoaPods.
  
 ## Changelog
+
+#### v3.2.0-beta-1.1 |  19/April/2018
+- Smartclip removed
  
 #### v3.2.0-beta-1 |  12/July/2017
 - Updated Google Mobile Ads SDK to version 7.24.1

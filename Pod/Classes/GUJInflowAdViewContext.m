@@ -25,20 +25,15 @@
 
 
 #import "GUJInflowAdViewContext.h"
-#import <SCMobileSDK/SCMobileSDK-Swift.h>
 
 typedef NS_ENUM(NSInteger, GUJInflowAdType) {
     GUJInflowAdTypeNone,
-    GUJInflowAdTypeIMA,
-    GUJInflowAdTypeSmartClip
+    GUJInflowAdTypeIMA
 };
 
-@interface GUJInflowAdViewContext () <SCAdListener>
+@interface GUJInflowAdViewContext ()
 
 @property (nonatomic) GUJInflowAdType adType;
-
-@property(nonatomic, strong) NSString *smartClipUrl;
-@property(nonatomic, strong) SCAdViewController *smartClipVC;
 
 @end
 
@@ -87,7 +82,6 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
         self.inFlowAdPlaceholderView.clipsToBounds = YES;
         
         self.dfpAdunitId = dfpAdunitId;
-        self.smartClipUrl = smartClipUrl;
         
         _adsLoader = [[IMAAdsLoader alloc] initWithSettings:nil];
         _adsLoader.delegate = self;
@@ -163,9 +157,6 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
         adViewExpanding = YES;
         
         CGFloat expectedHeight = self.inFlowAdPlaceholderView.frame.size.width / 4 * 3;
-        if (self.adType == GUJInflowAdTypeSmartClip) {
-            expectedHeight = self.inFlowAdPlaceholderView.frame.size.width / 16 * 9;
-        }
         
         self.inFlowAdPlaceholderViewHeightConstraint.constant = expand ? expectedHeight : 0;
         
@@ -173,12 +164,12 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
         [UIView animateWithDuration:0.7f delay:0.2f options:UIViewAnimationOptionAllowUserInteraction animations:^{
             [self.inFlowAdPlaceholderView.superview layoutIfNeeded];
         }                completion:^(BOOL finished) {
-            if (isAdLoaded) {
+            if (self->isAdLoaded) {
                 [self playAd];
-                adStarted = YES;
+                self->adStarted = YES;
             }
-            adViewExpanding = NO;
-            adViewExpanded = expand;
+            self->adViewExpanding = NO;
+            self->adViewExpanded = expand;
         }];
     }
 }
@@ -188,19 +179,11 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
     if (self.adType == GUJInflowAdTypeIMA) {
         [_adsManager resume];
     }
-    
-    if (self.adType == GUJInflowAdTypeSmartClip) {
-        [self.smartClipVC play];
-    }
 }
 
 -(void) pauseAd {
     if (self.adType == GUJInflowAdTypeIMA) {
         [_adsManager pause];
-    }
-    
-    if (self.adType == GUJInflowAdTypeSmartClip) {
-        [self.smartClipVC pause];
     }
 }
 
@@ -356,16 +339,12 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 
     avPlayer = [self discoverAVPlayer];
     avPlayer.muted = YES;
-    
-    [self performSelector:@selector(fallbackRequestAfter2SecondTimeout) withObject:nil afterDelay:2];
 }
 
 
 - (void)adsLoader:(IMAAdsLoader *)loader failedWithErrorData:(IMAAdLoadingErrorData *)adErrorData {
     // Something went wrong loading ads. May be no fill.
     NSLog(@"failedWithErrorData: %@", adErrorData.adError.message);
-
-    [self requestSmartClipAd];
 }
 
 
@@ -402,8 +381,6 @@ inFlowAdPlaceholderViewHeightConstraint:(NSLayoutConstraint *)inFlowAdPlaceholde
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdError:(IMAAdError *)error {
     // Something went wrong with the ads manager after ads were loaded. Log the error.
     NSLog(@"didReceiveAdError: %@", error.message);
-
-    [self requestSmartClipAd];
 }
 
 
@@ -493,66 +470,5 @@ adDidProgressToTime:(NSTimeInterval)mediaTime
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
     [originalScrollViewDelegate scrollViewDidScrollToTop:scrollView];
 }
-
-
-
-#pragma mark SmartClip
-
-// todo: Due to a bug in the IMA SDK the didReceiveAdError callback is not fired for some empty vast responses.
-// That's why we use a timeout here to see, if something was loaded.
-// Remove after this was fixed in the IMA SDK!
-- (void)fallbackRequestAfter2SecondTimeout {
-    NSLog(@"No ads loaded before timeout...");
-
-    [self requestSmartClipAd];
-}
-
--(void) requestSmartClipAd {
-    
-    if (self.smartClipUrl == nil) {
-        NSLog(@"No Smart Clip URL configured.");
-    } else {
-        NSLog(@"Using Smart Clip as fallback.");
-        [_adsManager destroy];
-        
-        self.adType = GUJInflowAdTypeSmartClip;
-        
-        UIView *view = [[UIView alloc] initWithFrame:self.inFlowAdPlaceholderView.bounds];
-        view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [self.inFlowAdPlaceholderView addSubview:view];
-        
-        self.smartClipVC = [[SCAdViewController alloc] initWithAnchor:view adURL:self.smartClipUrl];
-        self.smartClipVC.listener = self;
-    }
-}
-
-
-/// Called when advertisement playback has ended
-- (void)onEndCallbackWithController:(SCAdViewController * _Nonnull)controller {
-    [self expandAdView:NO];
-}
-/// Called when advertisement playback has started
-- (void)onStartCallbackWithController:(SCAdViewController * _Nonnull)controller {
-    [self expandAdView:YES];
-}
-/// Called when an emmpty video ad was delivered
-- (void)onCappedCallbackWithController:(SCAdViewController * _Nonnull)controller {
-    
-}
-/// Called when prefetching of data for advertisement has finished
-- (void)onPrefetchCompleteCallbackWithController:(SCAdViewController * _Nonnull)controller {
-    isAdLoaded = YES;
-}
-/// Called when the advertisement is clicked. You can prevent linking to the
-/// advertisers WebSite by catching click events.
-- (BOOL)onClickthruWithController:(SCAdViewController * _Nonnull)controller targetURL:(NSURL * _Nonnull)targetURL {
-    
-    [controller pause];
-    
-    [[UIApplication sharedApplication] openURL:targetURL];
-    
-    return YES;
-}
-
 
 @end
