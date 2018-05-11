@@ -230,17 +230,25 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
 
 - (DFPRequest *)createRequest {
     DFPRequest *request = [DFPRequest request];
-
+    
+    BOOL npaStatus = [GUJAdUtils getNonPersonalizedAds];
+    if (npaStatus) {
+        GADExtras *extras = [[GADExtras alloc] init];
+        extras.additionalParameters = @{@"npa": @"1"};
+        [request registerAdNetworkExtras:extras];
+    }
+    
+    
     if (_contentURL != nil) {
         request.contentURL = _contentURL;
     }
-
+    
     if (_publisherProvidedID != nil) {
         request.publisherProvidedID = _publisherProvidedID;
     }
-
+    
     [self updateLocationDataInCustomTargetingDictAndOptionallySetLocationDataOnDfpRequest:request];
-
+    
     request.customTargeting = self.customTargetingDict;
     return request;
 }

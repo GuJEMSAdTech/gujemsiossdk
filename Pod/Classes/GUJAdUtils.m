@@ -31,6 +31,16 @@
 @implementation GUJAdUtils {
 }
 
+static BOOL npaStatus = false;
+
++ (void)setNonPersonalizedAds:(BOOL)status {
+    npaStatus = status;
+}
+
++ (BOOL)getNonPersonalizedAds {
+    return npaStatus;
+}
+
 + (BOOL)isOtherAudioPlaying {
     BOOL isOtherAudioPlaying = [[AVAudioSession sharedInstance] isOtherAudioPlaying];
 

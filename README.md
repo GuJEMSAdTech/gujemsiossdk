@@ -33,6 +33,10 @@ the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recomme
  
 ## Changelog
 
+#### v3.2.0-beta-1.2 |  11/May/2018
+- Pubmatic removed
+- Non Personalized Ads Methods added
+
 #### v3.2.0-beta-1.1 |  19/April/2018
 - Smartclip removed
  
@@ -725,15 +729,15 @@ Technical Projects Manager
 \+ 49 (0) 40 / 3703 2991  
 otte.sebastian@ems.guj.de
  
+**Michael Gohl**  
+Head of Digital Ad Technology  
+\+ 49 (0) 40 / 3703 2926 
+gohl.michael@ems.guj.de
+
 **Daniel Gerold**  
-Head of Technical Projects  
+Director Digital Ad Technology  
 \+ 49 (0) 40 / 3703 7415  
 gerold.daniel@ems.guj.de
- 
-**Arne Steinmetz**  
-Director Digital Ad Technology  
-\+ 49 (0) 40 / 3703 7384  
-steinmetz.arne@ems.guj.de
  
  
 ## License

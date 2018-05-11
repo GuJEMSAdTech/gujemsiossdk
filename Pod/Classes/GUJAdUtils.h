@@ -29,6 +29,10 @@
 
 @interface GUJAdUtils : NSObject
 
++ (void)setNonPersonalizedAds:(BOOL)status;
+
++ (BOOL)getNonPersonalizedAds ;
+
 + (BOOL)isOtherAudioPlaying;
 
 + (BOOL)isHeadsetPluggedIn;

@@ -32,7 +32,6 @@ typedef NS_OPTIONS(NSUInteger, GUJGenericAdContextOption) {
 
 -(GADBannerView *) bannerView;
 
--(void)setPubmaticPublisherId:(NSString *)publisherId size:(CGSize) size;
 
 
 @end

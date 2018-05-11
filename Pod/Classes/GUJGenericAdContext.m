@@ -9,9 +9,6 @@
 
 #import "GUJAdViewContextDelegate.h"
 
-#import "PMPrefetchManager.h"
-#import "PMBannerPrefetchRequest.h"
-#import "PMBid.h"
 
 
 
@@ -23,7 +20,7 @@ static NSString *const EVENT_HANDLER_NAME_LOG = @"log";
 static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
 
 
-@interface GUJGenericAdContext () <GUJAdViewContextDelegate, PMPrefetchDelegate, FBNativeAdDelegate, GADAppEventDelegate>
+@interface GUJGenericAdContext () <GUJAdViewContextDelegate, FBNativeAdDelegate, GADAppEventDelegate>
 
 @property GUJGenericAdContextOption options;
 
@@ -63,16 +60,6 @@ static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
     
     self.adViewContext.delegate = self;
     self.adViewContext.rootViewController = vc;
-    
-    if (self.options & GUJGenericAdContextOptionUsePubMatic) {
-        if (self.pubmaticPublisherId == nil) {
-            [self failLoadingWithErrorText:@"Can't use Pubmatic. Pubmatic publisherId = nil"];
-            return;
-        }
-        
-        [self loadPubmaticTargetInfo:self.pubmaticPublisherId size:self.pubmaticSize];
-        return;
-    }
     
     [self loadAd];
 }
@@ -146,65 +133,6 @@ static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
     if ([self.delegate respondsToSelector:@selector(genericAdContext:didLoadData:)]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.delegate genericAdContext:self didLoadData:context];
-        });
-    }
-}
-
-
-
-#pragma mark - Pubmatic
-
--(void)setPubmaticPublisherId:(NSString *)publisherId size:(CGSize) size {
-    self.pubmaticPublisherId = publisherId;
-    self.pubmaticSize = size;
-}
-
--(void) loadPubmaticTargetInfo:(NSString *) publisherId size:(CGSize) size {
-    
-    PMSize *impSize = [PMSize sizeWithWidth:size.width height:size.height];
-    NSString *impressionId = self.adUnitId;
-    if (self.adViewContext.position > 0) {
-        impressionId = [impressionId stringByAppendingFormat:@"-%ld", (long)self.adViewContext.position];
-    }
-    
-    PMBannerImpression *impression = [[PMBannerImpression alloc] initWithImpressionId:impressionId slotName:self.adUnitId slotIndex:self.adViewContext.position sizes:@[impSize]];
-    
-    
-    PMPrefetchManager *prefetchManager = [PMPrefetchManager sharedInstance];
-    prefetchManager.delegate = self;
-    
-    PMBannerPrefetchRequest * prefetchAdRequest = [[PMBannerPrefetchRequest alloc] initForPrefetchWithPublisherId:publisherId impressionArray:@[impression]];
-    [prefetchManager prefetchCreativesForRequest:prefetchAdRequest];
-}
-
-- (void)loadBannerViewWithTargetInfo:(NSDictionary*)bids {
-    
-    PMBid *bid = [bids valueForKey:[self adUnitId]];
-    
-    NSMutableDictionary *targeting = [NSMutableDictionary dictionaryWithDictionary:self.adViewContext.customTargetingDict];
-    if (bid) {
-        [targeting setValuesForKeysWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:bid.impId, @"bidid",[NSString stringWithFormat:@"%ld", (long)bid.status.integerValue], @"bidstatus", [NSString stringWithFormat:@"%f", bid.price], @"bid", bid.dealId, @"wdeal", nil]];
-    }
-    
-    [self.adViewContext setCustomTargetingDict:targeting];
-    
-    [self loadAd];
-}
-
-#pragma mark PMPrefetchDelegate
-
-- (void)prefetchManager:(PMPrefetchManager *)prefetchManager didReceiveBids:(NSDictionary *)bids
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self loadBannerViewWithTargetInfo:bids];
-    });
-}
-
-- (void)prefetchManager:(PMPrefetchManager *)prefetchManager didFailWithError:(NSError *)error
-{
-    if ([self.delegate respondsToSelector:@selector(genericAdContext:didFailWithError:)]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate genericAdContext:self didFailWithError:error];
         });
     }
 }
