@@ -86,6 +86,13 @@ Adding the following to your Info.plist will disable ATS:
 See this [Google Developers Blog Post](http://googleadsdeveloper.blogspot.no/2015/08/handling-app-transport-security-in-ios-9.html)
 for details.
  
+## Options
+The GUJAdUtils instance provides global options for the sdk:
+
+-NonPersonalizedAdsStatus with setNonPersonalizedAds method
+
+In case of users opting out of personalized ads served by G+J e|MS, please set [GUJAdUtils setNonPersonalizedAds:true] on every app view. 
+ 
 ## New in 3.1.x: Inflow Video Ads
  
 In version 3.1.x we added a new feature: Inflow Video Ads.
