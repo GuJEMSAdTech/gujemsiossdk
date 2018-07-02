@@ -232,12 +232,18 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
     DFPRequest *request = [DFPRequest request];
     
     BOOL npaStatus = [GUJAdUtils getNonPersonalizedAds];
-    if (npaStatus) {
-        GADExtras *extras = [[GADExtras alloc] init];
+    BOOL isChild = [GUJAdUtils getIsChild];
+    
+    GADExtras *extras = [[GADExtras alloc] init];
+    if (isChild) {
+        extras.additionalParameters = @{@"tag_for_under_age_of_consent": @YES};
+    } else if (npaStatus) {
         extras.additionalParameters = @{@"npa": @"1"};
-        [request registerAdNetworkExtras:extras];
     }
     
+    if (npaStatus || isChild) {
+        [request registerAdNetworkExtras:extras];
+    }
     
     if (_contentURL != nil) {
         request.contentURL = _contentURL;

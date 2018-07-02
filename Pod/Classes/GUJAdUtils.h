@@ -29,9 +29,11 @@
 
 @interface GUJAdUtils : NSObject
 
-+ (void)setNonPersonalizedAds:(BOOL)status;
++ (void)setNonPersonalizedAds:(BOOL)status:(BOOL)isChild;
 
 + (BOOL)getNonPersonalizedAds ;
+
++ (BOOL)getIsChild ;
 
 + (BOOL)isOtherAudioPlaying;
 

@@ -33,6 +33,12 @@ the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recomme
  
 ## Changelog
 
+#### v3.2.2 | 02/July/2018
+- Tag user as a child
+
+#### v3.2.1 | 18/May/2018
+- Beta goes stable
+
 #### v3.2.0-beta-1.2 |  11/May/2018
 - Pubmatic removed
 - Non Personalized Ads Methods added

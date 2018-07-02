@@ -32,9 +32,15 @@
 }
 
 static BOOL npaStatus = false;
+static BOOL isChildStatus = false;
 
-+ (void)setNonPersonalizedAds:(BOOL)status {
++ (void)setNonPersonalizedAds:(BOOL)status:(BOOL)isChild {
     npaStatus = status;
+    isChildStatus = isChild;
+}
+
++ (BOOL)getIsChild {
+    return isChildStatus;
 }
 
 + (BOOL)getNonPersonalizedAds {
