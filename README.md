@@ -33,6 +33,9 @@ the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recomme
  
 ## Changelog
 
+#### v3.2.3 | 27/July/2018
+- Changed dependencies for podfile
+
 #### v3.2.2 | 02/July/2018
 - Tag user as a child
 
