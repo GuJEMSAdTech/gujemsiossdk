@@ -33,16 +33,6 @@ the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recomme
  
 ## Changelog
 
-#### v3.2.2 | 02/July/2018
-- Tag user as a child
-
-#### v3.2.1 | 18/May/2018
-- Beta goes stable
-
-#### v3.2.0-beta-1.2 |  11/May/2018
-- Pubmatic removed
-- Non Personalized Ads Methods added
-
 #### v3.2.0-beta-1.1 |  19/April/2018
 - Smartclip removed
  
@@ -91,13 +81,6 @@ Adding the following to your Info.plist will disable ATS:
  
 See this [Google Developers Blog Post](http://googleadsdeveloper.blogspot.no/2015/08/handling-app-transport-security-in-ios-9.html)
 for details.
- 
-## Options
-The GUJAdUtils instance provides global options for the sdk:
-
--NonPersonalizedAdsStatus with setNonPersonalizedAds method
-
-In case of users opting out of personalized ads served by G+J e|MS, please set [GUJAdUtils setNonPersonalizedAds:true] on every app view. 
  
 ## New in 3.1.x: Inflow Video Ads
  
@@ -742,15 +725,15 @@ Technical Projects Manager
 \+ 49 (0) 40 / 3703 2991  
 otte.sebastian@ems.guj.de
  
-**Michael Gohl**  
-Head of Digital Ad Technology  
-\+ 49 (0) 40 / 3703 2926 
-gohl.michael@ems.guj.de
-
 **Daniel Gerold**  
-Director Digital Ad Technology  
+Head of Technical Projects  
 \+ 49 (0) 40 / 3703 7415  
 gerold.daniel@ems.guj.de
+ 
+**Arne Steinmetz**  
+Director Digital Ad Technology  
+\+ 49 (0) 40 / 3703 7384  
+steinmetz.arne@ems.guj.de
  
  
 ## License
