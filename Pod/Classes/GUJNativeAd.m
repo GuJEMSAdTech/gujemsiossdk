@@ -260,12 +260,14 @@ static NSString *const NATIVE_AD_SERVER_ADDRESS = @"https://pubads.g.doubleclick
 }
 
 -(void) clickAction {
+    NSString *link = [self clickLink];
     if ([self.delegate respondsToSelector:@selector(nativeAdDidClick:)]) {
         [self.delegate nativeAdDidClick:self];
     }
     
-    NSString *link = [self clickLink];
-    if (link) {
+    if ([self.delegate respondsToSelector:@selector(nativeAdCustomBrowser:)]) {
+        [self.delegate nativeAdCustomBrowser:link];
+    } else if (link) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:link]];
     }
 }

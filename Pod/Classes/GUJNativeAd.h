@@ -47,6 +47,11 @@
  */
 - (void)nativeAdDidClick:(GUJNativeAd *)nativeAd;
 
+/**
+ Sent click link to open the link in a custom browser window.
+ */
+- (void)nativeAdCustomBrowser:(NSString *)link;
+
 @end
 
 

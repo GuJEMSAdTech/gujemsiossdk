@@ -33,6 +33,9 @@ the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recomme
  
 ## Changelog
 
+#### v.3.2.4 | 07/Aug/2018
+- Added a new method to GUJNativeAdDelegate for opening links in internal browsers
+
 #### v3.2.3 | 27/July/2018
 - Changed dependencies for podfile
 
