@@ -47,8 +47,10 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
         self.locationServiceDisabled = false;
 
         self.customTargetingDict[CUSTOM_TARGETING_KEY_BATTERY_LEVEL] = [[GUJAdUtils getBatteryLevel] stringValue];
-        if ([GUJAdUtils identifierForAdvertising]) {
-            self.customTargetingDict[CUSTOM_TARGETING_KEY_IDFA] = [GUJAdUtils md5:[GUJAdUtils identifierForAdvertising]];
+
+        NSString *idfa = [GUJAdUtils identifierForAdvertising];
+        if (idfa) {
+            self.customTargetingDict[CUSTOM_TARGETING_KEY_IDFA] = [GUJAdUtils md5:idfa];
         }
 
         BOOL isHeadsetPluggedIn = [GUJAdUtils isHeadsetPluggedIn];
