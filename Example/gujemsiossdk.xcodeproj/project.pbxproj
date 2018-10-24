@@ -46,7 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		121A746B3E153018CB2A279D /* gujemsiossdk.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = gujemsiossdk.podspec; path = ../gujemsiossdk.podspec; sourceTree = "<group>"; };
+		121A746B3E153018CB2A279D /* gujemsiossdk.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = gujemsiossdk.podspec; path = ../gujemsiossdk.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		1825517E1ECCA2F20076A8DE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18EA04D81EE0576300F83ED0 /* GUJNativeAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUJNativeAdViewController.h; sourceTree = "<group>"; };
 		18EA04D91EE0576300F83ED0 /* GUJNativeAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUJNativeAdViewController.m; sourceTree = "<group>"; };
