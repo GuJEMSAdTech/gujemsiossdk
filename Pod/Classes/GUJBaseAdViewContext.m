@@ -116,7 +116,7 @@ static NSString *const CUSTOM_TARGETING_KEY_IDFA = @"idfa";
 
 
 - (void)addCustomTargetingKeyword:(NSString *)keyword {
-    if (self.customTargetingDict[KEYWORDS_DICT_KEY] != nil) {
+    if (self.customTargetingDict[KEYWORDS_DICT_KEY] == nil) {
         self.customTargetingDict[KEYWORDS_DICT_KEY] = [NSMutableArray new];
     }
     NSMutableArray *keywordArray = self.customTargetingDict[KEYWORDS_DICT_KEY];
