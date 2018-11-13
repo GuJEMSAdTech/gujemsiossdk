@@ -250,7 +250,7 @@ static NSString *const NATIVE_AD_SERVER_ADDRESS = @"https://pubads.g.doubleclick
         return [self.clickUrlServer stringByAppendingString:encodedClickUrl];
     } else {
         if (self.defaultClickURL) {
-            NSString *clickUrl = [NSString stringWithFormat:@"%@s:%@-a:%@-t:n", self.defaultClickURL, self.specialAdUnit, self.articleId];
+            NSString *clickUrl = [NSString stringWithFormat:@"%@?an=s:%@-a:%@-t:n", self.defaultClickURL, self.specialAdUnit, self.articleId];
             NSString *encodedClickUrl = [clickUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             return [self.clickUrlServer stringByAppendingString:encodedClickUrl];
         }
@@ -261,6 +261,7 @@ static NSString *const NATIVE_AD_SERVER_ADDRESS = @"https://pubads.g.doubleclick
 
 -(void) clickAction {
     NSString *link = [self clickLink];
+
     if ([self.delegate respondsToSelector:@selector(nativeAdDidClick:)]) {
         [self.delegate nativeAdDidClick:self];
     }

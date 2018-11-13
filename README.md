@@ -33,6 +33,10 @@ the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recomme
  
 ## Changelog
 
+#### v3.2.6 | 13/Nov/2018
+- README edited
+- GUJNativeAd defaultClickUrl: no params
+
 #### v3.2.5 | 12/Nov/2018
 - CustomTargeting Bug fixed
 
@@ -520,7 +524,7 @@ Load a native ad with method `loadAd` of `GUJNativeAd` and handle the result via
 self.adManager = [GUJNativeAdManager new];
  
 GUJNativeAd *ad = [self.adManager nativeAdWithUnitID:<YOUR ADUNIT ID>];
-ad.baseClickUrl = <BASE CLICK URL>;
+ad.defaultClickUrl = <BASE CLICK URL>;
 ad.delegate = self;
 [ad loadAd];
 ```
@@ -544,22 +548,6 @@ ad.delegate = self;
 For tracking views and clicks call `registerViewForInteraction` after loading ad
 
 For detailed information see our example implementation: gujemsiossdk/Products/Main.storyboard —> NativeAd Scene
-
-#### load PubMatic ad
- 
-Load a GUJGenericAdContext with 'contextWithOptions' set for Pubmatic, also a PubmaticPublisherId must be set and an AdUnitId as usual:
- 
-```objective-c
-
-self.adContext = [GUJGenericAdContext contextForAdUnitId:unitId
-withOptions:GUJGenericAdContextOptionUsePubMatic
-delegate:self];
-
-[self.adContext setPubmaticPublisherId:publisherId size:CGSizeMake(300, 250)];
-self.adContext.adViewContext.position = GUJ_AD_VIEW_POSITION_TOP;
-[self.adContext loadInViewController:self];
-
-```
  
 #### Load native Facebook ad
 
