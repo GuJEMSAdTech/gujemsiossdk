@@ -274,13 +274,11 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
 - (DFPBannerView *)adViewWithOrigin:(CGPoint)origin {
 
     BOOL isLandscape = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation);
-    self.bannerView = [[DFPBannerView alloc] initWithAdSize:isLandscape ? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait origin:origin];
+    self.bannerView = [[DFPBannerView alloc] initWithAdSize:GADAdSizeFromCGSize(CGSizeMake(1, 1)) origin:origin];
 
+    NSMutableArray *validAdSizes = [NSMutableArray new];
     if (!allowSmartBannersOnly) {
-
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {  // iPad
-
-            NSMutableArray *validAdSizes = [NSMutableArray new];
             [validAdSizes addObjectsFromArray:@[
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(1, 1))),
                     NSValueFromGADAdSize(kGADAdSizeBanner),  // Typically 320x50.
@@ -290,7 +288,6 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 75))),
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 75))),
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(180, 150))),
-                    NSValueFromGADAdSize(isLandscape ? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait),
 
                     // iq media
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 53))),
@@ -327,12 +324,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
                 [validAdSizes addObject:NSValueFromGADAdSize(kGADAdSizeLeaderboard)];  // Typically 728x90.
             }
 
-            self.bannerView.validAdSizes = validAdSizes;
-
         } else {  //iPhone, iPod
-
-            NSMutableArray *validAdSizes = [NSMutableArray new];
-
             [validAdSizes addObjectsFromArray:@[
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(1, 1))),
                     NSValueFromGADAdSize(kGADAdSizeBanner), // Typically 320x50.
@@ -341,7 +333,6 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 100))),
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 75))),
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 75))),
-                    NSValueFromGADAdSize(isLandscape ? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait),
 
                     // iq media
                     NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 53))),
@@ -365,11 +356,12 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
                 // iq media
                 [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 160)))];
             }
-
-            self.bannerView.validAdSizes = validAdSizes;
         }
+    } else {
+        [validAdSizes addObject: NSValueFromGADAdSize(isLandscape ? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait)];
     }
-
+    
+    self.bannerView.validAdSizes = validAdSizes;
     self.bannerView.adUnitID = self.adUnitId;
     self.bannerView.rootViewController = self.rootViewController;
     self.bannerView.delegate = self;

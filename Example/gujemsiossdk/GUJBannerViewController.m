@@ -88,6 +88,9 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *adUnitId = [userDefaults objectForKey:AD_UNIT_USER_DEFAULTS_KEY];
     NSString *keyword = [userDefaults objectForKey:KEYWORD_DEFAULTS_KEY];
+    if (keyword == nil) {
+        keyword = @"";
+    }
 
     // TOP
     topAdContext = [GUJGenericAdContext contextForAdUnitId:adUnitId
