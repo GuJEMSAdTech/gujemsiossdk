@@ -33,6 +33,10 @@ the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recomme
  
 ## Changelog
 
+#### v3.2.7 | 16/Nov/2018
+- GUJBannerViewController keyword is nil test
+- Removed SmartBannerAdSizes from normal calls
+
 #### v3.2.6 | 13/Nov/2018
 - README edited
 - GUJNativeAd defaultClickUrl: no params
