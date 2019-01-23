@@ -28,6 +28,8 @@
 #import "GUJAdViewContext.h"
 #import "GUJAdSpaceIdToAdUnitIdMapper.h"
 #import "GUJAdViewContextDelegate.h"
+#import "GUJEmetriq.h"
+#import "GUJYieldlab.h"
 
 
 static NSString *const CUSTOM_TARGETING_KEY_POSITION = @"pos";
@@ -175,6 +177,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
 
 -(void)setContentURL:(NSString*) contentURL {
     _contentURL = contentURL;
+    [[GUJEmetriq sharedManager] submit:contentURL];
 }
 
 
@@ -240,6 +243,8 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
     } else if (npaStatus) {
         extras.additionalParameters = @{@"npa": @"1"};
     }
+    
+    [[GUJYieldlab sharedManager] appendToAdCall:self];
     
     if (npaStatus || isChild) {
         [request registerAdNetworkExtras:extras];

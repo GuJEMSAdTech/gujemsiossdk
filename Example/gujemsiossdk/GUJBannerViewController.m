@@ -27,6 +27,7 @@
 #import "GUJSettingsViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
+#import "GUJYieldlab.h"
 #import "GUJGenericAdContext.h"
 
 @interface GUJBannerViewController () <GUJGenericAdContextDelegate>
@@ -84,7 +85,21 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
+    
+    /**** yieldlab ****/
+    
+    NSArray<GUJYieldlabMapElement*>* list = [NSArray arrayWithObjects:
+            [GUJYieldlabMapElement init:@"mpa" value:@"7509781"],
+            [GUJYieldlabMapElement init:@"msa" value:@"7509784"],
+            [GUJYieldlabMapElement init:@"mca" value:@"7509790"],
+            [GUJYieldlabMapElement init:@"mda" value:@"7509787"], nil];
+   
+    GUJYieldlab* yieldService = [GUJYieldlab sharedManager];
+    [yieldService configure:list deviceType:5];
+    [yieldService request];
+    
+    /**** yieldlab ****/
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *adUnitId = [userDefaults objectForKey:AD_UNIT_USER_DEFAULTS_KEY];
     NSString *keyword = [userDefaults objectForKey:KEYWORD_DEFAULTS_KEY];
