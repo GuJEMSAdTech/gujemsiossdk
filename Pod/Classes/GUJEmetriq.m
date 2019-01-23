@@ -49,6 +49,7 @@
     [queryItems addObject:[NSURLQueryItem queryItemWithName:@"device_id" value:self->idfa]];
     [queryItems addObject:[NSURLQueryItem queryItemWithName:@"app_id" value:self->appId]];
     [queryItems addObject:[NSURLQueryItem queryItemWithName:@"link" value:self->contentUrl]];
+    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"os" value:@"ios"]];
     
     components.queryItems = queryItems;
     
