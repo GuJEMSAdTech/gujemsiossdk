@@ -33,6 +33,9 @@ the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recomme
  
 ## Changelog
 
+#### v3.2.8.2 | 29/Jan/2019
+- Cookie Header Yieldlab
+
 #### v3.2.8.1 | 29/Jan/2019
 - Small Fixes
 

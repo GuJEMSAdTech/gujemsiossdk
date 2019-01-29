@@ -124,7 +124,10 @@
 }
 
 - (void)submitToServer {
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    config.HTTPShouldSetCookies = false;
+    config.HTTPCookieAcceptPolicy = NSHTTPCookieAcceptPolicyNever;
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
     [[session dataTaskWithURL:[self generateUrl]
             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                 
