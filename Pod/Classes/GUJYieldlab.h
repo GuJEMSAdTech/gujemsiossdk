@@ -20,6 +20,7 @@
 @interface GUJYieldlabElement : NSObject
 
 +(GUJYieldlabElement*) init:(NSString*)pvid price:(NSString*)price partner:(NSString*)partner ylid: (NSString*)ylid yid:(NSString*)yid map:(NSString*)map;
+-(NSString*)getString:(NSString*)str;
 -(NSArray<GUJYieldlabMapElement*>*) getDataForAdCall;
 
 @end

@@ -95,7 +95,7 @@
             [GUJYieldlabMapElement init:@"mda" value:@"7509787"], nil];
    
     GUJYieldlab* yieldService = [GUJYieldlab sharedManager];
-    [yieldService configure:list deviceType:5];
+    [yieldService configure:list deviceType:4];
     [yieldService request];
     
     /**** yieldlab ****/
