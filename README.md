@@ -33,6 +33,9 @@ the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recomme
  
 ## Changelog
 
+#### v3.2.8.1 | 29/Jan/2019
+- Small Fixes
+
 #### v3.2.8 | 28/Jan/2019
 - emetriq Support added
 - Yieldlab Support added
