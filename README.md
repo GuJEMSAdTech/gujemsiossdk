@@ -33,6 +33,10 @@ the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recomme
  
 ## Changelog
 
+#### v3.2.8 | 28/Jan/2019
+- emetriq Support added
+- Yieldlab Support added
+
 #### v3.2.7 | 16/Nov/2018
 - GUJBannerViewController keyword is nil test
 - Removed SmartBannerAdSizes from normal calls

@@ -21,13 +21,17 @@
 
 + (GUJYieldlabElement *)init:(NSString *)pvid price:(NSString *)price partner:(NSString *)partner ylid:(NSString *)ylid yid:(NSString *)yid map:(NSString *)map {
     GUJYieldlabElement* instance = [GUJYieldlabElement alloc];
-    instance->map = map;
-    instance->pvid = pvid;
-    instance->partner = partner;
-    instance->price = price;
-    instance->yid = yid;
-    instance->ylid = ylid;
+    instance->map = [instance getString:map];
+    instance->pvid = [instance getString:pvid];
+    instance->partner = [instance getString:partner];
+    instance->price = [instance getString:price];
+    instance->yid = [instance getString:yid];
+    instance->ylid = [instance getString:ylid];
     return instance;
+}
+
+- (NSString *)getString:(NSString *)str {
+    return str == nil ? @"" : str;
 }
 
 - (NSArray<GUJYieldlabMapElement*> *)getDataForAdCall {
