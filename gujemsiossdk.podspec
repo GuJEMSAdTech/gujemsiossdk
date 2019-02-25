@@ -39,12 +39,13 @@ Pod::Spec.new do |s|
 
 
   #s.vendored_frameworks = 'Pod/Assets/SCMobileSDK.framework'
-
+  s.static_framework = true
   s.public_header_files = 'Pod/Classes/*.h'
   s.frameworks = 'CoreMedia', 'UIKit', 'AVFoundation', 'AdSupport', 'StoreKit', 'CoreMotion', 'CoreLocation', 'CoreTelephony', 'MediaPlayer', 'SystemConfiguration'
   s.libraries = 'xml2'
   s.dependency 'Google-Mobile-Ads-SDK'
   s.dependency 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
   s.dependency 'FBAudienceNetwork', '4.28.1'
+  s.dependency 'ConsentWebView'
 
 end
