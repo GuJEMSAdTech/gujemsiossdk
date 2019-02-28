@@ -29,7 +29,7 @@
 
 @interface GUJAdUtils : NSObject
 
-+ (void)setNonPersonalizedAds:(BOOL)status:(BOOL)isChild;
++ (void)setNonPersonalizedAds:(BOOL)status isChild:(BOOL)isChild;
 
 + (BOOL)getNonPersonalizedAds ;
 
