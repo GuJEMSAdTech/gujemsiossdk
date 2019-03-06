@@ -46,6 +46,6 @@ Pod::Spec.new do |s|
   s.dependency 'Google-Mobile-Ads-SDK'
   s.dependency 'GoogleAds-IMA-iOS-SDK', '~> 3.6'
   s.dependency 'FBAudienceNetwork', '4.28.1'
-  s.dependency 'ConsentWebView'
+  s.dependency 'ConsentViewController'
 
 end

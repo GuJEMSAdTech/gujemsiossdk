@@ -6,8 +6,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ConsentWebView-Swift.h"
+
+@interface GUJConsentHelper: NSObject
++ (void)init:(UIView*) view;
+@end
 
 @interface GUJConsent : NSObject
-
+- (void)setStageCampaigns:(Boolean)stage;
+- (instancetype)init;
+- (void)setInternalStage:(Boolean)stage;
+- (void)setTargetingStringValue:(NSString*)key value:(NSString*)value;
+- (void)setTargetingIntValue:(NSString*)key value:(NSInteger)value;
+- (void)load;
+- (void)appendSubview: (UIView*)view;
 @end

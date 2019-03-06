@@ -298,7 +298,8 @@
 				ORGANIZATIONNAME = "Michael Brügmann";
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = Q55VNUR5HV;
+						ProvisioningStyle = Automatic;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -354,7 +355,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/gujemsiossdk/gujemsiossdk.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -363,7 +364,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		182642931BBC3FD32F6A6C01 /* [CP] Check Pods Manifest.lock */ = {
@@ -390,18 +391,18 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ConsentWebView/ConsentWebView.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ConsentViewController/ConsentViewController.framework",
 				"${PODS_ROOT}/GoogleAds-IMA-iOS-SDK/GoogleInteractiveMediaAds/GoogleInteractiveMediaAds.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ConsentWebView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ConsentViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleInteractiveMediaAds.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gujemsiossdk_Example/Pods-gujemsiossdk_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		600AC4357EDCAAFAA0D37B5B /* [CP] Copy Pods Resources */ = {
@@ -410,7 +411,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/gujemsiossdk/gujemsiossdk.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -419,7 +420,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F3578253DB301BCE440173DF /* [CP] Embed Pods Frameworks */ = {
@@ -428,18 +429,18 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ConsentWebView/ConsentWebView.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ConsentViewController/ConsentViewController.framework",
 				"${PODS_ROOT}/GoogleAds-IMA-iOS-SDK/GoogleInteractiveMediaAds/GoogleInteractiveMediaAds.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ConsentWebView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ConsentViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleInteractiveMediaAds.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gujemsiossdk_Tests/Pods-gujemsiossdk_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FBF8F70613FADC851EA7CBCA /* [CP] Check Pods Manifest.lock */ = {
@@ -623,8 +624,8 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q55VNUR5HV;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gujemsiossdk/gujemsiossdk-Prefix.pch";
@@ -727,7 +728,7 @@
 					"-weak_framework",
 					"\"WebKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.generationdigitale.apps.ios.gujemsiossdk;
+				PRODUCT_BUNDLE_IDENTIFIER = net.generationdigitale.apps.ios.gujemsiossdk1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -745,8 +746,8 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q55VNUR5HV;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gujemsiossdk/gujemsiossdk-Prefix.pch";
@@ -849,7 +850,7 @@
 					"-weak_framework",
 					"\"WebKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.generationdigitale.apps.ios.gujemsiossdk;
+				PRODUCT_BUNDLE_IDENTIFIER = net.generationdigitale.apps.ios.gujemsiossdk1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

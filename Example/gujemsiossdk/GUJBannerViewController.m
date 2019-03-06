@@ -29,6 +29,7 @@
 
 #import "GUJYieldlab.h"
 #import "GUJGenericAdContext.h"
+#import "GUJConsent.h"
 
 @interface GUJBannerViewController () <GUJGenericAdContextDelegate>
 @end
@@ -80,6 +81,9 @@
         [userDefaults setObject:adUnitId forKey:AD_UNIT_USER_DEFAULTS_KEY];
         [userDefaults synchronize];
     }
+    
+    // Consent
+    [GUJConsentHelper init:self.view];
 }
 
 
