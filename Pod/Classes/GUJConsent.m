@@ -7,7 +7,6 @@
 
 #import "GUJConsent.h"
 #import <Foundation/Foundation.h>
-#import "GUJAdUtils.h"
 @import ConsentViewController;
 
 @implementation GUJConsentHelper {
@@ -33,7 +32,7 @@ static UIView* currentView = nil;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self->webView = [[ConsentViewController alloc] initWithAccountId:212 siteName: [GUJAdUtils identifierForAdvertising]];
+        self->webView = [[ConsentViewController alloc] initWithAccountId:212 siteName: [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"]];
     }
     return self;
 }
