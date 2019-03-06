@@ -10,11 +10,20 @@
 #import "GUJAdUtils.h"
 @import ConsentViewController;
 
-@implementation GUJConsentHelper
+@implementation GUJConsentHelper {
+    
+}
+static UIView* currentView = nil;
+
 + (void)init:(UIView *)view {
-    GUJConsent* consent = [[GUJConsent alloc] init];
-    [consent load];
-    [consent appendSubview:view];
+    currentView = view;
+}
++ (void)request {
+    if (currentView != nil) {
+        GUJConsent* consent = [[GUJConsent alloc] init];
+        [consent load];
+        [consent appendSubview:currentView];
+    }
 }
 @end
 
@@ -49,54 +58,17 @@
     self->webView.page = @"main";
     self->webView.mmsDomain = @"mms.adalliance.io";
     
-    /*ConsentViewController.onReceiveMessageData = { (cbw: ConsentViewController) in
-        print("msgJSON from backend", cbw.msgJSON as Any)
-    }
+    self->webView.onReceiveMessageData = ^(ConsentViewController *cb) {
+        // receive message
+    };
     
-    ConsentViewController.onMessageChoiceSelect = { cbw in
-        print("Choice type selected by user", cbw.choiceType as Any)
-    }
+    self->webView.onMessageChoiceSelect = ^(ConsentViewController * cb) {
+        // message
+    };
     
-    ConsentViewController.onInteractionComplete = { (cbw: ConsentViewController) in
-        print(
-              "\n eu consent prop",
-              cbw.euconsent as Any,
-              "\n consent uuid prop",
-              cbw.consentUUID as Any,
-              "\n eu consent in storage",
-              UserDefaults.standard.string(forKey: ConsentViewController.EU_CONSENT_KEY) as Any,
-              "\n consent uuid in storage",
-              UserDefaults.standard.string(forKey: ConsentViewController.CONSENT_UUID_KEY) as Any,
-              
-              // Standard IAB values in UserDefaults
-              "\n IABConsent_ConsentString in storage",
-              UserDefaults.standard.string(forKey: ConsentViewController.IAB_CONSENT_CONSENT_STRING) as Any,
-              "\n IABConsent_ParsedPurposeConsents in storage",
-              UserDefaults.standard.string(forKey: ConsentViewController.IAB_CONSENT_PARSED_PURPOSE_CONSENTS) as Any,
-              "\n IABConsent_ParsedVendorConsents in storage",
-              UserDefaults.standard.string(forKey: ConsentViewController.IAB_CONSENT_PARSED_VENDOR_CONSENTS) as Any,
-              
-              // API for getting IAB Vendor Consents
-              "\n IAB vendor consent for Smaato Inc",
-              cbw.getIABVendorConsents([82]),
-              
-              // API for getting IAB Purpose Consents
-              "\n IAB purpose consent for \"Ad selection, delivery, reporting\"",
-              cbw.getIABPurposeConsents([3]),
-              
-              // Get custom vendor results:
-              "\n custom vendor consents",
-              cbw.getCustomVendorConsents(forIds: ["5bc76807196d3c5730cbab05", "5bc768d8196d3c5730cbab06"]),
-              
-              // Get purpose results:
-              "\n all purpose consents ",
-              cbw.getPurposeConsents(),
-              "\n filtered purpose consents ",
-              cbw.getPurposeConsents(forIds: ["5bc4ac5c6fdabb0010940ab1", "5bc4ac5c6fdabb0010940aae", "invalid_id_returns_nil" ]),
-              "\n consented to measurement purpose ",
-              cbw.getPurposeConsent(forId: "5bc4ac5c6fdabb0010940ab1")
-              )
-    }*/
+    self->webView.onInteractionComplete = ^(ConsentViewController *cb) {
+        // interaction completed
+    };
 }
 - (void)appendSubview: (UIView*)view {
     [view addSubview:self->webView.view];

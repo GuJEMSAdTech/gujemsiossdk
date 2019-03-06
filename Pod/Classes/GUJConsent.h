@@ -9,6 +9,7 @@
 
 @interface GUJConsentHelper: NSObject
 + (void)init:(UIView*) view;
++ (void)request;
 @end
 
 @interface GUJConsent : NSObject

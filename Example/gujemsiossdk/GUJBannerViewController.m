@@ -84,6 +84,7 @@
     
     // Consent
     [GUJConsentHelper init:self.view];
+    [GUJConsentHelper request];
 }
 
 
