@@ -30,6 +30,7 @@
 #import "GUJAdViewContextDelegate.h"
 #import "GUJEmetriq.h"
 #import "GUJYieldlab.h"
+#import "GUJConsent.h"
 
 
 static NSString *const CUSTOM_TARGETING_KEY_POSITION = @"pos";
@@ -240,7 +241,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
     GADExtras *extras = [[GADExtras alloc] init];
     if (isChild) {
         extras.additionalParameters = @{@"tag_for_under_age_of_consent": @YES};
-    } else if (npaStatus) {
+    } else if (npaStatus || ![GUJConsentHelper consentForAdvertising]) {
         extras.additionalParameters = @{@"npa": @"1"};
     }
     

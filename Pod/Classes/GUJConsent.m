@@ -12,6 +12,7 @@
 @implementation GUJConsentHelper {
     
 }
+static GUJConsent* consent = nil;
 static UIView* currentView = nil;
 
 + (void)init:(UIView *)view {
@@ -19,29 +20,39 @@ static UIView* currentView = nil;
 }
 + (void)request {
     if (currentView != nil) {
-        GUJConsent* consent = [[GUJConsent alloc] init];
+        consent = [[GUJConsent alloc] init];
         [consent load];
         [consent appendSubview:currentView];
+    }
+}
++ (BOOL)consentForAdvertising {
+    if (consent != nil) {
+        return [consent getAdvertingStatus];
+    } else {
+        return true;
     }
 }
 @end
 
 @implementation GUJConsent {
     ConsentViewController* webView;
+    BOOL advertisingStatus;
 }
 - (instancetype)init {
     self = [super init];
     if (self) {
         self->webView = [[ConsentViewController alloc] initWithAccountId:212 siteName: [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"]];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];        
+        self->advertisingStatus = [userDefaults boolForKey:@"CONSENT_ADVERTISING"];
     }
     return self;
 }
 
-- (void)setStageCampaigns:(Boolean)stage {
+- (void)setStageCampaigns:(BOOL)stage {
     self->webView.isStage = stage;
 }
 
-- (void)setInternalStage:(Boolean)stage {
+- (void)setInternalStage:(BOOL)stage {
     self->webView.isInternalStage = stage;
 }
 
@@ -59,16 +70,33 @@ static UIView* currentView = nil;
     
     self->webView.onReceiveMessageData = ^(ConsentViewController *cb) {
         // receive message
+        BOOL result = [cb getIABPurposeConsents:@[@3]];
+        [self setAdvertisingStatus:result];
     };
     
-    self->webView.onMessageChoiceSelect = ^(ConsentViewController * cb) {
+    self->webView.onMessageChoiceSelect = ^(ConsentViewController *cb) {
         // message
+        BOOL result = [cb getIABPurposeConsents:@[@3]];
+        [self setAdvertisingStatus:result];
     };
     
     self->webView.onInteractionComplete = ^(ConsentViewController *cb) {
         // interaction completed
+        BOOL result = [cb getIABPurposeConsents:@[@3]];
+        [self setAdvertisingStatus:result];
     };
 }
+
+- (void)setAdvertisingStatus:(BOOL)status {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:status forKey:@"CONSENT_ADVERTISING"];
+    self->advertisingStatus = status;
+}
+
+- (BOOL)getAdvertingStatus {
+    return self->advertisingStatus == false ? false : true;
+}
+
 - (void)appendSubview: (UIView*)view {
     [view addSubview:self->webView.view];
 }
