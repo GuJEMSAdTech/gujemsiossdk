@@ -65,7 +65,7 @@ static UIView* currentView = nil;
 }
 
 - (void)load {
-    self->webView.page = @"main";
+    self->webView.page = @"APP Message";
     self->webView.mmsDomain = @"mms.adalliance.io";
     
     self->webView.onReceiveMessageData = ^(ConsentViewController *cb) {

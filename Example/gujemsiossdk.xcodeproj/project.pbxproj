@@ -728,7 +728,7 @@
 					"-weak_framework",
 					"\"WebKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.generationdigitale.apps.ios.gujemsiossdk1;
+				PRODUCT_BUNDLE_IDENTIFIER = test.ios.app.gruner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -850,7 +850,7 @@
 					"-weak_framework",
 					"\"WebKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.generationdigitale.apps.ios.gujemsiossdk1;
+				PRODUCT_BUNDLE_IDENTIFIER = test.ios.app.gruner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
