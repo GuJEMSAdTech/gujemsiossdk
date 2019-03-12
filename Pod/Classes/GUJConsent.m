@@ -65,24 +65,24 @@ static UIView* currentView = nil;
 }
 
 - (void)load {
-    self->webView.page = @"APP Message";
+    self->webView.page = @"main";
     self->webView.mmsDomain = @"mms.adalliance.io";
     
     self->webView.onReceiveMessageData = ^(ConsentViewController *cb) {
         // receive message
-        BOOL result = [cb getIABPurposeConsents:@[@3]];
+        BOOL result = [[[cb getIABPurposeConsents:@[@3]] objectAtIndex:0] boolValue];
         [self setAdvertisingStatus:result];
     };
     
     self->webView.onMessageChoiceSelect = ^(ConsentViewController *cb) {
         // message
-        BOOL result = [cb getIABPurposeConsents:@[@3]];
+        BOOL result = [[[cb getIABPurposeConsents:@[@3]] objectAtIndex:0] boolValue];
         [self setAdvertisingStatus:result];
     };
     
     self->webView.onInteractionComplete = ^(ConsentViewController *cb) {
         // interaction completed
-        BOOL result = [cb getIABPurposeConsents:@[@3]];
+        BOOL result = [[[cb getIABPurposeConsents:@[@3]] objectAtIndex:0] boolValue];
         [self setAdvertisingStatus:result];
     };
 }
@@ -94,7 +94,7 @@ static UIView* currentView = nil;
 }
 
 - (BOOL)getAdvertingStatus {
-    return self->advertisingStatus == false ? false : true;
+    return self->advertisingStatus != false;
 }
 
 - (void)appendSubview: (UIView*)view {

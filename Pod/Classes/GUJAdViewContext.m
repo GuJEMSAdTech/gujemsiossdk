@@ -237,17 +237,18 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
     
     BOOL npaStatus = [GUJAdUtils getNonPersonalizedAds];
     BOOL isChild = [GUJAdUtils getIsChild];
+    BOOL consent = [GUJConsentHelper consentForAdvertising];
     
     GADExtras *extras = [[GADExtras alloc] init];
     if (isChild) {
         extras.additionalParameters = @{@"tag_for_under_age_of_consent": @YES};
-    } else if (npaStatus || ![GUJConsentHelper consentForAdvertising]) {
+    } else if (npaStatus || !consent) {
         extras.additionalParameters = @{@"npa": @"1"};
     }
     
     [[GUJYieldlab sharedManager] appendToAdCall:self];
     
-    if (npaStatus || isChild) {
+    if (npaStatus || isChild || !consent) {
         [request registerAdNetworkExtras:extras];
     }
     
