@@ -85,6 +85,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
     BOOL desktopBillboardAdsDisabled;
     BOOL leaderboardAdsDisabled;
     BOOL autoShowInterstitialView;
+    BOOL mobileHalfpageAdEnabled;
 
     adViewCompletion adViewCompletionHandler;
     interstitialAdViewCompletion interstitialAdViewCompletionHandler;
@@ -185,6 +186,9 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
     _publisherProvidedID = publisherProvidedID;
 }
 
+- (void)enableMobileHalfpageAd {
+    mobileHalfpageAdEnabled = YES;
+}
 
 - (BOOL)disableLocationService {
     return [super disableLocationService];
@@ -364,6 +368,10 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
         }
     } else {
         [validAdSizes addObject: NSValueFromGADAdSize(isLandscape ? kGADAdSizeSmartBannerLandscape : kGADAdSizeSmartBannerPortrait)];
+    }
+    
+    if (mobileHalfpageAdEnabled) {
+        [validAdSizes addObject: NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 600)))];
     }
     
     self.bannerView.validAdSizes = validAdSizes;

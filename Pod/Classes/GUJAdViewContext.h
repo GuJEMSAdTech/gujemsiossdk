@@ -179,6 +179,10 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
 */
 - (void)setPublisherProvidedID:(NSString *)publisherProvidedID;
 
+/*!
+ * Enable Mobile Halfpage Ad
+ */
+- (void)enableMobileHalfpageAd;
 
 /*!
  * Disables the location service
