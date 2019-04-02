@@ -33,6 +33,9 @@ the dependencies like we did in `gujemsiossdk.podspec`. Anyway we do not recomme
  
 ## Changelog
 
+#### v3.2.9.1 | 02/Apr/2019
+- Google Ads SDK to 7.41.0
+
 #### v3.2.9 | 18/Mar/2019
 - Support for "Mobile Halfpage Ad" added
 
