@@ -19,7 +19,7 @@ lehmann.caroline@ems.guj.de
  
 **Michael Gohl**  
 Head of Digital Ad Technology  
-\+ 49 (0) 40 / 3703 2926 
+\+ 49 (0) 40 / 3703 2926
 gohl.michael@ems.guj.de
 
 **Daniel Gerold**  
