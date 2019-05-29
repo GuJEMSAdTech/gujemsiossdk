@@ -35,6 +35,7 @@
 
 static NSString *const CUSTOM_TARGETING_KEY_POSITION = @"pos";
 static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
+static NSString *const CUSTOM_TARGETING_KEY_CONTENT_URL_MOBILE = @"content_url_mobile";
 
 @implementation GUJAdView {
     GUJAdViewContext *context;
@@ -81,6 +82,7 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
 
     BOOL allowSmartBannersOnly;
     BOOL mediumRectanglesDisabled;
+    BOOL showHeroesDisabled;
     BOOL twoToOneAdsDisabled;
     BOOL billboardAdsDisabled;
     BOOL desktopBillboardAdsDisabled;
@@ -201,6 +203,10 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
     mediumRectanglesDisabled = YES;
 }
 
+- (void)disableShowHeroes {
+    showHeroesDisabled = YES;
+}
+
 
 - (void)disableTwoToOneAds {
     twoToOneAdsDisabled = YES;
@@ -252,8 +258,11 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
         [request registerAdNetworkExtras:extras];
     }
     
+    // TODO remove after testing
+    _contentURL = @"https://www.stern.de/familie/kinder/usa--junge-braucht-rollator--im-baumarkt-basteln-sie-ihm-die-zusammen-8730452.html";
     if (_contentURL != nil) {
         request.contentURL = _contentURL;
+        self.customTargetingDict[CUSTOM_TARGETING_KEY_CONTENT_URL_MOBILE] = _contentURL;
     }
     
     if (_publisherProvidedID != nil) {
@@ -310,6 +319,10 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
                 [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 320)))];
                 [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 416)))];
             }
+            
+            if (!showHeroesDisabled) {
+                 [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(400, 301)))];
+            }
 
             if (!twoToOneAdsDisabled) {
                 [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(300, 150)))];
@@ -354,6 +367,10 @@ static NSString *const CUSTOM_TARGETING_KEY_INDEX = @"ind";
                 // iq media
                 [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 320)))];
                 [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(320, 416)))];
+            }
+            
+            if (!showHeroesDisabled) {
+                [validAdSizes addObject:NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSizeMake(400, 301)))];
             }
 
             if (!twoToOneAdsDisabled) {

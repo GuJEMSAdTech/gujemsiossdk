@@ -18,6 +18,7 @@ static NSString *const EVENT_HANDLER_NAME_FACEBOOK = @"handOverAdViewToFacebook"
 static NSString *const EVENT_HANDLER_NAME_SET_SIZE = @"setsize";
 static NSString *const EVENT_HANDLER_NAME_LOG = @"log";
 static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
+static NSString *const EVENT_HANDLER_NAME_SHOWHEROES_NOAD = @"showHeroesNoAd";
 
 
 @interface GUJGenericAdContext () <GUJAdViewContextDelegate, FBNativeAdDelegate, GADAppEventDelegate>
@@ -104,6 +105,10 @@ static NSString *const EVENT_HANDLER_NAME_NOAD = @"noad";
         if ([name isEqualToString:EVENT_HANDLER_NAME_FACEBOOK]) {
             self.facebookPlacementId = info;
         }
+    }
+    
+    if ([name isEqualToString:EVENT_HANDLER_NAME_SHOWHEROES_NOAD]) {
+        [self didRecieveNoadEvent];
     }
     
     if (self.options & GUJGenericAdContextOptionUseIQEvents) {

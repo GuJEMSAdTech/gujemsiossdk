@@ -198,6 +198,11 @@ typedef BOOL (^interstitialAdViewCompletion)(GADInterstitial *_interstitial, NSE
  */
 - (void)disableMediumRectangleAds;
 
+/*!
+ * Disables showHeroes ads
+ */
+- (void)disableShowHeroes;
+
 
 /*!
  * Disables ads of 2:1 proportion, i.e. 300x150
