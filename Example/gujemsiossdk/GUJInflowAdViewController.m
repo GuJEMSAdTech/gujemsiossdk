@@ -24,12 +24,10 @@
  */
 
 #import "GUJInflowAdViewController.h"
-#import "GUJInflowAdViewContext.h"
 #import "GUJSettingsViewController.h"
 
 
 @implementation GUJInflowAdViewController {
-    GUJInflowAdViewContext *inflowAdViewContext;
     __weak IBOutlet UIScrollView *scrollView;
     __weak IBOutlet UIView *inFlowAdPlaceholderView;
     __weak IBOutlet NSLayoutConstraint *inFlowAdPlaceholderViewHeightConstraint;
@@ -43,25 +41,16 @@
 
     NSString *dfpAdunitId = [userDefaults objectForKey:AD_UNIT_USER_DEFAULTS_KEY];
     
-    inflowAdViewContext = [[GUJInflowAdViewContext alloc] initWithScrollView:scrollView
-                                                     inFlowAdPlaceholderView:inFlowAdPlaceholderView
-                                     inFlowAdPlaceholderViewHeightConstraint:inFlowAdPlaceholderViewHeightConstraint
-                                                                 dfpAdunitId:dfpAdunitId
-    ];
 }
 
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
-    [inflowAdViewContext containerViewDidAppear];
 }
 
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-
-    [inflowAdViewContext containerViewWillDisappear];
 }
 
 @end
